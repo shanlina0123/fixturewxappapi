@@ -1,0 +1,34 @@
+/* pages/message/message.wxss */
+.askmsg{
+    padding: 30rpx;
+}
+.askimg{
+    width: 96rpx;
+    height: 96rpx;
+}
+.askright{
+    margin-left: 16rpx;
+    margin-top: 12rpx;
+}
+.noticetitle{
+    padding: 20rpx; 
+    line-height: 50rpx;
+    border-bottom: 1px solid #eee;
+}
+.rightbtn{
+    display: inline-block;
+    width: 150rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+    margin-left: 3.5%;
+    text-align: center;
+    background-color: #1e9fff;
+    border-radius: 5px;
+}
+.timewrap{
+    margin-top: 8rpx;
+}
+.pulicktime{
+    margin-left: 10rpx;
+}

@@ -1,0 +1,19 @@
+/* pages/usercenter/usercenter.wxss */
+.wehead{
+    line-height: 100rpx;
+}
+.proitem{
+    margin: 20rpx 0;
+}
+.itemicon{
+    width: 45rpx;
+    height: 45rpx;
+    vertical-align: middle;
+}
+.proul navigator{
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+.proul navigator text{
+    line-height: 32rpx;
+}

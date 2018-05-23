@@ -1,0 +1,30 @@
+/* pages/usercenter/about.wxss */
+/**关于公司**/
+.aboutwrap{
+    padding-top: 20rpx;
+}
+.logo{
+    display: block;
+    width: 348rpx;
+    height: 128rpx;
+    margin: 10rpx auto
+}
+.comname{
+    display: block;
+    padding: 20rpx 0;
+    font-size: 30rpx;
+    font-weight: bold;
+    text-align: center;
+}
+.comaddr{
+    margin: 30rpx 0;
+    text-align: center;
+}
+.companyaddr{
+    font-size: 28rpx;
+    font-weight: bold;
+    text-align: center
+}
+.comphone{
+    text-align: center;
+}

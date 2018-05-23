@@ -1,0 +1,154 @@
+/* pages/usercenter/project/projectdetail.wxss */
+.detailcontent{
+    padding-bottom: 80rpx;
+}
+.bannerwrap{
+    position: relative;
+}
+.viewnum{
+    position: absolute;
+    top: 10rpx;
+    right: 30rpx;
+    padding:5rpx 10rpx;
+    background-color:#fff;
+    border-radius: 3px; 
+}
+.bottom{
+    position: absolute;
+    bottom: 22rpx;
+    left: 30rpx;
+}
+.bottom .addr{
+    padding:5rpx 10rpx;
+    background-color:#fff;
+}
+.bottonbtns{
+    margin-top: 15rpx;
+}
+.bottonbtns text{
+    margin-right: 15rpx;
+    padding:5rpx 10rpx;
+    background-color:#fff;
+    border-radius: 3px; 
+}
+.focus{
+    position: absolute;
+    right: 30rpx;
+    bottom: 20rpx;
+    color: #fff;
+    padding: 10rpx 20rpx;
+    border-radius: 3px;
+    background-color: #e2e2e2;
+}
+.focus.on{
+    background-color: #1e9fff;
+}
+.focuswrap{
+    padding:20rpx;
+    background-color:#fff; 
+    border-bottom: 1px solid #e2e2e2
+}
+.rightnum{
+    line-height: 80rpx;
+}
+.suhead{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+    margin-right: -40rpx;
+}
+/**切换部分**/
+.tabbtns{
+    background-color: #fff;
+    padding: 20rpx 0;
+    border-bottom: 1px solid #e2e2e2
+}
+.tabbtn{
+    width: 33%;
+    height: 64rpx;
+    line-height: 64rpx;
+    text-align: center;
+}
+.tabbtn.check{
+  color: #eb7221
+}
+.tabimg{
+    width: 50rpx;
+    height: 50rpx;
+    vertical-align: middle;
+}
+.tabbtn text{
+    margin-left: 10rpx;
+}
+
+.hide{
+  display: none
+}
+.flowitemwarp{
+    width: 100%;
+    overflow: hidden;
+}
+.flowwrap{
+    padding-right: 6%;
+    margin: 50rpx 0 15rpx 0;
+}
+.flow{
+    position: relative;
+    width: 16.6%;
+    height: 90rpx;
+    border-top: 3px solid #eee;
+}
+.flow:first-child,.flow:nth-child(7n){
+    border-top: 3px solid transparent
+}
+.flow.on .number{
+    background-color: #1e9fff;
+}
+.number{
+    display: block;
+    position: absolute;
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    right:0;
+    top: -25rpx;
+    text-align: center;
+    border-radius: 50rpx;
+    background-color: #eee;
+    color: #fff;
+    z-index: 20;
+}
+.flowtext{
+    position: absolute;
+    width: 100%;
+    top: 30rpx;
+    right: 0;
+    text-align: right;
+}
+
+/**底部操作按钮**/
+.bottombtns{
+    position: fixed;
+    width: 94%;
+    bottom: 0;
+    left: 0;
+    padding: 20rpx;
+    background-color: #fff;
+}
+.leftcompany{
+    height: 64rpx;
+    line-height: 64rpx;
+}
+.bottomcompany{
+    width: 174rpx;
+    height: 64rpx;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+.bottombtn{
+    color: #fff;
+    background-color: #1e9fff;
+    padding: 15rpx 30rpx;
+    border-radius: 4rpx;
+    margin-left: 15rpx;
+}
