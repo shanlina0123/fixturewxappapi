@@ -1,0 +1,18 @@
+<!--pages/message/asklist/asklist.wxml-->
+<navigator url='askdetail' class='noticeli clearfix'>
+    <image src='../../../images/uhead.png' class='uhead fl'></image>
+    <view class='rightnotice fl'>
+        <view class='uname'>
+            胖大海
+            <text class='noread'></text>
+        </view>
+        <view class='noticename'>小田评论了599的装修真的超值？呵呵呵呵小田评论了599的装修真的超值？</view>
+    </view>
+</navigator>
+<navigator  url='askdetail' class='noticeli clearfix'>
+    <image src='../../../images/uhead.png' class='uhead fl'></image>
+    <view class='rightnotice fl'>
+        <view class='uname'>瘦大海</view>
+        <view class='noticename'>小田评论了599的装修真的超值？呵呵呵呵小田评论了599的装修真的超值？</view>
+    </view>
+</navigator>

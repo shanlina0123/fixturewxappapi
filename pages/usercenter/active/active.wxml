@@ -1,0 +1,21 @@
+<!--pages/usercenter/active/active.wxml-->
+<view class='wrap'>
+    <view class='activeul samepadding'>
+        <navigator url='activedetail' class='activeli'>
+            <view class='activeimwrap'>
+                <image src='../../../images/state1.jpg' class='activeimg'></image>
+                <text class='seedetail'>查看详情</text>
+            </view>
+            <view class='activename samepadding'>母亲节活动</view>
+            <view class='activedes samepadding'>5月13母亲节这天</view>
+        </navigator>
+        <navigator url='activedetail' class='activeli'>
+            <view class='activeimwrap'>
+                <image src='../../../images/state2.jpg' class='activeimg'></image>
+                <text class='seedetail'>查看详情</text>
+            </view>
+            <view class='activename samepadding'>端午节活动</view>
+            <view class='activedes samepadding'>2018年的端午节马上就要来临啦！</view>
+        </navigator>
+    </view>
+</view>

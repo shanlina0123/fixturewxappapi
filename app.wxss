@@ -1,0 +1,258 @@
+/**app.wxss**/
+/**公用样式**/
+page{height:100%}
+view{font-size: 28rpx}
+.wrap{
+    background-color: #F0F0F0;
+    position: relative;
+    width: 100%;
+}
+.samepadding{padding:0 20rpx}
+.left15{margin-left: 15rpx}
+.left10{margin-left: 10rpx}
+.fl{float: left}
+.fr{float: right}
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1;
+}
+/**公用表单**/
+.formwrap{
+    margin-top: 50rpx;
+}
+.formitem{
+    margin-bottom: 30rpx;
+}
+.forminput{
+    border: 1px solid #e2e2e2;
+    padding: 0 10px;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 10rpx;
+}
+.formtextarea{
+    width: 665rpx;
+    border: 1px solid #e2e2e2;
+    padding: 10px;
+    height: 300rpx;
+    line-height: 30rpx;
+    border-radius: 10rpx;
+}
+.submitBtn{
+    font-size: 16px;
+    border: none;
+    background: #eb7221;
+    color: #fff;
+}
+/**用户身份标签**/
+.ustate{
+    color: #1E9FFF;
+    padding: 0 10rpx;
+    margin-left: 10rpx;
+    border: 1px solid #1E9FFF;
+    border-radius: 3px;
+}
+/**公用banner图片大小**/
+.bannerimg{
+    width: 100%;
+    height: 200px;
+}
+/**微信头像**/
+.uhead {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100rpx;
+}
+/**消息列表公用**/
+.noticeul{
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+.noticeli{
+    padding: 30rpx;
+}
+.rightnotice{
+    width: 83%;
+    padding-bottom: 10rpx;
+    padding-left: 15rpx;
+    border-bottom: 1px solid #e2e2e2;
+}
+.noticename{
+    height: 80rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+}
+.msgimg{
+    width: 26rpx;
+    height: 20rpx;
+}
+.hide{
+    display: none;
+}
+.noread{
+    float: right;
+    width: 20rpx;
+    height: 20rpx;
+    background-color: red;
+    border-radius: 50%;
+}
+/**带点赞的评论列表**/
+.itemul {
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+.itemli{
+    margin-bottom: 10rpx;
+}
+.rightname{
+    margin-left: 20rpx;
+    margin-top: 12rpx;
+}
+.rightonename{
+    margin-left: 20rpx;
+    margin-top: 26rpx;
+}
+
+.bottomname{
+    margin-top: 10rpx;
+}
+
+.prostate{
+    color: #fff;
+    padding: 2rpx 5rpx;
+    margin-left: 10rpx;
+}
+.stateimgwrap{
+    margin: 10rpx 0;
+}
+.stateimg{
+    width: 120rpx;
+    height: 120rpx;
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+}
+.times text{
+    margin-right: 15rpx;
+}
+.handelwrap{
+    position: relative;
+    text-align: right;
+}
+.handelimage{
+    width:64rpx;
+    height: 64rpx
+}
+.iconwrap{
+    position: absolute;
+    width: 150rpx;
+    right: 60rpx;
+    top: -5rpx;
+    background-color: #000;
+    border-radius: 10rpx;
+    opacity: .7
+}
+.iconwrap .zan{
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 10rpx;
+}
+.activewrap{
+    margin: 10rpx;
+}
+.activetext{
+    width: 80%;
+}
+.activebtn{
+    color: #1E9FFF
+}
+.inputwarp{
+    position: fixed;
+    width: 90%;
+    bottom: 0;
+    padding: 15rpx 5%;
+    border-top: 1px solid #e2e2e2;
+    background-color: #fff;
+}
+.zaninput{
+    padding:0 10rpx;
+    width: 81%;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #eee;
+    border-radius: 5rpx;
+}
+.send{
+    width: 95rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #1E9FFF;
+}
+.discusstext{
+    background-color: #eee;
+    padding: 5rpx 10rpx 0 10px;
+}
+.textitem{
+    padding: 5rpx;
+}
+.textname{
+    color: #1E9FFF
+}
+/**定义12种工地状况的颜色**/
+.color1{
+    background-color: #CC3300;/**签约**/
+}
+.color2{
+    background-color: #CCCC33;/**设计**/
+}
+.color3{
+    background-color: #33CCFF ;/**拆改**/
+}
+.color4{
+    background-color: #33CC99;/**水电**/
+}
+.color5{
+    background-color: #FF6600;/**泥木**/
+}
+.color6{
+    background-color: #99CC00;/**油漆**/
+}
+.color7{
+    background-color: #3699C9;/**安装**/
+}
+.color8{
+    background-color: #6B9479;/**软装**/
+}
+.color9{
+    background-color: #3E9439;/**入住**/
+}
+.color10{
+    background-color: #FF7768 ;/**签约**/
+}
+.color11{
+    background-color: #FF7768 ;/**签约**/
+}
+.color12{
+    background-color: #993300;/**签约**/
+}
+/*下滑加载下一页*/
+.loadwrap{
+    text-align: center;
+    padding: 10rpx 0;
+}
+.loafgif{
+    width: 32rpx;
+    height: 32rpx;
+    vertical-align: middle;
+}
