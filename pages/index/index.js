@@ -1,4 +1,6 @@
-//index.js
+const app = getApp();
+const Url = require('../../utils/config.js');
+const Request = require('../../utils/request.js')
 Page({
 
   /**
@@ -64,7 +66,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    Request.requestGet(Url.cIndex, function (res) {
+      console.log(res);
+    });
   },
   //触摸开始时间
   touchStartTime:0,

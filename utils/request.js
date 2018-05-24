@@ -21,19 +21,13 @@ function requestPost( url, obj, cb ) {
     success: function (res) {
       var res_data = res.data;
       var status = parseInt(res_data.status);
-      switch ( status )
-      {
-        case 1:
-          typeof cb == "function" && cb(res_data.data, "");
-          break;
-        case 0:
-          wx.showToast({ title: res_data.messages, icon: 'none'});
-          break;
+      switch (status) {
         case 21://token过期
+        case 7:
           wx.clearStorageSync();
           app.getAppid();
-          that.requestPost( url, obj, cb );
       }
+      typeof cb == "function" && cb(res_data);
      
     },fail:function()
     {
@@ -65,18 +59,12 @@ function requestGet(url, cb) {
       var res_data = res.data;
       var status = parseInt(res_data.status);
       switch (status) {
-        case 1:
-          typeof cb == "function" && cb(res_data.data, "");
-          break;
-        case 0:
-          wx.showToast({ title: res_data.messages, icon: 'none' });
-          break;
         case 21://token过期
+        case 7:
           wx.clearStorageSync();
           app.getAppid();
-          that.requestPost(url, obj, cb);
       }
-
+      typeof cb == "function" && cb(res_data);
     }, fail: function () {
       wx.showToast({ title: '数据调用失败', icon: 'loading', duration: 10000 });
     }, complete: function () {
@@ -107,18 +95,12 @@ function requestPut(url, obj, cb) {
       var res_data = res.data;
       var status = parseInt(res_data.status);
       switch (status) {
-        case 1:
-          typeof cb == "function" && cb(res_data.data, "");
-          break;
-        case 0:
-          wx.showToast({ title: res_data.messages, icon: 'none' });
-          break;
         case 21://token过期
+        case 7:
           wx.clearStorageSync();
           app.getAppid();
-          that.requestPost(url, obj, cb);
       }
-
+      typeof cb == "function" && cb(res_data);
     }, fail: function () {
       wx.showToast({ title: '数据调用失败', icon: 'loading', duration: 10000 });
     },complete:function(){
@@ -149,18 +131,12 @@ function requestDelete(url,obj, cb) {
       var res_data = res.data;
       var status = parseInt(res_data.status);
       switch (status) {
-        case 1:
-          typeof cb == "function" && cb(res_data.data, "");
-          break;
-        case 0:
-          wx.showToast({ title: res_data.messages, icon: 'none' });
-          break;
         case 21://token过期
+        case 7:
           wx.clearStorageSync();
           app.getAppid();
-          that.requestPost(url, obj, cb);
       }
-
+      typeof cb == "function" && cb(res_data);
     }, fail: function () {
       wx.showToast({ title: '数据调用失败', icon: 'loading', duration: 10000 });
     }, complete: function () {

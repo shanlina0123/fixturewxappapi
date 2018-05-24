@@ -80,11 +80,15 @@ App({
           var data = res.data;
           if (data.status) {
             wx.setStorageSync('userInfo', data.data);
+          }else
+          {
+            wx.showToast({ title: data.messages, icon: 'loading' });
           }
-          wx.showToast({ title: data.messages, icon: 'none' });
         },
         fail: function (res) {
-          wx.showToast({ title: '请求失败', icon: 'none' });
+          wx.showToast({ title: '请求失败', icon: 'loading' });
+        },complete: function () {
+          wx.hideLoading();
         }
       })
     }
