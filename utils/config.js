@@ -14,7 +14,8 @@ var config = {
    */
   //首页
   cIndex: `https://${host}/client/dynamic-list`,
-   
+  //免费量房
+  free: `https://${host}/client/appointment`
 
 };
 module.exports = config
