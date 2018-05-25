@@ -4,14 +4,14 @@
         <image class='bannerimg' src='../../../images/banner.jpg'></image>
     </view>
     <view class='formwrap samepadding'>
-        <form>
+        <form bindsubmit='submitform'>
             <view class='formitem'>
-                <input type='text' placeholder='姓名' class='forminput' />
+                <input type='text' placeholder='姓名' name='uname' class='forminput' />
             </view>
             <view class='formitem'>
-                <input type='text' placeholder='请输入手机号' class='forminput' />
+                <input type='text' placeholder='请输入手机号' name='uphone' class='forminput' />
             </view>
-            <button class='submitBtn'>我要报名</button>
+            <button class='submitBtn' form-type='submit'>我要报名</button>
         </form>
     </view>
 </view>

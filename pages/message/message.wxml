@@ -7,11 +7,21 @@
             <view class='asktext'>小甜甜：亲爱的，5999的装修靠谱吗？</view>
         </view>
     </navigator>
+    <!--咨询消息为空时显示-->
+    <!-- <view class='askmsg clearfix'>
+        <image class='askimg fl' src='../../images/notice.png'></image>
+        <view class='rightonename fl'>
+            <view class='asktitle'>咨询消息</view>
+        </view>
+    </view> -->
     <view class='noticeul'>
         <view class='noticetitle clearfix'>
             <view class='fl'>通知列表</view>
+            <!--通知消息为空时隐藏一键已读按钮-->
             <view class='rightbtn fr'  bindtap='isread'>一键已读</view>
         </view> 
+        <!--通知消息为空时显示-->
+        <!-- <view class='nonedata'>暂无相关数据</view> -->
         <view class='noticeli clearfix'>
             <image src='../../images/uhead.png' class='uhead fl'></image>
             <view class='rightnotice fl'>

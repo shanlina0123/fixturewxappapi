@@ -14,7 +14,7 @@ var config = {
    */
   //首页
   cIndex: `https://${host}/client/dynamic-list`,
-  //免费量房
+  //免费量房、快速报价
   free: `https://${host}/client/appointment`
 
 };

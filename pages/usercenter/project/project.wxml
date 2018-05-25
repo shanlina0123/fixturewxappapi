@@ -1,6 +1,8 @@
-<!--pages/usercenter/project/project.wxml-->
+<!--有列表时添加加wrap样式，列表为空时去除wrap样式-->
 <view class='wrap'>
     <view class='projectul'>
+        <!--项目列表为空时显示-->
+        <!-- <view class='nonedata'>暂无相关数据</view>  -->
         <navigator url='projectdetail' class='projectli clearfix' hover-class="none">
             <view class='leftimgwrap fl'>
                 <image src='../../../images/state1.jpg' class='projectimg'></image>
@@ -21,7 +23,7 @@
                 <text class='projectstate color5'>木工</text>
             </view>
             <view class='projectright left15 fl'>
-                <view  class='projectname'>龙首原印象城</view>
+                <view class='projectname'>龙首原印象城</view>
                 <view>龙首原印象城1楼3室大明宫街道</view>
                 <view>
                     <text>浏览：10</text>

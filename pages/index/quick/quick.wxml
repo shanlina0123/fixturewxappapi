@@ -4,17 +4,17 @@
         <image class='bannerimg' src='../../../images/banner.jpg'></image>
     </view>
     <view class='formwrap samepadding'>
-        <form>
+        <form bindsubmit='submitform'>
             <view class='formitem'>
-                <input type='text' placeholder='姓名' class='forminput' />
+                <input type='text' placeholder='姓名' name='uname' class='forminput' />
             </view>
             <view class='formitem'>
-                <input type='text' placeholder='请输入手机号' class='forminput' />
+                <input type='text' placeholder='请输入手机号' name='uphone' class='forminput' />
             </view>
             <view class='formitem'>
-                <input type='text' placeholder='请输入面积m2' class='forminput' />
+                <input type='digit' placeholder='请输入住房面积m2' name='uarea' class='forminput' />
             </view>
-            <button class='submitBtn'>快速报价</button>
+            <button class='submitBtn'  form-type='submit'>快速报价</button>
         </form>
     </view>
 </view>

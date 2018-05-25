@@ -23,6 +23,12 @@ view{font-size: 28rpx}
 .clearfix {
     zoom: 1;
 }
+/**为空提示**/
+.nonedata{
+   text-align: center;
+   color: #d2d2d2;
+   padding: 50px 0; 
+}
 /**公用表单**/
 .formwrap{
     margin-top: 50rpx;

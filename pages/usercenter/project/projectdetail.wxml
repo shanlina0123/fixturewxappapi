@@ -121,13 +121,11 @@
                         </view>
                     </view>
                     <view class='itemli discusstext'>
-                        <view class='textitem clearfix'>
-                            <text class='textcontent fl'><text class='textname'>张俊梅：</text>很不错，我很满意很不错，我很满意很不错，我很满意 很不错，我很满意很不错，我很满意很不错，我很满意</text>
-                            <text class='deletetext fr' bindtap='deletetext'>删除</text>
+                        <view class='textitem'>
+                            <text class='textcontent'><text class='textname'>张俊梅：</text>很不错，我很满意很不错，我很满意很不错，我很满意 很不错，我很满意很不错，我很满意很不错，我很满意</text>
                         </view>
-                        <view class='textitem clearfix'>
-                            <text class='textcontent fl'><text class='textname'>张腊梅：</text>很不错，我很满意很不错</text>
-                            <text class='deletetext fr' bindtap='deletetext'>删除</text>
+                        <view class='textitem'>
+                            <text class='textcontent'><text class='textname'>张腊梅：</text>很不错，我很满意很不错</text>
                         </view>
                     </view>
                 </view>

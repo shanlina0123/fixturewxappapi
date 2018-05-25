@@ -3,6 +3,8 @@
     <view class='banner'>
         <image class='bannerimg' src='../../images/banner.jpg'></image>
     </view>
+    <!--项目列表为空时显示-->
+    <!-- <view class='nonedata'>暂无相关数据</view> -->
     <view class='table'>
         <view class='tr'>
             <view class='th'>活动名称</view>
