@@ -254,8 +254,11 @@ view{font-size: 28rpx}
 }
 /*下滑加载下一页*/
 .loadwrap{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
-    padding: 10rpx 0;
+    padding: 30rpx 0;
 }
 .loafgif{
     width: 32rpx;

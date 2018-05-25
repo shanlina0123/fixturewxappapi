@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/usercenter/active/active",
     "pages/index/index",
     "pages/index/prize",
     "pages/index/pricetip",
@@ -13,7 +14,7 @@
     "pages/usercenter/question",
     "pages/usercenter/about",
     "pages/usercenter/prize",
-    "pages/usercenter/active/active",
+    
     "pages/usercenter/active/activedetail",
     "pages/usercenter/active/signin",
     "pages/usercenter/project/project",

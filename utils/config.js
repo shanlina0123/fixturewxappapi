@@ -4,7 +4,7 @@
 var host = "fixture.yygsoft.com/api"
 var config = {
   //图片地址
-  imgUrl:`https://${host}/upload/`,
+    imgUrl:`https://fixture.yygsoft.com/uploads/`,
   //用code换取openId
   openIdUrl: `https://${host}/user/openid`,
   //用户登陆
@@ -15,7 +15,10 @@ var config = {
   //首页
   cIndex: `https://${host}/client/dynamic-list`,
   //免费量房、快速报价
-  free: `https://${host}/client/appointment`
-
+  free: `https://${host}/client/appointment`,
+  //项目列表
+  project: `https://${host}/client/follow-record`,
+  //活动列表
+  active: `https://${host}/client/activity-inrecord`
 };
 module.exports = config

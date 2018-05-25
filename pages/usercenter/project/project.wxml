@@ -1,35 +1,23 @@
 <!--有列表时添加加wrap样式，列表为空时去除wrap样式-->
-<view class='wrap'>
+<view class="{{lengthnone ?'' : 'wrap'}}">
     <view class='projectul'>
+        <block wx:key="index" wx:for="{{prolists}}">
+            <navigator wx:if="{{item.follow_to_site}}" url='projectdetail' class='projectli clearfix' hover-class="none">
+                <view class='leftimgwrap fl'>
+                    <image src='{{imgUrl}}{{item.follow_to_site.explodedossurl}}' class='projectimg'></image>
+                    <text class='projectstate color4'>{{item.follow_to_site.site_to_commpany_tag?item.follow_to_site.site_to_commpany_tag.name:''}}</text>
+                </view>
+                <view class='projectright left15 fl'>
+                    <view class='projectname'>{{item.follow_to_site.name}}</view>
+                    <view>{{item.follow_to_site.addr}}</view>
+                    <view wx:if="{{item.follow_to_dynamic_statistics}}">
+                        <text>浏览：{{item.follow_to_dynamic_statistics.linkednum}}</text>
+                        <text>关注：{{item.follow_to_dynamic_statistics.follownum}}</text>
+                    </view>
+                </view>
+            </navigator>
+        </block>
         <!--项目列表为空时显示-->
-        <!-- <view class='nonedata'>暂无相关数据</view>  -->
-        <navigator url='projectdetail' class='projectli clearfix' hover-class="none">
-            <view class='leftimgwrap fl'>
-                <image src='../../../images/state1.jpg' class='projectimg'></image>
-                <text class='projectstate color4'>水电</text>
-            </view>
-            <view class='projectright left15 fl'>
-                <view class='projectname'>龙首原印象城</view>
-                <view>龙首原印象城1楼3室大明宫街道</view>
-                <view>
-                    <text>浏览：10</text>
-                    <text>关注：10</text>
-                </view>
-            </view>
-        </navigator>
-        <navigator url='projectdetail' class='projectli clearfix' hover-class="none">
-            <view class='leftimgwrap fl'>
-                <image src='../../../images/state1.jpg' class='projectimg'></image>
-                <text class='projectstate color5'>木工</text>
-            </view>
-            <view class='projectright left15 fl'>
-                <view class='projectname'>龙首原印象城</view>
-                <view>龙首原印象城1楼3室大明宫街道</view>
-                <view>
-                    <text>浏览：10</text>
-                    <text>关注：10</text>
-                </view>
-            </view>
-        </navigator>
+        <view wx:if="{{lengthnone}}" class='nonedata'>{{msg}}</view>
     </view>
 </view>

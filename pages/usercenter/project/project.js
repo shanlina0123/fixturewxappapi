@@ -1,66 +1,53 @@
-// pages/usercenter/project/project.js
+const app = getApp();
+const Url = require('../../../utils/config.js');
+const Request = require('../../../utils/request.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
+    data: {
+        prolists: [],
+        lengthnone: false,
+        msg:'暂无相关数据',
+        imgUrl: Url.imgUrl,
+        pages: 1,
+        isLoad:true
+    },
+    getproList: function () {
+        var that = this;
+        Request.requestGet(Url.project + "?page=" + that.data.pages, function (res) {
+            var prolists = that.data.prolists;
+            if (res.status == 1) {
+                that.setData({
+                    prolists: prolists.concat(res.data.data)
+                })
+                if (res.data.data.length < 1) {
+                    that.setData({
+                        lengthnone: true,
+                        isLoad:false,
+                        msg:'没有最新数据了'                        
+                    });
+                }
+            } else {
+                wx.showToast({
+                    title: res.message,
+                })
+            }
+        })
+    },
+    onLoad: function () {
+        this.getproList();
+    },
+    //页面上拉触底事件
+    onReachBottom: function () {
+        if (this.data.isLoad)
+        {
+            var page = this.data.pages;
+            this.setData({
+                pages: page + 1,
+            })
+            this.getproList();
+        }
+    },
+    //页面下拉更新事件
+    onPullDownRefresh: function () {
+        this.update();
+    }
 })

@@ -32,15 +32,12 @@
     color: #fff;
     z-index: 5
 }
-.projectright{
-    width: 65%;
-}
 .projectright view{
-    margin-bottom: 15rpx;
+    margin-bottom: 15rpx
 }
 .projectright view:first-child{
-    margin-top: 15rpx;
+    margin-top: 15rpx
 }
 .projectright view text{
-    margin-right: 15rpx;
+    margin-right: 15rpx
 }
