@@ -33,7 +33,7 @@ Page({
                         title: res.messages,
                         success: function () {
                             wx.reLaunch({
-                                url: '../index'
+                              url: '/pages/index/index'
                             })
                         }
                     })

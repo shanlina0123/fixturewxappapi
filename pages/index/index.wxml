@@ -3,15 +3,15 @@
     <text class='companyname'>熊先生</text>
     <view class='buttonwrap'>
         <view class='samepadding'>
-            <navigator class='centerbtn' url="free/free" hover-class="none">
+            <navigator class='centerbtn' url="/pages/contact/free/free" hover-class="none">
                 <image src='../../images/topicon1.png' class='topicon'></image>
                 免费量房
             </navigator>
-            <navigator class='centerbtn' url="quick/quick" hover-class="none">
+            <navigator class='centerbtn' url="/pages/contact/quick/quick" hover-class="none">
             <image src='../../images/topicon2.png' class='topicon'></image>
                 快速报价
                 </navigator>
-            <navigator class='centerbtn' url="../usercenter/project/project"hover-class="none">
+            <navigator class='centerbtn' url="/pages/users/project/project"hover-class="none">
                 <image src='../../images/topicon3.png' class='topicon'></image>
                 关注项目
             </navigator>

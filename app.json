@@ -2,7 +2,10 @@
   "pages":[
     "pages/index/index",
     "pages/message/message",
-    "pages/users/usercenter/usercenter"
+    "pages/users/usercenter/usercenter",
+    "pages/contact/free/free",
+    "pages/contact/quick/quick",
+    "pages/users/project/project"
   ],
   "window":{
     "backgroundTextStyle":"dark",

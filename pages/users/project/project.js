@@ -18,7 +18,7 @@ Page({
                 that.setData({
                     prolists: prolists.concat(res.data.data)
                 })
-                if (res.data.data.length < 1) {
+                if (res.data.last_page <= that.data.pages) {
                     that.setData({
                         lengthnone: true,
                         isLoad:false,
