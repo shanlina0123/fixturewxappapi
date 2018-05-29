@@ -19,6 +19,14 @@ var config = {
   //项目列表
   project: `https://${host}/client/follow-record`,
   //活动列表
-  active: `https://${host}/client/activity-inrecord`
+  active: `https://${host}/client/activity-inrecord`,
+  //点赞
+  fabulous: `https://${host}/client/dynamic-fabulous`,
+  //评论
+  commentAdd: `https://${host}/client/dynamic-comment-add`,
+  //删除评论
+  commentDestroy: `https://${host}/client/dynamic-comment-destroy`,
+
+ 
 };
 module.exports = config

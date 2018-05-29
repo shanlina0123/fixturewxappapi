@@ -18,87 +18,50 @@
         </view>
     </view>
     <text class='centertitle'>动态</text>
-    <view class='itemul samepadding'>
+    <view class='itemul samepadding' wx:for="{{data}}" wx:for-index="idx" wx:key="index">
         <view class='itemli clearfix'>
-            <image src="../../images/uhead.png" class='uhead fl'></image>
+            <image src="{{item.faceimg?item.faceimg:'../../images/uhead.png'}}" class='uhead fl'></image>
             <view class='rightname fl'>
                 <view class='topname'>
-                    <text class='uname'>张小姐</text>
-                    <text class='ustate left10'>管理员</text>
+                    <text class='uname'>{{item.nickname?item.nickname:'匿名'}}</text>
+                    <text class='ustate left10' vx:if="{{item.uposition}}">{{item.uposition}}</text>
                 </view>
-                <view class='bottomname'>
-                    <text class='proname'>未央区龙首印象城</text>
+                <view class='bottomname' wx:if="{{item.type==0}}">
+                    <text class='proname'>{{item.title}}</text>
                     <text class='prostate color4'>水电</text>
                 </view>
             </view>
         </view>
         <navigator url="../usercenter/project/projectdetail" class='itemli statecontent' hover-class="none">
-            <text class='statetext'>水电正在整改当中，做了很多的功课，期待...</text>
+            <text class='statetext'>{{item.content}}</text>
             <view class='stateimgwrap clearfix'>
-                <image src='../../images/state1.jpg' class='stateimg fl'></image>
-                <image src='../../images/state2.jpg' class='stateimg fl'></image>
-                <image src='../../images/state3.jpg' class='stateimg fl'></image>
-                <image src='../../images/state1.jpg' class='stateimg fl'></image>
-                <image src='../../images/state2.jpg' class='stateimg fl'></image>
-                <image src='../../images/state3.jpg' class='stateimg fl'></image>
-                <image src='../../images/state1.jpg' class='stateimg fl'></image>
-                <image src='../../images/state2.jpg' class='stateimg fl'></image>
-                <image src='../../images/state3.jpg' class='stateimg fl'></image>
+                <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
+                <image src='{{itemImg.ossurl}}' class='stateimg fl'></image>
+                </block>
             </view>
         </navigator>
         <view class='itemli times clearfix'>
-            <text class='fl'>2小时前</text>
-            <text class='fl'>评论:10</text>
-            <text class='fl'>点赞:10</text>
+            <text class='fl'>{{item.created_at}}</text>
+            <text class='fl'>评论:{{item.commentnum}}</text>
+            <text class='fl'>点赞:{{item.thumbsupnum}}</text>
             <view class='handelwrap fr'>
                 <image src='../../images/rightMsg.png' class='handelimage' bindtap='showimage'></image>
                 <view class="iconwrap clearfix {{isshow ?'': 'hide' }}">
-                    <image src="../../images/zan1.png" class='zan fl'></image>
-                    <image src="../../images/zan2.png" class='zan fl' bindtap='showinput'></image>
+                    <image src="../../images/zan1.png" class='zan fl' data-id="{{item.id}}" data-sitetid="{{item.sitetid}}" data-index='{{index}}' bindtap="fabulous"></image>
+                    <image src="../../images/zan2.png" class='zan fl' data-id="{{item.id}}" data-sitetid="{{item.sitetid}}" data-index='{{index}}' bindtap='showinput'></image>
                 </view>
             </view>
         </view>
-        <view class='itemli discusstext'>
-            <view class='textitem'>
-                <text class='textcontent' catchtap='backtext' bindtouchstart='mytouchstart' bindtouchend='mytouchend'><text class='textname'>张俊梅：</text>很不错，我很满意很不错，我很满意很不错，我很满意 很不错，我很满意很不错，我很满意很不错，我很满意</text>
-            </view>
-            <view class='textitem clearfix'>
-                <text class='textcontent' catchtap='backtext' bindtouchstart='mytouchstart' bindtouchend='mytouchend'><text class='textname'>张腊梅：</text>很不错，我很满意很不错</text>
-            </view>
-        </view>
-    </view>
-    <view class='itemul samepadding'>
-        <view class='itemli clearfix'>
-            <image src="../../images/uhead.png" class='uhead fl'></image>
-            <view class='rightonename fl'>
-                <view class='topname'>
-                    <text class='uname'>张小姐</text>
-                    <text class='ustate'>管理员</text>
-                </view>
-            </view>
-        </view>
-        <view class='itemli'>
-            <text class='statetext'>爱在母亲节</text>
-            <navigator url="../usercenter/active/activedetail" class='activewrap clearfix' hover-class="none">
-                <text class='activetext fl'>母亲节即将来临，慰劳辛苦操劳的母亲们</text>
-                <navigator url="../usercenter/active/activedetail" class='activebtn fl' hover-class="none">查看详情</navigator>
-            </navigator>
-        </view>
-        <view class='itemli times clearfix'>
-            <text class='fl'>2小时前</text>
-            <text class='fl'>评论:10</text>
-            <text class='fl'>点赞:10</text>
-            <view class='handelwrap fr'>
-                <image src='../../images/rightMsg.png' class='handelimage'></image>
+        <view class='itemli discusstext' wx:if="{{item.follo.length}}">
+            <view class='textitem' wx:for="{{item.follo}}" wx:for-item="itemFollo" wx:key="fo" >
+                <text class='textcontent' catchtap='backtext' bindtouchstart='mytouchstart' bindtouchend='mytouchend' data-pindex='{{idx}}' data-index='{{index}}' data-dynamicid='{{itemFollo.dynamicid}}' data-id='{{itemFollo.id}}'>
+                  <text class='textname' wx:if="{{itemFollo.dynamic_comment_to_user}}">{{itemFollo.dynamic_comment_to_user.nickname?itemFollo.dynamic_comment_to_user.nickname:'匿名'}}：</text>{{itemFollo.content}}
+                </text>
             </view>
         </view>
     </view>
     <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
-        <input class='zaninput fl' type='text' placeholder='评论' cursor-spacing="8" bindconfirm='bindconfirm'></input>
-        <text class='send left10 fl' bindtap='closeinput'>发送</text>
-    </view>
-    <view class='loadwrap'>
-        <image src='../../images/load.gif' class='loafgif'></image>
-        加载中...
+        <input class='zaninput fl' type='text' placeholder='评论' data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment'></input>
+        <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
     </view>
 </view>

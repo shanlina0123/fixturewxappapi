@@ -5,11 +5,7 @@ const Authorization = wx.getStorageSync('userInfo').Authorization;
  */
 function requestPost( url, obj, cb ) {
   var that=this;
-  wx.showToast({
-    title: '加载中',
-    icon: 'loading',
-    duration: 2000
-  })
+  wx.showLoading({ title: '加载中' });
   wx.request({
     url:url,
     method: "POST",
@@ -43,11 +39,7 @@ function requestPost( url, obj, cb ) {
  */
 function requestGet(url, cb) {
   var that = this;
-  wx.showToast({
-    title: '加载中',
-    icon: 'loading',
-    duration: 2000
-  })
+  wx.showLoading({title: '加载中'});
   wx.request({
     url: url,
     method: "GET",
@@ -78,11 +70,7 @@ function requestGet(url, cb) {
  */
 function requestPut(url, obj, cb) {
   var that = this;
-  wx.showToast({
-    title: '加载中',
-    icon: 'loading',
-    duration: 2000
-  })
+  wx.showLoading({ title: '加载中' });
   wx.request({
     url: url,
     method: "PUT",
@@ -114,11 +102,7 @@ function requestPut(url, obj, cb) {
  */
 function requestDelete(url,obj, cb) {
   var that = this;
-  wx.showToast({
-    title: '加载中',
-    icon: 'loading',
-    duration: 2000
-  })
+  wx.showLoading({ title: '加载中' });
   wx.request({
     url: url,
     method: "DELETE",
