@@ -1,14 +1,14 @@
 <!--pages/usercenter/question.wxml-->
 <view class='content'>
     <view class='formwrap samepadding'>
-        <form>
+        <form bindsubmit="formSubmit">
             <view class='formitem'>
-                <textarea class='formtextarea' placeholder='请留下您的宝贵意见...'></textarea>
+                <textarea class='formtextarea' placeholder='请留下您的宝贵意见...' name="content"></textarea>
             </view>
             <view class='formitem'>
-                <input type='text' placeholder='请输入手机号' class='forminput' />
+                <input type='text' placeholder='请输入手机号' class='forminput' name="phone" />
             </view>
-            <button class='submitBtn'>提交</button>
+            <button formType="submit" class='submitBtn'>提交</button>
         </form>
     </view>
 </view>

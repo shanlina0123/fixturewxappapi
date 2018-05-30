@@ -36,3 +36,10 @@
     padding: 20rpx;
 }
 
+.textcontent{
+  display: block;
+}
+
+.textitem{
+  padding: 6rpx 2rpx 6rpx 2rpx;
+}

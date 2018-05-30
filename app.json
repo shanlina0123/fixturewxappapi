@@ -5,7 +5,12 @@
     "pages/users/usercenter/usercenter",
     "pages/contact/free/free",
     "pages/contact/quick/quick",
-    "pages/users/project/project"
+    "pages/contact/signin/signin",
+    "pages/users/project/project",
+    "pages/users/myproject/myproject",
+    "pages/users/active/active",
+    "pages/users/activedetail/activedetail",
+    "pages/question/question"
   ],
   "window":{
     "backgroundTextStyle":"dark",

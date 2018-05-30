@@ -22,6 +22,7 @@ Page({
     var that = this;
     var page = that.data.page;
     Request.requestGet(Url.cIndex + '?page=' + page, function (res) {
+     // console.log( res );
       if (res.status==1){
         var data = that.data.data;
         var arr = [];
@@ -57,6 +58,7 @@ Page({
           obj.type = v.type;
           obj.sitetid = v.sitetid;
           obj.id = v.id;
+          obj.sitestagename = v.sitestagename;
           arr.push(obj);
         });
         that.setData({
@@ -80,6 +82,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({
+      isshow: false,
+      inputisshow: false,
+      data: [],
+      page: 1,
+      commentData: {},
+      isLoad: true,
+      commentV:''
+    });
     this.onLoad();
     wx.stopPullDownRefresh();
   },
@@ -126,8 +137,8 @@ Page({
     var dynamicid = parseInt(e.currentTarget.dataset.id);
     var siteid = parseInt(e.currentTarget.dataset.sitetid);
     var index = parseInt(e.currentTarget.dataset.index);
-    var pid = 0;
-    var commentData = { "dynamicid": dynamicid, "siteid": siteid, "pid": pid, "index": index };
+    var replyuserid = 0;
+    var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index };
     if (!that.data.inputisshow) {
       that.setData({
         inputisshow: true,
@@ -170,12 +181,19 @@ Page({
         //跟新数据
         var data = that.data.data;
         var obj = { id: wx.getStorageSync('userInfo').id, nickname: wx.getStorageSync('userInfo').nickname };
-        var follo = res.data;
-        follo.dynamic_comment_to_user = obj;
-        data[index].follo.push(follo);
-        that.setData({
-          data: data
-        })
+        var folloData = res.data;
+            folloData.dynamic_comment_to_user = obj;
+            //判断有没有回复人
+            if (typeof commentData.replyuserid && commentData.replyuserid )
+            {
+              folloData.dynamic_comment_to_reply_user = commentData.replyuser;
+            }
+            data[index].follo.push(folloData);
+            that.setData({
+              data: data,
+              commentData:{},
+              commentV:''
+            })
       } else {
         wx.showToast({
           title: res.messages,
@@ -230,10 +248,20 @@ Page({
    */ 
   backtext: function (e) {
     var that = this;
+    var dynamicid = e.currentTarget.dataset.dynamicid;
+    var id = e.currentTarget.dataset.id;
+    var index = e.currentTarget.dataset.index;
+    var pindex = e.currentTarget.dataset.pindex;
+    var replyuser = e.currentTarget.dataset.user;
     var times = parseInt(that.touchEndTime) - parseInt(that.touchStartTime);
-    if (times < 350) {
+    if (times < 350){
       that.setData({
         inputisshow: true
+      });
+      //评论
+      var commentData = { "dynamicid": dynamicid, "siteid": id, "replyuserid": replyuser.id, "index": pindex, "replyuser": replyuser };
+      that.setData({
+        commentData: commentData
       })
     } else{
       that.setData({ inputisshow: false });
@@ -242,11 +270,7 @@ Page({
         success: function (res) {
           if (res.confirm) {
             //用户点击确定
-            var dynamicid = e.currentTarget.dataset.dynamicid;
-            var id = e.currentTarget.dataset.id;
-            var obj = { "dynamicid": dynamicid,"id":id};
-            var index = e.currentTarget.dataset.index;
-            var pindex = e.currentTarget.dataset.pindex;
+            var obj = { "dynamicid": dynamicid, "id": id };
             Request.requestDelete(Url.commentDestroy, obj, function (res) {
               if (res.status == 1){
                   wx.showToast({

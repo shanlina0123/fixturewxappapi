@@ -2,13 +2,13 @@
 <view class="{{lengthnone ?'' : 'wrap'}}">
     <view class='activeul samepadding'>
         <block wx:key="index" wx:for="{{activeList}}">
-            <navigator wx:if="{{activity_to_inrecord}}" url='activedetail' class='activeli'>
+            <navigator wx:if="{{activity_to_inrecord}}" url='../activedetail/activedetail?uuid={{item.activity_to_inrecord.uuid}}' class='activeli'>
                 <view class='activeimwrap'>
-                    <image src="{{imgUrl}}{{activity_to_inrecord.showurl}}" class='activeimg'></image>
+                    <image src="{{imgUrl}}{{item.activity_to_inrecord.showurl}}" class='activeimg'></image>
                     <text class='seedetail'>查看详情</text>
                 </view>
-                <view class='activename samepadding'>{{activity_to_inrecord.title}}</view>
-                <view class='activedes samepadding'>{{activity_to_inrecord.resume}}</view>
+                <view class='activename samepadding'>{{item.activity_to_inrecord.title}}</view>
+                <view class='activedes samepadding'>{{item.activity_to_inrecord.resume}}</view>
             </navigator>
         </block>
         <!--活动列表为空时显示-->

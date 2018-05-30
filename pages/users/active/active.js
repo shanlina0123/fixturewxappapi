@@ -19,7 +19,8 @@ Page({
                 that.setData({
                     activeList: activeList.concat(res.data.data)
                 })
-                if (res.data.data.length < 1) {
+                //不在加载分页
+                if (res.data.last_page <= that.data.pages) {
                     that.setData({
                         lengthnone: true,
                         isLoad: false,
@@ -49,6 +50,15 @@ Page({
     },
     //页面下拉加载
     onPullDownRefresh: function () {
-        this.update();
+        this.setData({
+          lengthnone: false,
+          pages: 1,
+          activeList: [],
+          msg: '暂无相关数据',
+          imgUrl: Url.imgUrl,
+          isLoad: true
+        });
+        this.getactiveList();
+        wx.stopPullDownRefresh();
     }
 })

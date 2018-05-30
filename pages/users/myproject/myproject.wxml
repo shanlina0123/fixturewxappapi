@@ -1,0 +1,23 @@
+<!--有列表时添加加wrap样式，列表为空时去除wrap样式-->
+<view class="{{lengthnone ?'' : 'wrap'}}">
+    <view class='projectul'>
+        <block wx:key="index" wx:for="{{prolists}}">
+            <navigator wx:if="{{item.invitation_to_site}}" url='projectdetail' class='projectli clearfix' hover-class="none">
+                <view class='leftimgwrap fl'>
+                    <image src='{{imgUrl}}{{item.invitation_to_site.explodedossurl}}' class='projectimg'></image>
+                    <text class='projectstate color4'>{{item.invitation_to_site.site_to_commpany_tag?item.invitation_to_site.site_to_commpany_tag.name:''}}</text>
+                </view>
+                <view class='projectright left15 fl'>
+                    <view class='projectname'>{{item.invitation_to_site.name}}</view>
+                    <view>{{item.invitation_to_site.addr}}</view>
+                    <view wx:if="{{item.invitation_to_dynamic_statistics}}">
+                        <text>浏览：{{item.invitation_to_dynamic_statistics.linkednum}}</text>
+                        <text>关注：{{item.invitation_to_dynamic_statistics.follownum}}</text>
+                    </view>
+                </view>
+            </navigator>
+        </block>
+        <!--项目列表为空时显示-->
+        <view wx:if="{{lengthnone}}" class='nonedata'>{{msg}}</view>
+    </view>
+</view>
