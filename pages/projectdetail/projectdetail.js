@@ -1,4 +1,8 @@
 // pages/usercenter/project/projectdetail.js
+const app = getApp();
+const Url = require('../../utils/config.js');
+const Request = require('../../utils/request.js')
+const util = require('../../utils/util.js');
 Page({
 
   /**
@@ -10,7 +14,9 @@ Page({
     selected2: false,
     selected3: false,
     on: "check",
-    hide: 'hide'
+    hide: 'hide',
+    siteInfo:{},
+    imgUrl: Url.imgUrl,
   },
   /**关注项目按钮 */
   changeName:function(e){
@@ -89,6 +95,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var id = options.id;
+    this.getSiteInfo(id);
   },
 
   /**
@@ -138,5 +146,21 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  getSiteInfo:function(id)
+  {
+    var that = this;
+    Request.requestGet(Url.siteInfo+'?id='+id, function (res) {
+      if (res.status == 1) {
+        that.setData({
+          siteInfo: res.data
+        });
+        console.log(res);
+      } else {
+        wx.showToast({
+          title: res.message,
+        })
+      }
+    });
   }
 })

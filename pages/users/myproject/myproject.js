@@ -15,6 +15,11 @@ Page({
         Request.requestGet(Url.invitation + "?page=" + that.data.pages, function (res) {
             var prolists = that.data.prolists;
             if (res.status == 1) {
+              if (res.data.total == 0) {
+                that.setData({
+                  lengthnone: true
+                });
+              } else {
                 that.setData({
                     prolists: prolists.concat(res.data.data)
                 })
@@ -25,6 +30,7 @@ Page({
                         msg:'没有最新数据了'                        
                     });
                 }
+              }
             } else {
                 wx.showToast({
                     title: res.message,

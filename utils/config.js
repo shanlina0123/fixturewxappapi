@@ -32,6 +32,14 @@ var config = {
   commentDestroy: `https://${host}/client/dynamic-comment-destroy`,
   //问题反馈
   qaFeedback: `https://${host}/qa/feedback`, 
+  //公司介绍
+  companyInfo: `https://${host}/client/company-info`, 
+  //中将记录
+  luckyRecord: `https://${host}/client/lucky-record`, 
+  //项目详情
+  siteInfo: `https://${host}/site/info`, 
+  //项目详情动态
+  siteDynamic: `https://${host}/site/dynamic`, 
  
 };
 module.exports = config

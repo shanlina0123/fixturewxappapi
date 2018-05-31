@@ -98,12 +98,16 @@
     height: 90rpx;
     border-top: 3px solid #eee;
 }
-.flow:first-child,.flow:nth-child(7n){
-    border-top: 3px solid transparent
-}
 .flow.on .number{
     background-color: #1e9fff;
 }
+.flow.on{
+   border-color:#1e9fff;
+}
+.flow:first-child,.flow:nth-child(7n){
+    border-top: 3px solid transparent
+}
+
 .number{
     display: block;
     position: absolute;

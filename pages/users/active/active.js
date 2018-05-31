@@ -16,6 +16,11 @@ Page({
         Request.requestGet(Url.active + "?page=" + that.data.pages, function (res) {
             var activeList = that.data.activeList;
             if (res.status == 1) {
+              if (res.data.total == 0) {
+                that.setData({
+                  lengthnone: true
+                });
+              } else {
                 that.setData({
                     activeList: activeList.concat(res.data.data)
                 })
@@ -27,6 +32,7 @@ Page({
                         msg: '没有最新数据了'
                     });
                 }
+              }
             } else {
                 wx.showToast({
                     title: res.message,

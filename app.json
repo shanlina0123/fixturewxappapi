@@ -10,7 +10,10 @@
     "pages/users/myproject/myproject",
     "pages/users/active/active",
     "pages/users/activedetail/activedetail",
-    "pages/question/question"
+    "pages/question/question",
+    "pages/users/about/about",
+    "pages/users/prize/prize",
+    "pages/projectdetail/projectdetail"
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -25,8 +28,7 @@
     "selectedColor": "#eb7221",
     "borderStyle": "black",
     "backgroundColor": "white",
-    "list": [
-        {
+    "list": [{
             "iconPath": "images/index.png",
             "selectedIconPath": "images/indexOn.png",
             "pagePath": "pages/index/index",
@@ -43,8 +45,7 @@
             "selectedIconPath": "images/myOn.png",
             "pagePath": "pages/users/usercenter/usercenter",
             "text": "我的"
-        }
-    ]
+        }]
 },
-"debug": true
+"debug": false
 }

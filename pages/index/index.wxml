@@ -32,11 +32,11 @@
                 </view>
             </view>
         </view>
-        <navigator url="../usercenter/project/projectdetail" class='itemli statecontent' hover-class="none">
+        <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='itemli statecontent' hover-class="none">
             <text class='statetext'>{{item.content}}</text>
             <view class='stateimgwrap clearfix'>
                 <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                <image src='{{itemImg.ossurl}}' class='stateimg fl'></image>
+                <image src='{{imgUrl+itemImg.ossurl}}' class='stateimg fl'></image>
                 </block>
             </view>
         </navigator>

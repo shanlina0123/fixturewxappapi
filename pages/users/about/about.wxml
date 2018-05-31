@@ -1,18 +1,16 @@
 <!--pages/usercenter/about.wxml-->
 <view class='ceontent aboutwrap samepadding'>
-    <image src='../../images/logo.png' class='logo'></image>
-    <text class='comname'>熊先森</text>
+    <image src='{{imgUrl}}{{companyData.logo}}' class='logo'></image>
+    <text class='comname'>{{companyData.name}}</text>
     <view class='companytext'>
-        创立于2015年年初的积木家·互联网装修，专注为年轻人提供高品质、低价格的互联网整居全包装修服务。
-        公司员工700+人，多为80、90后，管理层及核心业务版块负责人均来自腾讯、阿里巴巴、OPPO、美国家得宝等全球知名公司。
-        积木家先后荣获2017年中国“重质量 守诚信”示范企业2017年度中国互联网+装修行业领军企业等荣誉。
+       {{companyData.fullname}}
     </view>
     <view class='comaddr'>
         <view class='companyaddr'>公司地址</view>
-        <view>陕西省西安市鄠邑区沣京路108号水晶丽城商铺二楼</view>
+        <view>{{companyData.fulladdr}}</view>
     </view>
     <view class='comphone'>
         <view  class='companyaddr'>联系电话</view>
-        029-15689478
+        {{companyData.phone}}
     </view>
 </view>

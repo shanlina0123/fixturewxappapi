@@ -1,28 +1,29 @@
 <!--pages/usercenter/project/projectdetail.wxml-->
 <view class='detailcontent'>
     <view class='bannerwrap samepadding'>
-        <image src='../../../images/default.jpg' class='bannerimg'></image>
-        <view class='viewnum'>浏览:20</view>
+        <image src="{{siteInfo.explodedossurl?imgUrl+siteInfo.explodedossurl:'../../../images/default.jpg'}}"  class='bannerimg'></image>
+        <view class='viewnum'>浏览:{{siteInfo.site_to_dynamic_statistics?siteInfo.site_to_dynamic_statistics.linkednum:0}}</view>
         <view class='bottom'>
-            <text class='addr'>西安市莲湖区龙首原印象城</text>
+            <text class='addr'>{{siteInfo.addr}}</text>
             <view class='bottonbtns'>
-                <text>简装</text>
-                <text>10万</text>
-                <text>两室一厅</text>
-                <text>75m2</text>
-                <text>简欧</text>
+                <text>{{siteInfo.site_to_renovation_mode.name}}</text>
+                <text>{{siteInfo.budget}}万</text>
+                <text>{{siteInfo.roomshap}}</text>
+                <text>{{siteInfo.acreage}}m2</text>
+                <text>{{siteInfo.site_to_room_style.name}}</text>
             </view>
         </view>
         <text class="focus {{focustext == '关注' ? 'on':'' }}" bindtap="changeName">{{focustext}}</text>
     </view>
     <view class='focuswrap clearfix'>
         <view class='lefthead fl'>
-            <image src='../../../images/uhead.png' class='suhead'></image>
-            <image src='../../../images/uhead.png' class='suhead'></image>
-            <image src='../../../images/uhead.png' class='suhead'></image>
+        <block wx:for="{{siteInfo.site_to_follo_wrecord}}" wx:key="key">
+            <image src="{{item.follow_to_user.faceimg?imgUrl+item.follow_to_user.faceimg:'../../../images/uhead.png'}}" class='suhead'></image>
+        </block>
         </view>
-        <text class='rightnum fr'>1人关注</text>
+        <text class='rightnum fr'>{{siteInfo.site_to_dynamic_statistics?siteInfo.site_to_dynamic_statistics.follownum:0}}人关注</text>
     </view>
+    <!--切换卡-->
     <view class='tabwrap'>
         <view class='tabbtns clearfix'>
             <view class="tabbtn fl {{selected1?on :''}}" bindtap="tab1">
@@ -41,55 +42,13 @@
         <view class='tabcontent samepadding'>
             <view class="tabitem {{selected1?'':hide}}">
                 <view class='flowitemwarp'>
-                    <view class='flowwrap clearfix'  style='background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAuCAYAAAAsnen7AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7DAAAOwwHHb6hkAAACb0lEQVRIx63X32vXVRzH8cdkFWFivOcSwabQTWRDSS+8EbzSiSBSIGhkI7oz7FJI8W8wdjmZjAxCL7QiRoIX6YVeJOnWhXSRQ4Noa4eGGzGYq4vv2fbx27a+P86Bw/t83p/zfZ4X7y+cz/vVkVIaxEeYyfMXPMQPuBkRk1oYHSmlSWxa5f0zfI8hXIuIhWbAffgAGxB4E10r7P0Zn0XEtw2BV0qmlF7HQbyHA1hXef0VPomIqabBdYdsw3mcRGdO/4qjETHWMrhywC58gbdzahqHIuJOW+AMfwmXcLwC3x8R9+v3rmuCKyLm8D4Gcmojvk4pdbcFzvB/8Cm+zKkeDLdVirqyvIg7eCen+iNi6YCWwRnei3t4AX/gjYiYbakUdWUZw+f5cTNOF1GcVXdhHK/gd/RExHxbirPqKQzmxy042nYpKuNiZX2sSCkqJRlFL56iu5Ri+C7HDdhdEny7st5bEvxjZb2zGDgiJrB4R28vqRge57i1NHg6x1dLg2dzfLk0eGmUBq/P8e/S4I05/lUa3JPjb8XAKaXXLDc64yUV76msH5QE76us75YEH85xBveKgFNKb6ndxTASEXOlFH9cWV+l3Mf0kdoFX+5jijMZCgMRMd+24pTSDvykZMOSW6zhDIUzi9CWwSmlDjVfsjunRqp9W0vgDL2g1s7CE3xYv6+zCeZi4z2EEzk1jSMrWbaGwSmlnbjsv1bh/kr7GzU359BfEfJIzdyMrva7tezYAbyLPs//F1dwKiL+XEtQR0rpoGUD2WVtA3k2Ir5ppHT/Z3kXcEOtm2zK8nbiuppJn83zYZ631Ez6RKOw6vgXgLy4NkXttAoAAAAASUVORK5CYII=) 98% 10rpx no-repeat'>
-                        <view class='flow fl on'>
-                            <text class='number'>1</text>
-                            <text class='flowtext'>签约</text>
+                    <view class='flowwrap clearfix'>
+                        <block wx:for="{{siteInfo.tag}}" wx:key="tagkey" wx:for-item="itemTag">
+                        <view class="flow fl {{siteInfo.stageid >= itemTag.id?'on':''}}">
+                            <text class='number'>{{index+1}}</text>
+                            <text class='flowtext'>{{itemTag.name}}</text>
                         </view>
-                        <view class='flow fl on'>
-                            <text class='number'>2</text>
-                            <text class='flowtext'>设计</text>
-                        </view>
-                        <view class='flow fl on'>
-                            <text class='number'>3</text>
-                            <text class='flowtext'>拆改</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>4</text>
-                            <text class='flowtext'>水电</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>5</text>
-                            <text class='flowtext'>泥木</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>6</text>
-                            <text class='flowtext'>油漆</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>12</text>
-                            <text class='flowtext'>签约</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>11</text>
-                            <text class='flowtext'>设计</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>10</text>
-                            <text class='flowtext'>拆改</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>9</text>
-                            <text class='flowtext'>水电</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>8</text>
-                            <text class='flowtext'>泥木</text>
-                        </view>
-                        <view class='flow fl'>
-                            <text class='number'>7</text>
-                            <text class='flowtext'>油漆</text>
-                        </view>
+                        </block>
                     </view>
                 </view>
                 <view class='itemul'>
@@ -179,7 +138,7 @@
             <image src='../../../images/logo.png' class='bottomcompany'></image>
         </navigator>
         <navigator url='visit'  class='bottombtn fr' hover-class="none">预约参观</navigator>
-        <navigator  class='bottombtn fr'>在线咨询</navigator>
+        <button class='bottombtn fr' open-type="contact">在线咨询</button>
     </view>
     <!--评论输入框-->
     <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">

@@ -1,11 +1,11 @@
 <!--pages/usercenter/usercenter.wxml-->
 <view class='warp'>
     <view class='wehead samepadding'>
-        <image src='../../../images/uhead.png' class='uhead fl'></image>
-        <text class='left15'>胖大海</text>
+        <open-data type="userAvatarUrl" class='uhead fl'></open-data>
+        <open-data type="userNickName" class='left15'></open-data>
     </view>
     <view class='proul samepadding'>
-        <navigator url='../myproject/myproject' class='proitem' hover-class="none">
+        <navigator url='../myproject/myproject'class='proitem' hover-class="none">
             <image src='../../../images/icon1.png' class='itemicon'></image>
             <text class='left10'>我的装修</text>
         </navigator>
@@ -17,11 +17,11 @@
             <image src='../../../images/icon3.png' class='itemicon'></image>
             <text class='left10'>我关注的项目</text>
         </navigator>
-        <navigator url='prize' class='proitem' hover-class="none">
+        <navigator url='../prize/prize' class='proitem' hover-class="none">
             <image src='../../../images/icon4.png' class='itemicon'></image>
             <text class='left10'>中奖记录</text>
         </navigator>
-        <navigator url='about' class='proitem' hover-class="none">
+        <navigator url='../about/about?companyData={{companyData}}' class='proitem' hover-class="none">
             <image src='../../../images/icon5.png' class='itemicon'></image>
             <text class='left10'>关于我们</text>
         </navigator>

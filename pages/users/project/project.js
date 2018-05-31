@@ -15,16 +15,22 @@ Page({
         Request.requestGet(Url.project + "?page=" + that.data.pages, function (res) {
             var prolists = that.data.prolists;
             if (res.status == 1) {
+              if (res.data.total == 0) {
                 that.setData({
-                    prolists: prolists.concat(res.data.data)
+                  lengthnone: true
+                });
+              }else{
+                that.setData({
+                  prolists: prolists.concat(res.data.data)
                 })
                 if (res.data.last_page <= that.data.pages) {
-                    that.setData({
-                        lengthnone: true,
-                        isLoad:false,
-                        msg:'没有最新数据了'                        
-                    });
+                  that.setData({
+                    lengthnone: true,
+                    isLoad: false,
+                    msg: '没有最新数据了'
+                  });
                 }
+              }
             } else {
                 wx.showToast({
                     title: res.message,
