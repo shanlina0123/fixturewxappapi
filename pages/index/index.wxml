@@ -47,8 +47,8 @@
             <view class='handelwrap fr'>
                 <image src='../../images/rightMsg.png' class='handelimage' bindtap='showimage'></image>
                 <view class="iconwrap clearfix {{isshow ?'': 'hide' }}">
-                    <image src="../../images/zan1.png" class='zan fl' data-id="{{item.id}}" data-sitetid="{{item.sitetid}}" data-index='{{idx}}' bindtap="fabulous"></image>
-                    <image src="../../images/zan2.png" class='zan fl' data-id="{{item.id}}" data-sitetid="{{item.sitetid}}" data-index='{{idx}}' bindtap='showinput'></image>
+                    <image src="../../images/zan1.png" class='zan fl' data-id="{{item.id}}" data-name="{{item.title}}" data-sitetid="{{item.sitetid}}" data-index='{{idx}}' data-createuserid="{{item.createuserid}}"  bindtap="fabulous"></image>
+                    <image src="../../images/zan2.png" class='zan fl' data-id="{{item.id}}" data-name="{{item.title}}" data-sitetid="{{item.sitetid}}" data-index='{{idx}}' data-createuserid="{{item.createuserid}}" bindtap='showinput'></image>
                 </view>
             </view>
         </view>

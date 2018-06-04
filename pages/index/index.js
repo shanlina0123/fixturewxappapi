@@ -60,6 +60,7 @@ Page({
           obj.sitetid = v.sitetid;
           obj.id = v.id;
           obj.sitestagename = v.sitestagename;
+          obj.createuserid = v.createuserid;
           arr.push(obj);
         });
         that.setData({
@@ -138,8 +139,11 @@ Page({
     var dynamicid = parseInt(e.currentTarget.dataset.id);
     var siteid = parseInt(e.currentTarget.dataset.sitetid);
     var index = parseInt(e.currentTarget.dataset.index);
+    var name = e.currentTarget.dataset.name;
+    var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var replyuserid = 0;
-    var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index };
+    var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index, "name": name, "createuserid": createuserid };
+    console.log(commentData);
     if (!that.data.inputisshow) {
       that.setData({
         inputisshow: true,
@@ -172,6 +176,7 @@ Page({
       inputisshow: false
     });
     var index = commentData.index;
+    console.log(commentData);
     Request.requestPost(Url.commentAdd, commentData, function (res) {
       if (res.status == 1) {
         wx.showToast({
@@ -212,7 +217,9 @@ Page({
     var dynamicid = parseInt(e.currentTarget.dataset.id);
     var sitetid = parseInt(e.currentTarget.dataset.sitetid);
     var index = parseInt(e.currentTarget.dataset.index);
-    var obj = { "dynamicid": dynamicid, "siteid": sitetid };
+    var name = e.currentTarget.dataset.name;
+    var createuserid = parseInt(e.currentTarget.dataset.createuserid);
+    var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
     Request.requestPost(Url.fabulous, obj,function (res) {
       if ( res.status == 1 ){
         wx.showToast({
