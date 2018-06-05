@@ -1,19 +1,5 @@
 <!--pages/message/message.wxml-->
 <view class='wrap'>
-    <navigator url='asklist/asklist' class='askmsg clearfix' style='background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAmklEQVRYR+3W0Q2AIAyEYViJDqRu5kSshOmbj/TuSKOBAfw/CyHUkrxqcr9swHcm0Fo7/bz03m/luZmegJl5+BhjXErENMD/egUiBFiBCAPUCAigRMAAFYICKBA0gEVIAAxCBkAR/wGgt6RkAmjct40GMHEawMYpgCIOA1RxCKCMhwHqeAiwIh4CpD9KlS/h97foi4iFbUD6BB7XB6gh1ZZt0gAAAABJRU5ErkJggg==) center right no-repeat;background-size:45rpx;'>
-        <image class='askimg fl' src='../../images/notice.png'></image>
-        <view class='askright fl'>
-            <view class='asktitle'>咨询消息</view>
-            <view class='asktext'>小甜甜：亲爱的，5999的装修靠谱吗？</view>
-        </view>
-    </navigator>
-    <!--咨询消息为空时显示-->
-    <!-- <view class='askmsg clearfix'>
-        <image class='askimg fl' src='../../images/notice.png'></image>
-        <view class='rightonename fl'>
-            <view class='asktitle'>咨询消息</view>
-        </view>
-    </view> -->
     <view class='noticeul'>
         <view class='noticetitle clearfix'>
             <view class='fl'>通知列表</view>
@@ -22,25 +8,15 @@
         </view> 
         <!--通知消息为空时显示-->
         <!-- <view class='nonedata'>暂无相关数据</view> -->
-        <view class='noticeli clearfix'>
-            <image src='../../images/uhead.png' class='uhead fl'></image>
+        <view class='noticeli clearfix' wx:for="{{msgList}}" wx:key="mk">
+            <image src='{{item.faceimg?item.faceimg:"../../images/uhead.png"}}' class='uhead fl' binderror="error"></image>
             <view class='rightnotice fl'>
-                <view class='noticename'>小田评论了599的装修真的超值？呵呵呵呵小田评论了599的装修真的超值？</view>
+                <view class='noticename'>{{item.content}}</view>
                 <view class='timewrap'>
-                    <image src='../../images/smsg.png' class='msgimg'></image>
-                    <text class='pulicktime'>1小时前</text>
-                    <text class="{{isread ? 'noread' : 'hide'}}"></text>
-                </view>
-            </view>
-        </view>
-        <view class='noticeli clearfix'>
-            <image src='../../images/uhead.png' class='uhead fl'></image>
-            <view class='rightnotice fl'>
-                <view class='noticename'>小田评论了599的装修真的超值？呵呵呵呵小田评论了599的装修真的超值？</view>
-                <view class='timewrap'>
-                    <image src='../../images/smsg.png' class='msgimg'></image>
-                    <text class='pulicktime'>1小时前</text>
-                    <text class="{{isread ? 'noread' : 'hide'}}"></text>
+                    <image src='../../images/smsg.png' class='msgimg' data-index="{{index}}"></image>
+                    <text class='pulicktime'>{{item.created_at}}</text>
+                    <text wx:if="{{isread==false}}" class="{{item.isread==1? 'hide' : 'noread'}}"></text>
+                    <text wx:else class="hide"></text>
                 </view>
             </view>
         </view>

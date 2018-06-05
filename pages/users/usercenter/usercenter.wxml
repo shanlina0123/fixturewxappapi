@@ -1,8 +1,8 @@
 <!--pages/usercenter/usercenter.wxml-->
 <view class='warp'>
     <view class='wehead samepadding'>
-        <open-data type="userAvatarUrl" class='uhead fl'></open-data>
-        <open-data type="userNickName" class='left15'></open-data>
+        <image src='{{user.faceimg}}' class='uhead fl' binderror="error"></image>
+        <text class='left15'>{{user.nickname}}</text>
     </view>
     <view class='proul samepadding'>
         <navigator url='../myproject/myproject'class='proitem' hover-class="none">
@@ -29,11 +29,11 @@
             <image src='../../../images/icon7.png' class='itemicon'></image>
             <text class='left10'>问题反馈</text>
         </navigator>
-        <navigator url='' class='clearfix' hover-class="none">
+        <view class='clearfix lastview' hover-class="none"  bindtap='phonecall'>
             <image src='../../../images/icon6.png' class='itemicon'></image>
             <text class='left10'>联系客服</text>
-            <text class='fr' bindtap='phonecall'>{{phonenumber}}</text>
-        </navigator>
+            <text class='fr'>{{phonenumber}}</text>
+        </view> 
     </view>
 </view>
 

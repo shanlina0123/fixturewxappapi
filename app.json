@@ -1,10 +1,12 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/allowlogin/allowlogin",
     "pages/message/message",
     "pages/users/usercenter/usercenter",
     "pages/contact/free/free",
     "pages/contact/quick/quick",
+    "pages/contact/visit/visit",
     "pages/contact/signin/signin",
     "pages/users/project/project",
     "pages/users/myproject/myproject",

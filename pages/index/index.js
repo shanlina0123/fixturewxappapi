@@ -1,3 +1,5 @@
+
+
 const app = getApp();
 const Url = require('../../utils/config.js');
 const Request = require('../../utils/request.js')
@@ -8,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isshow:false,
+    isshow:'no',
     inputisshow:false,
     data:[],
     page:1,
@@ -20,6 +22,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var faceimg = wx.getStorageSync('userInfo').faceimg;
+    if (!faceimg) {
+      wx.reLaunch({
+        url: '/pages/allowlogin/allowlogin'
+      })
+    }
     var that = this;
     var page = that.data.page;
     Request.requestGet(Url.cIndex + '?page=' + page, function (res) {
@@ -85,7 +93,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      isshow: false,
+      isshow: "no",
       inputisshow: false,
       data: [],
       page: 1,
@@ -121,15 +129,9 @@ Page({
    */
   showimage: function (e) {
     var that = this;
-    if (!that.data.isshow) {
-      that.setData({
-        isshow: true
-      })
-    } else {
-      that.setData({
-        isshow: false
-      })
-    }
+    that.setData({
+      isshow: e.currentTarget.dataset.id
+    });
   },
   /**
    * 点击评论显示评论输入框 
@@ -143,11 +145,11 @@ Page({
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var replyuserid = 0;
     var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index, "name": name, "createuserid": createuserid };
-    console.log(commentData);
+    //console.log(commentData);
     if (!that.data.inputisshow) {
       that.setData({
         inputisshow: true,
-        isshow: false,
+        isshow: 'no',
         commentData: commentData
       })
     } else {
@@ -236,7 +238,7 @@ Page({
       }
     });
     that.setData({
-      isshow: false
+      isshow: 'no'
     })
   },
   //触摸开始时间
@@ -261,17 +263,22 @@ Page({
     var index = e.currentTarget.dataset.index;
     var pindex = e.currentTarget.dataset.pindex;
     var replyuser = e.currentTarget.dataset.user;
+    var name = e.currentTarget.dataset.name;
     var times = parseInt(that.touchEndTime) - parseInt(that.touchStartTime);
     if (times < 350){
       that.setData({
         inputisshow: true
       });
       //评论
-      var commentData = { "dynamicid": dynamicid, "siteid": id, "replyuserid": replyuser.id, "index": pindex, "replyuser": replyuser };
+      var commentData = { "dynamicid": dynamicid, "siteid": id, "replyuserid": replyuser.id, "index": pindex, "replyuser": replyuser, "name": name };
       that.setData({
         commentData: commentData
       })
     } else{
+      var createuserid = e.currentTarget.dataset.createuserid;
+      if (createuserid != wx.getStorageSync('userInfo').id) {
+        return false;
+      }
       that.setData({ inputisshow: false });
       wx.showModal({
         title: '确认删除吗？',

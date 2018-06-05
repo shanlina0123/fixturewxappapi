@@ -10,7 +10,7 @@ Page({
   data: {
       phonenumber:'',
       companyData:{},
-      canIUse: wx.canIUse('button.open-type.getUserInfo')
+      user: wx.getStorageSync('userInfo')
   },
   phonecall:function(){
       wx.makePhoneCall({
@@ -22,29 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.getUserInfo({
-            success: function (res) {
-              console.log(res.userInfo)
-            }
-          })
-    // 查看是否授权
-    // wx.getSetting({
-    //   success: function (res) {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       wx.getUserInfo({
-    //         success: function (res) {
-    //           console(res.userInfo)
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
   },
-  bindGetUserInfo: function (e) {
-    console.log(e.detail.userInfo)
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -100,5 +78,10 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  error:function(){
+    wx.reLaunch({
+      url: "/pages/allowlogin/allowlogin?url='/pages/users/usercenter/usercenter'"
+    })
   }
 })

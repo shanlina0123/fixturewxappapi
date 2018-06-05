@@ -19,3 +19,11 @@
 .proul navigator text{
     line-height: 32rpx;
 }
+
+.lastview{
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+.lastview text{
+    line-height: 32rpx;
+}

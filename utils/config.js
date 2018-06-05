@@ -9,6 +9,8 @@ var config = {
   openIdUrl: `https://${host}/user/openid`,
   //用户登陆
   loginUrl: `https://${host}/user/login`,
+   //修改用户图像
+  setUserInfo: `https://${host}/user/set-user`,
   /**
    * C端
    */
@@ -40,6 +42,11 @@ var config = {
   siteInfo: `https://${host}/site/info`, 
   //项目详情动态
   siteDynamic: `https://${host}/site/dynamic`, 
+  //消息
+  logNotice:`https://${host}/log/notice`,
+  //读取消息
+  readNotice:`https://${host}/log/read-notice`,
+ 
  
 };
 module.exports = config

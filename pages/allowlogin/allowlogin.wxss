@@ -1,0 +1,22 @@
+/* pages/allowlogin/allowlogin.wxss */
+.inner{
+    padding: 120px 70rpx;
+}
+.textwrap{
+    padding: 30px 0;
+    text-align: center;
+}
+.logintext{
+    line-height: 50rpx;
+    font-weight: bold;
+    
+}
+.loginstext{
+    color: #ddd;
+}
+.formbutton{
+    font-size: 32rpx;
+    color: #fff;
+    background-color: #5FB878;
+    border-color: #5fb878
+}
