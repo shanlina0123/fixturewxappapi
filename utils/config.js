@@ -1,7 +1,7 @@
 /**
  * 小程序配置文件
  */
-var host = "fixture1.yygsoft.com/api"
+var host = "fixture.yygsoft.com/api"
 var config = {
   //图片地址
   imgUrl:`https://fixture.yygsoft.com/uploads/`,

@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class='wrap'>
-    <text class='companyname'>熊先生</text>
+    <text class='companyname'>{{companyData.name}}</text>
     <view class='buttonwrap'>
         <view class='samepadding'>
             <navigator class='centerbtn' url="/pages/contact/free/free" hover-class="none">

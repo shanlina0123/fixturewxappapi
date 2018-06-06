@@ -20,6 +20,8 @@ Page({
     data:[],
     inputisshow: false,
     commentData: {},
+    companyData:{},
+    company:{}
   },
   /**关注项目按钮 */
   changeName:function(e){
@@ -30,8 +32,10 @@ Page({
       var obj = { "storeid": storeid, "siteid": siteid, "cityid": cityid};
       Request.requestPost(Url.recordSite,obj, function (res) {
         if (res.status==1){
+          var siteInfo = that.data.siteInfo
+              siteInfo.siteToFolloWrecord = 1;
           that.setData({
-            siteInfo: siteInfo.siteToFolloWrecord = 1
+            siteInfo: siteInfo
           });
         }
       });
@@ -101,6 +105,7 @@ Page({
     var id = options.id;
     this.getSiteInfo(id);
     this.getDynamic(id);
+    this.getCompanyInfo();
   },
 
   /**
@@ -412,4 +417,17 @@ Page({
       })
     }
   },
+  getCompanyInfo: function () {
+    var that = this;
+    Request.requestGet(Url.companyInfo, function (res) {
+      if (res.status == 1) {
+        var data = res.data;
+            data.logo = that.data.imgUrl + data.logo;
+        that.setData({
+          companyData: data,
+          company: JSON.stringify(res.data)
+        })
+      }
+    });
+  }
 })

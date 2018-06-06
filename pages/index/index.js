@@ -17,13 +17,14 @@ Page({
     commentData:{},
     isLoad:true,
     imgUrl: Url.imgUrl,
+    companyData:{},
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var faceimg = wx.getStorageSync('userInfo').faceimg;
-    if (!faceimg) {
+    var userInfo = wx.getStorageSync('userInfo').faceimg;
+    if ( userInfo && !userInfo.faceimg ) {
       wx.reLaunch({
         url: '/pages/allowlogin/allowlogin'
       })
@@ -87,6 +88,7 @@ Page({
         })
       }
     });
+    that.getCompanyInfo();
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -312,4 +314,14 @@ Page({
       })
     }
   },
+  getCompanyInfo:function(){
+    var that = this;
+    Request.requestGet(Url.companyInfo, function (res) {
+      if (res.status == 1) {
+        that.setData({
+          companyData: res.data
+        })
+      }
+    });
+  }
 })

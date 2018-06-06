@@ -3,7 +3,8 @@ const Url = require('../../../utils/config.js');
 const Request = require('../../../utils/request.js');
 Page({
   data: {
-    name:''
+    name:'',
+    imgUrl: Url.imgUrl,
   },
   onLoad: function (options) {
     this.setData({

@@ -1,7 +1,7 @@
 <!--pages/usercenter/project/visit.wxml-->
 <view class='content'>
     <view class='banner'>
-        <image class='bannerimg' src='../../../images/banner.jpg'></image>
+        <image class='bannerimg' src='{{imgUrl}}default/wx/cbanner.jpg'></image>
     </view>
     <view class='formwrap samepadding'>
         <form bindsubmit='submitform'>

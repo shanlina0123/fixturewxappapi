@@ -14,8 +14,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var companyData = JSON.parse(options.companyData);
+        companyData.logo = this.data.imgUrl + companyData.logo;
     this.setData({
-      companyData: JSON.parse(options.companyData)
+      companyData: companyData
     });
   },
 

@@ -6,11 +6,11 @@
         <view class='bottom'>
             <text class='addr'>{{siteInfo.addr}}</text>
             <view class='bottonbtns'>
-                <text>{{siteInfo.site_to_renovation_mode.name}}</text>
-                <text>{{siteInfo.budget}}万</text>
-                <text>{{siteInfo.roomshap}}</text>
-                <text>{{siteInfo.acreage}}m2</text>
-                <text>{{siteInfo.site_to_room_style.name}}</text>
+                <text wx:if="{{siteInfo.site_to_renovation_mode.name}}">{{siteInfo.site_to_renovation_mode.name}}</text>
+                <text wx:if="{{siteInfo.budget}}">{{siteInfo.budget}}万</text>
+                <text wx:if="{{siteInfo.roomshap}}">{{siteInfo.roomshap}}</text>
+                <text wx:if="{{siteInfo.acreage}}}">{{siteInfo.acreage}}m2</text>
+                <text wx:if="{{siteInfo.site_to_room_style.name}}">{{siteInfo.site_to_room_style.name}}</text>
             </view>
         </view>
         <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus">已关注</text>
@@ -116,8 +116,8 @@
     </view>
     <!--底预约参观按钮-->
     <view class='bottombtns clearfix'>
-        <navigator url='../about' class='leftcompany fl'>
-            <image src='../../../images/logo.png' class='bottomcompany'></image>
+        <navigator url='/pages/users/about/about?companyData={{company}}' class='leftcompany fl'>
+            <image src='{{companyData.logo}}' class='bottomcompany' mode='aspectFill'></image>
         </navigator>
         <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}'  class='bottombtn fr' hover-class="none">预约参观</navigator>
         <button class='message fr' open-type="contact" size='mini'>在线咨询</button>

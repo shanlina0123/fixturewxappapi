@@ -2,6 +2,9 @@ const app = getApp();
 const Url = require('../../../utils/config.js');
 const Request = require('../../../utils/request.js');
 Page({
+    data:{
+      imgUrl: Url.imgUrl,
+    },
     //提交表单
     submitform: function (e) {
         var that = this;

@@ -1,9 +1,9 @@
 <!--pages/usercenter/about.wxml-->
 <view class='ceontent aboutwrap samepadding'>
-    <image src='{{imgUrl}}{{companyData.logo}}' class='logo'></image>
+    <image src="{{companyData.logo}}" class='logo' mode='aspectFill'></image>
     <text class='comname'>{{companyData.name}}</text>
     <view class='companytext'>
-       {{companyData.fullname}}
+       {{companyData.resume}}
     </view>
     <view class='comaddr'>
         <view class='companyaddr'>公司地址</view>
