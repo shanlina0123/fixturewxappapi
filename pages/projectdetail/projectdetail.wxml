@@ -13,7 +13,8 @@
                 <text>{{siteInfo.site_to_room_style.name}}</text>
             </view>
         </view>
-        <text class="focus {{focustext == '关注' ? 'on':'' }}" bindtap="changeName">{{focustext}}</text>
+        <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus">已关注</text>
+        <text wx:else class="focus on" bindtap="changeName" data-storeid='{{siteInfo.storeid}}' data-siteid='{{siteInfo.id}}' data-cityid='{{siteInfo.cityid}}'>关注</text>
     </view>
     <view class='focuswrap clearfix'>
         <view class='lefthead fl'>
@@ -93,40 +94,19 @@
             </view>
             <view class="tabitem {{selected2?'':hide}}">
                 <view class='itemul'>
-                    <view class='itemli clearfix'>
-                        <image src="../../../images/uhead.png" class='uhead fl'></image>
-                        <view class='rightname fl'>
-                            <view class='topname'>
-                                <text class='uname'>张小姐</text>
-                                <text class='ustate left10'>业主</text>
-                            </view>
-                            <view class='bottomname'>
-                                <text class='proname'>2小时前</text>
-                            </view>
-                        </view>
-                    </view>
                     <view class='itemli statecontent'>
-                        <text class='statetext'>装修质量很满意，给师傅们点赞</text>
+                        <text class='statetext'>暂无业主评价</text>
                     </view>
                 </view>
             </view>
             <view class="tabitem {{selected3?'':hide}}">
                 <view class='itemul'>
-                    <view class='itemli clearfix'>
-                        <image src="../../../images/uhead.png" class='uhead fl'></image>
+                    <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation"  wx:key="siteInvitation">
+                        <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
                         <view class='rightname fl'>
                             <view class='topname'>
-                                <text class='uname'>张俊俏</text>
-                                <text class='ustate left10'>工长</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class='itemli clearfix'>
-                        <image src="../../../images/uhead.png" class='uhead fl'></image>
-                        <view class='rightname fl'>
-                            <view class='topname'>
-                                <text class='uname'>李俊俏</text>
-                                <text class='ustate left10'>工长</text>
+                                <text class='uname'>{{invitation.invitation_to_user.nickname}}</text>
+                                <text class='ustate left10'>{{invitation.invitation_to_user.user_to_position?invitation.invitation_to_user.user_to_position.name:''}}</text>
                             </view>
                         </view>
                     </view>
@@ -140,9 +120,7 @@
             <image src='../../../images/logo.png' class='bottomcompany'></image>
         </navigator>
         <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}'  class='bottombtn fr' hover-class="none">预约参观</navigator>
-        <button class='fr' open-type="contact">在线咨询</button>
-          <contact-button type="default-light" size="30" session-from="weapp" class="guest-button">
-    </contact-button>
+        <button class='message fr' open-type="contact" size='mini'>在线咨询</button>
     </view>
     <!--评论输入框-->
       <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">

@@ -1,10 +1,10 @@
 /**
  * 小程序配置文件
  */
-var host = "fixture.yygsoft.com/api"
+var host = "fixture1.yygsoft.com/api"
 var config = {
   //图片地址
-    imgUrl:`https://fixture.yygsoft.com/uploads/`,
+  imgUrl:`https://fixture.yygsoft.com/uploads/`,
   //用code换取openId
   openIdUrl: `https://${host}/user/openid`,
   //用户登陆
@@ -46,7 +46,7 @@ var config = {
   logNotice:`https://${host}/log/notice`,
   //读取消息
   readNotice:`https://${host}/log/read-notice`,
- 
- 
+  //关注工地
+  recordSite:`https://${host}/client/record-site`,
 };
 module.exports = config

@@ -24,17 +24,17 @@ Page({
   /**关注项目按钮 */
   changeName:function(e){
       var that = this;
-
-      if (that.data.focustext == '关注')
-      {
+      var storeid = e.currentTarget.dataset.storeid;
+      var siteid = e.currentTarget.dataset.siteid;
+      var cityid = e.currentTarget.dataset.cityid;
+      var obj = { "storeid": storeid, "siteid": siteid, "cityid": cityid};
+      Request.requestPost(Url.recordSite,obj, function (res) {
+        if (res.status==1){
           that.setData({
-            focustext : '已关注'
-          })
-      }else{
-          that.setData({
-              focustext: '关注'
-          })
-      }
+            siteInfo: siteInfo.siteToFolloWrecord = 1
+          });
+        }
+      });
   },
   /**切换效果 */
   tab1: function (e) {
@@ -224,9 +224,15 @@ Page({
    */
   showimage: function (e) {
     var that = this;
-    that.setData({
-      isshow: e.currentTarget.dataset.id
-    });
+    if (that.data.isshow == e.currentTarget.dataset.id){
+      that.setData({
+        isshow: 'no'
+      });
+    }else{
+      that.setData({
+        isshow: e.currentTarget.dataset.id
+      });
+    }
   },
   /**
    * 点击评论显示评论输入框 
