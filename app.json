@@ -1,5 +1,8 @@
 {
   "pages":[
+    
+      "pages/activity/prize/prize",
+      "pages/activity/pricetip/pricetip",
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -16,6 +19,8 @@
     "pages/users/about/about",
     "pages/users/prize/prize",
     "pages/projectdetail/projectdetail"
+ 
+    
   ],
   "window":{
     "backgroundTextStyle":"dark",

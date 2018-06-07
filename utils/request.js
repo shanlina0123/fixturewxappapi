@@ -20,7 +20,7 @@ function requestPost( url, obj, cb ) {
       switch (status) {
         case 21://token过期
         case 7:
-          wx.clearStorageSync();
+          wx.removeStorageSync('openid');
           app.getAppid();
       }
       typeof cb == "function" && cb(res_data);
@@ -38,6 +38,8 @@ function requestPost( url, obj, cb ) {
  *  get 
  */
 function requestGet(url, cb) {
+  console.log(Authorization);
+  console.log(wx.getStorageSync('userInfo').Authorization);  
   var that = this;
   wx.showLoading({title: '加载中'});
   wx.request({
@@ -54,7 +56,6 @@ function requestGet(url, cb) {
       switch (status) {
         case 21://token过期
         case 7:
-          wx.clearStorageSync();
           app.getAppid();
       }
       typeof cb == "function" && cb(res_data);

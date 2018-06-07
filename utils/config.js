@@ -48,5 +48,9 @@ var config = {
   readNotice:`https://${host}/log/read-notice`,
   //关注工地
   recordSite:`https://${host}/client/record-site`,
+  //抽奖
+  luckyInfo: `https://${host}/lucky/info`,
+  //中奖记录
+  myLuck: `https://${host}/lucky/my-luck`,
 };
 module.exports = config

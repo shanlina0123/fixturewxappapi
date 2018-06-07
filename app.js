@@ -50,11 +50,13 @@ App({
               } 
             },
             fail: function (res) {
+              console.log(11);
               wx.showToast({ title: '请求失败', icon: 'noneloading'});
             }
           })
         },
         fail: function (err) {
+          console.log(22);
           wx.showToast({ title: '请求失败', icon: 'noneloading' });
         }
       })

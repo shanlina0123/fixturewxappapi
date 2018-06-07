@@ -1,0 +1,47 @@
+<!--pages/index/pricetip.wxml-->
+<view class='content samepadding'>
+    <view class='topbtns'>
+        <view class='topbtn {{ison1?"on":""}}' bindtap='tab1'>活动说明</view>
+        <view class='topbtn {{ison2?"on":""}}' bindtap='tab2'>中奖记录</view>
+    </view>
+    <view class='tabcontent'>
+        <!--活动说明-->
+        <view class='tabli {{ison1?"":"hide"}}'>
+            <view class='desitem'>
+                <view class='destitle'>活动时间</view>
+                <text class='destext'>
+                    {{info.startdate}}至{{info.enddate}}
+                </text>
+            </view>
+            <view class='desitem'>
+                <view class='destitle'>主办单位</view>
+                <text class='destext'>
+                    {{companyData.name}}
+                </text>
+            </view>
+            <view class='desitem'>
+                <view class='destitle'>活动说明</view>
+                <text class='destext'>
+                    {{info.resume}}
+                </text>
+            </view>
+            <view class='desitem'>
+                <view class='destitle'>技术支持</view>
+                <text class='destext'>
+                    页面技术由西安灰熊家族网络科技提供，技术支持方仅能提供页面技术，不承担由活动引起的相关法律责任
+                </text>
+            </view>
+        </view>
+        <!--中奖记录-->
+        <view class='tabli {{ison2?"":"hide"}}'>
+            <view class='prizeli' wx:for="{{myLuck}}" wx:key="in"> 
+                <view><text>奖品：</text>{{item.prizename}}</view>
+                <view><text>中奖时间：</text>{{item.created_at}}</view>
+            </view>
+            <view class='noprize' wx:if="{{myLuck.length<=0}}">暂无中奖，祝您好运！</view>
+        </view>
+    </view>
+</view>
+
+
+
