@@ -162,8 +162,14 @@ Page({
     var that = this;
     Request.requestGet(Url.siteInfo+'?id='+id, function (res) {
       if (res.status == 1) {
+        var data = res.data;
+        if ( data.explodedossurl ){
+          data.explodedossurl = that.data.imgUrl + data.explodedossurl;
+        }else{
+          data.explodedossurl = that.data.imgUrl + 'default/wx/default.jpg';
+        }
         that.setData({
-          siteInfo: res.data
+          siteInfo: data
         });
         console.log(res);
       } else {

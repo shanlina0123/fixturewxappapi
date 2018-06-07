@@ -1,7 +1,7 @@
 <!--pages/usercenter/project/projectdetail.wxml-->
 <view class='detailcontent'>
     <view class='bannerwrap samepadding'>
-        <image src="{{siteInfo.explodedossurl?imgUrl+siteInfo.explodedossurl:'../../../images/default.jpg'}}"  class='bannerimg'></image>
+        <image src="{{siteInfo.explodedossurl}}"  class='bannerimg'></image>
         <view class='viewnum'>浏览:{{siteInfo.site_to_dynamic_statistics?siteInfo.site_to_dynamic_statistics.linkednum:0}}</view>
         <view class='bottom'>
             <text class='addr'>{{siteInfo.addr}}</text>
@@ -19,7 +19,8 @@
     <view class='focuswrap clearfix'>
         <view class='lefthead fl'>
         <block wx:for="{{siteInfo.site_to_follo_wrecord}}" wx:key="key">
-            <image src="{{item.follow_to_user.faceimg?imgUrl+item.follow_to_user.faceimg:'../../../images/uhead.png'}}" class='suhead'></image>
+            <image wx:if="{{item.follow_to_user.faceimg}}"src="{{item.follow_to_user.faceimg}}" class='suhead'></image>
+             <image wx:else src="../../../images/uhead.png" class='suhead'></image>
         </block>
         </view>
         <text class='rightnum fr'>{{siteInfo.site_to_dynamic_statistics?siteInfo.site_to_dynamic_statistics.follownum:0}}人关注</text>
