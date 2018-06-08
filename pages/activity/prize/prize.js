@@ -26,12 +26,14 @@ Page({
         colorCircleSecond: '#FE4D32',//圆点颜色2  
         colorAwardDefault: '#F5F0FC',//奖品默认颜色  
         colorAwardSelect: '#ffe400',//奖品选中颜色  
-        indexSelect: 0,//被选中的奖品index  
+        indexSelect:0,//被选中的奖品id
         isRunning: false,//是否正在抽奖  
         hadprize:false,//是都显示抽奖
         unprize:false,//未中奖提示
         imageAward: [],//奖品图片数组
         imgUrl: Url.imgUrl,
+        luckId:[],//奖品id
+        id:''//活动id
     },
     //事件处理函数  
     bindViewTap: function () {
@@ -41,6 +43,9 @@ Page({
     },
     onLoad: function () {
         var _this = this;
+        _this.setData({
+          id:40
+        });
         _this.getActivity(40);
        
     },
@@ -125,7 +130,8 @@ Page({
           topAward = topAward - 150 - 15;
         }
         var imageAward = this.data.imageAward[j];
-        awardList.push({ topAward: topAward, leftAward: leftAward, imageAward: imageAward });
+        var id = this.data.luckId[j];
+        awardList.push({ topAward: topAward, leftAward: leftAward, imageAward: imageAward, id: id });
       }
       this.setData({
         awardList: awardList
@@ -133,30 +139,51 @@ Page({
     },
     //开始抽奖  
     startGame: function () {
-        var _this = this;
-        if (_this.data.isRunning) return
+      var _this = this;
+      if (_this.data.isRunning) return
+      _this.setData({
+        isRunning: true
+      })
+      
+      //请求抽奖
+      Request.requestGet(Url.luckyDraw + '?id=' + _this.data.id, function (res) {
+        console.log(res);
+        if (res.status==1)
+        {
+          _this.Effect(res.data);
+        }else
+        {
+          wx.showToast({ title: res.messages, icon: 'none', duration: 10000 });
+        }
+      });
+      
+     
+      
+    },
+    //抽奖效果
+    Effect: function ( indexid ){
+      var _this=this;
+      var indexSelect = 0
+      var i = 0;
+      var timer = setInterval(function () {
+        indexSelect++;
+        //这里我只是简单粗暴用y=30*x+200函数做的处理.可根据自己的需求改变转盘速度  
+        i += 30;
+        if (i > 1000) {
+          //去除循环  
+          clearInterval(timer)
+          console.log(indexid);
+          //这里显示抽奖成功
+          _this.setData({
+            hadprize: true,
+            indexSelect: indexid
+          })
+        }
+        indexSelect = indexSelect % 8;
         _this.setData({
-            isRunning: true
+          indexSelect: indexid 
         })
-        var indexSelect = 0
-        var i = 0;
-        var timer = setInterval(function () {
-            indexSelect++;
-            //这里我只是简单粗暴用y=30*x+200函数做的处理.可根据自己的需求改变转盘速度  
-            i += 30;
-            if (i > 1000) {
-                //去除循环  
-                clearInterval(timer)
-                //这里显示抽奖成功
-                _this.setData({
-                    hadprize:true
-                })
-            }
-            indexSelect = indexSelect % 8;
-            _this.setData({
-                indexSelect: indexSelect
-            })
-        }, (200 + i))
+      }, (200 + i));
     },
     //关闭中奖弹窗
     closeprize:function(){
@@ -245,11 +272,15 @@ Page({
         if(res.status==1)
         {
           var arr=[];
+          var luckId=[];
           res.data.luck_prize.forEach(function (v) {
+            luckId.push(v.id);
             arr.push(that.data.imgUrl + v.picture);
           });
+          console.log(luckId);
           that.setData({
             imageAward:arr,
+            luckId:luckId,
             bgurl: that.data.imgUrl + res.data.info.bgurl,
             loseurl: that.data.imgUrl + res.data.info.loseurl,
             info: res.data.info,
