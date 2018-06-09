@@ -2,7 +2,7 @@ const openIdUrl = require('./utils/config').openIdUrl;
 const loginUrl = require('./utils/config').loginUrl;
 App({
   onLaunch: function () {
-    this.getAppid();
+    //this.getAppid();
   },
   onShow: function () {
   },

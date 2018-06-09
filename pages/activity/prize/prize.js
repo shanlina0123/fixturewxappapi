@@ -33,7 +33,9 @@ Page({
         imageAward: [],//奖品图片数组
         imgUrl: Url.imgUrl,
         luckId:[],//奖品id
-        id:''//活动id
+        id:'',//活动id
+        lackData:{},//中将信息
+        backimg: Url.imgUrl + 'default/wx/blackbg.png',//中将背景图片
     },
     //事件处理函数  
     bindViewTap: function () {
@@ -41,12 +43,12 @@ Page({
             url: '../logs/logs'
         })
     },
-    onLoad: function () {
+    onLoad: function (options) {
         var _this = this;
         _this.setData({
-          id:40
+          id: options.id
         });
-        _this.getActivity(40);
+        _this.getActivity(options.id);
        
     },
     startStyle:function(){
@@ -140,17 +142,22 @@ Page({
     //开始抽奖  
     startGame: function () {
       var _this = this;
-      if (_this.data.isRunning) return
+      //if (_this.data.isRunning) return
       _this.setData({
         isRunning: true
       })
       
       //请求抽奖
       Request.requestGet(Url.luckyDraw + '?id=' + _this.data.id, function (res) {
-        console.log(res);
+        //console.log(res);
         if (res.status==1)
         {
-          _this.Effect(res.data);
+          var lackData = res.data;
+              lackData.picture = _this.data.imgUrl + lackData.picture
+              _this.setData({
+                lackData: lackData
+              });
+              _this.Effect(res.data);
         }else
         {
           wx.showToast({ title: res.messages, icon: 'none', duration: 10000 });
@@ -172,16 +179,20 @@ Page({
         if (i > 1000) {
           //去除循环  
           clearInterval(timer)
-          console.log(indexid);
           //这里显示抽奖成功
           _this.setData({
-            hadprize: true,
-            indexSelect: indexid
+            hadprize: indexid.iswin?true:false,
+            unprize: indexid.iswin ? false : true,
+            indexSelect: indexid.id
           })
         }
         indexSelect = indexSelect % 8;
+        var id = _this.data.luckId[indexSelect];
+        if (i > 1000){
+          var id = indexid.id;
+        }
         _this.setData({
-          indexSelect: indexid 
+          indexSelect: id
         })
       }, (200 + i));
     },
@@ -190,6 +201,14 @@ Page({
         this.setData({
             hadprize: false
         })
+        //判断输入电话了么
+        var luck_num = this.data.luck_num;
+        if (!luck_num || luck_num.clientid == false)
+        {
+          wx.reLaunch({
+            url: '/pages/activity/getmessage/getmessage?activityluckyid=' + this.data.info.id
+          })
+        }
     },
     //关闭未中奖弹窗
     closenoprize:function(){
@@ -277,7 +296,6 @@ Page({
             luckId.push(v.id);
             arr.push(that.data.imgUrl + v.picture);
           });
-          console.log(luckId);
           that.setData({
             imageAward:arr,
             luckId:luckId,
@@ -292,8 +310,27 @@ Page({
           //渲染样式
           that.startStyle();
           that.setTiem();
-          console.log(res); 
+          //判断是不是在抽奖前提交用户信息
+          if (!res.data.luck_num && res.data.info.ishasconnectinfo==1)
+          {
+            wx.navigateTo({
+              url: '/pages/activity/getmessage/getmessage?activityluckyid=' + res.data.info.id
+            })
+          }
+          //console.log(res); 
         }
       });
-    }
+    },
+    //分享给微信好友
+    onShareAppMessage: function (res) {
+      if (res.from === 'button') {
+        // 来自页面内转发按钮
+      }
+      var info = this.data.info;
+      if (info.sharetitle){
+        return {
+          title: info.sharetitle
+        }
+      }
+    },
 })  

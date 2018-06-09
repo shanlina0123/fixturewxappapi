@@ -1,0 +1,23 @@
+/* pages/getmessage/getmessage.wxss */
+.itemname {
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-right: 10rpx;
+}
+
+.forminput {
+    min-width: 76%;
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.submitbtn {
+    display: block;
+    width: 60%;
+    margin: 50px auto 0 auto;
+    font-size: 28rpx;
+    background-color: #1e9fff;
+    color: #fff;
+}

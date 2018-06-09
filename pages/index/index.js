@@ -23,12 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = wx.getStorageSync('userInfo');
-    if ( userInfo && !userInfo.faceimg) {
-      wx.reLaunch({
-        url: '/pages/allowlogin/allowlogin'
-      })
-    }
     var that = this;
     var page = that.data.page;
     Request.requestGet(Url.cIndex + '?page=' + page, function (res) {

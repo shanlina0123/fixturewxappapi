@@ -1,8 +1,5 @@
 {
   "pages":[
-   
-      "pages/activity/prize/prize",
-      "pages/activity/pricetip/pricetip",
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -18,8 +15,10 @@
     "pages/question/question",
     "pages/users/about/about",
     "pages/users/prize/prize",
-    "pages/projectdetail/projectdetail"
- 
+    "pages/projectdetail/projectdetail",
+    "pages/activity/prize/prize",
+    "pages/activity/pricetip/pricetip",
+    "pages/activity/getmessage/getmessage"
     
   ],
   "window":{

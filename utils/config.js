@@ -54,5 +54,6 @@ var config = {
   myLuck: `https://${host}/lucky/my-luck`,
   //去抽奖
   luckyDraw:`https://${host}/lucky/draw`,
+  luckyCient: `https://${host}/lucky/client`,
 };
 module.exports = config

@@ -1,0 +1,14 @@
+<!--pages/getmessage/getmessage.wxml-->
+<view class='samepadding'>
+    <form bindsubmit="submitform">
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>姓名</text>
+            <input type='text' placeholder='姓名' name='uname' class='forminput' />
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>电话</text>
+            <input type='number' placeholder='请输入手机号' name='uphone' class='forminput' />
+        </view>
+        <button  class='submitBtn' form-type='submit'>提交</button>
+    </form>
+</view>

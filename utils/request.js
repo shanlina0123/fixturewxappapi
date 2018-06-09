@@ -1,5 +1,21 @@
 const app = getApp();
-const Authorization = wx.getStorageSync('userInfo').Authorization;
+/**
+ * 检测token
+ */
+function checkToken()
+{
+  var pages = getCurrentPages();
+  var Page = pages[pages.length - 1];//当前页
+  var url = Page.route; //当前页面url
+  var options = Page.options;
+  var userinfo = wx.getStorageSync('userInfo');
+  if (!userinfo)
+  { 
+    wx.reLaunch({
+      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' +JSON.stringify(options)
+    });
+  }
+};
 /**
  * post请求
  */
@@ -12,7 +28,7 @@ function requestPost( url, obj, cb ) {
     data:obj,
     header: {
       'content-type': 'application/json',
-      'Authorization': Authorization
+      'Authorization': wx.getStorageSync('userInfo').Authorization
     },
     success: function (res) {
       var res_data = res.data;
@@ -20,8 +36,8 @@ function requestPost( url, obj, cb ) {
       switch (status) {
         case 21://token过期
         case 7:
-          wx.removeStorageSync('openid');
-          app.getAppid();
+          wx.clearStorageSync();
+          checkToken();
       }
       typeof cb == "function" && cb(res_data);
      
@@ -38,8 +54,6 @@ function requestPost( url, obj, cb ) {
  *  get 
  */
 function requestGet(url, cb) {
-  console.log(Authorization);
-  console.log(wx.getStorageSync('userInfo').Authorization);  
   var that = this;
   wx.showLoading({title: '加载中'});
   wx.request({
@@ -47,7 +61,7 @@ function requestGet(url, cb) {
     method: "GET",
     header: {
       'content-type': 'application/json',
-      'Authorization': Authorization
+      'Authorization': wx.getStorageSync('userInfo').Authorization
     },
     success: function (res) {
       var res_data = res.data;
@@ -56,7 +70,8 @@ function requestGet(url, cb) {
       switch (status) {
         case 21://token过期
         case 7:
-          app.getAppid();
+          wx.clearStorageSync();
+          checkToken();
       }
       typeof cb == "function" && cb(res_data);
     }, fail: function () {
@@ -79,7 +94,7 @@ function requestPut(url, obj, cb) {
     data: obj,
     header: {
       'content-type': 'application/json',
-      'Authorization': Authorization
+      'Authorization': wx.getStorageSync('userInfo').Authorization
     },
     success: function (res) {
       var res_data = res.data;
@@ -88,7 +103,7 @@ function requestPut(url, obj, cb) {
         case 21://token过期
         case 7:
           wx.clearStorageSync();
-          app.getAppid();
+          checkToken();
       }
       typeof cb == "function" && cb(res_data);
     }, fail: function () {
@@ -114,7 +129,7 @@ function requestDelete(url,obj, cb) {
     data:obj,
     header: {
       'content-type': 'application/json',
-      'Authorization': Authorization
+      'Authorization': wx.getStorageSync('userInfo').Authorization
     },
     success: function (res) {
       var res_data = res.data;
@@ -123,7 +138,7 @@ function requestDelete(url,obj, cb) {
         case 21://token过期
         case 7:
           wx.clearStorageSync();
-          app.getAppid();
+          that.checkToken();
       }
       typeof cb == "function" && cb(res_data);
     }, fail: function () {
