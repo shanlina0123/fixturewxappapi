@@ -1,9 +1,7 @@
 /* pages/usercenter/project/projectdetail.wxss */
-.detailcontent{
-    padding-bottom: 80rpx;
-}
 .bannerwrap{
     position: relative;
+    background-color: #fff;
 }
 .viewnum{
     position: absolute;
@@ -32,12 +30,11 @@
     border-radius: 3px; 
 }
 .focus{
-    position: absolute;
-    right: 30rpx;
-    bottom: 20rpx;
     color: #fff;
-    padding: 10rpx 20rpx;
+    padding: 15rpx 55rpx;
+    font-size: 30rpx;
     border-radius: 3px;
+    margin-top: 8rpx;
     background-color: #e2e2e2;
 }
 .focus.on{
@@ -87,16 +84,21 @@
 .flowitemwarp{
     width: 100%;
     overflow: hidden;
+    text-align: center;
+    background-color: #fff;
 }
 .flowwrap{
-    padding-right: 6%;
-    margin: 50rpx 0 15rpx 0;
+    margin: 50rpx 0;
+    text-align: center;
 }
 .flow{
     position: relative;
-    width: 16.6%;
-    height: 90rpx;
+    width: 70rpx;
+    height: 40rpx;
     border-top: 3px solid #eee;
+}
+.flow12{
+    width:58rpx;
 }
 .flow.on .number{
     background-color: #1e9fff;
@@ -104,18 +106,21 @@
 .flow.on{
    border-color:#1e9fff;
 }
-.flow:first-child,.flow:nth-child(7n){
+.flow:first-child{
     border-top: 3px solid transparent
 }
-
+.detailitemul{
+    padding-bottom: 100rpx;
+}
 .number{
     display: block;
     position: absolute;
-    width: 50rpx;
-    height: 50rpx;
-    line-height: 50rpx;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
     right:0;
-    top: -25rpx;
+    top: -21rpx;
+    font-size: 20rpx;
     text-align: center;
     border-radius: 50rpx;
     background-color: #eee;
@@ -127,9 +132,19 @@
     width: 100%;
     top: 30rpx;
     right: 0;
+    font-size: 24rpx;
     text-align: right;
 }
-
+.datanone{
+    display: block;
+    padding: 10px 0;
+    background-color: #fff;
+    text-align: center
+}
+.detailstate{
+    display: block;
+    padding: 12rpx 0;
+}
 /**底部操作按钮**/
 .bottombtns{
     position: fixed;
@@ -151,20 +166,19 @@
 }
 .bottombtn{
     color: #fff;
+    font-size: 12px;
     background-color: #1e9fff;
-    padding: 15rpx 30rpx;
+    padding: 0 30rpx;
+    line-height: 64rpx;
     border-radius: 5px;
     margin-left: 15rpx;
 }
 
 .message
 {
-    display: block;
-    font-size: 30rpx;
-    padding-right: 30rpx;
-    padding-left: 30rpx;
-    padding: 15rpx 30rpx;
-    line-height: 66rpx!important;
+    font-size: 12px;
+    padding: 0 30rpx!important;
+    line-height: 64rpx!important;
     color: #fff;
     border:none!important;
     background-color: #1e9fff;
