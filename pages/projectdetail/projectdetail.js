@@ -37,6 +37,7 @@ Page({
           that.setData({
             siteInfo: siteInfo
           });
+          console.log(this.data.siteinfo);
         }
       });
   },

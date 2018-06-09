@@ -9,7 +9,7 @@
                 </view>
                 <view class='projectright left15 fl'>
                     <view class='projectname'>{{item.follow_to_site.name}}</view>
-                    <view>{{item.follow_to_site.addr}}</view>
+                    <view class='prodes'>{{item.follow_to_site.addr}}</view>
                     <view wx:if="{{item.follow_to_dynamic_statistics}}">
                         <text>浏览：{{item.follow_to_dynamic_statistics.linkednum}}</text>
                         <text>关注：{{item.follow_to_dynamic_statistics.follownum}}</text>

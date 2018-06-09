@@ -17,7 +17,7 @@ Page({
     commentData:{},
     isLoad:true,
     imgUrl: Url.imgUrl,
-    companyData:{},
+    companyData:{}
   },
   /**
    * 生命周期函数--监听页面加载
