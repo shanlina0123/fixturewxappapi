@@ -1,5 +1,5 @@
 <!--pages/usercenter/project/projectdetail.wxml-->
-<view class='wrap'>
+<view class='wrap' wx:if="{{isview}}">
     <view class='detailcontent'>
         <view class='bannerwrap samepadding'>
             <image src="{{siteInfo.explodedossurl}}" class='bannerimg'></image>

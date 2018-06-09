@@ -15,7 +15,6 @@ Page({
    */
   onLoad: function (options) {
     var companyData = JSON.parse(options.companyData);
-        companyData.logo = this.data.imgUrl + companyData.logo;
     this.setData({
       companyData: companyData
     });

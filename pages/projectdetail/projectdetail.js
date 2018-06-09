@@ -21,7 +21,8 @@ Page({
     inputisshow: false,
     commentData: {},
     companyData:{},
-    company:{}
+    company:{},
+    isview:true
   },
   /**关注项目按钮 */
   changeName:function(e){
@@ -172,11 +173,14 @@ Page({
         that.setData({
           siteInfo: data
         });
-        console.log(res);
+        //console.log(res);
       } else {
         wx.showToast({
-          title: res.message,
+          title: res.messages,
         })
+        that.setData({
+          isview:false
+        });
       }
     });
   },
