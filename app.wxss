@@ -111,9 +111,9 @@ view {
 /**微信头像**/
 
 .uhead {
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 100rpx;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 90rpx;
 }
 
 /**消息列表公用**/

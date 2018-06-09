@@ -10,7 +10,7 @@ Page({
   data: {
       phonenumber:'',
       companyData:{},
-      user: wx.getStorageSync('userInfo')
+      user:{}
   },
   phonecall:function(){
       wx.makePhoneCall({
@@ -22,6 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      user:wx.getStorageSync('userInfo')
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

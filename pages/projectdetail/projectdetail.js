@@ -31,13 +31,13 @@ Page({
       var cityid = e.currentTarget.dataset.cityid;
       var obj = { "storeid": storeid, "siteid": siteid, "cityid": cityid};
       Request.requestPost(Url.recordSite,obj, function (res) {
+        console.log(res);
         if (res.status==1){
-          var siteInfo = that.data.siteInfo
+          var siteInfo = that.data.siteInfo;
               siteInfo.siteToFolloWrecord = 1;
           that.setData({
             siteInfo: siteInfo
           });
-          console.log(this.data.siteinfo);
         }
       });
   },

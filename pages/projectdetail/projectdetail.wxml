@@ -49,7 +49,7 @@
                     <view class='flowitemwarp'>
                         <view class='flowwrap samepadding clearfix'>
                             <block wx:for="{{siteInfo.tag}}" wx:key="tagkey" wx:for-item="itemTag">
-                                <view class="flow fl {{siteInfo.stageid >= itemTag.id?'on':''}} ">
+                                <view class="flow fl {{siteInfo.stageid >= itemTag.id?'on':''}} {{siteInfo.tag.length > 10?'flow12':''}}">
                                     <text class='number'>{{index+1}}</text>
                                     <text class='flowtext'>{{itemTag.name}}</text>
                                 </view>
@@ -71,6 +71,11 @@
                                     </view>
                                     <view class='statecontent'>
                                         <text class='detailstate'>{{item.content}}</text>
+                                         <view class='stateimgwrap clearfix'>
+                                            <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
+                                                <image src='{{imgUrl+itemImg.ossurl}}' class='stateimg fl'></image>
+                                            </block>
+                                          </view>
                                     </view>
                                     <view class='times clearfix'>
                                         <text class='fl'>{{item.created_at}}</text>

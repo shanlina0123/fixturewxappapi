@@ -125,9 +125,18 @@ Page({
    */
   showimage: function (e) {
     var that = this;
-    that.setData({
-      isshow: e.currentTarget.dataset.id
-    });
+    if (that.data.isshow == e.currentTarget.dataset.id )
+    {
+      that.setData({
+        isshow: 'no'
+      });
+    }else
+    {
+      that.setData({
+        isshow: e.currentTarget.dataset.id
+      });
+    }
+    
   },
   /**
    * 点击评论显示评论输入框 
