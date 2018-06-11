@@ -95,8 +95,8 @@ Page({
         data: {
           openid:wx.getStorageSync('openid'),
           companyid:wx.getStorageSync('companyid'),
-          nickname:data.nickname,
-          faceimg: data.faceimg
+          nickname: data.nickName,
+          faceimg: data.avatarUrl
         },
         success: function (res) {
           var data = res.data;

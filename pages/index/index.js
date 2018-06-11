@@ -227,6 +227,7 @@ Page({
     var name = e.currentTarget.dataset.name;
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
+    //console.log(obj);
     Request.requestPost(Url.fabulous, obj,function (res) {
       if ( res.status == 1 ){
         wx.showToast({

@@ -45,10 +45,19 @@ Page({
     },
     onLoad: function (options) {
         var _this = this;
-        _this.setData({
-          id: options.id
-        });
-        _this.getActivity(options.id);
+        if (options.scene) {
+          var scene = decodeURIComponent(options.scene);
+          _this.setData({
+            id: scene
+          });
+          _this.getActivity(scene);
+        } else
+         {
+          _this.setData({
+            id: options.id
+          });
+          _this.getActivity(options.id);
+        }  
        
     },
     startStyle:function(){

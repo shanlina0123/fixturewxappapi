@@ -33,9 +33,8 @@
 .centertitle {
     display: block;
     font-size: 32rpx;
-    padding: 20rpx;
+    padding: 20rpx 20rpx 0 20rpx;
 }
-
 .textcontent{
   display: block;
 }

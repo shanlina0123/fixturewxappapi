@@ -32,13 +32,13 @@ Page({
       var cityid = e.currentTarget.dataset.cityid;
       var obj = { "storeid": storeid, "siteid": siteid, "cityid": cityid};
       Request.requestPost(Url.recordSite,obj, function (res) {
-        console.log(res);
         if (res.status==1){
           var siteInfo = that.data.siteInfo;
               siteInfo.siteToFolloWrecord = 1;
           that.setData({
             siteInfo: siteInfo
           });
+          wx.showToast({ title: '关注成功'});
         }
       });
   },
@@ -104,10 +104,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var id = options.id;
+    if ( options.scene )
+    {
+      var scene = decodeURIComponent(options.scene);
+      var id = scene;
+    }else
+    {
+      var id = options.id;
+    }  
     this.getSiteInfo(id);
     this.getDynamic(id);
-    this.getCompanyInfo();
+    //this.getCompanyInfo();
   },
 
   /**
@@ -339,6 +346,7 @@ Page({
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
     Request.requestPost(Url.fabulous, obj, function (res) {
+      //console.log(obj);
       if (res.status == 1) {
         wx.showToast({
           title: res.messages,

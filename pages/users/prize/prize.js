@@ -12,7 +12,8 @@ Page({
     pages: 1,
     msg: '暂无相关数据',
     isLoad: true,
-    isShow:false
+    isShow:false,
+    imgUrl: Url.imgUrl,
   },
 
   /**
@@ -21,6 +22,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     var luckyRecord = that.data.luckyRecord;
+    that.setData({
+      bannerimg: that.data.imgUrl +'default/wx/zhongjiang.jpg'
+    });
     Request.requestGet(Url.luckyRecord, function (res) {
       if (res.status == 1) {
         if (res.data.total==0){

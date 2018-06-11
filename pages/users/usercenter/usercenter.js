@@ -10,7 +10,8 @@ Page({
   data: {
       phonenumber:'',
       companyData:{},
-      user:{}
+      user:{},
+      imgUrl: Url.imgUrl,
   },
   phonecall:function(){
       wx.makePhoneCall({
@@ -33,8 +34,10 @@ Page({
     var that = this;
     Request.requestGet(Url.companyInfo, function (res) {
       if (res.status == 1){
+        var data = res.data;
+            data.logo = that.data.imgUrl + data.logo;
         that.setData({
-          companyData: JSON.stringify(res.data),
+          companyData: JSON.stringify(data),
           phonenumber: res.data.phone
         })
       }

@@ -11,7 +11,8 @@
         <view class='noticeli clearfix' wx:for="{{msgList}}" wx:key="mk">
             <image src='{{item.faceimg?item.faceimg:"../../images/uhead.png"}}' class='uhead fl' binderror="error"></image>
             <view class='rightnotice fl'>
-                <view class='noticename'>{{item.content}}</view>
+                <view class='noticename' wx:if="{{item.siteid!=false}}" bindtap='getInfo' data-id="{{item.id}}" data-index='{{index}}' data-siteid='{{item.siteid}}'>{{item.content}}</view>
+                <view class='noticename' wx:else>{{item.content}}</view>
                 <view class='timewrap'>
                     <image src='../../images/smsg.png' class='msgimg' data-index="{{index}}"></image>
                     <text class='pulicktime'>{{item.created_at}}</text>

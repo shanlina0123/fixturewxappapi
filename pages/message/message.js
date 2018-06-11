@@ -80,6 +80,7 @@ Page({
             obj.created_at = util.timeChangeover(v.created_at);
             obj.isread = v.isread;
             obj.id = v.id;
+            obj.siteid = v.siteid;
             data.push(obj);
           });
           that.setData({
@@ -106,5 +107,23 @@ Page({
         this.setData({
           msgList: msgList
         })
+  }, getInfo:function(e){
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    var siteid = e.currentTarget.dataset.siteid;
+    var index = e.currentTarget.dataset.index;
+    Request.requestPost(Url.readNotice, {id:id}, function (res) {
+      if (res.status == 1) 
+      {
+        wx.navigateTo({
+          url: '/pages/projectdetail/projectdetail?id=' + siteid
+        });
+        var msgList = that.data.msgList;
+        msgList[index].isread = 1;
+        that.setData({
+          msgList: msgList
+        });
+      }
+    });
   }
 })
