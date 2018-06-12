@@ -27,7 +27,7 @@ Page({
                   that.setData({
                     lengthnone: true,
                     isLoad: false,
-                    msg: '没有最新数据了'
+                    msg: '已经到底了'
                   });
                 }
               }
@@ -54,6 +54,15 @@ Page({
     },
     //页面下拉更新事件
     onPullDownRefresh: function () {
-        this.update();
+      this.setData({
+        prolists: [],
+        lengthnone: false,
+        msg: '暂无相关数据',
+        imgUrl: Url.imgUrl,
+        pages: 1,
+        isLoad: true
+      });
+      this.getproList();
+      wx.stopPullDownRefresh();
     }
 })

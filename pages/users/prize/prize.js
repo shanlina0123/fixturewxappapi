@@ -39,7 +39,8 @@ Page({
           if (res.data.last_page <= that.data.pages){
             that.setData({
               isLoad: false,
-              msg: '没有最新数据了'
+              isShow:true,
+              msg: '已经到底了'
             });
           }
         }

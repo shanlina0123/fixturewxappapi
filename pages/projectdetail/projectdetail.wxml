@@ -3,7 +3,7 @@
     <view class='detailcontent'>
         <view class='bannerwrap samepadding'>
             <image src="{{siteInfo.explodedossurl}}" class='bannerimg'></image>
-            <view class='viewnum'>浏览:{{siteInfo.site_to_dynamic_statistics?siteInfo.site_to_dynamic_statistics.linkednum:0}}</view>
+            <view class='viewnum'>浏览:{{siteInfo.linkednum}}</view>
             <view class='bottom'>
                 <text class='addr'>{{siteInfo.addr}}</text>
                 <view class='bottonbtns'>
@@ -17,7 +17,7 @@
         </view>
         <view class='focuswrap clearfix'>
             <view class='clearfix'>
-                <text class='rightnum fl'>{{siteInfo.site_to_dynamic_statistics?siteInfo.site_to_dynamic_statistics.follownum:0}}人关注</text>
+                <text class='rightnum fl'>{{siteInfo.follownum}}人关注</text>
                 <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus fr">已关注</text>
                 <text wx:else class="focus on fr" bindtap="changeName" data-storeid='{{siteInfo.storeid}}' data-siteid='{{siteInfo.id}}' data-cityid='{{siteInfo.cityid}}'>关注</text>
             </view>

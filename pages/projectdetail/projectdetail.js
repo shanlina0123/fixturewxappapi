@@ -180,7 +180,6 @@ Page({
         that.setData({
           siteInfo: data
         });
-        //console.log(res);
       } else {
         wx.showToast({
           title: res.messages,

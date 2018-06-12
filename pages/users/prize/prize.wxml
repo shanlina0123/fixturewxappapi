@@ -3,9 +3,7 @@
     <view class='banner'>
         <image class='bannerimg' src='{{bannerimg}}'></image>
     </view>
-    <!--项目列表为空时显示-->
-    <view class='nonedata' wx:if="{{isShow}}">{{msg}}</view> 
-    <view class='table' wx:if="{{!isShow}}">
+    <view class='table'>
         <view class='tr'>
             <view class='th'>活动名称</view>
             <view class='th'>中奖奖品</view>
@@ -16,5 +14,7 @@
             <view class='td'>{{item.prizename}}</view>
             <view class='td'>{{item.created_at}}</view>
         </view>
+        <!--项目列表为空时显示-->
+        <view wx:if="{{isShow}}" class='nonedata'>{{msg}}</view>
     </view>
 </view>

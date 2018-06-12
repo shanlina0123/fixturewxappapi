@@ -10,9 +10,9 @@
                 <view class='projectright left15 fl'>
                     <view class='projectname'>{{item.invitation_to_site.name}}</view>
                     <view>{{item.invitation_to_site.addr}}</view>
-                    <view wx:if="{{item.invitation_to_dynamic_statistics}}">
-                        <text>浏览：{{item.invitation_to_dynamic_statistics.linkednum}}</text>
-                        <text>关注：{{item.invitation_to_dynamic_statistics.follownum}}</text>
+                    <view wx:if="{{item.invitation_to_site}}">
+                        <text>浏览：{{item.invitation_to_site.linkednum}}</text>
+                        <text>关注：{{item.invitation_to_site.follownum}}</text>
                     </view>
                 </view>
             </navigator>
