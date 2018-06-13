@@ -1,4 +1,5 @@
 const app = getApp();
+
 /**
  * 检测token
  */
@@ -66,7 +67,6 @@ function requestGet(url, cb) {
     success: function (res) {
       var res_data = res.data;
       var status = parseInt(res_data.status);
-      //console.log(res);
       switch (status) {
         case 21://token过期
         case 7:

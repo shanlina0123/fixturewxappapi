@@ -76,10 +76,10 @@ Page({
           })
         }
       }else{
-        wx.showToast({
-          title: res.messages,
-          icon: 'none',
-        })
+        // wx.showToast({
+        //   title: res.messages,
+        //   icon: 'none',
+        // })
       }
     });
     that.getCompanyInfo();

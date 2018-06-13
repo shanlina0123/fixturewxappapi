@@ -12,7 +12,10 @@ Page({
   onLoad: function (options) {
     this.getAppid();
     if (options.url != undefined){
-      var url = '/'+JSON.parse(options.url);
+      var url = '/' + JSON.parse(options.url);
+      if (url == '/pages/allowlogin/allowlogin') {
+        var url = '/pages/index/index';
+      }
     }else{
       var url ='/pages/index/index';
     }
@@ -38,18 +41,22 @@ Page({
   },
   getAppid: function () {
     var that = this;
-    if (wx.getExtConfig) {
-      wx.getExtConfig({
-        success: function (res) {
-          var appid = res.extConfig.appid;
-          that.getUserOpenId(appid);
-        }
-      })
+    if (that.data.appid) {
+      that.getUserOpenId(that.data.appid);
     } else {
-      wx.showToast({
-        title: '微信版本太低无法使用',
-        icon: 'none'
-      })
+      if (wx.getExtConfig) {
+        wx.getExtConfig({
+          success: function (res) {
+            var appid = res.extConfig.appid;
+            that.getUserOpenId(appid);
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '微信版本太低无法使用',
+          icon: 'none'
+        })
+      }
     }
   },
   //获取openid
@@ -72,14 +79,8 @@ Page({
                 wx.setStorageSync('openid', data.data.openid);
                 wx.setStorageSync('companyid', data.data.companyid);
               }
-            },
-            fail: function (res) {
-              wx.showToast({ title: '请求失败', icon: 'noneloading' });
             }
           })
-        },
-        fail: function (err) {
-          wx.showToast({ title: '请求失败', icon: 'noneloading' });
         }
       })
     } 
@@ -87,6 +88,11 @@ Page({
   //用户登陆
   getUserLogin: function ( data ) {
     var that = this;
+    if (!wx.getStorageSync('openid') || !wx.getStorageSync('companyid') )
+    {
+      wx.showToast({ title: '登陆失败', icon: 'loading' });
+      return;
+    }
     var userInfo = wx.getStorageSync('userInfo');
     if (!userInfo) {
       wx.request({
