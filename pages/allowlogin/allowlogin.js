@@ -7,13 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url:''
+    url:'',
+    appid:'wx676c383c431ecc6e'//小程序appid
   },
   onLoad: function (options) {
     this.getAppid();
     if (options.url != undefined){
-      var url = '/' + JSON.parse(options.url);
-      if (url == '/pages/allowlogin/allowlogin') {
+      var url = '/'+JSON.parse(options.url);
+      if (url == '/pages/allowlogin/allowlogin')
+      {
         var url = '/pages/index/index';
       }
     }else{
@@ -41,9 +43,11 @@ Page({
   },
   getAppid: function () {
     var that = this;
-    if (that.data.appid) {
+    if( that.data.appid )
+    {
       that.getUserOpenId(that.data.appid);
-    } else {
+    }else
+    {
       if (wx.getExtConfig) {
         wx.getExtConfig({
           success: function (res) {

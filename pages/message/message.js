@@ -90,7 +90,7 @@ Page({
             that.setData({
               lengthnone: true,
               isLoad: false,
-              msg: '没有最新数据了'
+              msg: '已经到底了'
             });
           }
         }

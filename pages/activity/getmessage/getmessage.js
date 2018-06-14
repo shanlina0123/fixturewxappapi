@@ -53,10 +53,6 @@ Page({
               })
             }
           })
-        } else {
-          wx.showToast({
-            title: res.messages
-          })
         }
       })
     }

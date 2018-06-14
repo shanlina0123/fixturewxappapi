@@ -9,7 +9,7 @@
                 <input type='text' placeholder='姓名' name='uname' class='forminput' />
             </view>
             <view class='formitem'>
-                <input type='text' placeholder='请输入手机号' name='uphone' class='forminput' />
+                <input type='number' placeholder='请输入手机号' name='uphone' class='forminput' />
             </view>
             <view class='formitem'>
                 <input type='digit' placeholder='请输入住房面积m2' name='uarea' class='forminput' />

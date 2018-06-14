@@ -301,7 +301,7 @@ Page({
       inputisshow: false
     });
     var index = commentData.index;
-    console.log(commentData);
+    //console.log(commentData);
     Request.requestPost(Url.commentAdd, commentData, function (res) {
       if (res.status == 1) {
         wx.showToast({
@@ -324,12 +324,6 @@ Page({
           commentData: {},
           commentV: ''
         })
-      } else {
-        wx.showToast({
-          title: res.messages,
-          icon: 'none',
-          duration: 2000
-        })
       }
     });
   },
@@ -345,7 +339,7 @@ Page({
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
     Request.requestPost(Url.fabulous, obj, function (res) {
-      //console.log(obj);
+      that.setData({ isshow: 'no' });
       if (res.status == 1) {
         wx.showToast({
           title: res.messages,
@@ -360,9 +354,7 @@ Page({
         });
       }
     });
-    that.setData({
-      isshow: 'no'
-    })
+   
   },
   //触摸开始时间
   touchStartTime: 0,
@@ -418,16 +410,8 @@ Page({
                 })
                 //跟新数据
                 var data = that.data.data;
-                data[pindex].follo.splice(index, 1)
-                that.setData({
-                  data: data
-                })
-              } else {
-                wx.showToast({
-                  title: res.messages,
-                  icon: 'none',
-                  duration: 2000
-                })
+                    data[pindex].follo.splice(index, 1)
+                    that.setData({data: data})
               }
             });
           }
@@ -441,11 +425,25 @@ Page({
       if (res.status == 1) {
         var data = res.data;
             data.logo = that.data.imgUrl + data.logo;
-        that.setData({
-          companyData: data,
-          company: JSON.stringify(res.data)
-        })
+            that.setData({
+              companyData: data,
+              company: JSON.stringify(res.data)
+            })
       }
     });
+  }, getImg:function(e)
+  {
+    var that = this;
+    var img = e.currentTarget.dataset.src;
+    var urls = e.currentTarget.dataset.img;
+    var arr = [];
+    urls.forEach(function (v) {
+      arr.push(that.data.imgUrl+v.ossurl);
+    });
+    //console.log(arr);
+    wx.previewImage({
+      current: img, // 当前显示图片的http链接
+      urls: arr // 需要预览的图片http链接列表
+    })
   }
 })

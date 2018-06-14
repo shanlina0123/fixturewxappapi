@@ -26,7 +26,6 @@ Page({
     var that = this;
     var page = that.data.page;
     Request.requestGet(Url.cIndex + '?page=' + page, function (res) {
-     // console.log( res );
       if (res.status==1){
         var data = that.data.data;
         var arr = [];
@@ -76,10 +75,10 @@ Page({
           })
         }
       }else{
-        // wx.showToast({
-        //   title: res.messages,
-        //   icon: 'none',
-        // })
+        wx.showToast({
+          title: res.messages,
+          icon: 'loading',
+        })
       }
     });
     that.getCompanyInfo();
@@ -150,7 +149,6 @@ Page({
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var replyuserid = 0;
     var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index, "name": name, "createuserid": createuserid };
-    //console.log(commentData);
     if (!that.data.inputisshow) {
       that.setData({
         inputisshow: true,
@@ -183,14 +181,13 @@ Page({
       inputisshow: false
     });
     var index = commentData.index;
-    console.log(commentData);
     Request.requestPost(Url.commentAdd, commentData, function (res) {
-      if (res.status == 1) {
+      if (res.status == 1) 
+      {
         wx.showToast({
           title: res.messages,
-          icon: 'success',
-          duration: 2000
-        })
+          icon: 'success'
+        });
         //跟新数据
         var data = that.data.data;
         var obj = { id: wx.getStorageSync('userInfo').id, nickname: wx.getStorageSync('userInfo').nickname };
@@ -207,12 +204,6 @@ Page({
               commentData:{},
               commentV:''
             })
-      } else {
-        wx.showToast({
-          title: res.messages,
-          icon: 'none',
-          duration: 2000
-        })
       }
     });
   },
@@ -227,25 +218,22 @@ Page({
     var name = e.currentTarget.dataset.name;
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
-    //console.log(obj);
     Request.requestPost(Url.fabulous, obj,function (res) {
-      if ( res.status == 1 ){
+      that.setData({ isshow: 'no' });
+      if ( res.status == 1 )
+      {
         wx.showToast({
           title: res.messages,
-          icon: 'success',
-          duration: 2000
-        })
+          icon: 'success'
+        });
         //跟新数据
         var data = that.data.data;
-            data[index].thumbsupnum = parseInt(data[index].thumbsupnum)+1;
-            that.setData({
-              data: data
-            });
+        data[index].thumbsupnum = parseInt(data[index].thumbsupnum) + 1;
+        that.setData({
+          data: data
+        });
       }
     });
-    that.setData({
-      isshow: 'no'
-    })
   },
   //触摸开始时间
   touchStartTime: 0,
@@ -293,23 +281,17 @@ Page({
             //用户点击确定
             var obj = { "dynamicid": dynamicid, "id": id };
             Request.requestDelete(Url.commentDestroy, obj, function (res) {
-              if (res.status == 1){
-                  wx.showToast({
-                    title: res.messages,
-                    icon: 'success',
-                    duration: 2000
-                  })
+              if (res.status == 1)
+              {
+                wx.showToast({
+                  title: res.messages,
+                  icon: 'success'
+                });
                 //跟新数据
                 var data = that.data.data;
                 data[pindex].follo.splice(index,1)
                 that.setData({
                   data: data
-                })
-              } else {
-                wx.showToast({
-                  title: res.messages,
-                  icon: 'none',
-                  duration: 2000
                 })
               }
             });

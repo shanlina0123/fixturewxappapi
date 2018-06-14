@@ -34,18 +34,18 @@ Page({
         }else{
             Request.requestPost(Url.free, params, function (res) {
                 if (res.status == 1) {
-                    wx.showToast({
-                        title: res.messages,
-                        success: function () {
-                            wx.reLaunch({
-                              url: '/pages/index/index'
-                            })
-                        }
-                    })
-                } else {
-                    wx.showToast({
-                        title: res.messages
-                    })
+                  wx.showModal({
+                    title: '',
+                    content: res.messages,
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.reLaunch({
+                          url: '/pages/index/index'
+                        })
+                      }
+                    }
+                  });
                 }
             })
         }

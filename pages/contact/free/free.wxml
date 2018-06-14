@@ -9,7 +9,7 @@
                 <input type='text' placeholder='姓名' name='uname' class='forminput' />
             </view>
             <view class='formitem'>
-                <input type='text' placeholder='请输入手机号' name='uphone' class='forminput' />
+                <input type='number' placeholder='请输入手机号' name='uphone' class='forminput' />
             </view>
             <button class='submitBtn' form-type='submit'>免费量房</button>
         </form>

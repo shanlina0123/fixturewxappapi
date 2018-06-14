@@ -73,7 +73,7 @@
                                         <text class='detailstate'>{{item.content}}</text>
                                          <view class='stateimgwrap clearfix'>
                                             <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                                                <image src='{{imgUrl+itemImg.ossurl}}' class='stateimg fl'></image>
+                                                <image src='{{imgUrl+itemImg.ossurl}}' class='stateimg fl' data-img="{{item.images}}" data-src="{{imgUrl+itemImg.ossurl}}" bindtap='getImg'></image>
                                             </block>
                                           </view>
                                     </view>
