@@ -223,5 +223,6 @@ module.exports = {
   requestPost: requestPost,
   requestGet: requestGet,
   requestDelete: requestDelete,
-  requestPut: requestPut
+  requestPut: requestPut,
+  checkToken: checkToken
 };

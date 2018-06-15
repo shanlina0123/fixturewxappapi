@@ -1,5 +1,6 @@
 <!--pages/usercenter/usercenter.wxml-->
-<view class='warp'>
+<!--C端-->
+<view class='warp' wx:if="{{userType==1}}">
     <view class='wehead samepadding'>
         <image src='{{user.faceimg}}' class='uhead fl' binderror="error"></image>
         <text class='left15'>{{user.nickname}}</text>
@@ -24,6 +25,40 @@
         <navigator url='../about/about?companyData={{companyData}}' class='proitem' hover-class="none">
             <image src='../../../images/icon5.png' class='itemicon'></image>
             <text class='left10'>关于我们</text>
+        </navigator>
+        <navigator url='../../question/question' class='proitem' hover-class="none">
+            <image src='../../../images/icon7.png' class='itemicon'></image>
+            <text class='left10'>问题反馈</text>
+        </navigator>
+        <view class='clearfix lastview' hover-class="none"  bindtap='phonecall'>
+            <image src='../../../images/icon6.png' class='itemicon'></image>
+            <text class='left10'>联系客服</text>
+            <text class='fr'>{{phonenumber}}</text>
+        </view> 
+    </view>
+</view>
+<!--B端-->
+<view class='warp' wx:if="{{userType==0}}">
+    <view class='wehead samepadding'>
+        <image src='{{user.faceimg}}' class='uhead fl' binderror="error"></image>
+        <text class='left15'>{{user.nickname}}</text>
+    </view>
+    <view class='proul samepadding'>
+        <navigator url='active/active' class='proitem'hover-class="none">
+            <image src='../../../images/icon2.png' class='itemicon'></image>
+            <text class='left10'>促销活动</text>
+        </navigator>
+        <navigator url='../Bproject/projectlist/projectlist' class='proitem' hover-class="none">
+            <image src='../../../images/icon3.png' class='itemicon'></image>
+            <text class='left10'>项目管理</text>
+        </navigator>
+        <navigator url='../appointment/appointment' class='proitem' hover-class="none">
+            <image src='../../../images/icon8.png' class='itemicon'></image>
+            <text class='left10'>客户预约</text>
+        </navigator>
+        <navigator url='../changestore/changestore' class='proitem' hover-class="none">
+            <image src='../../../images/icon9.png' class='itemicon'></image>
+            <text class='left10'>切换门店</text>
         </navigator>
         <navigator url='../../question/question' class='proitem' hover-class="none">
             <image src='../../../images/icon7.png' class='itemicon'></image>

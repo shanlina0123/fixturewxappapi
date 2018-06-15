@@ -3,19 +3,22 @@
  */
 var host = "fixture.yygsoft.com/api"
 var config = {
+  /**
+   * 公用
+   */
   //图片地址
   imgUrl:`https://fixture.yygsoft.com/uploads/`,
   //用code换取openId
   openIdUrl: `https://${host}/user/openid`,
   //用户登陆
   loginUrl: `https://${host}/user/login`,
-   //修改用户图像
+  //修改用户图像
   setUserInfo: `https://${host}/user/set-user`,
+  //首页动态数据
+  Index: `https://${host}/client/dynamic-list`,
   /**
    * C端
    */
-  //首页
-  cIndex: `https://${host}/client/dynamic-list`,
   //免费量房、快速报价
   free: `https://${host}/client/appointment`,
   //项目列表
@@ -55,5 +58,8 @@ var config = {
   //去抽奖
   luckyDraw:`https://${host}/lucky/draw`,
   luckyCient: `https://${host}/lucky/client`,
+  /**
+   * B端
+   */
 };
 module.exports = config

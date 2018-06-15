@@ -131,7 +131,7 @@
             <!-- <navigator url='/pages/users/about/about?companyData={{company}}' class='leftcompany fl'>
                 <image src='{{companyData.logo}}' class='bottomcompany' mode='aspectFill'></image>
             </navigator> -->
-            <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}&siteid={{siteInfo.id}}' class='bottombtn fr' hover-class="none">预约参观</navigator>
+            <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}&siteid={{siteInfo.id}}&storeid={{siteInfo.storeid}}' class='bottombtn fr' hover-class="none">预约参观</navigator>
             <button class='askbtn fr' open-type="contact" size='mini'>在线咨询</button>
         </view>
         <!--评论输入框-->

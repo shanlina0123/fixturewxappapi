@@ -8,10 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-      phonenumber:'',
-      companyData:{},
-      user:{},
-      imgUrl: Url.imgUrl,
+      phonenumber:'', //电话
+      companyData:{},//公司数据
+      user:{},//用户信息
+      imgUrl: Url.imgUrl,//图片地址
+      userType:0,//''//用户类型
   },
   phonecall:function(){
       wx.makePhoneCall({
@@ -23,67 +24,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      user:wx.getStorageSync('userInfo')
-    });
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
     var that = this;
+    this.setData({
+      user:wx.getStorageSync('userInfo'),
+      //userType: wx.getStorageSync('userInfo').type
+    });
     Request.requestGet(Url.companyInfo, function (res) {
-      if (res.status == 1){
+      if (res.status == 1) {
         var data = res.data;
-            data.logo = that.data.imgUrl + data.logo;
+        data.logo = that.data.imgUrl + data.logo;
         that.setData({
           companyData: JSON.stringify(data),
           phonenumber: res.data.phone
         })
       }
     });
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   },
   error:function(){
     wx.reLaunch({

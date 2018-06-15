@@ -1,5 +1,3 @@
-
-
 const app = getApp();
 const Url = require('../../utils/config.js');
 const Request = require('../../utils/request.js')
@@ -10,36 +8,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isshow:'no',
-    inputisshow:false,
-    data:[],
-    page:1,
-    commentData:{},
-    isLoad:true,
-    imgUrl: Url.imgUrl,
-    companyData:{}
+    isshow: 'no', //评论按钮
+    inputisshow: false,//评论框
+    data: [],//动态数据
+    page: 1,//分页
+    commentData:{},//公司信息
+    isLoad: true,//分页开关
+    imgUrl: Url.imgUrl,//图片地址
+    companyData: {},//评论数据
+    userType:0,//用户身份
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    var userinfo = wx.getStorageSync('userInfo');
+    if (userinfo) 
+    {  
+      //判断用户状态B端还是C端
+      that.setData({
+        userType: userinfo.type
+      });
+    }
     var page = that.data.page;
-    Request.requestGet(Url.cIndex + '?page=' + page, function (res) {
-      if (res.status==1){
+    Request.requestGet(Url.Index + '?page=' + page, function (res) {
+      if (res.status == 1) {
         var data = that.data.data;
         var arr = [];
-        res.data.data.forEach(function(v){
+        res.data.data.forEach(function (v) {
           var obj = {};
-          if (v.dynamic_to_user){
+          if (v.dynamic_to_user) {
             obj.faceimg = v.dynamic_to_user.faceimg;
             obj.nickname = v.dynamic_to_user.nickname;
-            if (v.dynamic_to_user.user_to_position){
+            if (v.dynamic_to_user.user_to_position) {
               obj.uposition = v.dynamic_to_user.user_to_position.name;
-            }else{
+            } else {
               obj.uposition = '';
             }
-          }else{
+          } else {
             obj.faceimg = '';
             obj.nickname = '';
             obj.uposition = '';
@@ -47,13 +54,12 @@ Page({
           obj.uuid = v.uuid;
           obj.content = v.content;
           obj.created_at = util.timeChangeover(v.created_at);
-          if (v.dynamic_to_statistics)
-          {
+          if (v.dynamic_to_statistics) {
             obj.thumbsupnum = v.dynamic_to_statistics.thumbsupnum;
             obj.commentnum = v.dynamic_to_statistics.commentnum;
-          }else {
-            obj.thumbsupnum=0,
-            obj.commentnum =0;
+          } else {
+            obj.thumbsupnum = 0,
+              obj.commentnum = 0;
           }
           obj.images = v.dynamic_to_images;
           obj.follo = v.dynamic_to_follo;
@@ -68,13 +74,15 @@ Page({
         that.setData({
           data: data.concat(arr)
         });
-        //不在加载分页
-        if (res.data.last_page <= page){
+        //不加载分页
+        if (res.data.last_page <= page) {
           that.setData({
-            isLoad:false
+            isLoad: false
           })
         }
-      }else{
+      } else 
+      {
+        //获取数据错误
         wx.showToast({
           title: res.messages,
           icon: 'loading',
@@ -94,7 +102,7 @@ Page({
       page: 1,
       commentData: {},
       isLoad: true,
-      commentV:''
+      commentV: ''
     });
     this.onLoad();
     wx.stopPullDownRefresh();
@@ -104,52 +112,54 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    if (this.data.isLoad){
+    if (this.data.isLoad) {
       var page = this.data.page;
       this.setData({
         page: parseInt(page) + 1
       });
     }
   },
-
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    
-  },
-
+  onShareAppMessage:function(){},
   /**
    * 显示点赞和评论按钮 
    */
   showimage: function (e) {
     var that = this;
-    if (that.data.isshow == e.currentTarget.dataset.id )
-    {
+    if (that.data.isshow == e.currentTarget.dataset.id) {
       that.setData({
         isshow: 'no'
       });
-    }else
-    {
+    } else {
       that.setData({
         isshow: e.currentTarget.dataset.id
       });
     }
-    
   },
   /**
+   * B端C端通用
    * 点击评论显示评论输入框 
    */
   showinput: function (e) {
     var that = this;
-    var dynamicid = parseInt(e.currentTarget.dataset.id);
-    var siteid = parseInt(e.currentTarget.dataset.sitetid);
+    //数据
+    var item = e.currentTarget.dataset.item;
+    //动态id
+    var dynamicid = parseInt(item.id);
+    //工地id
+    var siteid = parseInt(item.sitetid);
+    //当前index位置
     var index = parseInt(e.currentTarget.dataset.index);
-    var name = e.currentTarget.dataset.name;
-    var createuserid = parseInt(e.currentTarget.dataset.createuserid);
+    //工地名称
+    var name = item.title;
+    //工地创建者id
+    var createuserid = parseInt(item.createuserid);
     var replyuserid = 0;
     var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index, "name": name, "createuserid": createuserid };
-    if (!that.data.inputisshow) {
+    if (!that.data.inputisshow) 
+    {
       that.setData({
         inputisshow: true,
         isshow: 'no',
@@ -182,8 +192,7 @@ Page({
     });
     var index = commentData.index;
     Request.requestPost(Url.commentAdd, commentData, function (res) {
-      if (res.status == 1) 
-      {
+      if (res.status == 1) {
         wx.showToast({
           title: res.messages,
           icon: 'success'
@@ -192,35 +201,41 @@ Page({
         var data = that.data.data;
         var obj = { id: wx.getStorageSync('userInfo').id, nickname: wx.getStorageSync('userInfo').nickname };
         var folloData = res.data;
-            folloData.dynamic_comment_to_user = obj;
-            //判断有没有回复人
-            if (typeof commentData.replyuserid && commentData.replyuserid )
-            {
-              folloData.dynamic_comment_to_reply_user = commentData.replyuser;
-            }
-            data[index].follo.push(folloData);
-            that.setData({
-              data: data,
-              commentData:{},
-              commentV:''
-            })
+        folloData.dynamic_comment_to_user = obj;
+        //判断有没有回复人
+        if (typeof commentData.replyuserid && commentData.replyuserid) {
+          folloData.dynamic_comment_to_reply_user = commentData.replyuser;
+        }
+        data[index].follo.push(folloData);
+        that.setData({
+          data: data,
+          commentData: {},
+          commentV: ''
+        })
       }
     });
   },
   /**
-   * 点赞
+   * 点赞 B端C端公用
    */
-  fabulous: function (e){
-    var that= this;
-    var dynamicid = parseInt(e.currentTarget.dataset.id);
-    var sitetid = parseInt(e.currentTarget.dataset.sitetid);
+  fabulous: function (e) {
+    var that = this;
+    //数据
+    var item = e.currentTarget.dataset.item;
+    //动态id
+    var dynamicid = parseInt(item.id);
+    //工地id
+    var sitetid = parseInt(item.sitetid);
+    //当前index位置
     var index = parseInt(e.currentTarget.dataset.index);
-    var name = e.currentTarget.dataset.name;
-    var createuserid = parseInt(e.currentTarget.dataset.createuserid);
+    //工地名称
+    var name = item.title;
+    //工地创建者id
+    var createuserid = parseInt(item.createuserid);
     var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
-    Request.requestPost(Url.fabulous, obj,function (res) {
+    Request.requestPost(Url.fabulous, obj, function (res) {
       that.setData({ isshow: 'no' });
-      if ( res.status == 1 )
+      if (res.status == 1) 
       {
         wx.showToast({
           title: res.messages,
@@ -235,31 +250,46 @@ Page({
       }
     });
   },
-  //触摸开始时间
-  touchStartTime: 0,
-  // 触摸结束时间
-  touchEndTime: 0,
-  /// 按钮触摸开始触发的事件
+
+  /**
+   * 判断是点了还是长按了
+   */
+  touchStartTime: 0,//触摸开始时间
+  touchEndTime: 0,  // 触摸结束时间
+  /**
+   *  按钮触摸开始触发的事件
+   */
   mytouchstart: function (e) {
     this.touchStartTime = e.timeStamp
   },
-  // 按钮触摸结束触发的事件
+  /**
+   * 按钮触摸结束触发的事件
+   */
   mytouchend: function (e) {
     this.touchEndTime = e.timeStamp
   },
   /**
    * 删除和评论
-   */ 
+   */
   backtext: function (e) {
     var that = this;
+    //动态id
     var dynamicid = e.currentTarget.dataset.dynamicid;
+    //评论id
     var id = e.currentTarget.dataset.id;
+    //评论的index位置
     var index = e.currentTarget.dataset.index;
+    //父的index位置
     var pindex = e.currentTarget.dataset.pindex;
+    //评论的用户信息
     var replyuser = e.currentTarget.dataset.user;
+    //工地标题
     var name = e.currentTarget.dataset.name;
+    //判断点的时间
     var times = parseInt(that.touchEndTime) - parseInt(that.touchStartTime);
-    if (times < 350){
+    if (times < 350) 
+    {
+      //调用评论框
       that.setData({
         inputisshow: true
       });
@@ -268,7 +298,9 @@ Page({
       that.setData({
         commentData: commentData
       })
-    } else{
+    }else 
+    {
+      //删除
       var createuserid = e.currentTarget.dataset.createuserid;
       if (createuserid != wx.getStorageSync('userInfo').id) {
         return false;
@@ -281,15 +313,14 @@ Page({
             //用户点击确定
             var obj = { "dynamicid": dynamicid, "id": id };
             Request.requestDelete(Url.commentDestroy, obj, function (res) {
-              if (res.status == 1)
-              {
+              if (res.status == 1) {
                 wx.showToast({
                   title: res.messages,
                   icon: 'success'
                 });
                 //跟新数据
                 var data = that.data.data;
-                data[pindex].follo.splice(index,1)
+                data[pindex].follo.splice(index, 1)
                 that.setData({
                   data: data
                 })
@@ -300,7 +331,10 @@ Page({
       })
     }
   },
-  getCompanyInfo:function(){
+  /**
+   * 公司信息
+   */
+  getCompanyInfo: function () {
     var that = this;
     Request.requestGet(Url.companyInfo, function (res) {
       if (res.status == 1) {
@@ -309,5 +343,12 @@ Page({
         })
       }
     });
+  },
+  /**
+   * 删除动态
+   */
+  deleteDynamic:function()
+  {
+     
   }
 })

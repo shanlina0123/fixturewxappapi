@@ -1,5 +1,4 @@
-/**index.wxss**/
-
+/*C端首页*/
 .companyname {
     display: block;
     font-size: 36rpx;
@@ -9,7 +8,7 @@
 }
 
 .buttonwrap {
-    padding: 50rpx 0;
+    padding: 40rpx 0;
     background-color: #fff;
 }
 
@@ -33,12 +32,53 @@
 .centertitle {
     display: block;
     font-size: 32rpx;
-    padding: 20rpx 20rpx 0 20rpx;
+    padding: 20rpx;
 }
-.textcontent{
-  display: block;
+/*选择门店弹窗*/
+.changewrap{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 200;
 }
-
-.textitem{
-  padding: 6rpx 2rpx 6rpx 2rpx;
+.toptext{
+    display: block;
+    font-size: 32rpx;
+    text-align: center;
+    padding-top: 20px;
+    color: #fff;
+}
+.topsmall{
+    display: block;
+    font-size: 24rpx;
+    text-align: center;
+    color: #ddd;
+    padding: 10px 0;
+}
+.storelink{
+    display: block;
+    width: 90%;
+    margin: 10px 5%;
+    color: #fff;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+}
+/*B端首页*/
+.userlevel{
+    background-color: #fff;
+    text-align: center;
+}
+.levelBtn{
+    display: inline-block;
+    border: 1px solid #f0f0f0;
+    padding: 8rpx 40rpx;
+    border-radius: 10rpx;
+}
+.Bbuttonwrap .centerbtn{
+    width: 25%;
+    margin: 0;
 }

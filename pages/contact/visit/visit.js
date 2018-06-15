@@ -5,12 +5,14 @@ Page({
   data: {
     name:'',
     imgUrl: Url.imgUrl,
-    siteid:''
+    siteid:'',
+    storeid:''
   },
   onLoad: function (options) {
     this.setData({
       name: options.name,
-      siteid: options.siteid
+      siteid: options.siteid,
+      storeid: options.storeid,
     });
   },
 //提交表单
@@ -20,7 +22,7 @@ Page({
         var uphone = e.detail.value.uphone;
         var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
         var params = { 'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid': 1, 'sourceid': 1,
-          'phone': uphone, 'name': uname, 'content': '预约参观', "sname": that.data.name, "siteid": that.data.siteid }
+          'phone': uphone, 'name': uname, 'content': '预约参观', "sname": that.data.name, "siteid": that.data.siteid, "storeid": that.data.storeid }
         if (uphone == ''){
             wx.showToast({
                 title: '手机号不能为空',
