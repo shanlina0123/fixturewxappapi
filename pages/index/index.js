@@ -17,6 +17,7 @@ Page({
     imgUrl: Url.imgUrl,//图片地址
     companyData: {},//评论数据
     userType:0,//用户身份
+    userinfo:{},//用户信息
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,7 +29,8 @@ Page({
     {  
       //判断用户状态B端还是C端
       that.setData({
-        userType: userinfo.type
+        userType: userinfo.type,
+        userinfo: userinfo
       });
     }
     var page = that.data.page;
@@ -347,8 +349,25 @@ Page({
   /**
    * 删除动态
    */
-  deleteDynamic:function()
+  deleteDynamic:function(e)
   {
-     
+    var that = this;
+    var id = e.currentTarget.dataset.id
+    var pindex = e.currentTarget.dataset.pindex;
+    var obj = {id:id};
+    Request.requestDelete(Url.dynamicDestroy,obj,function (res) {
+      if (res.status == 1) 
+      {
+        wx.showToast({
+          title: res.messages,
+          icon: 'success'
+        });
+        var data = that.data.data;
+            data.splice(pindex, 1);
+            that.setData({
+              data: data
+            })
+      }
+    });
   }
 })

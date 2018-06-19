@@ -6,7 +6,7 @@
     </view>
     <view class='buttonwrap Bbuttonwrap'>
         <view class='samepadding'>
-            <navigator class='centerbtn' url="../Bproject/projectlist/projectlist" hover-class="none">
+            <navigator class='centerbtn' url="../bproject/projectlist/projectlist" hover-class="none">
                 <image src='../../images/topicon3.png' class='topicon'></image>
                 项目管理
             </navigator>
@@ -82,7 +82,8 @@
                 </view>
             </view>
         </view>
-        <view class='deleteitem' bindtap='deleteDynamic'>删除</view>
+        <view class='deleteitem' bindtap='deleteDynamic' data-id='{{item.id}}' data-pindex='{{idx}}'  wx:if="{{userinfo.isadmin==1}}" >删除</view>
+        <view class='deleteitem' bindtap='deleteDynamic' data-id='{{item.id}}' data-pindex='{{idx}}' wx:elif="{{userinfo.id==item.createuserid}}" >删除</view>
     </view>
     <!--回复框-->
     <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">

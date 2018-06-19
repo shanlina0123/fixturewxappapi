@@ -1,0 +1,198 @@
+/* pages/Bproject/projectlist.wxss */
+.searchwrap{
+    background-color: #fff;
+    padding: 20rpx;
+}
+.searchinner{
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #ddd;
+    border-radius: 10rpx;
+}
+.searchinput{
+    min-width: 85%;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: none;
+    padding: 0 10px;
+    border-radius: 10rpx;
+}
+.searchimg{
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 10rpx;
+}
+.tabbtnwrap{
+    background-color: #fff;
+}
+.tabbtn {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.tabbtn.on {
+    color: #1e9fff;
+    border-color: #1e9fff;
+}
+
+.noneproject {
+    padding: 50px 0;
+}
+
+.addrightbtn {
+    position: fixed;
+    right: 20rpx;
+    top: 70%;
+}
+
+.addbtnimg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.prolist {
+    margin-top: 20rpx;
+}
+
+.proimage {
+    width: 100px;
+    height: 100px;
+}
+
+.proright {
+    margin-left: 15rpx;
+}
+
+.proright view {
+    margin-top: 20rpx;
+}
+
+.probottom {
+    margin-top: 30rpx;
+}
+
+.updatebtn {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    color: #fff;
+    padding: 10rpx 0;
+    margin-left: 5%;
+    background-color: #1e9fff;
+}
+
+.updatebtn:first-child {
+    margin-left: 0;
+}
+
+.picon {
+    width: 50rpx;
+    height: 50rpx;
+}
+.prolist{
+    padding: 10px 20rpx;
+    background-color: #fff;
+}
+
+/*设置的弹窗设置*/
+
+.florsetwrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #3c3c3c;
+    width: 270px;
+    height: 270px;
+    margin: -135px 0 0 -135px;
+    border-radius: 20px;
+    color: #fff;
+    z-index: 200
+}
+
+.florimg {
+    width: 45px;
+    height: 45px;
+}
+.pulic{
+    position: absolute;
+    width: 57px;
+    top: 20px;
+    left: 50%;
+    text-align: center;
+    margin-left: -28px;
+}
+.pulic view{margin-top: 8px;}
+.wx-switch-input{width:52px !important;height:32px !important;}
+.wx-switch-input::before{width:50px !important;height: 30px !important;}
+.wx-switch-input::after{width: 30px !important;height: 30px !important;}
+.over{
+    position: absolute;
+    width: 45px;
+    left: 20px;
+    top: 50%;
+    text-align: center;
+    margin-top: -34px;
+}
+.delete{
+    position: absolute;
+    width: 45px;
+    bottom: 20px;
+    left: 50%;
+    text-align: center;
+    margin-left: -22px;
+}
+.update{
+    position: absolute;
+    width: 45px;
+    right: 20px;
+    top: 50%;
+    text-align: center;
+    margin-top: -34px;
+}
+.bottominner{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom:0;
+    background-color: #fff;
+    padding: 30rpx 0;
+}
+.title{
+    display: block;
+    text-align: center;
+    font-size: 30rpx;
+    padding: 15rpx 0;
+}
+.buttons{
+    margin-top: 10rpx;
+}
+.buttonwrap{
+    position: relative;
+    width: 25%;
+    text-align: center;
+}
+.publicimg{
+    display: block;
+    width: 40rpx;
+    height: 40rpx;
+    margin: 10rpx auto;
+}
+.sharebtn{
+    position: absolute;
+    top: 0;
+    left: 20rpx;
+    width: 150rpx;
+    height: 100rpx;
+    opacity: 0;
+}
+.xiaochengxu{
+    display: block;
+    width: 258rpx;
+    height: 258rpx;
+    margin: 0 auto
+}
+

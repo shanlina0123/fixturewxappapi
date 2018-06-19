@@ -1,0 +1,117 @@
+<!--pages/Bproject/projectlist.wxml-->
+<view class='wrap'>
+    <view class='searchwrap'>
+        <view class='searchinner clearfix'>
+            <input class='searchinput fl' type='text' placeholder='请输入关键字进行查询'></input>
+            <image class='searchimg fl' src="../../../images/search.png"></image>
+        </view>
+    </view>
+    <view class='tabbtnwrap'>
+        <view class='samepadding'>
+            <text class="tabbtn {{switchtype==0 ? 'on':''}}" data-isfinish="0" bindtap='shownow'>在建项目</text>
+            <text class="tabbtn {{switchtype==1 ? 'on':''}}" data-isfinish="1" bindtap='shownow'>已完工</text>
+        </view>
+    </view>
+    <view class='showcontent'>
+        <view class="content {{switchtype==0?'':'hide'}}">
+            <view class='prolist' wx:for="{{construction}}" wx:key="constructionIndex"  wx:for-item="constructionItem">
+                <navigator url='../projectdetail/projectdetail' class='protop clearfix'>
+                    <image src='{{imgUrl+constructionItem.explodedossurl}}' class='proimage fl'></image>
+                    <view class='proright fl'>
+                        <view>{{constructionItem.name}}
+                            <text class='prostate color8' wx:if="constructionItem.site_to_commpany_tag">{{constructionItem.site_to_commpany_tag.name}}</text>
+                        </view>
+                        <view>{{constructionItem.addr}}</view>
+                        <view>
+                            <text>浏览：{{constructionItem.linkednum?constructionItem.linkednum:0}}</text>
+                            <text>关注：{{constructionItem.follownum?constructionItem.follownum:0}}</text>
+                        </view>
+                    </view>
+                </navigator>
+                <view class='probottom'>
+                    <navigator url='proupdate' class='updatebtn'>更新</navigator>
+                    <view class='updatebtn'>分享</view>
+                    <view class='updatebtn' bindtap='showsetting'>设置</view>
+                </view>
+            </view>
+        </view>
+        <view class="content {{switchtype==1 ? '':'hide'}}">
+            <view class='prolist' wx:for="{{complete}}" wx:key="completeIndex"  wx:for-item="completeItem">
+                <navigator url='{{imgUrl+completeItem.explodedossurl}}' class='protop clearfix'>
+                    <image src='../../../images/state3.jpg' class='proimage fl'></image>
+                    <view class='proright fl'>
+                        <view>{{completeItem.name}}
+                           <text class='prostate color3' wx:if="completeItem.site_to_commpany_tag">{{completeItem.site_to_commpany_tag.name}}</text>
+                        </view>
+                        <view>{{completeItem.addr}}</view>
+                        <view>
+                            <text>浏览：{{completeItem.linkednum?completeItem.linkednum:0}}</text>
+                            <text>关注：{{completeItem.follownum?completeItem.follownum:0}}</text>
+                        </view>
+                    </view>
+                </navigator>
+                <view class='probottom'>
+                    <navigator url='../proupdate/proupdate' class='updatebtn'>更新</navigator>
+                    <view class='updatebtn'>分享</view>
+                    <view class='updatebtn' bindtap='showsetting'>设置</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <!--项目为空时显示-->
+    <!-- <navigator url='../newproject/newproject' class='noneproject bluecolor ctext' hover-class='none'>您还没有创建项目，点击开始创建>>></navigator> -->
+    <!--浮动在页面底部的推广按钮们-->
+    <view class='bottompublic'>
+        <view class='bottominner'>
+            <view class='title'>分享</view>
+            <view class='buttons clearfix'>
+                <view class='buttonwrap fl'>
+                    <image src="../../../images/public1.png" class='publicimg'></image>
+                    <text>微信好友</text>
+                    <button open-type='share' class='sharebtn'>分享</button>
+                </view>
+                <view class='buttonwrap fl' bindtap='showerweima'>
+                    <image src="../../../images/public2.png" class='publicimg'></image>
+                    <text>永久二维码</text>
+                </view>
+                <view class='buttonwrap fl'>
+                    <image src="../../../images/public3.png" class='publicimg'></image>
+                    <text>朋友圈</text>
+                </view>
+                <view class='buttonwrap fl'>
+                    <image src="../../../images/public4.png" class='publicimg'></image>
+                    <text>关注邀请</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!--右侧浮动的新增项目按钮-->
+<navigator url='../newproject/newproject' class='addrightbtn' hover-class='none'>
+    <image src="../../../images/proadd.jpg" class='addbtnimg'></image>
+</navigator>
+
+<!--浮动在页面中间的设置-->
+<view class="florsetwrap {{setshow ? '':'hide'}}">
+    <view class='pulic'>
+        <switch checked bindchange="switch1Change" class='publicswitch' />
+        <view>公开</view>
+    </view>
+    <!--已完工时完工和完善按钮变成disable或者点击无效-->
+    <view class='over' bindtap='overpro'>
+        <image src="../../../images/h3.png" class='florimg'></image>
+        <view>完工</view>
+    </view>
+    <view class='delete' bindtap='deletepro'>
+        <image src="../../../images/h1.png" class='florimg'></image>
+        <view>删除</view>
+    </view>
+    <navigator url='../proprofect/proprofect' class='update'  bindtap='closepop'>
+        <image src="../../../images/h2.png" class='florimg'>></image>
+        <view>完善</view>
+    </navigator>
+</view>
+
