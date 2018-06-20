@@ -9,6 +9,8 @@ var config = {
    */
   //图片地址
   imgUrl: `http://z.com/uploads/`,
+  //临时图片地址
+  tempUrl: `http://z.com/temp/`,
   //用code换取openId
   openIdUrl: `${host}/user/openid`,
   //用户登陆
@@ -19,6 +21,10 @@ var config = {
   Index: `${host}/client/dynamic-list`,
   //动态删除
   dynamicDestroy: `${host}/client/dynamic-destroy`,
+  //图片上传
+  imgUpload:`${host}/img/upload`,
+  //删除临时图片
+  imgDel: `${host}/img/del`,
   /**
    * C端
    */
@@ -66,5 +72,9 @@ var config = {
    */
   //工地列表
   siteList: `${host}/site/site-list`,
+  //更新进度
+  siteRenew: `${host}/site/renew`,
+  //更新进度信息
+  siteRenewInfo: `${host}/site/renew-info`,
 };
 module.exports = config

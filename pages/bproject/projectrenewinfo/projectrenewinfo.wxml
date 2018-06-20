@@ -1,0 +1,7 @@
+<view class='samepadding'>
+    <view class='modelwrap'>
+        <block wx:for="{{tag}}" wx:key="index">
+          <view class='modelitem' data-item="{{item}}" bindtap='setTag'>{{item.name}}</view>
+        </block>
+    </view>
+</view>

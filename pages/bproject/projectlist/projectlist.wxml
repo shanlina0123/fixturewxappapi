@@ -29,11 +29,13 @@
                     </view>
                 </navigator>
                 <view class='probottom'>
-                    <navigator url='proupdate' class='updatebtn'>更新</navigator>
+                    <navigator url='/pages/bproject/projectrenew/projectrenew?uuid={{constructionItem.uuid}}' class='updatebtn'>更新</navigator>
                     <view class='updatebtn'>分享</view>
                     <view class='updatebtn' bindtap='showsetting'>设置</view>
                 </view>
             </view>
+            <!--项目为空时显示-->
+            <view wx:if="{{lengthnone[0]}}" class='nonedata'>{{msg[0]}}</view>
         </view>
         <view class="content {{switchtype==1 ? '':'hide'}}">
             <view class='prolist' wx:for="{{complete}}" wx:key="completeIndex"  wx:for-item="completeItem">
@@ -56,12 +58,12 @@
                     <view class='updatebtn' bindtap='showsetting'>设置</view>
                 </view>
             </view>
+             <!--项目为空时显示-->
+             <view wx:if="{{lengthnone[1]}}" class='nonedata'>{{msg[1]}}</view>
         </view>
     </view>
 
 
-    <!--项目为空时显示-->
-    <!-- <navigator url='../newproject/newproject' class='noneproject bluecolor ctext' hover-class='none'>您还没有创建项目，点击开始创建>>></navigator> -->
     <!--浮动在页面底部的推广按钮们-->
     <view class='bottompublic'>
         <view class='bottominner'>

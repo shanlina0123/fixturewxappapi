@@ -13,6 +13,7 @@ Page({
         lengthnone:[false,false],//显示加载完了数据
         msg: ['暂无数据','暂无数据'],//显示加载完了数据提示语
         isLoad:[true,true],//分页加载
+        isRes: [false, false],//请求结果
         imgUrl: Url.imgUrl,
         setshow: false,
         modalFlag: true,
@@ -74,7 +75,10 @@ Page({
         this.setData({
           switchtype: switchtype,
         });
-        this.getSiteList();
+        if (this.data.isRes[switchtype] == false)
+        {
+          this.getSiteList();
+        }
       }
       
     },
@@ -150,14 +154,55 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+      var switchtype = this.data.switchtype;
+      var page = this.data.page;
+          page[switchtype] = 1;
+      var lengthnone = this.data.lengthnone;
+          lengthnone[switchtype] = false; 
+      var msg = this.data.msg;
+          msg[switchtype] ='暂无数据'
+      var isLoad = this.data.isLoad;   
+          isLoad[switchtype] = true;
+      var isRes = this.data.isRes; 
+          isRes[switchtype] = false;
+          //重新设计
+          if (switchtype==1)
+          {
+            var complete = [];
+            var construction = this.data.construction;
+          }else
+          {
+            var complete = this.data.complete;
+            var construction = [];
+          }
+          this.setData({
+            complete: complete,//完工工地
+            construction: construction,
+            page: page,//分页
+            lengthnone: lengthnone,//显示加载完了数据
+            msg: msg,//显示加载完了数据提示语
+            isLoad: isLoad,//分页加载
+            isRes: isRes,//请求结果
+          });
+          this.getSiteList();
+          wx.stopPullDownRefresh();
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+      var switchtype = this.data.switchtype;
+      var isLoad = this.data.isLoad[switchtype];
+      if ( isLoad == true) 
+      {
+        var page = this.data.page;
+            page[switchtype] = page[switchtype]+1;
+        this.setData({
+          page: page
+        })
+        this.getSiteList();
+      }
     },
     /**
      * 工地列表
@@ -174,18 +219,27 @@ Page({
           {
             var lengthnone = that.data.lengthnone;
                 lengthnone[switchtype] = true;
-                that.setData({ lengthnone: lengthnone});
+            var isRes = that.data.isRes
+                isRes[switchtype] = true;
+                that.setData({ 
+                  lengthnone: lengthnone,
+                  isRes: isRes
+                  });
           }else
           {
+            var isRes = that.data.isRes
+                isRes[switchtype] = true;
             if (switchtype == 1) {
               var complete = that.data.complete;
               that.setData({
                 complete: complete.concat(res.dat.data),//完工工地
+                isRes: isRes
               });
             } else {
               var construction = that.data.construction;
               that.setData({
                 construction: construction.concat(res.data.data),//在建工地
+                isRes: isRes
               });
             }
           }
