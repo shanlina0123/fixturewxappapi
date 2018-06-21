@@ -1,5 +1,6 @@
 {
   "pages":[
+    
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -22,7 +23,10 @@
 
     "pages/bproject/projectlist/projectlist",
     "pages/bproject/projectrenew/projectrenew",
-    "pages/bproject/projectrenewinfo/projectrenewinfo"
+    "pages/bproject/projectrenewinfo/projectrenewinfo",
+    "pages/bproject/projectadd/projectadd",
+    "pages/bproject/projectmap/projectmap",
+    "pages/bproject/projectstep/projectstep"
     
   ],
   "window":{

@@ -1,0 +1,54 @@
+/* pages/Bproject/newproject/newproject.wxss */
+
+.itemname {
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-right: 10rpx;
+}
+
+.forminput {
+    min-width: 76%;
+    display: inline-block;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.propicker {
+    display: block
+}
+
+.pickerselect {
+    display: block;
+    width: 76%;
+    height: 80rpx;
+    line-height: 80rpx;
+    border: 1px solid #e2e2e2;
+    padding: 0 10px;
+    border-radius: 10rpx;
+}
+
+.wx-switch-input {
+    width: 45px !important;
+    height: 25px !important;
+    margin-top: 15rpx
+}
+
+.wx-switch-input::before {
+    width: 43px !important;
+    height: 23px !important;
+}
+
+.wx-switch-input::after {
+    width: 23px !important;
+    height: 23px !important;
+}
+
+.submitbtn {
+    display: block;
+    width: 60%;
+    margin: 50px auto 0 auto;
+    font-size: 28rpx;
+    background-color: #1e9fff;
+    color: #fff;
+}

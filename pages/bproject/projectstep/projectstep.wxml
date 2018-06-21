@@ -1,0 +1,13 @@
+<!--pages/Bproject/prostep/prostep.wxml-->
+<view class='samepadding'>
+    <view class='topwrap clearfix'>
+        <text class='fl'>{{template.name}}</text>
+        <navigator url='../promodel/promodel' class='toplinkbtn fr' hover-class='none'>
+            <image class='linkimg' src='../../../images/more.png'></image>
+            <text>更多阶段模板</text>
+        </navigator>
+    </view>
+    <view class='modelwrap'>
+        <view wx:for="{{template.stage_template_to_template_tag}}" wx:key="index" class='modelitem' data-item="{{item}}" bindtap='setTemplate'>{{item.name}}</view>
+    </view>
+</view>

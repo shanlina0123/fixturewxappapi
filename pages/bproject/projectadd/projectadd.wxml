@@ -1,0 +1,32 @@
+<!--新建工地-->
+<view class='samepadding'>
+    <form bindsubmit='submitform'>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>选择门店</text>
+            <picker class='pickerselect fl' bindchange="bindChange" value='index' range='{{range}}'>
+                <view>{{range[index]}}</view>
+            </picker>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>项目地址</text>
+            <navigator url='../projectmap/projectmap' class='pickerselect fl' hover-class='none'>{{address?address.address:'请选择'}}</navigator>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>项目名称</text>
+            <input class='forminput fl' type='text' name="name" placeholder='请输入项目名称'></input>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>门牌号码</text>
+            <input class='forminput fl' type='text'  name="doornumber" placeholder='请输入门牌号，例如8号楼808室'></input>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>选择阶段</text>
+            <navigator url='../projectstep/projectstep' class='pickerselect fl' hover-class='none'>{{template?template.name:'请选择'}}</navigator>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname'>是否公开</text>
+            <switch checked class='formswitch fr' name="isopen" />
+        </view>
+        <button class='submitbtn' form-type='submit'>提交</button>
+    </form>
+</view>

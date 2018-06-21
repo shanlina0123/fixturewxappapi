@@ -92,7 +92,7 @@
 </view>
 
 <!--右侧浮动的新增项目按钮-->
-<navigator url='../newproject/newproject' class='addrightbtn' hover-class='none'>
+<navigator url='../projectadd/projectadd' class='addrightbtn' hover-class='none'>
     <image src="../../../images/proadd.jpg" class='addbtnimg'></image>
 </navigator>
 

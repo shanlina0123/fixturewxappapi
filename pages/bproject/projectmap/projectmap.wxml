@@ -1,0 +1,14 @@
+<!--pages/Bproject/promap/promap.wxml-->
+<view class='samepadding' wx:if="{{userLocation == false}}">
+    <input class='forminput' type='text' placeholder='搜索地点'></input>
+    <map id='promap' class='promap' longitude="{{longitude}}" latitude="{{latitude}}" show-location scale="15"></map>
+    <view class='points'>
+    <block wx:for="{{address}}" wx:key="index" >
+        <view class='pointitem' data-item="{{item}}" bindtap='setAddress'>
+            <view class='pointname'>{{item.title}}</view>
+            <view class='pointaddr'>{{item.address}}</view>
+        </view>
+    </block>    
+    </view>
+</view>
+<button class='formbutton' wx:if="{{userLocation}}" open-type="openSetting" >打开授权设置页</button>

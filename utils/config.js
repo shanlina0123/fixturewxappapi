@@ -25,6 +25,8 @@ var config = {
   imgUpload:`${host}/img/upload`,
   //删除临时图片
   imgDel: `${host}/img/del`,
+  //地图周边
+  mapAddress: `${host}/map/address`,
   /**
    * C端
    */
@@ -76,5 +78,12 @@ var config = {
   siteRenew: `${host}/site/renew`,
   //更新进度信息
   siteRenewInfo: `${host}/site/renew-info`,
+  //新建工地
+  siteStore:`${host}/site/store`,
+  //门店列表
+  storeList:`${host}/store/store-list`,
+  //新建工地默认模板
+  defaultTemplate:`${host}/template/default-template`,
+  
 };
 module.exports = config
