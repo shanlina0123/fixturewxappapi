@@ -1,0 +1,16 @@
+<view class='wrap'>
+    <view class='modelwrap'>
+        <radio-group class='rodiogroup'>
+            <view class='modelitem' wx:for="{{template}}" wx:key="index">
+                <radio class='radio' data-index='{{index}}' bindtap="radioChange"></radio>
+                <text class='modelname'>{{item.name}}</text>
+                <text class='defualt' wx:if="{{item.isdefault}}">默认</text>
+                <text class='setdefault fr' wx:if="{{!item.isdefault}}" data-id="{{item.id}}" bindtap='setTempate'>设为默认</text>
+                <view class='itemout clearfix'>
+                    <view wx:for="{{item.stage_template_to_template_tag}}" wx:key="tagIndex" wx:for-item="tag">{{tag.name}}</view>
+                </view>
+            </view>
+        </radio-group>
+    </view>
+    <view class='webnotice'>更多模板前往PC端创建</view>
+</view>

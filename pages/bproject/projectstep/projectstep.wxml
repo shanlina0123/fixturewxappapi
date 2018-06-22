@@ -2,7 +2,7 @@
 <view class='samepadding'>
     <view class='topwrap clearfix'>
         <text class='fl'>{{template.name}}</text>
-        <navigator url='../promodel/promodel' class='toplinkbtn fr' hover-class='none'>
+        <navigator url='../projecttemplate/projecttemplate' class='toplinkbtn fr' hover-class='none'>
             <image class='linkimg' src='../../../images/more.png'></image>
             <text>更多阶段模板</text>
         </navigator>

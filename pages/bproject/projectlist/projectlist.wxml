@@ -29,9 +29,15 @@
                     </view>
                 </navigator>
                 <view class='probottom'>
-                    <navigator url='/pages/bproject/projectrenew/projectrenew?uuid={{constructionItem.uuid}}' class='updatebtn'>更新</navigator>
-                    <view class='updatebtn'>分享</view>
-                    <view class='updatebtn' bindtap='showsetting'>设置</view>
+                    <navigator url='/pages/bproject/projectrenew/projectrenew?uuid={{constructionItem.uuid}}' class='updatebtn' bindtap='upSite'>更新</navigator>
+                    <view class='updatebtn' bindtap='modalFlag'>分享</view>
+                    <view class='updatebtn' 
+                          bindtap='showsetting' 
+                          data-uuid="{{constructionItem.uuid}}" 
+                          data-id="{{constructionItem.id}}" 
+                          data-index="{{index}}" 
+                          data-isopen="{{constructionItem.isopen}}"
+                    >设置</view>
                 </view>
             </view>
             <!--项目为空时显示-->
@@ -39,8 +45,8 @@
         </view>
         <view class="content {{switchtype==1 ? '':'hide'}}">
             <view class='prolist' wx:for="{{complete}}" wx:key="completeIndex"  wx:for-item="completeItem">
-                <navigator url='{{imgUrl+completeItem.explodedossurl}}' class='protop clearfix'>
-                    <image src='../../../images/state3.jpg' class='proimage fl'></image>
+                <navigator url='../projectdetail/projectdetail' class='protop clearfix'>
+                    <image src='{{imgUrl+completeItem.explodedossurl}}' class='proimage fl'></image>
                     <view class='proright fl'>
                         <view>{{completeItem.name}}
                            <text class='prostate color3' wx:if="completeItem.site_to_commpany_tag">{{completeItem.site_to_commpany_tag.name}}</text>
@@ -53,9 +59,7 @@
                     </view>
                 </navigator>
                 <view class='probottom'>
-                    <navigator url='../proupdate/proupdate' class='updatebtn'>更新</navigator>
-                    <view class='updatebtn'>分享</view>
-                    <view class='updatebtn' bindtap='showsetting'>设置</view>
+                    <view class='updatebtn' bindtap='delcompleteItem'data-uuid="{{completeItem.uuid}}" data-index="{{index}}" >删除</view>
                 </view>
             </view>
              <!--项目为空时显示-->
@@ -65,7 +69,7 @@
 
 
     <!--浮动在页面底部的推广按钮们-->
-    <view class='bottompublic'>
+    <view class='bottompublic' wx:if="{{modalFlag}}">
         <view class='bottominner'>
             <view class='title'>分享</view>
             <view class='buttons clearfix'>
@@ -99,7 +103,7 @@
 <!--浮动在页面中间的设置-->
 <view class="florsetwrap {{setshow ? '':'hide'}}">
     <view class='pulic'>
-        <switch checked bindchange="switch1Change" class='publicswitch' />
+        <switch checked="{{siteData.isopen==1?true:false}}" bindchange="switch1Change" class='publicswitch' />
         <view>公开</view>
     </view>
     <!--已完工时完工和完善按钮变成disable或者点击无效-->
@@ -111,7 +115,7 @@
         <image src="../../../images/h1.png" class='florimg'></image>
         <view>删除</view>
     </view>
-    <navigator url='../proprofect/proprofect' class='update'  bindtap='closepop'>
+    <navigator url='../projectupdate/projectupdate?id={{siteData.id}}' class='update' bindtap='closepop'>
         <image src="../../../images/h2.png" class='florimg'>></image>
         <view>完善</view>
     </navigator>

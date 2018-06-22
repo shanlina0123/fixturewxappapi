@@ -18,5 +18,6 @@
     font-size: 32rpx;
     color: #fff;
     background-color: #5FB878;
-    border-color: #5fb878
+    border-color: #5fb878;
+    padding:15rpx 0;
 }

@@ -9,7 +9,8 @@ Page({
     userLocation:false,
     longitude:0,
     latitude:0,
-    address:[]
+    address:[],
+    map:true
   },
 
   /**
@@ -64,7 +65,7 @@ Page({
   getMapAddress: function (latitude, longitude ){
     var that = this;
     Request.requestPost(Url.mapAddress, { "latitude": latitude, "longitude": longitude}, function (res) {
-      console.log(res);
+      //console.log(res);
       if (res.status == 1) {
         that.setData({
           address: res.data
@@ -89,5 +90,31 @@ Page({
         wx.navigateBack({
           delta: 1
         })
+  }, 
+  /**
+   * 搜索地址
+   */
+  seachAddress: function (e)
+  {
+    var that = this;
+    var k = e.detail.value;
+    if (k)
+    {
+      Request.requestPost(Url.mapSeachAddress, { "keyword": k}, function (res) {
+        console.log(res);
+        if (res.status == 1) {
+          that.setData({
+            address: res.data
+          });
+        }
+      });
+    }
+  },
+  bindfocus:function()
+  {
+    this.setData({
+      map:false,
+      address:[]
+    });
   }
 })

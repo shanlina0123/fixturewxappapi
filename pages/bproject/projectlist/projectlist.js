@@ -15,54 +15,199 @@ Page({
         isLoad:[true,true],//分页加载
         isRes: [false, false],//请求结果
         imgUrl: Url.imgUrl,
-        setshow: false,
-        modalFlag: true,
-        sharebgimg: ''
+        setshow: false,//设置弹窗
+        modalFlag: false,//分享
+        siteData:''
     },
-    //显示设置弹窗
-    showsetting: function () {
+    /**
+     * 显示设置弹窗
+     */
+    showsetting: function (e) {
+        var uuid = e.currentTarget.dataset.uuid;
+        var id = e.currentTarget.dataset.id;
+        var index = e.currentTarget.dataset.index;
+        var isopen = e.currentTarget.dataset.isopen;
         this.setData({
-            setshow: !this.data.setshow
+          setshow: !this.data.setshow,
+          modalFlag:false,
+          siteData: { "uuid": uuid, "id": id, "index": index, "isopen": isopen}
         })
     },
-    //隐藏弹窗
+    /**
+     * 更新按钮
+     */
+    upSite:function(){
+      this.setData({
+        modalFlag: false,
+        setshow:false
+      })
+    },
+    /**
+     * 分享按钮
+     */
+    modalFlag:function(){
+      this.setData({
+        modalFlag: !this.data.modalFlag,
+        setshow:false
+      })
+    },
+    /**
+     * 完善工地
+     */
     closepop: function () {
         this.setData({
             setshow: false
         })
     },
-    //弹窗删除
+    /**
+     * 删除工地
+     */
     deletepro: function () {
-        this.setData({
-            setshow: false
-        })
+        this.setData({ setshow: false })
+        var that = this;
+        var siteData = that.data.siteData;
         wx.showModal({
-            title: '确认删除吗？',
+            title: '提示',
+            content: '确认删除后数据将无法恢复',
+            success: function (res) {
+              if (res.confirm) 
+              {
+                var obj = { uuid: siteData.uuid};
+                Request.requestDelete(Url.siteDestroy,obj,function (res) {
+                    if( res.status == 1 )
+                    {
+                      wx.showToast({
+                        title: res.messages,
+                      });
+                      //更新数据
+                      if (that.data.switchtype==1)
+                      {
+                        //完工数据
+                        var complete = that.data.complete;
+                            complete.splice(siteData.index, 1);
+                            that.setData({
+                              complete: complete
+                            });
+                      }else
+                      {
+                        //在建工地
+                        var construction = that.data.construction;
+                            construction.splice(siteData.index, 1);
+                            that.setData({
+                              construction: construction
+                            });
+                      }
+                    }
+                });
+              }
+            }
         })
     },
-    //是否公开项目
-    switch1Change: function (e) {
-        if (e.detail.value) {
-            wx.showToast({
-                title: '项目已公开',
-            })
-        } else {
-            wx.showToast({
-                title: '项目公开已关闭',
-            })
+    /**
+     * 删除完工工地
+     */
+    delcompleteItem:function(e)
+    {
+      var that = this;
+      var uuid = e.currentTarget.dataset.uuid;
+      var index = e.currentTarget.dataset.index;
+      wx.showModal({
+        title: '提示',
+        content: '确认删除后数据将无法恢复',
+        success: function (res) {
+          if (res.confirm) {
+            var obj = { uuid: uuid };
+            Request.requestDelete(Url.siteDestroy, obj, function (res) {
+              if (res.status == 1) {
+                wx.showToast({
+                  title: res.messages,
+                });
+                //完工数据
+                var complete = that.data.complete;
+                    complete.splice(index, 1);
+                    that.setData({
+                      complete: complete
+                    });
+              }
+            });
+          }
         }
-        this.setData({
-            setshow: false
-        })
+      });
     },
-    //项目完工
+    /**
+     * 是否公开项目
+     */
+    switch1Change: function (e)
+    {
+      this.setData({ setshow: false });
+      var that = this;
+      var siteData = that.data.siteData;
+      var isOpen = e.detail.value;
+      if (isOpen == true )
+      {
+          isOpen = 1;
+      }else
+      {
+          isOpen = 0;
+      }
+      var obj = { id: siteData.id, "isopen": isOpen };
+      Request.requestPut(Url.siteIsOpen,obj, function (res) {
+        if (res.status == 1) {
+          wx.showToast({
+            title: res.messages,
+          });
+          //更新数据
+          if (that.data.switchtype == 1) {
+            //完工数据
+            var complete = that.data.complete;
+                complete[siteData.index].isopen = isOpen;
+                that.setData({
+                  complete: complete
+                });
+          } else {
+            //在建工地
+            var construction = that.data.construction;
+                construction[siteData.index].isopen = isOpen;
+                that.setData({
+                  construction: construction
+                });
+          }
+
+        }
+      });
+    },
+    /**
+     * 设置完工
+     */
     overpro: function () {
-        wx.showToast({
-            title: '设置完工成功',
-        })
-        this.setData({
-            setshow: false
-        })
+      this.setData({ setshow: false })
+      var that = this;
+      var siteData = that.data.siteData;
+      var obj = { id: siteData.id };
+      Request.requestPut(Url.siteIsFinish, obj, function (res) {
+        if (res.status == 1) {
+          wx.showToast({
+            title: res.messages,
+          });
+          //更新数据
+          if (that.data.switchtype == 1) {
+            //完工数据
+            var complete = that.data.complete;
+                complete.splice(siteData.index, 1);
+                that.setData({
+                  complete: complete
+                });
+          } else 
+          {
+            //在建工地
+            var construction = that.data.construction;
+                construction.splice(siteData.index, 1);
+                that.setData({
+                  construction: construction
+                });
+          }
+        }
+      });
     },
     /**
      * 切换列表状态
@@ -121,35 +266,6 @@ Page({
     {
       this.getSiteList();
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
@@ -232,7 +348,7 @@ Page({
             if (switchtype == 1) {
               var complete = that.data.complete;
               that.setData({
-                complete: complete.concat(res.dat.data),//完工工地
+                complete: complete.concat(res.data.data),//完工工地
                 isRes: isRes
               });
             } else {

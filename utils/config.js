@@ -27,6 +27,8 @@ var config = {
   imgDel: `${host}/img/del`,
   //地图周边
   mapAddress: `${host}/map/address`,
+  //搜索地址
+  mapSeachAddress: `${host}/map/seach-address`,
   /**
    * C端
    */
@@ -84,6 +86,17 @@ var config = {
   storeList:`${host}/store/store-list`,
   //新建工地默认模板
   defaultTemplate:`${host}/template/default-template`,
-  
+  //模板列表
+  templateList: `${host}/template/template-list`,
+  //设置默认
+  templateSet:`${host}/template/template-set`,
+  //删除工地
+  siteDestroy: `${host}/site/site-destroy`,
+  //工地公开
+  siteIsOpen:`${host}/site/is-open`,
+  //工地完工
+  siteIsFinish:`${host}/site/is-finish`,
+  //工地编辑数据
+  siteEdit: `${host}/site/edit`,
 };
 module.exports = config

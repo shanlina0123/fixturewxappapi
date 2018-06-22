@@ -1,6 +1,6 @@
 {
   "pages":[
-    
+    "pages/bproject/projectlist/projectlist",
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -21,12 +21,14 @@
     "pages/activity/pricetip/pricetip",
     "pages/activity/getmessage/getmessage",
 
-    "pages/bproject/projectlist/projectlist",
+   
     "pages/bproject/projectrenew/projectrenew",
     "pages/bproject/projectrenewinfo/projectrenewinfo",
     "pages/bproject/projectadd/projectadd",
     "pages/bproject/projectmap/projectmap",
-    "pages/bproject/projectstep/projectstep"
+    "pages/bproject/projectstep/projectstep",
+    "pages/bproject/projecttemplate/projecttemplate",
+    "pages/bproject/projectupdate/projectupdate"
     
   ],
   "window":{

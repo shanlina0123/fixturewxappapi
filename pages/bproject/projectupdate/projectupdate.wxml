@@ -1,0 +1,71 @@
+<!--pages/Bproject/proprofect/proprofect.wxml-->
+<view class='samepadding'>
+    <form bindsubmit='submitform'>
+        <view class='formitem'>
+            <image src="../../../images/upload.png" class='uploadimg' bindtap='uploadimg'></image>
+            <view class='uploadnotice'>项目封面：建议上传效果图</view>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>门店地址</text>
+            <picker class='pickerselect fl'>{{info.store}}</picker>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>项目名称</text>
+            <input class='forminput fl' type='text' placeholder='请输入项目名称' value='{{info.name}}'></input>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>当前阶段</text>
+            <navigator url='../prostep/prostep' class='pickerselect fl' hover-class='none'>请选择阶段模板</navigator>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>项目地址</text>
+            <navigator url='../promap/promap' class='pickerselect fl' hover-class='none'>{{info.addr}}</navigator>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>门牌号码</text>
+            <input class='forminput fl' type='text' placeholder='请输入门牌号，例如8号楼808室' value='{{info.doornumber}}'></input>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>项目户型</text>
+            <picker class='pickerselect fl' range="{{[1,2,3]}}">请选择户型</picker>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>房型</text>
+            <view class='roomwrap fl clearfix'>
+                <view class='inputwrap fl'>
+                    <input class='forminput roominput fl' type='number'></input>
+                    <text class='fl'>室</text>
+                </view>
+                <view class='inputwrap fl'>
+                    <input class='forminput roominput fl' type='number'></input>
+                    <text class='fl'>厅</text>
+                </view>
+                <view class='inputwrap fl'>
+                    <input class='forminput roominput fl' type='number'></input>
+                    <text class='fl'>厨</text>
+                </view>
+                <view class='inputwrap fl'>
+                    <input class='forminput roominput fl' type='number'></input>
+                    <text class='fl'>卫</text>
+                </view>
+            </view>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>面积(平)</text>
+            <input class='forminput fl' type='digit' placeholder='请输入项目面积' value="{{info.acreage}}"></input>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>装修风格</text>
+            <picker class='pickerselect fl'>请选择装修风格</picker>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>装修方式</text>
+            <picker class='pickerselect fl'>请选择装修方式</picker>
+        </view>
+        <view class='formitem clearfix'>
+            <text class='itemname fl'>预算(万)</text>
+            <input class='forminput fl' type='text' placeholder='请输入' value='{{info.budget}}'></input>
+        </view>
+        <button class='submitbtn' form-type='submit'>提交</button>
+    </form>
+</view>

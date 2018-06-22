@@ -21,7 +21,7 @@
         </view>
         <view class='formitem clearfix'>
             <text class='itemname fl'>选择阶段</text>
-            <navigator url='../projectstep/projectstep' class='pickerselect fl' hover-class='none'>{{template?template.name:'请选择'}}</navigator>
+            <navigator url="../projectstep/projectstep?id={{template?template.stagetemplateid:''}}" class='pickerselect fl' hover-class='none'>{{template?template.name:'请选择'}}</navigator>
         </view>
         <view class='formitem clearfix'>
             <text class='itemname'>是否公开</text>

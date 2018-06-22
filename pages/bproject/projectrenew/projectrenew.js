@@ -14,6 +14,7 @@ Page({
         tagInfo:{},
         imgUrl:[],//图片地址
         imgname:[],//图片名称
+        issave: false//是不是提交了
     },
     //跟踪输入的文字数字改变
     textareachange: function (e) {
@@ -133,6 +134,10 @@ Page({
     //提交表单
     submitform: function (e) {
       var that = this;
+      if (that.data.issave == true) 
+      {
+        return;
+      }
       var content = e.detail.value.content;
       var tagInfo = that.data.tagInfo;
       var params = { 'sitestagename': tagInfo.name, 'stagetagid': tagInfo.id, 'content': content, 'uuid': that.data.uuid, 'img': that.data.imgname.join(',')}
@@ -142,7 +147,10 @@ Page({
           title: '说点什么吧',
           icon: "none"
         })
+        that.setData({ issave: false });
       } else {
+        //防止点多次
+        that.setData({ issave: true });
         Request.requestPut(Url.siteRenew, params, function (res) {
           if (res.status == 1)
           {
@@ -159,6 +167,9 @@ Page({
                 }
               }
             });
+          }else
+          {
+            that.setData({ issave: false });
           }
         })
       }

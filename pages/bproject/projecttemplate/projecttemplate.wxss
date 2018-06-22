@@ -1,0 +1,40 @@
+/* pages/Bproject/promodel/promodel.wxss */
+.wrap{padding:0px;}
+.modelwrap{
+    padding: .1px;
+}
+.modelitem{
+    padding: 20rpx;
+    margin-top: 20rpx;
+    background-color: #fff;
+}
+.modelname{
+    font-size: 32rpx;
+}
+.defualt{
+    padding: 0 10rpx;
+    background-color: #1e9fff;
+    color: #fff;
+    margin-left: 15rpx;
+}
+.itemout{
+    margin-top: 15rpx;
+}
+.setdefault{
+    border: 1px solid #1e9fff;
+    color: #1e9fff;
+    padding: 5rpx 10rpx;
+    border-radius: 10rpx;
+}
+.itemout view{
+    float: left;
+    padding: 5rpx 10rpx;
+    background-color: #eee;
+    margin: 10rpx;
+    border-radius: 5rpx;
+}
+.webnotice{
+    padding: 30rpx 0;
+    text-align: center;
+    color: #d2d2d2
+}
