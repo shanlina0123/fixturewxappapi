@@ -18,16 +18,44 @@ Page({
       tag:[],//阶段数据为了和更新工地的时候用一个阶段页面
       address:'',//为了和添加工地公用一个地图
       roomshap:'',//房型数据
-      issave: false//是不是提交了
+      issave: false,//是不是提交了
+      img:'',
+      imgUrl: Url.imgUrl,//图片地址
     },
     //上传封面图
     uploadimg: function () {
-        wx.chooseImage({
-            count: 1, // 默认9
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) { }
-        })
+      var that = this;
+      wx.chooseImage({
+        count: 1,
+        sizeType: ['compressed'],
+        sourceType: ['album', 'camera'],
+        success: function (res) {
+          var tempFilePaths = res.tempFilePaths;
+          var i = 0; //第几个
+          var length = res.tempFilePaths.length; //总共个数
+          var successUp = 0; //成功个数
+          var failUp = 0; //失败个数
+          wx.uploadFile({
+            url: Url.imgUpload, //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            header: {
+              'content-type': 'multipart/form-data',
+              'Authorization': wx.getStorageSync('userInfo').Authorization
+            },
+            success: function (res) {
+              var data = res.data;
+              data = JSON.parse(data);
+              if (data.status == 1) 
+              {
+                that.setData({
+                  img:data.data
+                });
+              }
+            }
+          });
+        }
+      })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -79,7 +107,8 @@ Page({
             roomType: roomType,
             tagInfo: { "id": data.stageid, "name": data.tagName},
             tag:data.tag,
-            roomshap: data.roomshapnumber ? data.roomshapnumber.split(','):''
+            roomshap: data.roomshapnumber ? data.roomshapnumber.split(','):'',
+            img: data.explodedossurl ? { "src": that.data.imgUrl + data.explodedossurl, "name": '' } : { "src":'', "name": '' }
           });
         }
       }); 
@@ -128,8 +157,8 @@ Page({
       });
     },
     /**
- * 发布
- */
+     * 发布
+     */
     submitform: function (e) {
       var that = this;
       if (that.data.issave == true) {
@@ -174,7 +203,7 @@ Page({
           "roomstyleid": that.data.roomStyleInfo.id,
           "renovationmodeid": that.data.renovationModeInfo.id,
           "budget":e.detail.value.budget,
-          "photo": '',
+          "photo":that.data.img.name,
           "isopen": info.isopen
         };
         Request.requestPut(Url.siteUpdate, obj, function (res) {
