@@ -3,21 +3,21 @@
     <view class='detailcontent'>
         <view class='bannerwrap samepadding'>
             <image src="{{siteInfo.explodedossurl}}" class='bannerimg'></image>
-            <view class='viewnum'>浏览:{{siteInfo.linkednum}}</view>
+            <view class='viewnum' wx:if="{{siteInfo.linkednum}}">浏览:{{siteInfo.linkednum}}</view>
             <view class='bottom'>
                 <text class='addr'>{{siteInfo.addr}}</text>
                 <view class='bottonbtns'>
                     <text wx:if="{{siteInfo.site_to_renovation_mode.name}}">{{siteInfo.site_to_renovation_mode.name}}</text>
-                    <text wx:if="{{siteInfo.budget}}">{{siteInfo.budget}}万</text>
+                    <text wx:if="{{siteInfo.budget != 0}}">{{siteInfo.budget}}万</text>
                     <text wx:if="{{siteInfo.roomshap}}">{{siteInfo.roomshap}}</text>
-                    <text wx:if="{{siteInfo.acreage}}}">{{siteInfo.acreage}}m2</text>
+                    <text wx:if="{{siteInfo.acreage != 0.00 }}">{{siteInfo.acreage}}m</text>
                     <text wx:if="{{siteInfo.site_to_room_style.name}}">{{siteInfo.site_to_room_style.name}}</text>
                 </view>
             </view>
         </view>
         <view class='focuswrap clearfix'>
             <view class='clearfix'>
-                <text class='rightnum fl'>{{siteInfo.follownum}}人关注</text>
+                <text class='rightnum fl' wx:if="{{siteInfo.follownum}}">{{siteInfo.follownum}}人关注</text>
                 <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus fr">已关注</text>
                 <text wx:else class="focus on fr" bindtap="changeName" data-storeid='{{siteInfo.storeid}}' data-siteid='{{siteInfo.id}}' data-cityid='{{siteInfo.cityid}}'>关注</text>
             </view>

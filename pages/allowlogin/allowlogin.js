@@ -8,7 +8,7 @@ Page({
    */
   data: {
     url:'',
-    appid:'wx676c383c431ecc6e'//小程序appid
+    appid:''//小程序appid
   },
   onLoad: function (options) {
     this.getAppid();
@@ -26,7 +26,7 @@ Page({
     });
   },
   onGotUserInfo: function (e) {
-    console.log(e.detail.userInfo);
+    //console.log(e.detail.userInfo);
     var that = this;
     if (e.detail.userInfo != undefined)
     {  

@@ -1,16 +1,15 @@
 /**
  * 小程序配置文件
  */
-//var host = "fixture.yygsoft.com/api"
-var host = "http://z.com/api"
+var host = "https://fixture.yygsoft.com/api"
+//var host = "http://z.com/api"
 var config = {
   /**
    * 公用
    */
   //图片地址
-  imgUrl: `http://z.com/uploads/`,
-  //临时图片地址
-  tempUrl: `http://z.com/temp/`,
+  //imgUrl: `http://z.com/uploads/`,
+  imgUrl: `https://fixture.yygsoft.com/uploads/`,
   //用code换取openId
   openIdUrl: `${host}/user/openid`,
   //用户登陆
@@ -98,5 +97,8 @@ var config = {
   siteIsFinish:`${host}/site/is-finish`,
   //工地编辑数据
   siteEdit: `${host}/site/edit`,
+  //工地修改保存
+  siteUpdate: `${host}/site/update`,
+  
 };
 module.exports = config

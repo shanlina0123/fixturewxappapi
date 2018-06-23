@@ -27,7 +27,7 @@ Page({
     var that = this;
     this.setData({
       user:wx.getStorageSync('userInfo'),
-      //userType: wx.getStorageSync('userInfo').type
+      userType: wx.getStorageSync('userInfo').type
     });
     Request.requestGet(Url.companyInfo, function (res) {
       if (res.status == 1) {

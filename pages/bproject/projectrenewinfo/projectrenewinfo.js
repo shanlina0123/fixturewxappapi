@@ -15,7 +15,7 @@ Page({
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];  //上一个页面
     var info = prevPage.data //取上页data里的数据也可以修改
-    console.log(pages.length);
+    //console.log(info.tag);
     this.setData({ tag: info.tag});
   },
   /**
