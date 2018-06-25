@@ -22,7 +22,10 @@ Page({
     commentData: {},
     companyData:{},
     company:{},
-    isview:true
+    isview:true,//页面内容显示
+    userType: 0,//用户身份
+    handelshow:false,//编辑显示状态
+    deleteitem:{},//删除动态
   },
   /**关注项目按钮 */
   changeName:function(e){
@@ -103,7 +106,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options)
+  {
+    var that = this;
+    var userinfo = wx.getStorageSync('userInfo');
+    if (userinfo) {
+      //判断用户状态B端还是C端
+      that.setData({
+        userType: userinfo.type,
+      });
+    }
     if ( options.scene )
     {
       var scene = decodeURIComponent(options.scene);
@@ -118,52 +130,16 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
   
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
   },
   //详情
   getSiteInfo:function(id)
@@ -431,7 +407,11 @@ Page({
             })
       }
     });
-  }, getImg:function(e)
+  }, 
+  /**
+   * 图片预览
+   */
+  getImg:function(e)
   {
     var that = this;
     var img = e.currentTarget.dataset.src;
@@ -440,10 +420,53 @@ Page({
     urls.forEach(function (v) {
       arr.push(that.data.imgUrl+v.ossurl);
     });
-    //console.log(arr);
     wx.previewImage({
       current: img, // 当前显示图片的http链接
       urls: arr // 需要预览的图片http链接列表
     })
+  },
+  /**
+   * 编辑动态项目显示
+   */
+  handelmsg: function (e) {
+    var id = e.currentTarget.dataset.id
+    var pindex = e.currentTarget.dataset.pindex;
+    var dtype = e.currentTarget.dataset.dtype;
+    this.setData({
+      handelshow: !this.data.handelshow,
+      deleteitem: { "id": id, "index": pindex, "dtype": dtype}
+    })
+  },
+  /**
+   * 编辑动态项目显示取消
+   */
+  cancelmsg:function()
+  {
+    this.setData({
+      handelshow:false
+    })
+  },
+  /**
+   * 删除动态
+   */
+  deleteDynamic: function () {
+    var that = this;
+    var deleteitem = that.data.deleteitem;
+    var pindex = deleteitem.pindex;
+    var obj = { id: deleteitem.id };
+    Request.requestDelete(Url.dynamicDestroy, obj, function (res) {
+      if (res.status == 1) {
+        wx.showToast({
+          title: res.messages,
+          icon: 'success'
+        });
+        var data = that.data.data;
+        data.splice(pindex, 1);
+        that.setData({
+          data: data,
+          handelshow: false
+        })
+      }
+    });
   }
 })

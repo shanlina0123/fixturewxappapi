@@ -48,7 +48,7 @@
         </view>
         <view class='formitem clearfix'>
             <text class='itemname fl'>面积(平)</text>
-            <input class='forminput fl' type='digit' placeholder='请输入项目面积' name="acreage" value="{{info.acreage}}"></input>
+            <input class='forminput fl' type='digit' bindinput="inputOnlyOnePoint" placeholder='请输入项目面积' name="acreage" value="{{acreage}}"></input>
         </view>
         <view class='formitem clearfix'>
             <text class='itemname fl'>装修风格</text>
@@ -60,7 +60,7 @@
         </view>
         <view class='formitem clearfix'>
             <text class='itemname fl'>预算(万)</text>
-            <input class='forminput fl' type='text' placeholder='请输入' name="budget" value='{{info.budget}}'></input>
+            <input class='forminput fl' type='number' placeholder='请输入' name="budget" value='{{info.budget}}'></input>
         </view>
         <button class='submitbtn' form-type='submit'>提交</button>
     </form>

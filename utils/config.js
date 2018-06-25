@@ -99,6 +99,10 @@ var config = {
   siteEdit: `${host}/site/edit`,
   //工地修改保存
   siteUpdate: `${host}/site/update`,
+  //工地检索列表
+  searchSiteList: `${host}/site/search-site-list`,
+  //修改动态
+  dynamicUp: `${host}/client/dynamic-up`,
   
 };
 module.exports = config

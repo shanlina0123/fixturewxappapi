@@ -297,7 +297,13 @@ view {
 .textname {
     color: #1e9fff;
 }
-
+.deleteitem {
+    position: absolute;
+    right: 20rpx;
+    top: 25rpx;
+    color: #1e9fff;
+    z-index: 20;
+}
 .bitermul {
     position: relative;
 }

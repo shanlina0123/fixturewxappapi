@@ -2,8 +2,8 @@
 <view class='wrap'>
     <view class='searchwrap'>
         <view class='searchinner clearfix'>
-            <input class='searchinput fl' type='text' placeholder='请输入关键字进行查询'></input>
-            <image class='searchimg fl' src="../../../images/search.png"></image>
+            <input class='searchinput fl' type='text' placeholder='请输入关键字进行查询' bindinput="bindKeyInput" value='{{seachName}}'></input>
+            <image class='searchimg fl' src="../../../images/search.png" bindtap='seachSite'></image>
         </view>
     </view>
     <view class='tabbtnwrap'>

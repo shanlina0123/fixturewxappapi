@@ -1,0 +1,39 @@
+<!--pages/Bproject/wordsupdate/wordsupdate.wxml-->
+<view class='samepadding'>
+    <form bindsubmit='submitform'>
+        <view class='textareawrap'>
+            <textarea name='content' bindinput='textareachange' maxlength='{{maxlength}}' class='formtextarea' value='{{words.content}}'></textarea>
+            <view class='number'>{{nowlength}}/{{maxlength}}</view>
+        </view>
+        <view class='imgpart'>
+            <view class='uploadnotice'>最多上传9张图，小视频最大支持10S</view>
+            <view class='uploadwrap clearfix'>
+                <view class='uploaditem fl' bindtap='imgupload'>
+                    <image src="../../../images/newuser.png" class='uploadimg'></image>
+                    <text>普通照片</text>
+                </view>
+                <!-- <view class='uploaditem fl'>
+                    <image src="../../../images/newuser.png" class='uploadimg'></image>
+                    <text>VR全景</text>
+                </view>
+                <view class='uploaditem fl' bindtap='uploadvideo'>
+                    <image src="../../../images/newuser.png" class='uploadimg'></image>
+                    <text>小视频</text>
+                </view> -->
+            </view>
+            <view class='imageswrap clearfix'>
+                <view class='hadimgwrap fl' wx:for="{{words.dynamic_to_images}}" wx:if="{{item.type==0}}">
+                    <image src="{{imgUrl+item.ossurl}}" class='hadimage'></image>
+                    <image src="../../../images/close.png" class='closeimg'></image>
+                </view>
+                <block  wx:for="{{imgUrl}}" wx:key="index">
+                  <view class='hadimgwrap fl'>
+                      <image src="{{item}}" class='hadimage'></image>
+                      <image src="../../../images/close.png" class='closeimg' data-id="{{index}}" data-name="{{imgname[index]}}" bindtap='remImg'></image>
+                  </view>
+                </block>
+            </view>
+        </view>
+        <button class='submitbtn' form-type='submit'>更新</button>
+    </form>
+</view>

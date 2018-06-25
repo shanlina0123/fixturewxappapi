@@ -17,7 +17,9 @@ Page({
         imgUrl: Url.imgUrl,
         setshow: false,//设置弹窗
         modalFlag: false,//分享
-        siteData:''
+        siteData: '',//显示设置弹窗数据
+        seachName:'',
+        isserach:[false, false]//false代表正常加载 true为搜索
     },
     /**
      * 显示设置弹窗
@@ -281,6 +283,8 @@ Page({
           isLoad[switchtype] = true;
       var isRes = this.data.isRes; 
           isRes[switchtype] = false;
+      var isserach = this.data.isserach;
+          isserach[switchtype] = false;
           //重新设计
           if (switchtype==1)
           {
@@ -299,6 +303,8 @@ Page({
             msg: msg,//显示加载完了数据提示语
             isLoad: isLoad,//分页加载
             isRes: isRes,//请求结果
+            isserach: isserach,//检索数据
+            seachName: '',//检索的文字
           });
           this.getSiteList();
           wx.stopPullDownRefresh();
@@ -328,7 +334,15 @@ Page({
       var that = this;
       var page = that.data.page;
       var switchtype = that.data.switchtype;
-      Request.requestGet(Url.siteList + '?isfinish='+switchtype+'&page=' + page[switchtype], function (res) {
+      //工地列表地址
+      if (that.data.isserach[switchtype] == true )
+      {
+        var url = Url.searchSiteList + '?isfinish=' + switchtype + '&name=' + that.data.seachName+'&page=' + page[switchtype];
+      }else
+      {
+        var url = Url.siteList + '?isfinish=' + switchtype + '&page=' + page[switchtype];
+      }
+      Request.requestGet(url, function (res) {
         if (res.status == 1) 
         {
           if (res.data.total == 0) 
@@ -370,5 +384,52 @@ Page({
           }
         }
       }); 
-    }
+    },
+    /**
+     * 搜索列表
+     */
+    seachSite:function()
+    {
+      var switchtype = this.data.switchtype;
+      var page = this.data.page;
+          page[switchtype] = 1;
+      var lengthnone = this.data.lengthnone;
+          lengthnone[switchtype] = false;
+      var msg = this.data.msg;
+          msg[switchtype] = '暂无数据'
+      var isLoad = this.data.isLoad;
+          isLoad[switchtype] = true;
+      var isRes = this.data.isRes;
+          isRes[switchtype] = false;
+      var isserach = this.data.isserach;
+          isserach[switchtype] = true;
+      //重新设计
+      if (switchtype == 1) 
+      {
+        var complete = [];
+        var construction = this.data.construction;
+      } else {
+        var complete = this.data.complete;
+        var construction = [];
+      }
+      this.setData({
+        complete: complete,//完工工地
+        construction: construction,
+        page: page,//分页
+        lengthnone: lengthnone,//显示加载完了数据
+        msg: msg,//显示加载完了数据提示语
+        isLoad: isLoad,//分页加载
+        isRes: isRes,//请求结果
+        isserach: isserach
+      });
+      this.getSiteList();
+    },
+    /**
+     * 搜索名称
+     */
+    bindKeyInput: function (e) {
+      this.setData({
+        seachName: e.detail.value
+      })
+    },
 })

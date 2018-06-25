@@ -21,6 +21,7 @@ Page({
       issave: false,//是不是提交了
       img:'',
       imgUrl: Url.imgUrl,//图片地址
+      acreage:''
     },
     //上传封面图
     uploadimg: function () {
@@ -61,7 +62,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-      var id = 1;//options.id;
+      var id = options.id;
       var obj = {id:id};
       var that = this;
       Request.requestPost(Url.siteEdit,obj, function (res) {
@@ -108,7 +109,8 @@ Page({
             tagInfo: { "id": data.stageid, "name": data.tagName},
             tag:data.tag,
             roomshap: data.roomshapnumber ? data.roomshapnumber.split(','):'',
-            img: data.explodedossurl ? { "src": that.data.imgUrl + data.explodedossurl, "name": '' } : { "src":'', "name": '' }
+            img: data.explodedossurl ? { "src": that.data.imgUrl + data.explodedossurl, "name": '' } : { "src":'', "name": '' },
+            acreage: data.acreage
           });
         }
       }); 
@@ -227,5 +229,17 @@ Page({
           }
         })
       }
-    }
+    },
+    /** 
+ * 验证input只能输入一个小数点,s首个字符不能为点 
+ * @param  {[type]} val  input 传入的值 
+ * @return {[type]}  val 替换的值 
+ */
+  inputOnlyOnePoint: function (e) {  
+    var v = e.detail.value;
+    var inputVal = v.replace(/[^\d.]/g, "").replace(/^\./g, "").replace(/\.{2,}/g, ".").replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");  
+        this.setData({
+          acreage: inputVal
+        });
+  } 
 })
