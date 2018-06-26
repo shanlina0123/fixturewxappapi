@@ -29,7 +29,8 @@
     "pages/bproject/projectmap/projectmap",
     "pages/bproject/projectstep/projectstep",
     "pages/bproject/projecttemplate/projecttemplate",
-    "pages/bproject/projectrenewup/projectrenewup"
+    "pages/bproject/projectrenewup/projectrenewup",
+    "pages/client/client"
     
   ],
   "window":{

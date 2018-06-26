@@ -48,11 +48,11 @@
             <image src='../../../images/icon2.png' class='itemicon'></image>
             <text class='left10'>促销活动</text>
         </navigator>
-        <navigator url='../Bproject/projectlist/projectlist' class='proitem' hover-class="none">
+        <navigator url='../../bproject/projectlist/projectlist' class='proitem' hover-class="none">
             <image src='../../../images/icon3.png' class='itemicon'></image>
             <text class='left10'>项目管理</text>
         </navigator>
-        <navigator url='../appointment/appointment' class='proitem' hover-class="none">
+        <navigator url='../../client/client' class='proitem' hover-class="none">
             <image src='../../../images/icon8.png' class='itemicon'></image>
             <text class='left10'>客户预约</text>
         </navigator>

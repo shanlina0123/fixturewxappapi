@@ -14,7 +14,7 @@
                 <image src='../../images/topicon5.png' class='topicon'></image>
                 促销活动
             </navigator>
-            <navigator class='centerbtn' url="../appointment/appointment" hover-class="none">
+            <navigator class='centerbtn' url="../client/client" hover-class="none">
                 <image src='../../images/topicon6.png' class='topicon'></image>
                 客户预约
             </navigator>
@@ -38,7 +38,7 @@
                     <text class='proname'>{{item.title}}</text>
                     <text class='prostate color4'>{{item.sitestagename}}</text>
                 </view>
-                <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='statecontent' hover-class="none">
+                <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='statecontent' hover-class="none" bindtap='hidComment'>
                     <text class='statetext'>{{item.content}}</text>
                     <view class='stateimgwrap clearfix'>
                         <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">

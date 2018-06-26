@@ -22,9 +22,9 @@
                 </view> -->
             </view>
             <view class='imageswrap clearfix'>
-                <view class='hadimgwrap fl' wx:for="{{words.dynamic_to_images}}" wx:if="{{item.type==0}}">
-                    <image src="{{imgUrl+item.ossurl}}" class='hadimage'></image>
-                    <image src="../../../images/close.png" class='closeimg'></image>
+                <view class='hadimgwrap fl' wx:for="{{words.dynamic_to_images}}" wx:key="idx" wx:if="{{item.type==0}}">
+                    <image src="{{imgUrlFix+item.ossurl}}" class='hadimage'></image>
+                    <image src="../../../images/close.png" class='closeimg' bindtap='remUpImg' data-name='{{item.ossurl}}' data-index='{{index}}'></image>
                 </view>
                 <block  wx:for="{{imgUrl}}" wx:key="index">
                   <view class='hadimgwrap fl'>

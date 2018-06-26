@@ -159,7 +159,7 @@
     </view>
     <!--编辑动态选择-->
     <view class="handelmsgwrap {{handelshow ? '' : 'hide'}}">
-        <navigator wx:if="{{deleteitem.dtype==0}}" url='/pages/bproject/projectrenewup/projectrenewup?id={{deleteitem.id}}' class='item' bindtap='editmsg'>修改</navigator>
+        <navigator wx:if="{{deleteitem.dtype==0}}" url='/pages/bproject/projectrenewup/projectrenewup?id={{deleteitem.id}}' class='item' bindtap='colFoot'>修改</navigator>
         <view class='item' bindtap='deleteDynamic'>删除</view>
         <view class='item' bindtap='cancelmsg'>取消</view>
     </view>

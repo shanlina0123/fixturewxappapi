@@ -252,7 +252,16 @@ Page({
       }
     });
   },
-
+  /**
+   * 隐藏评论弹窗
+   */
+  hidComment:function()
+  {
+    this.setData({
+      inputisshow: false,
+      isshow: 'no'
+    });
+  },
   /**
    * 判断是点了还是长按了
    */

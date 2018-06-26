@@ -10,11 +10,13 @@ Page({
         maxlength: 300,
         nowlength: 0,
         words:'',//数据
-        imgUrl: Url.imgUrl,
+        imgUrlFix: Url.imgUrl,
         imgUrl: [],//图片地址
         imgname: [],//图片名称
         issave:false,//判断提交
         id:'',//动态id
+        delimg:[]//被删除的图片
+
     },
     //跟踪输入的文字数字改变
     textareachange: function (e) {
@@ -130,7 +132,8 @@ Page({
       Request.requestGet(Url.imgDel + '/' + name, function () { });
     },
   //提交表单
-  submitform: function (e) {
+  submitform: function (e) 
+  {
     var that = this;
     if (that.data.issave == true) 
     {
@@ -141,7 +144,7 @@ Page({
        'id': that.data.id,
        'content': content,
        'img': that.data.imgname.length ? that.data.imgname.join(',') : '',
-       'delimg':'' }
+       'delimg': that.data.delimg.join(',') }
     if (content == '') {
       wx.showToast({
         title: '说点什么吧',
@@ -158,9 +161,13 @@ Page({
             content: res.messages,
             showCancel: false,
             success: function (res) {
-              if (res.confirm) {
-                wx.redirectTo({
-                  url: "/pages/projectdetail/projectdetail?id=" + that.data.words.sitetid
+              if (res.confirm) 
+              {  
+                var pages = getCurrentPages();
+                var prevPage = pages[pages.length - 2];  //上一个页面
+                    prevPage.onLoad({ "id": that.data.words.sitetid});
+                wx.navigateBack({
+                  delta: 1
                 })
               }
             }
@@ -170,5 +177,22 @@ Page({
         }
       })
     }
+  },
+  /**
+   * 删除编辑的图片
+   */
+  remUpImg:function(e)
+  {
+    var name = e.currentTarget.dataset.name;
+    var index = e.currentTarget.dataset.index;
+    
+    var delimg = this.data.delimg;
+        delimg.push(name);
+    var words = this.data.words   
+        words.dynamic_to_images.splice(index, 1);
+    this.setData({
+        delimg: delimg,
+        words: words
+    });
   }
 })

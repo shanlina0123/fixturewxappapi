@@ -1,0 +1,22 @@
+<!--pages/appointment/appointment.wxml-->
+<view class='wrap'>
+    <view class='listwrap'>
+        <view class='listitem' wx:for="{{client}}" wx:key="index">
+            <view class='topitem clearfix'>
+                <text class='fl'>{{item.name}}</text>
+                <view class='fr' bindtap='phonecall' data-phone='{{item.phone}}'>
+                    <image class='phoneimg' src='../../images/phone.png'></image>
+                    <text>{{item.phone}}</text>
+                </view>
+            </view>
+            <view class='clearfix'>
+                <text class='fl'>{{item.content}}</text>
+                <view class='fr'>
+                    <text class='font'>{{item.created_at}}</text>
+                </view>
+            </view>
+        </view>
+        <!--项目列表为空时显示-->
+        <view wx:if="{{lengthnone}}" class='nonedata'>{{msg}}</view>
+    </view>
+</view>

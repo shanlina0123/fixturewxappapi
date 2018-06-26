@@ -128,7 +128,6 @@ Page({
     this.getDynamic(id);
     //this.getCompanyInfo();
   },
-
   /**
    * 用户点击右上角分享
    */
@@ -468,5 +467,14 @@ Page({
         })
       }
     });
+  },
+  /**
+   * 关闭底部
+   */
+  colFoot:function()
+  {
+    this.setData({
+      handelshow: false
+    })
   }
 })

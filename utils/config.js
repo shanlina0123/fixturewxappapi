@@ -103,6 +103,7 @@ var config = {
   searchSiteList: `${host}/site/search-site-list`,
   //修改动态
   dynamicUp: `${host}/client/dynamic-up`,
-  
+  //客户列表
+  clientList: `${host}/client/client-list`,
 };
 module.exports = config
