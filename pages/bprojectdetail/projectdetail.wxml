@@ -131,7 +131,7 @@
                     <text class='datanone'>暂无业主评价</text>
                 </view>
                 <view class="tabitem {{selected3?'':hide}}">
-                    <!--有数据显示时用此段代码 <view class='itemul samepadding'>
+                    <view class='itemul samepadding'>
                         <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
                             <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
                             <view class='rightname fl'>
@@ -141,8 +141,8 @@
                                 </view>
                             </view>
                         </view>
-                    </view> -->
-                    <text class='datanone'>暂无相关数据</text>
+                    </view>
+                    <text class='datanone' wx:if="{{siteInfo.siteInvitation.length==false}}">暂无团队成员</text>
                 </view>
             </view>
         </view>
