@@ -105,5 +105,11 @@ var config = {
   dynamicUp: `${host}/client/dynamic-up`,
   //客户列表
   clientList: `${host}/client/client-list`,
+  //成员管理
+  participantList: `${host}/participant/participant-list`,
+  //职位列表
+  positionList:`${host}/participant/position-list`,
+  //邀请微码
+  positionCode:`${host}/participant/position-code`,
 };
 module.exports = config

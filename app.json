@@ -30,7 +30,11 @@
     "pages/bproject/projectstep/projectstep",
     "pages/bproject/projecttemplate/projecttemplate",
     "pages/bproject/projectrenewup/projectrenewup",
-    "pages/client/client"
+    "pages/client/client",
+    "pages/invite/participant/participant",
+    "pages/invite/makesure/makesure",
+    "pages/invite/inviteuser/inviteuser"
+    
     
   ],
   "window":{

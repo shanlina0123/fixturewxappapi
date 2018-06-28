@@ -8,7 +8,8 @@ Page({
    */
   data: {
     url:'',
-    appid:''//小程序appid
+    appid:'',//小程序appid
+    scene: ""//扫码的参数uid=2&positionid=25&type=1
   },
   onLoad: function (options) {
     this.getAppid();
@@ -21,21 +22,30 @@ Page({
     }else{
       var url ='/pages/index/index';
     }
+    //是不是扫码过来的
+    if (options.scene) 
+    {
+      var scene = decodeURIComponent(options.scene);
+      this.setData({
+        scene: scene
+      });
+    }
     this.setData({
       url: url
     });
   },
+  /**
+   * 按钮获取的用户信息
+   */
   onGotUserInfo: function (e) {
-    //console.log(e.detail.userInfo);
     var that = this;
     if (e.detail.userInfo != undefined)
     {  
-      if (wx.getStorageSync('userInfo'))
-      {
+      //用户登陆或者修改信息
+      if (wx.getStorageSync('userInfo') && that.data.scene == false) {
         //修改用户信息
         that.setUserInfo(e);
-      }else
-      {
+      } else {
         //登陆
         that.getUserLogin(e.detail.userInfo);
       }
@@ -89,45 +99,48 @@ Page({
       })
     } 
   },
-  //用户登陆
+  /**
+   * 用户登陆
+   */
   getUserLogin: function ( data ) {
     var that = this;
     if (!wx.getStorageSync('openid') || !wx.getStorageSync('companyid') )
     {
+      this.getAppid();
       wx.showToast({ title: '登陆失败', icon: 'loading' });
       return;
     }
-    var userInfo = wx.getStorageSync('userInfo');
-    if (!userInfo) {
-      wx.request({
-        url: Url.loginUrl,
-        method: 'POST',
-        data: {
-          openid:wx.getStorageSync('openid'),
-          companyid:wx.getStorageSync('companyid'),
-          nickname: data.nickName,
-          faceimg: data.avatarUrl
-        },
-        success: function (res) {
-          var data = res.data;
-          if (data.status)
-          {
-            wx.setStorageSync('userInfo', data.data);
-            wx.reLaunch({
-              url: that.data.url
-            })
-          } else {
-            wx.showToast({ title: data.messages, icon: 'loading' });
-          }
-        },
-        fail: function (res) {
-          wx.showToast({ title: '请求失败', icon: 'loading' });
-        }, complete: function () {
-          wx.hideLoading();
+    wx.request({
+      url: Url.loginUrl,
+      method: 'POST',
+      data: {
+        openid: wx.getStorageSync('openid'),
+        companyid: wx.getStorageSync('companyid'),
+        nickname: data.nickName,
+        faceimg: data.avatarUrl,
+        scene:that.data.scene//绑定或者邀请参数
+      },
+      success: function (res) {
+        var data = res.data;
+        if (data.status) {
+          wx.setStorageSync('userInfo', data.data);
+          wx.reLaunch({
+            url: that.data.url
+          })
+        } else {
+          wx.showToast({ title: data.messages, icon: 'none' });
         }
-      })
-    }
+      },
+      fail: function (res) {
+        wx.showToast({ title: '请求失败', icon: 'loading' });
+      }, complete: function () {
+        wx.hideLoading();
+      }
+    })
   },
+  /**
+   * 修改用户头像
+   */
   setUserInfo:function(e)
   {
     var obj = { "nickname": e.detail.userInfo.nickName, "faceimg": e.detail.userInfo.avatarUrl };

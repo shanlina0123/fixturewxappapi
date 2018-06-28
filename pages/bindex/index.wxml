@@ -4,21 +4,21 @@
     <view class='userlevel samepadding'>
         <navigator url='../upgrade/upgrade' class='levelBtn' hover-class='none'>标准版</navigator>
     </view>
-    <view class='buttonwrap Bbuttonwrap'>
+    <view class='buttonwrap'>
         <view class='samepadding'>
             <navigator class='centerbtn' url="../bproject/projectlist/projectlist" hover-class="none">
                 <image src='../../images/topicon3.png' class='topicon'></image>
                 项目管理
             </navigator>
-            <navigator class='centerbtn' url="../usercenter/active/active" hover-class="none">
+            <!-- <navigator class='centerbtn' url="../usercenter/active/active" hover-class="none">
                 <image src='../../images/topicon5.png' class='topicon'></image>
                 促销活动
-            </navigator>
+            </navigator> -->
             <navigator class='centerbtn' url="../client/client" hover-class="none">
                 <image src='../../images/topicon6.png' class='topicon'></image>
                 客户预约
             </navigator>
-            <navigator class='centerbtn' url="../adduser/adduser" hover-class="none">
+            <navigator class='centerbtn' url="../invite/participant/participant" hover-class="none">
                 <image src='../../images/topicon4.png' class='topicon'></image>
                 成员管理
             </navigator>

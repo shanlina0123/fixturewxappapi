@@ -1,0 +1,7 @@
+<!--pages/inviteuser/makesure.wxml-->
+<view class='samepadding'>
+    <view class='joblist'>
+        <text wx:for="{{data}}" wx:key="index" class='jobitem {{index==isadd?"on":""}}'  data-index="{{index}}"  data-id="{{item.id}}" bindtap='addClass'>{{item.name}}</text>
+    </view>
+    <button form-type='submit' class='surebtn' bindtap='codeUrl'>确认</button>
+</view>
