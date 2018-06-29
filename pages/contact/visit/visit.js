@@ -22,7 +22,7 @@ Page({
         var uphone = e.detail.value.uphone;
         var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
         var params = { 'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid': 1, 'sourceid': 1,
-          'phone': uphone, 'name': uname, 'content': '预约参观', "sname": that.data.name, "siteid": that.data.siteid, "storeid": that.data.storeid }
+          'phone': uphone, 'name': uname, 'content': '预约参观', "sname": that.data.name, "siteid": that.data.siteid, "storeid": that.data.storeid, 'formId': e.detail.formId }
         if (uphone == ''){
             wx.showToast({
                 title: '手机号不能为空',

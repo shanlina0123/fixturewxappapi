@@ -12,9 +12,15 @@ Page({
         var uphone = e.detail.value.uphone;
         var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
         var params = {
-            'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid': 1, 'sourceid': 2,
-            'phone': uphone, 'name': uname, 'content': '免费量房'
+            'companyid': wx.getStorageSync('userInfo').companyid,
+            'sourcecateid': 1, 
+            'sourceid': 2,
+            'phone': uphone,
+            'name': uname, 
+            'content': '免费量房',
+            'formId': e.detail.formId.toString()
         }
+        //console.log(e.detail);
         if (uphone == '') {
             wx.showToast({
                 title: '手机号不能为空',

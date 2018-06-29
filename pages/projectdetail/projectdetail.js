@@ -355,7 +355,8 @@ Page({
     var replyuser = e.currentTarget.dataset.user;
     var name = e.currentTarget.dataset.name;
     var times = parseInt(that.touchEndTime) - parseInt(that.touchStartTime);
-    if (times < 350) {
+    var createuserid = e.currentTarget.dataset.createuserid;
+    if (times < 350 && createuserid != wx.getStorageSync('userInfo').id) {
       that.setData({
         inputisshow: true
       });
@@ -365,7 +366,6 @@ Page({
         commentData: commentData
       })
     } else {
-      var createuserid = e.currentTarget.dataset.createuserid;
       if (createuserid != wx.getStorageSync('userInfo').id){
         return false;
       }

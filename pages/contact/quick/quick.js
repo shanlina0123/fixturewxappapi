@@ -13,7 +13,7 @@ Page({
         var uarea = e.detail.value.uarea;
         var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
         var params = { 'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid': 1, 'sourceid': 4,
-            'phone': uphone, 'name': uname, 'uarea':uarea, 'content': '装修报价' }
+          'phone': uphone, 'name': uname, 'uarea': uarea, 'content': '装修报价', 'formId': e.detail.formId}
         if (uphone == ''){
             wx.showToast({
                 title: '手机号不能为空',

@@ -4,7 +4,7 @@
         <image class='bannerimg' src='{{imgUrl}}default/wx/canguan.jpg'></image>
     </view>
     <view class='formwrap samepadding'>
-        <form bindsubmit='submitform'>
+        <form bindsubmit='submitform' report-submit="submitform">
             <view class='formitem'>
                 <input type='text' placeholder='姓名' name='uname' class='forminput' />
             </view>
