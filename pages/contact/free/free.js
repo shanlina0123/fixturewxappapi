@@ -18,7 +18,7 @@ Page({
             'phone': uphone,
             'name': uname, 
             'content': '免费量房',
-            'formId': e.detail.formId.toString()
+            'formId': e.detail.formId
         }
         //console.log(e.detail);
         if (uphone == '') {

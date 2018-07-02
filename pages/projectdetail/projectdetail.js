@@ -476,5 +476,36 @@ Page({
     this.setData({
       handelshow: false
     })
+  },
+  /**
+   * 删除工地成员
+   */
+  delInvitation:function(e)
+  {
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+    var index = e.currentTarget.dataset.index;
+    wx.showModal({
+      title: '确认删除吗？',
+      success: function (res) {
+        if (res.confirm) {
+          //用户点击确定
+          var obj = { "siteid": item.siteid, "joinuserid": item.joinuserid };
+          Request.requestDelete(Url.participantDel, obj, function (res) {
+            if (res.status == 1) {
+              wx.showToast({
+                title: res.messages,
+                icon: 'success',
+                duration: 2000
+              })
+              //跟新数据
+              var data = that.data.siteInfo;
+              data.siteInvitation.splice(index, 1)
+              that.setData({ siteInfo: data })
+            }
+          });
+        }
+      }
+    });
   }
 })

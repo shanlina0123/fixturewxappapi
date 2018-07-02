@@ -22,6 +22,7 @@ Page({
     }else{
       var url ='/pages/index/index';
     }
+    //console.log(options);
     //是不是扫码过来的
     if (options.scene) 
     {

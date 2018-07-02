@@ -3,5 +3,9 @@
     <view class='joblist'>
         <text wx:for="{{data}}" wx:key="index" class='jobitem {{index==isadd?"on":""}}'  data-index="{{index}}"  data-id="{{item.id}}" bindtap='addClass'>{{item.name}}</text>
     </view>
-    <button form-type='submit' class='surebtn' bindtap='codeUrl'>确认</button>
+    <form bindsubmit="submitform">
+      <text class='inputtext'>请输入姓名</text>
+      <input class='jobinput' name="name" maxlength='20'></input>
+      <button form-type='submit' class='surebtn'>确认</button>
+    </form>
 </view>

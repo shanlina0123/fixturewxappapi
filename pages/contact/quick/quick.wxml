@@ -4,7 +4,7 @@
         <image class='bannerimg' src='{{imgUrl}}default/wx/baojia.jpg'></image>
     </view>
     <view class='formwrap samepadding'>
-        <form bindsubmit='submitform' report-submit="submitform">
+        <form bindsubmit='submitform'  report-submit='true'>
             <view class='formitem'>
                 <input type='text' placeholder='姓名' name='uname' class='forminput' />
             </view>

@@ -111,5 +111,9 @@ var config = {
   positionList:`${host}/participant/position-list`,
   //邀请微码
   positionCode:`${host}/participant/position-code`,
+  //添加成员
+  participantSave: `${host}/participant/participant-save`,
+  //删除成员
+  participantDel: `${host}/participant/participant-del`,
 };
 module.exports = config

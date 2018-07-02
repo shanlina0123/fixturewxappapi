@@ -110,7 +110,7 @@
                     </view> -->
                     <text class='datanone'>暂无业主评价</text>
                 </view>
-                <view class="tabitem {{selected3?'':hide}}">
+                <!-- <view class="tabitem {{selected3?'':hide}}">
                     <view class='itemul samepadding'>
                         <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
                             <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
@@ -123,7 +123,7 @@
                         </view>
                     </view>
                     <text class='datanone' wx:if="{{siteInfo.siteInvitation.length==false}}">暂无团队成员</text>
-                </view>
+                </view> -->
             </view>
         </view>
         <!--底预约参观按钮-->

@@ -12,7 +12,7 @@ Page({
         var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
         var params = {
             'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid': 2, 'sourceid': 3,
-            'phone': uphone, 'name': uname, 'content': '活动名称'
+            'phone': uphone, 'name': uname, 'content': '活动名称', 'formId': e.detail.formId
         }
         if(uphone == ''){
             wx.showToast({

@@ -63,5 +63,50 @@ Page({
     wx.navigateTo({
       url: '../inviteuser/inviteuser?positionid='+positionid,
     })
+  },
+
+  /**
+   * 添加职位 
+   */
+  submitform:function(e)
+  {
+    var that = this;
+    var uname = e.detail.value.name;
+    var positionid = that.data.positionid;
+    var params = {
+      'name': uname,
+      'positionid': positionid,
+    }
+    if (uname == '') {
+      wx.showToast({
+        title: '请输入姓名',
+        icon: "none"
+      })
+    } else if (positionid=='') {
+      wx.showToast({
+        title: '请选择职位',
+        icon: "none"
+      })
+    } else {
+      Request.requestPost(Url.participantSave, params, function (res) {
+        if (res.status == 1) {
+          wx.showModal({
+            title: '提示',
+            content: res.messages,
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                var pages = getCurrentPages();
+                var prevPage = pages[pages.length - 2];  //上一个页面
+                    prevPage.onLoad({"siteid":''});
+                    wx.navigateBack({
+                      delta: 1
+                    })
+              }
+            }
+          });
+        }
+      })
+    }
   }
 })
