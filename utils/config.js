@@ -1,8 +1,8 @@
 /**
  * 小程序配置文件
  */
-var host = "https://fixture.yygsoft.com/api"
-//var host = "http://z.com/api"
+//var host = "https://fixture.yygsoft.com/api"
+var host = "http://z.com/api"
 var config = {
   /**
    * 公用
@@ -115,5 +115,10 @@ var config = {
   participantSave: `${host}/participant/participant-save`,
   //删除成员
   participantDel: `${host}/participant/participant-del`,
+
+  /**
+   * 极光
+   */
+  jmessageInit:`${host}/jmessage/init`,
 };
 module.exports = config

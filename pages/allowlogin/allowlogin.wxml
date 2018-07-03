@@ -5,6 +5,6 @@
             <view class='logintext'>登录后开发者将获得以下权限</view>
             <view class='loginstext'>获得你的公开信息(昵称、头像等)</view>
         </view>
-        <button class='formbutton' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确认登录</button>
+        <button class='formbutton' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">{{msg}}</button>
     </view>
 </view>

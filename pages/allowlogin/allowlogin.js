@@ -9,7 +9,8 @@ Page({
   data: {
     url:'',
     appid:'',//小程序appid
-    scene: ""//扫码的参数uid=2&positionid=25&type=1
+    scene:'',//扫码的参数uid=2&positionid=25&type=1
+    msg:'确认登录'
   },
   onLoad: function (options) {
     this.getAppid();
@@ -22,13 +23,13 @@ Page({
     }else{
       var url ='/pages/index/index';
     }
-    //console.log(options);
     //是不是扫码过来的
     if (options.scene) 
     {
       var scene = decodeURIComponent(options.scene);
       this.setData({
-        scene: scene
+        scene: scene,
+        msg:'确认授权'
       });
     }
     this.setData({
@@ -111,6 +112,7 @@ Page({
       wx.showToast({ title: '登陆失败', icon: 'loading' });
       return;
     }
+    wx.showLoading({ title: '登陆中' });
     wx.request({
       url: Url.loginUrl,
       method: 'POST',
@@ -123,13 +125,31 @@ Page({
       },
       success: function (res) {
         var data = res.data;
-        if (data.status) {
+        if (data.status==1) 
+        {
           wx.setStorageSync('userInfo', data.data);
+          that.addUser();
           wx.reLaunch({
             url: that.data.url
-          })
+          });
         } else {
-          wx.showToast({ title: data.messages, icon: 'none' });
+      
+          wx.showModal({
+            title: '提示',
+            content: data.messages,
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                var user=wx.getStorageSync('userInfo');
+                if (user)
+                {
+                  wx.reLaunch({
+                    url: '/pages/index/index'
+                  })
+                }
+              }
+            }
+          });
         }
       },
       fail: function (res) {
@@ -160,6 +180,41 @@ Page({
           icon: 'none',
         })
       }
+    });
+  },
+  /**
+   * 添加极光用户
+   */
+  JmessageRegister: function (username,faceimg)
+  {
+    var JIM = app.globalData.JIM;
+    JIM.register({
+      'username': username,
+      'password': 'xxs123456',
+      'media_id': faceimg
+    }).onSuccess(function (data) {
+      if (data.code == 'success')
+      {
+        //注册成功
+
+      }
+    }).onFail(function (data) {
+    });
+  },
+  /**
+   * 极光登陆
+   */
+  JmessageLogin:function (username,password)
+  {
+    var JIM = app.globalData.JIM;
+    JIM.login({
+      'username': username,
+      'password': password
+    }).onSuccess(function (data) {
+      //data.code 返回码
+      //data.message 描述
+    }).onFail(function (data) {
+      //同上
     });
   }
 })
