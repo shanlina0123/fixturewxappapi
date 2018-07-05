@@ -1,0 +1,9 @@
+<block wx:for="{{user}}" wx:key="index">
+<navigator url='../jmessageinfo/jmessageinfo?username={{item.username}}&nickname={{item.nickname}}&faceimg={{item.faceimg}}' class='noticeli clearfix'>
+    <image src='{{item.faceimg}}' class='uhead fl'></image>
+    <view class='rightnotice fl'>
+        <view class='uname'>{{item.nickname}}<text class='noread'></text></view>
+        <view class='noticename'>{{item.content}}</view>
+    </view>
+</navigator>
+</block>

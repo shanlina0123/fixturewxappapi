@@ -33,7 +33,9 @@
     "pages/client/client",
     "pages/invite/participant/participant",
     "pages/invite/makesure/makesure",
-    "pages/invite/inviteuser/inviteuser"
+    "pages/invite/inviteuser/inviteuser",
+    "pages/jmessage/jmessagelist/jmessagelist",
+    "pages/jmessage/jmessageinfo/jmessageinfo"
     
     
   ],

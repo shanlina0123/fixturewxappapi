@@ -1,0 +1,30 @@
+<!--pages/dialog/dialog.wxml-->
+<view class='content samepadding'>
+    <!--列表-->
+    <view class='dialogwrap'>
+        <block wx:for="{{data}}" wx:key="index">
+          <view class='{{item.vclass}} clearfix'>
+              <image src="{{item.faceimg}}" class='headimg {{item.imgclass}}'></image>
+              <view class='{{item.misvclass}} {{item.imgclass}}'>
+                  <text class='{{item.textclass}}'></text>
+                  {{item.content}}
+              </view>
+          </view>
+        </block>
+    </view>
+    <!--发送-->
+    <view class='dialoginputwrap clearfix'>
+        <form bindsubmit="SingleMsg">
+        <view>
+            <image src="../../../images/dialog1.png" class="bottomimg fl" ></image> 
+            <view class='centerwrap fl'>
+                <input type='text' class="textinput" cursor-spacing="40"  name="content" value='{{content}}'></input> 
+                <view class="words hide">按住 说话</view> 
+            </view>
+            <!--上传图片和文字发送按钮切换-->
+            <button class='sendbtn fr' form-type='submit'>发送</button>
+            <image src="../../../images/dialog2.png" class="bottomimg picimg fr" bindtap='showimg'></image>
+        </view>
+        </form>
+    </view>
+</view>

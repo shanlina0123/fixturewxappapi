@@ -169,7 +169,8 @@ Page({
   getDynamic: function (id){
     var that = this;
     Request.requestGet(Url.siteDynamic + '?id=' + id, function (res) {
-      if (res.status == 1) {
+      if (res.status == 1)
+       {
         var arr = [];
         res.data.forEach(function (v) {
           var obj = {};
@@ -242,7 +243,13 @@ Page({
     var name = e.currentTarget.dataset.name;
     var createuserid = parseInt(e.currentTarget.dataset.createuserid);
     var replyuserid = 0;
-    var commentData = { "dynamicid": dynamicid, "siteid": siteid, "replyuserid": replyuserid, "index": index, "name": name, "createuserid": createuserid };
+    var commentData = { 
+                        "dynamicid": dynamicid, 
+                        "siteid": siteid, 
+                        "replyuserid": replyuserid, 
+                        "index": index, 
+                        "name": name, 
+                        "createuserid": createuserid };
     //console.log(commentData);
     if (!that.data.inputisshow) {
       that.setData({
@@ -361,7 +368,13 @@ Page({
         inputisshow: true
       });
       //评论
-      var commentData = { "dynamicid": dynamicid, "siteid": id, "replyuserid": replyuser.id, "index": pindex, "replyuser": replyuser, "name": name };
+      var commentData = { 
+                          "dynamicid": dynamicid, 
+                          "siteid": id, 
+                          "replyuserid": replyuser.id, 
+                          "index": pindex, 
+                          "replyuser": replyuser, 
+                          "name": name };
       that.setData({
         commentData: commentData
       })
@@ -507,5 +520,18 @@ Page({
         }
       }
     });
+  },
+  /**
+   * 跳到消息页面
+   */
+  message:function()
+  {
+    var user = this.data.siteInfo.site_to_user;
+    var username = user.jguser;
+    var nickname = user.nickname ? user.nickname : user.jguser;
+    var youHead = user.faceimg ? user.faceimg :'../../../images/uhead.png';
+    wx.navigateTo({
+      url: "/pages/jmessage/jmessageinfo/jmessageinfo?username=" + username + '&nickname=' + nickname +'&faceimg='+youHead
+    })
   }
 })

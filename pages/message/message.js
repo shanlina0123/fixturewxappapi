@@ -33,7 +33,6 @@ Page({
    */
   onLoad: function (options) {
     this.msgList();
-    this.getjmessageInit();
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

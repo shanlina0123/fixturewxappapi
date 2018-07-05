@@ -1,5 +1,11 @@
 <!--pages/message/message.wxml-->
 <view class='wrap'>
+<navigator url='/pages/jmessage/jmessagelist/jmessagelist' class='askmsg clearfix'>
+        <image class='askimg fl' src='../../images/notice.png'></image>
+        <view class='askright fl'>
+            <view class='asktitle'>咨询消息</view>
+        </view>
+    </navigator>
     <view class='noticeul'>
         <view class='noticetitle clearfix'>
             <view class='fl'>通知列表</view>

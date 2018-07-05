@@ -19,7 +19,11 @@
             <view class='clearfix'>
                 <text class='rightnum fl' wx:if="{{siteInfo.follownum}}">{{siteInfo.follownum}}人关注</text>
                 <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus fr">已关注</text>
-                <text wx:else class="focus on fr" bindtap="changeName" data-storeid='{{siteInfo.storeid}}' data-siteid='{{siteInfo.id}}' data-cityid='{{siteInfo.cityid}}'>关注</text>
+                <text wx:else class="focus on fr" 
+                      bindtap="changeName" 
+                      data-storeid='{{siteInfo.storeid}}' 
+                      data-siteid='{{siteInfo.id}}' 
+                      data-cityid='{{siteInfo.cityid}}'>关注</text>
             </view>
             <view class='lefthead fl'>
                 <block wx:for="{{siteInfo.site_to_follo_wrecord}}" wx:key="key">
@@ -39,10 +43,10 @@
                     <image src="../../../images/{{selected2?'proicon2On.png' :'proicon2.png'}}" class='tabimg'></image>
                     <text>评价</text>
                 </view>
-                <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
+                 <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
                     <image src="../../../images/{{selected3?'proicon3On.png' :'proicon3.png'}}" class='tabimg'></image>
                     <text>团队</text>
-                </view>
+                </view> 
             </view>
             <view class='tabcontent'>
                 <view class="tabitem {{selected1?'':hide}}">
@@ -73,7 +77,11 @@
                                         <text class='detailstate'>{{item.content}}</text>
                                          <view class='stateimgwrap clearfix'>
                                             <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                                                <image src='{{imgUrl+itemImg.ossurl}}' class='stateimg fl' data-img="{{item.images}}" data-src="{{imgUrl+itemImg.ossurl}}" bindtap='getImg'></image>
+                                                <image src='{{imgUrl+itemImg.ossurl}}' 
+                                                       class='stateimg fl' 
+                                                       data-img="{{item.images}}" 
+                                                       data-src="{{imgUrl+itemImg.ossurl}}" 
+                                                       bindtap='getImg'></image>
                                             </block>
                                           </view>
                                     </view>
@@ -84,15 +92,38 @@
                                         <view class='handelwrap fr'>
                                             <image src='../../images/rightMsg.png' class='handelimage' data-id="{{idx}}" bindtap='showimage'></image>
                                             <view class="iconwrap clearfix {{isshow==idx ?'': 'hide' }}">
-                                                <image src="../../images/zan1.png" class='zan fl' data-id="{{item.id}}" data-name="{{item.title}}" data-sitetid="{{item.sitetid}}" data-index='{{idx}}' data-createuserid="{{item.createuserid}}" bindtap="fabulous"></image>
-                                                <image src="../../images/zan2.png" class='zan fl' data-id="{{item.id}}" data-name="{{item.title}}" data-sitetid="{{item.sitetid}}" data-index='{{idx}}' data-createuserid="{{item.createuserid}}" bindtap='showinput'></image>
+                                                <image src="../../images/zan1.png" 
+                                                        class='zan fl' 
+                                                        data-id="{{item.id}}" 
+                                                        data-name="{{item.title}}" 
+                                                        data-sitetid="{{item.sitetid}}"
+                                                         data-index='{{idx}}' 
+                                                         data-createuserid="{{item.createuserid}}" 
+                                                         bindtap="fabulous"></image>
+                                                <image src="../../images/zan2.png" 
+                                                       class='zan fl' 
+                                                       data-id="{{item.id}}" 
+                                                       data-name="{{item.title}}" 
+                                                       data-sitetid="{{item.sitetid}}" 
+                                                       data-index='{{idx}}' 
+                                                       data-createuserid="{{item.createuserid}}" 
+                                                       bindtap='showinput'></image>
                                             </view>
                                         </view>
                                     </view>
                                     <view class='discusstext' wx:if="{{item.follo.length}}">
                                         <view class='textitem' wx:for="{{item.follo}}" wx:for-item="itemFollo" wx:key="fo">
-                                            <text class='textcontent' catchtap='backtext' bindtouchstart='mytouchstart' bindtouchend='mytouchend' data-user="{{itemFollo.dynamic_comment_to_user}}" data-pindex='{{idx}}' data-index='{{index}}' data-dynamicid='{{itemFollo.dynamicid}}' data-id='{{itemFollo.id}}'
-                                                data-name="{{item.title}}" data-createuserid='{{itemFollo.createuserid}}'>
+                                            <text class='textcontent' 
+                                                  catchtap='backtext' 
+                                                  bindtouchstart='mytouchstart' 
+                                                  bindtouchend='mytouchend' 
+                                                  data-user="{{itemFollo.dynamic_comment_to_user}}" 
+                                                  data-pindex='{{idx}}' 
+                                                  data-index='{{index}}' 
+                                                  data-dynamicid='{{itemFollo.dynamicid}}' 
+                                                  data-id='{{itemFollo.id}}'
+                                                  data-name="{{item.title}}" 
+                                                  data-createuserid='{{itemFollo.createuserid}}'>
                             <text class='textname' wx:if="{{itemFollo.dynamic_comment_to_reply_user}}">{{itemFollo.dynamic_comment_to_user.nickname?itemFollo.dynamic_comment_to_user.nickname:'匿名'}}<text style='color:#333'>回复</text>{{itemFollo.dynamic_comment_to_reply_user.nickname?itemFollo.dynamic_comment_to_reply_user.nickname:'匿名'}}:</text>
 
                                             <text class='textname' wx:else="{{itemFollo.dynamic_comment_to_user}}">{{itemFollo.dynamic_comment_to_user.nickname?itemFollo.dynamic_comment_to_user.nickname:'匿名'}}:</text>{{itemFollo.content}}
@@ -110,7 +141,7 @@
                     </view> -->
                     <text class='datanone'>暂无业主评价</text>
                 </view>
-                <!-- <view class="tabitem {{selected3?'':hide}}">
+                 <view class="tabitem {{selected3?'':hide}}">
                     <view class='itemul samepadding'>
                         <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
                             <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
@@ -121,18 +152,15 @@
                                 </view>
                             </view>
                         </view>
-                    </view>
-                    <text class='datanone' wx:if="{{siteInfo.siteInvitation.length==false}}">暂无团队成员</text>
-                </view> -->
+                    </view> 
+                </view> 
             </view>
         </view>
         <!--底预约参观按钮-->
         <view class='bottombtns clearfix'>
-            <!-- <navigator url='/pages/users/about/about?companyData={{company}}' class='leftcompany fl'>
-                <image src='{{companyData.logo}}' class='bottomcompany' mode='aspectFill'></image>
-            </navigator> -->
+          
             <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}&siteid={{siteInfo.id}}&storeid={{siteInfo.storeid}}' class='bottombtn fr' hover-class="none">预约参观</navigator>
-            <button class='askbtn fr' open-type="contact" size='mini'>在线咨询</button>
+            <button class='askbtn fr' size='mini' bindtap='message'>在线咨询</button>
         </view>
         <!--评论输入框-->
         <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">

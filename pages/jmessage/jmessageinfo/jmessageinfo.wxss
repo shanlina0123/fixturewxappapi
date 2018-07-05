@@ -1,0 +1,154 @@
+/* pages/dialog/dialog.wxss */
+.dialogname{
+    text-align: center;
+    padding: 15rpx 0;
+    border-bottom: 1px solid #ddd;
+}
+.dialogwrap{
+    margin-top: 15rpx;
+}
+.headimg{
+    width: 64rpx;
+    height: 64rpx;
+    margin-right: 20rpx;
+}
+.minemsg,.othermsg{
+    padding:5rpx 0;
+    margin-bottom: 10rpx;
+}
+.othermsg .othertext{
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #E7E7E7;
+    padding: 12rpx;
+    border-radius: 10rpx;
+    max-width: 72%
+}
+.othertragle{
+    position: absolute;
+    left: -12rpx;
+    top: 20rpx;
+    width:0;
+    height:0;
+    border-top:10rpx solid transparent;
+    border-bottom:10rpx solid transparent;
+    border-right:10rpx solid #E7E7E7;
+}
+.othertragle:after{
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 2rpx;
+    border-top: 9px solid transparent;
+    border-right: 9px solid #FFFFFF;
+    border-bottom: 9px solid transparent;
+}
+.minemsg .minetext{
+    position: relative;
+    background-color: #98E165;
+    padding: 12rpx;
+    border-radius: 10rpx;
+    max-width: 72%
+}
+.minemsg .headimg{
+    margin-left: 20rpx;
+    margin-right: 0;
+}
+.minetragle{
+    position: absolute;
+    right: -10rpx;
+    top: 20rpx;
+    width:0;
+    height:0;
+    border-top:10rpx solid transparent;
+    border-bottom:10rpx solid transparent;
+    border-left:10rpx solid #98E165;
+}
+.timewrap{
+    text-align: center;
+    margin-bottom: 15rpx;
+}
+.dialogtime{
+    background-color: #DADADA;
+    color: #FFF;
+    padding: 0 10rpx;
+    border-radius: 8rpx;
+    margin: 10rpx auto;
+}
+.editwrap{
+    position: absolute;
+    width: 300rpx;
+    top: -66rpx;
+    left: 0;
+    background-color: #333;
+    color: #FFFFFF;
+    border-radius: 8rpx;
+    z-index: 300;
+}
+.editwrap text{
+    display: inline-block;
+    padding: 6rpx 20rpx;
+    border-left: 1px solid #fff;
+}
+.editwrap text:first-child{
+    border-left: none;
+}
+.mineeditwrap{
+    right:0;
+    left: auto;
+}
+.mineeditwrap .texttrangle{
+    right: 30rpx;
+    left: auto;
+}
+.texttrangle{
+    position: absolute;
+    width:0;
+    height:0;
+    left: 30rpx;
+    border-right:10rpx solid transparent;
+    border-left:10rpx solid transparent;
+    border-top:10rpx solid #333;
+}
+
+/*底部操作部分*/
+.dialoginputwrap{
+    position: fixed;
+    width: 94%;
+    bottom: 0;
+    left: 0;
+    padding: 20rpx 0;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: #E9EAE7;
+}
+.bottomimg{
+    width: 64rpx;
+    height: 64rpx;
+}
+.picimg{
+    margin-right: 16rpx;
+}
+.centerwrap{
+    margin-left: 16rpx;
+    width: 66%;
+}
+.words{
+    height: 62rpx;
+    line-height: 62rpx;
+    text-align: center;
+    border: 1px solid #ccc;
+    background-color: #FFF;
+    border-radius: 10rpx;
+}
+.textinput{
+    height: 62rpx;
+    line-height: 62rpx;
+    border: 1px solid #E3E3E3;
+    background-color: #FFF;
+    border-radius: 10rpx;
+    padding: 0 10rpx;
+}
+.hide{
+    display: none;
+}

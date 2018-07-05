@@ -120,5 +120,13 @@ var config = {
    * 极光
    */
   jmessageInit:`${host}/jmessage/init`,
+  //注册
+  jmessageRegister: `${host}/jmessage/register`,
+  //好友列表
+  jmessageFriendList: `${host}/jmessage/friend-list`,
+  //添加好友
+  jmessageFriendAdd: `${host}/jmessage/friend-add`,  
+  jmessageUseInfo: `${host}/jmessage/user-info`, 
+  jmessageFace:`${host}/jmessage/user-face`, 
 };
 module.exports = config

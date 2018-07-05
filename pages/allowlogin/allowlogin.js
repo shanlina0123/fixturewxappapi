@@ -1,6 +1,7 @@
 const app = getApp();
 const Url = require('../../utils/config.js');
 const Request = require('../../utils/request.js');
+const Jg = require('../../utils/jmessage.js');
 Page({
 
   /**
@@ -128,7 +129,18 @@ Page({
         if (data.status==1) 
         {
           wx.setStorageSync('userInfo', data.data);
-          that.addUser();
+          //登陆成功去检测极光账号
+          if (data.data.jguser) 
+          {
+            //登陆极光
+            Jg.jmessageLogin(data.data.jguser, data.data.jmessagePass);
+          }
+
+          if (!data.data.jguser)
+          {
+            //注册极光
+            Jg.jmessageRegister();
+          }
           wx.reLaunch({
             url: that.data.url
           });
@@ -182,39 +194,5 @@ Page({
       }
     });
   },
-  /**
-   * 添加极光用户
-   */
-  JmessageRegister: function (username,faceimg)
-  {
-    var JIM = app.globalData.JIM;
-    JIM.register({
-      'username': username,
-      'password': 'xxs123456',
-      'media_id': faceimg
-    }).onSuccess(function (data) {
-      if (data.code == 'success')
-      {
-        //注册成功
-
-      }
-    }).onFail(function (data) {
-    });
-  },
-  /**
-   * 极光登陆
-   */
-  JmessageLogin:function (username,password)
-  {
-    var JIM = app.globalData.JIM;
-    JIM.login({
-      'username': username,
-      'password': password
-    }).onSuccess(function (data) {
-      //data.code 返回码
-      //data.message 描述
-    }).onFail(function (data) {
-      //同上
-    });
-  }
+ 
 })
