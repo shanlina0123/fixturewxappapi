@@ -1,9 +1,13 @@
 <block wx:for="{{user}}" wx:key="index">
-<navigator url='../jmessageinfo/jmessageinfo?username={{item.username}}&nickname={{item.nickname}}&faceimg={{item.faceimg}}' class='noticeli clearfix'>
+<navigator url='../jmessageinfo/jmessageinfo?username={{item.username}}&nickname={{item.nickname}}&faceimg={{item.faceimg}}' 
+           class='noticeli clearfix' 
+           bindtap='upReadStaus'
+           data-index='{{index}}'
+           data-username='{{item.username}}'>
     <image src='{{item.faceimg}}' class='uhead fl'></image>
     <view class='rightnotice fl'>
-        <view class='uname'>{{item.nickname}}<text class='noread'></text></view>
-        <view class='noticename'>{{item.content}}</view>
+        <view class='uname'>{{item.nickname}}<text wx:if="{{item.content.read}}" class='noread'></text></view>
+        <view class='noticename'>{{item.content.text}}</view>
     </view>
 </navigator>
 </block>

@@ -6,6 +6,7 @@
 }
 .dialogwrap{
     margin-top: 15rpx;
+    padding-bottom: 110rpx;
 }
 .headimg{
     width: 64rpx;
@@ -151,4 +152,14 @@
 }
 .hide{
     display: none;
+}
+.sendbtn{
+    height: 56rpx;
+    line-height: 56rpx;
+    padding: 0 14rpx;
+    color: #FFF;
+    font-size: 24rpx;
+    background-color: #1AAC19;
+    border-radius: 8rpx;
+    margin-top: 4rpx;
 }

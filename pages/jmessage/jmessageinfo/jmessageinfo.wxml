@@ -1,13 +1,13 @@
 <!--pages/dialog/dialog.wxml-->
 <view class='content samepadding'>
     <!--列表-->
-    <view class='dialogwrap'>
+    <view class='dialogwrap' id="j_page">
         <block wx:for="{{data}}" wx:key="index">
           <view class='{{item.vclass}} clearfix'>
               <image src="{{item.faceimg}}" class='headimg {{item.imgclass}}'></image>
               <view class='{{item.misvclass}} {{item.imgclass}}'>
                   <text class='{{item.textclass}}'></text>
-                  {{item.content}}
+                  {{item.content.text}}
               </view>
           </view>
         </block>

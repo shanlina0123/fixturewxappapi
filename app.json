@@ -50,7 +50,7 @@
     "color":"#515151",    
     "selectedColor": "#eb7221",
     "borderStyle": "black",
-    "backgroundColor": "white",
+    "backgroundColor": "#FFFFFF",
     "list": [{
             "iconPath": "images/index.png",
             "selectedIconPath": "images/indexOn.png",

@@ -7,35 +7,8 @@ var JIM = new JMessage({ debug: true });
  * 监听链接
  */
 JIM.onDisconnect(function () {
-   console.log(555);
+  getjmessageInit();
 });
-
-// JIM.onMsgReceive(function (res) {
-//  // console.log(res);
-//   return res;
-//   // var pages = getCurrentPages();
-//   // var prevPage = pages[pages.length - 1];
-//   // var route = prevPage.__route__;
-//   // if (route == 'pages/jmessage/jmessageinfo/jmessageinfo')
-//   // { 
-//   //   var mdata = prevPage.data;
-//   //   var obj = {
-//   //           'vclass': 'othermsg',
-//   //           'imgclass': 'fl',
-//   //           'misvclass': 'othertext',
-//   //           'content': 111,
-//   //           'img':'',
-//   //           'textclass': "othertragle"
-//   //         };
-//   //   var data = mdata.data;
-//   //       data.push(obj);
-//   //       mdata.setData({
-//   //         data: data
-//   //       })
-//   // }
-//   // console.log(route);
-// });
-
 /**
  * 判断初始化
  */
@@ -127,16 +100,21 @@ function jmessageRegister()
  */
 function jmessageLogin(username, password) 
 {
-  
   var that = this;
+  var isLogin = JIM.isLogin();
+  if ( isLogin == true) {
+   //退出极光
+    JIM.loginOut();
+  }
   JIM.login({
     'username': username,
     'password': password
-  }).onSuccess(function (data){
+  }).onSuccess(function (data) {
     //console.log(data);
   }).onFail(function (data) {
     //同上
   });
+  
 }
 /**
  * 提示

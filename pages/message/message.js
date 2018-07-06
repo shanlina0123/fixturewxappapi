@@ -27,6 +27,7 @@ Page({
           }
         });
       } 
+      
   },
   /**
    * 生命周期函数--监听页面加载
@@ -124,6 +125,14 @@ Page({
           msgList: msgList
         });
       }
+    });
+  },
+  messagesStatus:function(){
+    wx.hideTabBarRedDot({
+      index: 1
+    })
+    wx.navigateTo({
+      url: '/pages/jmessage/jmessagelist/jmessagelist'
     });
   }
 })
