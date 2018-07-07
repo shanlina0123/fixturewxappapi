@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class='wrap'>
+    <view class='topbgwrap' style='background:url({{imgUrl+companyData.covermap}}) center no-repeat; background-size:cover'>
     <text class='companyname'>{{companyData.name}}</text>
     <view class='buttonwrap'>
         <view class='samepadding'>
@@ -16,6 +17,7 @@
                 关注项目
             </navigator>
         </view>
+    </view>
     </view>
     <text class='centertitle'>动态</text>
     <view class='itemul samepadding' wx:for="{{data}}" wx:for-index="idx" wx:key="index">

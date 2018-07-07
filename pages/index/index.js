@@ -12,10 +12,10 @@ Page({
     inputisshow: false,//评论框
     data: [],//动态数据
     page: 1,//分页
-    commentData:{},//公司信息
+    commentData: {},//评论数据
     isLoad: true,//分页开关
     imgUrl: Url.imgUrl,//图片地址
-    companyData: {},//评论数据
+    companyData: {},//公司信息
     userType:0,//用户身份
     userinfo:{},//用户信息
   },
@@ -351,6 +351,10 @@ Page({
       if (res.status == 1) {
         that.setData({
           companyData: res.data
+        })
+        //设置头
+        wx.setNavigationBarTitle({
+          title: res.data.applicationName ? res.data.applicationName:'首页'
         })
       }
     });

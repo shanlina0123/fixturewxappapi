@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class='wrap'>
+    <view class='topbgwrap' style='background:url({{imgUrl+companyData.covermap}}) center no-repeat; background-size:cover'>
     <text class='companyname'>{{companyData.name}}</text>
     <view class='userlevel samepadding'>
         <navigator url='../upgrade/upgrade' class='levelBtn' hover-class='none'>标准版</navigator>
@@ -23,6 +24,7 @@
                 成员管理
             </navigator>
         </view>
+    </view>
     </view>
      <!-- 动态 -->
     <text class='centertitle'>动态</text>

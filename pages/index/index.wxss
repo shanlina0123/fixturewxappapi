@@ -1,15 +1,16 @@
-/*C端首页*/
+.topbgwrap{
+    width: 100%;
+    height: 270rpx;
+}
 .companyname {
     display: block;
     font-size: 36rpx;
     text-align: center;
     padding: 20rpx 0;
-    background-color: #fff;
 }
 
 .buttonwrap {
-    padding: 40rpx 0;
-    background-color: #fff;
+    padding: 30rpx 0;
 }
 
 .centerbtn {
@@ -32,7 +33,7 @@
 .centertitle {
     display: block;
     font-size: 32rpx;
-    padding: 20rpx;
+    padding: 20rpx 20rpx 0 20rpx;
 }
 /*选择门店弹窗*/
 .changewrap{

@@ -61,7 +61,7 @@ Page({
       that.getUserOpenId(that.data.appid);
     }else
     {
-      if (wx.getExtConfig) {
+      if (wx.getExtConfig){
         wx.getExtConfig({
           success: function (res) {
             var appid = res.extConfig.appid;
@@ -109,7 +109,7 @@ Page({
     var that = this;
     if (!wx.getStorageSync('openid') || !wx.getStorageSync('companyid') )
     {
-      this.getAppid();
+      that.getAppid();
       wx.showToast({ title: '登陆失败', icon: 'loading' });
       return;
     }
