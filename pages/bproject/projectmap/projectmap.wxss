@@ -2,7 +2,7 @@
 .promap{
     margin-top: 20px;
     width: 100%;
-    height: 300px;
+    height: 400rpx;
 }
 .pointitem{
     border-bottom: 1px solid #eee;
@@ -10,14 +10,25 @@
 }
 .points{
     margin-top: 20rpx;
+    overflow-y: auto;
 }
 .pointaddr{
     margin-top: 15rpx;
 }
-.formbutton{
-    font-size: 32rpx;
+.btnwrap{
+    position: relative;
+    padding: 0 30px;
+    text-align: center;
+    top: 50%;
+    margin-top: -40rpx;
+}
+.opensettingbtn{
+    display: block;
+    height:80rpx;
+    line-height:80rpx;
+    font-size:36rpx;
+    margin: 0 auto;
+    background-color:#5FB878;
     color: #fff;
-    background-color: #5FB878;
-    border-color: #5fb878;
-    padding:15rpx 0;
+    border-color: #5fb878
 }

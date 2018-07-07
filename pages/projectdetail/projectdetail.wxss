@@ -13,6 +13,7 @@
 }
 .bottom{
     position: absolute;
+    width: 94%;
     bottom: 22rpx;
     left: 30rpx;
 }

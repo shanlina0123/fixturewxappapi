@@ -10,7 +10,8 @@ Page({
     longitude:0,
     latitude:0,
     address:[],
-    map:true
+    map: true, 
+    listheight: 0
   },
 
   /**
@@ -33,6 +34,14 @@ Page({
         that.setData({
           userLocation:true
         });
+      }
+    })
+    wx.getSystemInfo({
+      success: function (res) {
+        var windowheight = res.windowHeight;
+        that.setData({
+          listheight: (windowheight - 18 - 210) * 1.6
+        })
       }
     })
   },

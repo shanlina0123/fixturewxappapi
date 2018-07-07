@@ -35,7 +35,8 @@
     "pages/invite/makesure/makesure",
     "pages/invite/inviteuser/inviteuser",
     "pages/jmessage/jmessagelist/jmessagelist",
-    "pages/jmessage/jmessageinfo/jmessageinfo"
+    "pages/jmessage/jmessageinfo/jmessageinfo",
+    "pages/users/changestore/changestore"
     
     
   ],

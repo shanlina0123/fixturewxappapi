@@ -4,6 +4,8 @@ const Request = require('../../../utils/request.js');
 Page({
     data:{
       imgUrl: Url.imgUrl,
+      region: ['陕西省', '西市市'],
+      customItem: ''
     },
     //提交表单
     submitform: function (e) {
@@ -18,7 +20,8 @@ Page({
             'phone': uphone,
             'name': uname, 
             'content': '免费量房',
-            'formId': e.detail.formId
+            'formId': e.detail.formId,
+            'clientcity': that.data.region.join(' ')
         }
         //console.log(e.detail);
         if (uphone == '') {
@@ -49,5 +52,10 @@ Page({
                 }
             })
         }
+    },
+    bindRegionChange: function (e) {
+      this.setData({
+        region: e.detail.value
+      })
     }
 })

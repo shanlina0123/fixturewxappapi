@@ -1,1 +1,8 @@
 /* pages/index/quick/quick.wxss */
+.addrpicker{
+    border: 1px solid #e2e2e2;
+    padding: 0 10px;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 10rpx;
+}

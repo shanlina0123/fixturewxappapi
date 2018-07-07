@@ -14,6 +14,11 @@
             <view class='formitem'>
                 <input type='digit' placeholder='请输入住房面积m2' name='uarea' class='forminput' />
             </view>
+            <view class='formitem'>
+                <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" class='addrpicker'>
+                    <view class="picker">请选择所在城市：{{region[1]}}</view>
+                </picker>
+            </view>
             <button class='submitBtn'  form-type='submit'>快速报价</button>
         </form>
     </view>

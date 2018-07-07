@@ -4,6 +4,8 @@ const Request = require('../../../utils/request.js');
 Page({
   data: {
     imgUrl: Url.imgUrl,
+    region: ['陕西省', '西市市'],
+    customItem: ''
   },
 //提交表单
     submitform: function(e){
@@ -12,8 +14,15 @@ Page({
         var uphone = e.detail.value.uphone;
         var uarea = e.detail.value.uarea;
         var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
-        var params = { 'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid': 1, 'sourceid': 4,
-          'phone': uphone, 'name': uname, 'uarea': uarea, 'content': '装修报价', 'formId': e.detail.formId}
+        var params = { 
+                      'companyid': wx.getStorageSync('userInfo').companyid, 
+                      'sourcecateid': 1, 'sourceid': 4,
+                      'phone': uphone, 
+                      'name': uname, 
+                      'uarea': uarea,
+                      'content': '装修报价', 
+                      'formId': e.detail.formId,
+                      'clientcity': that.data.region.join(' ')}
         if (uphone == ''){
             wx.showToast({
                 title: '手机号不能为空',
@@ -47,5 +56,10 @@ Page({
                 }
             })
         }
+    },
+    bindRegionChange: function (e) {
+      this.setData({
+        region: e.detail.value
+      })
     }
 })

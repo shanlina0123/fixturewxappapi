@@ -1,0 +1,6 @@
+<!--pages/changestore/changestore.wxml-->
+<view class='storelist'>
+   <block wx:for="{{data}}" wx:key="index">
+    <view class="item {{item.id==userID?'on':''}}" data-id='{{item.id}}'  bindtap='setStore'>{{item.name}}</view>
+   </block> 
+</view>

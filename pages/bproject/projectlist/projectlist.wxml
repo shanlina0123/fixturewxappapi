@@ -15,7 +15,7 @@
     <view class='showcontent'>
         <view class="content {{switchtype==0?'':'hide'}}">
             <view class='prolist' wx:for="{{construction}}" wx:key="constructionIndex"  wx:for-item="constructionItem">
-                <navigator url='../projectdetail/projectdetail' class='protop clearfix'>
+                <navigator url='../../projectdetail/projectdetail?id={{constructionItem.id}}' class='protop clearfix'>
                     <image src='{{imgUrl+constructionItem.explodedossurl}}' class='proimage fl'></image>
                     <view class='proright fl'>
                         <view>{{constructionItem.name}}
@@ -45,7 +45,7 @@
         </view>
         <view class="content {{switchtype==1 ? '':'hide'}}">
             <view class='prolist' wx:for="{{complete}}" wx:key="completeIndex"  wx:for-item="completeItem">
-                <navigator url='../projectdetail/projectdetail' class='protop clearfix'>
+                <navigator url='../../projectdetail/projectdetail?id={{completeItem.id}}' class='protop clearfix'>
                     <image src='{{imgUrl+completeItem.explodedossurl}}' class='proimage fl'></image>
                     <view class='proright fl'>
                         <view>{{completeItem.name}}

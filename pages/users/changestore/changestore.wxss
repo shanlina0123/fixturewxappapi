@@ -1,0 +1,12 @@
+/* pages/changestore/changestore.wxss */
+.storelist{
+    padding: 20rpx 0;
+}
+.storelist .item{
+    padding: 20rpx;
+    border-bottom: 1px solid #eee;
+}
+.storelist .item.on{
+    color: #FFF;
+    background-color: #1e9fff;
+}

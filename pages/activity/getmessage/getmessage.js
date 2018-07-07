@@ -49,7 +49,7 @@ Page({
             title: res.messages,
             success: function () {
               wx.reLaunch({
-                url: '/pages/activity/prize/prize'
+                url: '/pages/activity/prize/prize?id=' + that.data.activityluckyid
               })
             }
           })

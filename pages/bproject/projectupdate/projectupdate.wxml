@@ -2,7 +2,10 @@
 <view class='samepadding'>
     <form bindsubmit='submitform'>
         <view class='formitem'>
-            <image src="{{img.src?img.src:'../../../images/upload.png'}}" class='uploadimg' bindtap='uploadimg'></image>
+            <image  src="{{img.src?img.src:'../../../images/upload.png'}}" 
+                    class="uploadimg {{img.src?'uploadedimg':''}}" 
+                    bindtap='uploadimg' 
+                    mode="aspectFit"></image>
             <view class='uploadnotice'>项目封面：建议上传效果图</view>
         </view>
         <view class='formitem clearfix'>

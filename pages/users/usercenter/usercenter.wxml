@@ -44,19 +44,15 @@
         <text class='left15'>{{user.nickname}}</text>
     </view>
     <view class='proul samepadding'>
-        <navigator url='active/active' class='proitem'hover-class="none">
-            <image src='../../../images/icon2.png' class='itemicon'></image>
-            <text class='left10'>促销活动</text>
-        </navigator>
         <navigator url='../../bproject/projectlist/projectlist' class='proitem' hover-class="none">
             <image src='../../../images/icon3.png' class='itemicon'></image>
             <text class='left10'>项目管理</text>
         </navigator>
-        <navigator url='../../client/client' class='proitem' hover-class="none">
+        <navigator url='../../client/client' class='proitem' hover-class="none" wx:if="{{user.isinvitatione!=1}}">
             <image src='../../../images/icon8.png' class='itemicon'></image>
             <text class='left10'>客户预约</text>
         </navigator>
-        <navigator url='../changestore/changestore' class='proitem' hover-class="none">
+        <navigator url='../changestore/changestore' class='proitem' hover-class="none" wx:if="{{user.isinvitatione!=1}}">
             <image src='../../../images/icon9.png' class='itemicon'></image>
             <text class='left10'>切换门店</text>
         </navigator>

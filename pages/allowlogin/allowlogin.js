@@ -176,6 +176,7 @@ Page({
    */
   setUserInfo:function(e)
   {
+    var that = this;
     var obj = { "nickname": e.detail.userInfo.nickName, "faceimg": e.detail.userInfo.avatarUrl };
     Request.requestPost(Url.setUserInfo, obj, function (res) {
       if (res.status == 1) {

@@ -1,15 +1,15 @@
 /**
  * 小程序配置文件
  */
-//var host = "https://fixture.yygsoft.com/api"
-var host = "http://z.com/api"
+var host = "https://fixture.yygsoft.com/api"
+//var host = "http://z.com/api"
 var config = {
   /**
    * 公用
    */
   //图片地址
-  imgUrl: `http://z.com/uploads/`,
-  //imgUrl: `https://fixture.yygsoft.com/uploads/`,
+  //imgUrl: `http://z.com/uploads/`,
+  imgUrl: `https://fixture.yygsoft.com/uploads/`,
   //用code换取openId
   openIdUrl: `${host}/user/openid`,
   //用户登陆
@@ -115,6 +115,11 @@ var config = {
   participantSave: `${host}/participant/participant-save`,
   //删除成员
   participantDel: `${host}/participant/participant-del`,
+  //参与者店铺列表
+  storeInvitation: `${host}/store/invitation-list`,
+  //参与者切换门店
+  storeInvitationstoreup: `${host}/dd store/invitation-storeup`,
+ 
 
   /**
    * 极光
