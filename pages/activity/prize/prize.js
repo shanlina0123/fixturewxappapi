@@ -207,6 +207,7 @@ Page({
     },
     //关闭中奖弹窗
     closeprize:function(){
+        var that = this;
         this.setData({
             hadprize: false
         })
@@ -215,7 +216,7 @@ Page({
         if (!luck_num || luck_num.clientid == false)
         {
           wx.reLaunch({
-            url: '/pages/activity/getmessage/getmessage?activityluckyid=' + this.data.info.id
+            url: '/pages/activity/getmessage/getmessage?activityluckyid=' + that.data.info.id
           })
         }
     },

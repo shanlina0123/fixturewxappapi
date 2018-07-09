@@ -432,4 +432,9 @@ Page({
         seachName: e.detail.value
       })
     },
+    closemask: function () {
+      this.setData({
+        setshow: false
+      })
+    },
 })

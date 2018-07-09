@@ -67,17 +67,24 @@ Page({
   upReadStaus:function(e)
   {
     var index = e.currentTarget.dataset.index;
-    var k = 'jmess' + e.currentTarget.dataset.username;
+    var k = 'jmess'+e.currentTarget.dataset.username;
+    var contentstorage = wx.getStorageSync(k);
     var data = this.data.user;
-    if (data[index].content)
+    if (lastContent)
     {
-      data[index].content.read = false;
-      this.setData({
-        user: data
-      });
-      var content = wx.getStorageSync(k);
-          content[content.length - 1].content.read = false;
-          wx.setStorageSync(k,content);
-    }    
-  }
+      if (data[index].content)
+      {  
+        var oneData = data[index].content;
+            oneData.read = false;
+            data[index] = oneData;
+        this.setData({
+          user: data
+        });
+        var lastContent= contentstorage[contentstorage.length - 1].content;
+            lastContent.read = false
+            contentstorage[contentstorage.length - 1] = lastContent;
+            wx.setStorageSync(k, contentstorage);
+        }
+      } 
+    }
 })

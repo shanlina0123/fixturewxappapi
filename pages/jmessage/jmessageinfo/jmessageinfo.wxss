@@ -131,8 +131,8 @@
     margin-right: 16rpx;
 }
 .centerwrap{
-    margin-left: 16rpx;
-    width: 66%;
+    /* margin-left: 16rpx; */
+    width: 85%;
 }
 .words{
     height: 62rpx;
@@ -154,12 +154,12 @@
     display: none;
 }
 .sendbtn{
-    height: 56rpx;
-    line-height: 56rpx;
-    padding: 0 14rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    padding: 0 18rpx;
     color: #FFF;
     font-size: 24rpx;
     background-color: #1AAC19;
     border-radius: 8rpx;
-    margin-top: 4rpx;
+    /* margin-top: 4rpx; */
 }

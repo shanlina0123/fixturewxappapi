@@ -78,7 +78,7 @@
                     <text>微信好友</text>
                     <button open-type='share' class='sharebtn'>分享</button>
                 </view>
-                <view class='buttonwrap fl' bindtap='showerweima'>
+                <!-- <view class='buttonwrap fl' bindtap='showerweima'>
                     <image src="../../../images/public2.png" class='publicimg'></image>
                     <text>永久二维码</text>
                 </view>
@@ -89,7 +89,7 @@
                 <view class='buttonwrap fl'>
                     <image src="../../../images/public4.png" class='publicimg'></image>
                     <text>关注邀请</text>
-                </view>
+                </view> -->
             </view>
         </view>
     </view>
@@ -101,6 +101,7 @@
 </navigator>
 
 <!--浮动在页面中间的设置-->
+<view class="settingwrap  {{setshow ? '':'hide'}}" catchtap='closemask'>
 <view class="florsetwrap {{setshow ? '':'hide'}}">
     <view class='pulic'>
         <switch checked="{{siteData.isopen==1?true:false}}" bindchange="switch1Change" class='publicswitch' />
@@ -119,5 +120,6 @@
         <image src="../../../images/h2.png" class='florimg'>></image>
         <view>完善</view>
     </navigator>
+</view>
 </view>
 
