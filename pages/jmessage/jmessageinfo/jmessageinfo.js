@@ -1,8 +1,9 @@
 const app = getApp();
 const Url = require('../../../utils/config.js');
 const Jg = require('../../../utils/jmessage.js');
-const JIM = require('../../../utils/jmessage.js').JIM;
 const Request = require('../../../utils/request.js');
+const JIM = app.globalData.JIM;
+
 //时时消息
 JIM.onMsgReceive(function (res) {
   var pages = getCurrentPages();
@@ -233,10 +234,12 @@ Page({
         var user = wx.getStorageSync('userInfo');
         var username = user.jguser;
         var password = user.jmessagePass
+        //console.log(username, password);
         JIM.login({
           'username': username,
           'password': password
         }).onSuccess(function (data) {
+            app.globalData.JIM = JIM;
             that.sendSingleMsg(obj);
         });
       }

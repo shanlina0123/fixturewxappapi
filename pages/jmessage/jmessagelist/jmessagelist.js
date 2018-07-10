@@ -1,26 +1,6 @@
 const app = getApp();
 const Url = require('../../../utils/config.js');
 const Request = require('../../../utils/request.js');
-const Jg = require('../../../utils/jmessage.js');
-const JIM = require('../../../utils/jmessage.js').JIM;
-/**
-   * 判断初始化
-   */
-var coonnect = JIM.isConnect();
-if (coonnect == false) {
-  //初始化
-  Jg.getjmessageInit();
-}else
-{
-  var isLogin = JIM.isLogin();
-  if (isLogin == false) {
-    var user = wx.getStorageSync('userInfo');
-    var username = user.jguser;
-    var password = user.jmessagePass
-    Jg.jmessageLogin(username, password);
-  }
-}
-
 Page({
 
   /**
