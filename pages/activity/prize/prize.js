@@ -45,11 +45,12 @@ Page({
     },
     onLoad: function (options) {
         var _this = this;
-        if (options.scene) {
+        if (options.scene!=undefined) {
           var scene = decodeURIComponent(options.scene);
           _this.setData({
             id: scene
           });
+         
           _this.getActivity(scene);
         } else
          {
@@ -342,5 +343,10 @@ Page({
           title: info.sharetitle
         }
       }
+    },
+    closeactive: function () {
+      wx.switchTab({
+        url: '../../index/index',
+      })
     },
 })  

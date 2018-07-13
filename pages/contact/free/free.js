@@ -4,7 +4,7 @@ const Request = require('../../../utils/request.js');
 Page({
     data:{
       imgUrl: Url.imgUrl,
-      region: ['陕西省', '西市市'],
+      region: ['陕西省', '西安市'],
       customItem: ''
     },
     //提交表单

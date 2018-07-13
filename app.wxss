@@ -10,10 +10,19 @@ view {
     font-size: 28rpx;
 }
 
+.bluecolor {
+    color: #1e9fff;
+}
+
+.ctext {
+    text-align: center;
+}
+
 .wrap {
     background-color: #f0f0f0;
     position: relative;
     width: 100%;
+    height: 100%;
 }
 
 .samepadding {
@@ -105,15 +114,15 @@ view {
 
 .bannerimg {
     width: 100%;
-    height: 200px;
+    height: 190px;
 }
 
 /**微信头像**/
 
 .uhead {
-    width: 90rpx;
-    height: 90rpx;
-    border-radius: 90rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100rpx;
 }
 
 /**消息列表公用**/
@@ -135,9 +144,8 @@ view {
 }
 
 .noticename {
-    height: 80rpx;
+    min-height: 40rpx;
     line-height: 40rpx;
-    overflow: hidden;
 }
 
 .msgimg {
@@ -164,11 +172,13 @@ view {
     padding-bottom: 20rpx;
     background-color: #fff;
     margin-top: 20rpx;
-    border-radius: 20rpx;
+}
+
+.itemli {
+    margin-bottom: 10rpx;
 }
 
 .rightname {
-    width: 590rpx;
     margin-left: 20rpx;
     margin-top: 12rpx;
 }
@@ -184,42 +194,26 @@ view {
 
 .prostate {
     color: #fff;
-    padding: 0 8rpx;
-    line-height: 42rpx;
+    padding: 2rpx 5rpx;
     margin-left: 10rpx;
 }
 
 .stateimgwrap {
     margin: 10rpx 0;
 }
-.overshow{
-    color: #1e9fff;
-    text-align: right;
-    padding: 5rpx 0;
-}
-.showpart{
-    max-height: auto;
-}
+
 .stateimg {
-    width: 186rpx;
-    height: 186rpx;
+    width: 120rpx;
+    height: 120rpx;
     margin-left: 10rpx;
     margin-bottom: 10rpx;
 }
 
-.proname {
-    font-weight: bold;
-}
-
 .times text {
-    display: inline-block;
-    line-height: 47rpx;
     margin-right: 15rpx;
 }
 
 .handelwrap {
-    width: 54rpx;
-    height: 47rpx;
     position: relative;
     text-align: right;
 }
@@ -297,16 +291,11 @@ view {
 .textname {
     color: #1e9fff;
 }
-.deleteitem {
-    position: absolute;
-    right: 20rpx;
-    top: 25rpx;
-    color: #1e9fff;
-    z-index: 20;
-}
+
 .bitermul {
     position: relative;
 }
+
 .deleteitem {
     position: absolute;
     right: 20rpx;
@@ -314,7 +303,10 @@ view {
     color: #1e9fff;
     z-index: 20;
 }
-
+.itemulwrap{
+    background-color: #f0f0f0;
+    padding: .1px;
+}
 /**定义12种工地状况的颜色**/
 
 .color1 {
@@ -365,16 +357,15 @@ view {
     background-color: #930; /**签约**/
 }
 
-/*动态部分公用*/
+/*下滑加载下一页*/
 
-.statetext {
-    display: -webkit-box!important;
-    line-height: 42rpx;
-    max-height: 128rpx;
-    overflow: hidden;
-    margin-top: 10rpx;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp:3;
+.loadwrap {
+    text-align: center;
+    padding: 10rpx 0;
+}
+
+.loafgif {
+    width: 32rpx;
+    height: 32rpx;
+    vertical-align: middle;
 }

@@ -4,6 +4,7 @@
     <view class='forprizebg' style='background:url({{bgurl}}) center no-repeat;'>
         <view class='tabli samepadding'>
             <text class='activename'>{{info.title}}</text>
+             <image class='activeclose' src="../../../images/closeactive.png" bindtap="closeactive"></image>
             <view class='activetime'>
                 <text>抽奖结束时间剩余 \n <text class='times'>{{countDownDay}}天{{countDownHour}}小时{{countDownMinute}}分钟{{countDownSecond}}秒</text></text>
             </view> 
