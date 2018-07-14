@@ -27,9 +27,13 @@ Page({
     var uphone = e.detail.value.uphone;
     var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
     var params = {
-      'companyid': wx.getStorageSync('userInfo').companyid, 'sourcecateid':4, 'sourceid':5,
+      'companyid': wx.getStorageSync('userInfo').companyid,
+      'sourcecateid':2, 
+      'sourceid':5,
       'storeid': wx.getStorageSync('userInfo').storeid,
-      'phone': uphone, 'name': uname, 'content': '抽奖',
+      'phone': uphone, 
+      'name': uname, 
+      'content': '抽奖',
       'activityluckyid': that.data.activityluckyid
     }
     if (uphone == '') {

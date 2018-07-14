@@ -530,8 +530,9 @@ Page({
     var username = user.jguser;
     var nickname = user.nickname ? user.nickname : user.jguser;
     var youHead = user.faceimg ? user.faceimg :'../../../images/uhead.png';
+    var urlP = "username="+username+'&nickname='+nickname+'&faceimg='+youHead+'&createuserid='+user.id;
     wx.navigateTo({
-      url: "/pages/jmessage/jmessageinfo/jmessageinfo?username=" + username + '&nickname=' + nickname +'&faceimg='+youHead
+      url: "/pages/jmessage/jmessageinfo/jmessageinfo?" + urlP
     })
   }
 })
