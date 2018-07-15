@@ -7,7 +7,7 @@ Page({
     imgUrl: Url.imgUrl,
     siteid:'',
     storeid:'',
-    region: ['陕西省', '西市市'],
+    region: ['陕西省', '西安市'],
     customItem: ''
   },
   onLoad: function (options) {

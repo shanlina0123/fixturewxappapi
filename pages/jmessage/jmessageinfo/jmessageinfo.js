@@ -134,6 +134,7 @@ Page({
     myHead:'',//我的用户头像
     youHead:'',//ta的头像
     title:'',//聊天对象
+    createuserid:''//创建工地的用户
   },
   /**
   * 生命周期函数--监听页面加载
@@ -145,12 +146,13 @@ Page({
           myHead: wx.getStorageSync('userInfo').faceimg
         });
       wx.setNavigationBarTitle({
-        title: options.nickname
+        title: String(options.nickname)
       })
     that.setData({ 
       username: username,
       youHead: options.faceimg,
-      nickname: options.nickname
+      nickname: options.nickname,
+      createuserid: options.createuserid ? options.createuserid:''
     });
     var k = 'jmess'+username;
     var data = wx.getStorageSync(k);
@@ -162,9 +164,8 @@ Page({
     }else
     {
       //添加为好友
-      Request.requestPost(Url.jmessageFriendAdd, { 'username':username},function(){});
+      Request.requestPost(Url.jmessageFriendAdd, { 'username':username},function(res){});
     }
-   
   },
   /**
    * 发送消息
@@ -178,7 +179,7 @@ Page({
     {
       return;
     }
-    var username = this.data.username;
+    var username = that.data.username;
     var obj = {'username': username, 'content': content};
         that.sendSingleMsg(obj);
         var k = 'jmess' + username;
@@ -217,14 +218,32 @@ Page({
     {  
       //判断登陆
       var isLogin = JIM.isLogin();
+      console.log(obj);
       if ( isLogin ){
         JIM.sendSingleMsg({
           'target_username': obj.username,
           'content': obj.content,
           'extras': { 'faceimg': wx.getStorageSync('userInfo').faceimg }
         }).onSuccess(function (data, msg) {
-          if (data.code != 0) {
+          if (data.code != 0) 
+          {
             Jg.showToast('发送失败');
+          }else
+          {
+            var uid = that.data.createuserid;
+            if (uid )
+            {
+              //如果对方不在线就发微信消息 从工地点滴进来的
+              var post = { 'username': obj.username, 'createuserid': uid, 'content': obj.content };
+              wx.request({
+                url: Url.jmessageFriendTesting,
+                method: "POST",
+                data: obj,
+                header: {
+                  'content-type': 'application/json',
+                  'Authorization': wx.getStorageSync('userInfo').Authorization
+                }});
+            }
           }
         }).onFail(function (data) {
           Jg.showToast('发送失败');

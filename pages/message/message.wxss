@@ -1,8 +1,7 @@
-/* pages/message/message.wxss */
 .askmsg{
-    padding: 30rpx;
     background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAmklEQVRYR+3W0Q2AIAyEYViJDqRu5kSshOmbj/TuSKOBAfw/CyHUkrxqcr9swHcm0Fo7/bz03m/luZmegJl5+BhjXErENMD/egUiBFiBCAPUCAigRMAAFYICKBA0gEVIAAxCBkAR/wGgt6RkAmjct40GMHEawMYpgCIOA1RxCKCMhwHqeAiwIh4CpD9KlS/h97foi4iFbUD6BB7XB6gh1ZZt0gAAAABJRU5ErkJggg==) center right no-repeat;
-    background-size:45rpx;
+    padding: 30rpx;
+    background-color: #fff
 }
 .askimg{
     width: 96rpx;
@@ -10,7 +9,7 @@
 }
 .askright{
     margin-left: 16rpx;
-    margin-top: 12rpx;
+    line-height: 96rpx;
 }
 .noticetitle{
     padding: 20rpx; 
@@ -29,7 +28,7 @@
     border-radius: 5px;
 }
 .timewrap{
-    margin-top: 8rpx;
+    margin-top: 15rpx;
 }
 .pulicktime{
     margin-left: 10rpx;

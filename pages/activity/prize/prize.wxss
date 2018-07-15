@@ -34,6 +34,13 @@
     color: red;
     line-height: 50rpx;
 }
+.activeclose{
+    position: absolute;
+    top: 16rpx;
+    right: 20rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
 .activetip{
     position: absolute;
     top: 80rpx;
@@ -69,12 +76,12 @@
     margin: 20rpx 0;
     color: #FFEE4E;
     font-size: 14px;
-    line-height: 20px;
     text-align: center;
 }
 .share navigator{
     display: inline-block;
-    color: red
+    color: red;
+    font-size: 36rpx;
 }
 
 /*中奖页面*/

@@ -135,9 +135,8 @@ view {
 }
 
 .noticename {
-    height: 80rpx;
-    line-height: 40rpx;
-    overflow: hidden;
+   min-height: 40rpx;
+   line-height: 40rpx;
 }
 
 .msgimg {

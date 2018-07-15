@@ -43,10 +43,10 @@
                     <image src="../../../images/{{selected2?'proicon2On.png' :'proicon2.png'}}" class='tabimg'></image>
                     <text>评价</text>
                 </view>
-                 <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
+                 <!-- <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
                     <image src="../../../images/{{selected3?'proicon3On.png' :'proicon3.png'}}" class='tabimg'></image>
                     <text>团队</text>
-                </view> 
+                </view>  -->
             </view>
             <view class='tabcontent'>
                 <view class="tabitem {{selected1?'':hide}}">
@@ -141,7 +141,7 @@
                     </view> -->
                     <text class='datanone'>暂无业主评价</text>
                 </view>
-                 <view class="tabitem {{selected3?'':hide}}">
+                 <!-- <view class="tabitem {{selected3?'':hide}}">
                     <view class='itemul samepadding'>
                         <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
                             <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
@@ -153,7 +153,7 @@
                             </view>
                         </view>
                     </view> 
-                </view> 
+                </view>  -->
             </view>
         </view>
         <!--底预约参观按钮-->

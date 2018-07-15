@@ -6,14 +6,14 @@
         <text class='left15'>{{user.nickname}}</text>
     </view>
     <view class='proul samepadding'>
-        <navigator url='../myproject/myproject'class='proitem' hover-class="none">
+        <!-- <navigator url='../myproject/myproject'class='proitem' hover-class="none">
             <image src='../../../images/icon1.png' class='itemicon'></image>
             <text class='left10'>我的装修</text>
         </navigator>
         <navigator url='../active/active' class='proitem' hover-class="none">
             <image src='../../../images/icon2.png' class='itemicon'></image>
             <text class='left10'>参与的活动</text>
-        </navigator>
+        </navigator> -->
         <navigator url='../project/project' class='proitem' hover-class="none">
             <image src='../../../images/icon3.png' class='itemicon'></image>
             <text class='left10'>我关注的项目</text>

@@ -133,5 +133,7 @@ var config = {
   jmessageFriendAdd: `${host}/jmessage/friend-add`,  
   jmessageUseInfo: `${host}/jmessage/user-info`, 
   jmessageFace:`${host}/jmessage/user-face`, 
+  //检测用户在线不
+  jmessageFriendTesting: `${host}/jmessage/user-testing`, 
 };
 module.exports = config

@@ -45,7 +45,7 @@ Page({
     },
     onLoad: function (options) {
         var _this = this;
-        if (options.scene) {
+        if (options.scene!=undefined) {
           var scene = decodeURIComponent(options.scene);
           _this.setData({
             id: scene
@@ -213,7 +213,7 @@ Page({
         })
         //判断输入电话了么
         var luck_num = this.data.luck_num;
-        if (!luck_num || luck_num.clientid == false)
+        if (!luck_num || !luck_num.lucky_num_to_client || !luck_num.lucky_num_to_client.phone)
         {
           wx.reLaunch({
             url: '/pages/activity/getmessage/getmessage?activityluckyid=' + that.data.info.id
@@ -300,6 +300,16 @@ Page({
       Request.requestGet(Url.luckyInfo + '?id=' + id, function (res) {
         if(res.status==1)
         {
+          //判断是不是在抽奖前提交用户信息
+          if (res.data.info.ishasconnectinfo == 1) 
+          {
+            var luck_num = res.data.luck_num;
+            if (!luck_num || !luck_num.lucky_num_to_client || !luck_num.lucky_num_to_client.phone) {
+              wx.navigateTo({
+                url: '/pages/activity/getmessage/getmessage?activityluckyid=' + res.data.info.id
+              })
+            }
+          }
           var arr=[];
           var luckId=[];
           res.data.luck_prize.forEach(function (v) {
@@ -320,14 +330,6 @@ Page({
           //渲染样式
           that.startStyle();
           that.setTiem();
-          //判断是不是在抽奖前提交用户信息
-          if (!res.data.luck_num && res.data.info.ishasconnectinfo==1)
-          {
-            wx.navigateTo({
-              url: '/pages/activity/getmessage/getmessage?activityluckyid=' + res.data.info.id
-            })
-          }
-          //console.log(res); 
         }
       });
     },
@@ -342,5 +344,10 @@ Page({
           title: info.sharetitle
         }
       }
+    },
+    closeactive: function () {
+      wx.switchTab({
+        url: '../../index/index',
+      })
     },
 })  
