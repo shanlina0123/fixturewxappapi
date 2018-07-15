@@ -9,7 +9,7 @@ Page({
    */
   data: {
     url:'',
-    appid:'',//小程序appid
+    appid:'wx8d69ac4c6d6267b4',//小程序appid
     scene:'',//扫码的参数uid=2&positionid=25&type=1
     msg:'确认登录'
   },

@@ -1,24 +1,33 @@
 <!--index.wxml-->
 <view class='wrap'>
-    <view class='topbgwrap' style='background:url({{imgUrl+companyData.covermap}}) center no-repeat; background-size:cover'>
-    <text class='companyname'>{{companyData.name}}</text>
-  
-    <view class='buttonwrap'>
-        <view class='samepadding' wx:if="{{userinfo.isinvitationed !=1 }}">
-            <navigator class='centerbtn' url="../bproject/projectlist/projectlist" hover-class="none">
-                <image src='../../images/topicon3.png' class='topicon'></image>
-                项目管理
-            </navigator>
-            <navigator class='centerbtn' url="../client/client" hover-class="none">
-                <image src='../../images/topicon6.png' class='topicon'></image>
-                客户预约
-            </navigator>
-            <navigator class='centerbtn' url="../invite/participant/participant" hover-class="none">
-                <image src='../../images/topicon4.png' class='topicon'></image>
-                成员管理
-            </navigator>
+    <view class='topbgwrap' >
+      <view class='company clearfix'>
+          <view class='leftlogo fl'>
+              <image src="{{imgUrl+companyData.logo}}" mode="widthFix"></image>
+          </view>
+          <view class='rightcompany fl' >
+            <view class='companyname'>{{companyData.name}}</view>
+            <view class='companyaddr'>{{companyData.fulladdr}}</view>
+            <view class='companyphone'>{{companyData.phone}}</view>
+          </view>
         </view>
-    </view>
+        <view class='topbtnwrap clearfix' wx:if="{{userinfo.isinvitationed !=1 }}">
+                  <navigator class='topitem fl' url="../client/client" hover-class="none">
+                      <image src="../../images/tip1.png" class='firstimage'></image>
+                      <view class='bigtext'>客户预约</view>
+                      <view class='smalltext'>一位客户都不落</view>
+                  </navigator>
+                  <navigator class='topitem fl' url="../invite/participant/participant" hover-class="none">
+                      <image src="../../images/tip2.png" class='secondimage'></image>
+                      <view class='bigtext'>成员管理</view>
+                      <view class='smalltext'>所有成员统一管理</view>
+                  </navigator>
+                  <navigator class='topitem fl' url="../bproject/projectlist/projectlist" hover-class="none">
+                      <image src="../../images/tip3.png" class='thirdimage'></image>
+                      <view class='bigtext'>项目管理</view>
+                      <view class='smalltext'>项目列表统一管理</view>
+                  </navigator>
+            </view>
     </view>
      <!-- 动态 -->
     <text class='centertitle'>动态</text>
@@ -36,9 +45,14 @@
                 </view>
                 <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='statecontent' hover-class="none" bindtap='hidComment'>
                     <text class='statetext'>{{item.content}}</text>
-                    <view class='stateimgwrap clearfix'>
+                    <view class='stateimgwrap  clearfix'>
                         <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                            <image src='{{imgUrl+itemImg.ossurl}}' class='stateimg fl'></image>
+                          <view wx:if="{{itemImg.type==1}}" class='videowrap clearfix'>
+                            <video src="{{imgUrl+itemImg.ossurl}}" autoplay="true" muted="true" bindplay="beginvoice" loop="true"  ></video>
+                          </view>
+                          <view wx:else class=" fl">
+                            <image src='{{imgUrl+itemImg.ossurl}}' class="stateimg   {{imgnumber < 2 ? '' : 'stateimgmore'}}" mode="widthFix"></image>
+                         </view>
                         </block>
                     </view>
                 </navigator>

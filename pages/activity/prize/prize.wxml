@@ -1,7 +1,7 @@
 <!--pages/index/prize.wxml-->
 <view class='bottomtab'>
     <!--活动首页-->
-    <view class='forprizebg' style='background:url({{bgurl}}) center no-repeat;'>
+    <view class='forprizebg' style='background:url({{bgurl}}) center top no-repeat;'>
         <view class='tabli samepadding'>
             <text class='activename'>{{info.title}}</text>
              <image class='activeclose' src="../../../images/closeactive.png" bindtap="closeactive"></image>
@@ -23,18 +23,18 @@
             <view class="container-out">  
             <view class="circle" wx:for="{{circleList}}" wx:key="circleindex" style="top:{{item.topCircle}}rpx;left:{{item.leftCircle}}rpx;background-color: {{(index%2==0)?colorCircleFirst:colorCircleSecond}};"></view>  
             <view class="container-in">  
-                <view class="content-out" wx:for="{{awardList}}" wx:key="awardindex" style="top:{{item.topAward}}rpx;left:{{item.leftAward}}rpx;background-color: {{(item.id==indexSelect)?colorAwardSelect:colorAwardDefault}};">  
+                <view class="content-out" wx:for="{{awardList}}" wx:key="awardindex" style="top:{{item.topAward}}rpx;left:{{item.leftAward}}rpx;"> 
+<view class="forimgbg {{(item.id==indexSelect)?'colorAwardSelect':'colorAwardDefault'}}"></view> 
                 <image class="award-image" src="{{item.imageAward}}"></image>  
                 </view>  
-                <view class="start-btn" bindtap="startGame" style=" background-color:{{isRunning?'#e7930a':'#ffe400'}}">
+                <view class="start-btn" bindtap="startGame" style=" background-color:{{isRunning?'#e7930a':'#ffffff'}}">
                     <image src='{{makeurl}}' class='award-image'></image>
                 </view>  
             </view>  
             </view>
             <text class='prizetimes' wx:if="{{info.ischancelimit==1 && luck_num}}">您还有<text>{{luck_num?luck_num.chancenum-luck_num.chanceusenum:info.chancelimitnum}}</text>次抽奖机会</text>
             <view class='share'>
-                <text>邀请好友来抽奖</text>
-                <button open-type='share' class='left10 sharebtn'>分享</button>  
+                <button open-type='share' class='left10 sharebtn'>分享给好友</button>  
             </view>
         </view>
     </view>

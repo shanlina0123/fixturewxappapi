@@ -76,7 +76,13 @@
     height: 80rpx;
     margin: 0 auto;
 }
+.videoplay{
+    width: 200rpx;
+    height: 200rpx;
+    margin-left:10rpx;
+    margin-bottom:10rpx;
 
+}
 .uploaditem text {
     display: block;
     color: #c2c2c2;

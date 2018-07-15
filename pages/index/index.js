@@ -18,6 +18,7 @@ Page({
     companyData: {},//公司信息
     userType:0,//用户身份
     userinfo:{},//用户信息
+    imgnumber: 1//图片数量
   },
   /**
    * 生命周期函数--监听页面加载
@@ -74,7 +75,8 @@ Page({
           arr.push(obj);
         });
         that.setData({
-          data: data.concat(arr)
+          data: data.concat(arr),
+          imgnumber: arr.length
         });
         //不加载分页
         if (res.data.last_page <= page) {

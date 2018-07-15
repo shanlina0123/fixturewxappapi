@@ -163,7 +163,6 @@ view {
     padding-bottom: 20rpx;
     background-color: #fff;
     margin-top: 20rpx;
-    border-radius: 20rpx;
 }
 
 .rightname {
@@ -199,13 +198,34 @@ view {
 .showpart{
     max-height: auto;
 }
+
+.stateimgmore{
+    width: 190rpx;
+    height:190rpx;
+}
 .stateimg {
-    width: 186rpx;
-    height: 186rpx;
+    max-width: 350rpx;
+    max-height: 500rpx;
+    height:auto;
     margin-left: 10rpx;
     margin-bottom: 10rpx;
 }
+.stateimg:nth-child(3n-2){
+    margin-left: 0;
+}
 
+
+ .videowrap{
+    width: 600rpx;
+    height: 450rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    text-align: center;
+} 
+.videowrap video{
+    width: 600rpx;
+    height: 450rpx;
+}
 .proname {
     font-weight: bold;
 }
@@ -226,6 +246,10 @@ view {
 .handelimage {
     width: 64rpx;
     height: 64rpx;
+}
+.statewrap{
+    max-width: 350rpx;
+    max-height: 500rpx;
 }
 
 .iconwrap {

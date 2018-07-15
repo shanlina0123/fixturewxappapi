@@ -36,15 +36,16 @@
 }
 .activeclose{
     position: absolute;
-    top: 16rpx;
-    right: 20rpx;
-    width: 50rpx;
-    height: 50rpx;
+    top: 10rpx;
+    right: 10rpx;
+    width: 100rpx;
+    height: 100rpx;
+    z-index: 2;
 }
 .activetip{
     position: absolute;
     top: 80rpx;
-    right: 10rpx;
+    left: 70rpx;
 }
 .topimg{
     width: 130rpx;
@@ -74,8 +75,7 @@
 }
 .share{
     margin: 20rpx 0;
-    color: #FFEE4E;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
 }
 .share navigator{
@@ -152,7 +152,7 @@
   right: 0;  
   top: 0;  
   bottom: 0;  
-  margin: auto;  
+  margin: auto;
 }  
    
 /**小圆球  
@@ -170,7 +170,7 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   position: absolute;  
   height: 150rpx;  
   width: 166.6666rpx;  
-  background-color: #f5f0fc;  
+  background-color: #ffffff;  
   border-radius: 15rpx;  
   box-shadow: 0 5px 0 #d87fde;  
 }  
@@ -187,7 +187,7 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   height: 150rpx;  
   width: 166.6666rpx;  
   background-color: #ffe400;  
-  box-shadow: 0 5px 0 #e7930a;  
+  box-shadow: 0 5px 0 #d87fde;  
   color: #f6251e;  
   text-align: center;  
   font-size: 55rpx;  
@@ -205,31 +205,42 @@ box-shadow: inset 3px 3px 3px #fff2af;*/
   height: 140rpx;  
   width: 130rpx;  
 }
-.prizepop{
+.forimgbg {
     position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 150rpx;
+    width: 166.6666rpx;
+    border-radius: 15rpx;
+    z-index: 1;
+}
+.colorAwardDefault{
+    opacity: 0;
+    background-color: #FFFFFF;
+}
+.colorAwardSelect{
+    opacity: .9;
+    background-color: #ffe400;
+} 
+.prizepop{
+  position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 20;
 }
 .sharebtn{
-  display: inline-block;
-  background:none;
-  padding-left:0;
-  padding-right:0%;
-  box-sizing:unset;
-  font-size:14px;
-  text-align:left;
-  text-decoration:none;
-  line-height:24rpx;
-  border-radius:5px;
-  border: 0px!important;
-  -webkit-tap-highlight-color:transparent;
-  overflow:hidden;
-  color: red;
-}
-.sharebtn::after{
-border: none;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-top: 100rpx;
+    background-color: #01AAED;
+    border-color: #01AAED;
+    color: #ffffff;
 }
 
 

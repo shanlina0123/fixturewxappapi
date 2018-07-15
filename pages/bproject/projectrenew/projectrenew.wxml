@@ -19,13 +19,14 @@
                 <!-- <view class='uploaditem fl'>
                     <image src="../../../images/newuser.png" class='uploadimg'></image>
                     <text>VR全景</text>
-                </view> 
-                <view class='uploaditem fl' bindtap='uploadvideo'>
+                </view> -->
+                  <view class='uploaditem fl' bindtap='uploadvideo'>
                     <image src="../../../images/newuser.png" class='uploadimg'></image>
                     <text>小视频</text>
-                </view>-->
+                </view>
             </view>
             <view class='imageswrap clearfix'>
+            <video  src="{{videosrc}}" class="videoplay fl {{videoshow}}"></video>
                 <block wx:for="{{imgUrl}}" wx:key="index">
                   <view class='hadimgwrap fl'>
                       <image src="{{item}}" class='hadimage'></image>

@@ -1,16 +1,105 @@
-.topbgwrap{
+.topbgwrap {
     width: 100%;
-    height: 270rpx;
+    padding: 0.1px;
 }
-.companyname {
-    display: block;
+
+.company {
+    padding: 20rpx;
+    background-color: #fff;
     font-size: 36rpx;
-    text-align: center;
-    padding: 20rpx 0;
+    margin-top: 20rpx;
+}
+
+.leftlogo {
+    margin-right: 20rpx;
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.leftlogo image {
+    display: block;
+    width: 150rpx;
+}
+
+.rightcompany {
+    width: 540rpx;
+}
+
+.companyname {
+    font-size: 34rpx;
+    line-height: 60rpx;
+}
+
+.companyaddr {
+    color: #9f9b9a;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}
+
+.companyphone {
+    color: #01aaed;
+    font-size: 28rpx;
+    line-height: 50rpx;
 }
 
 .buttonwrap {
     padding: 30rpx 0;
+}
+.topbtnwrap {
+    padding: 20rpx;
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+.topbtnwrap .topitem {
+    margin-left: 10rpx;
+    width: 340rpx;
+    height: 180rpx;
+    position: relative;
+}
+.topbtnwrap .topitem image {
+    width: 340rpx;
+    height: 180rpx;
+}
+.topbtnwrap .topitem:first-child {
+    width: 360rpx;
+    height: 370rpx;
+    margin-left: 0;
+}
+.topbtnwrap .topitem:first-child image {
+    width: 360rpx;
+    height: 370rpx;
+}
+.topbtnwrap .topitem:last-child{
+    margin-top: 10rpx;
+}
+.topbtnwrap .bigtext{
+    position: absolute;
+    top: 20rpx;
+    left: 20rpx;
+    font-size: 30rpx;
+    line-height: 35rpx;
+}
+.topbtnwrap .smalltext{
+    position: absolute;
+    top: 40rpx;
+    left: 20rpx;
+    font-size: 26rpx;
+    color: #9F9B9A;
+    padding-top: 20rpx;
+}
+.topbtnwrap .firstimage{
+    width: 360rpx;
+    height: 370rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.topbtnwrap .secondimage,.topbtnwrap .thirdimage{
+    width: 330rpx;
+    height: 180rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .centerbtn {
@@ -82,4 +171,22 @@
 .Bbuttonwrap .centerbtn{
     width: 25%;
     margin: 0;
+}
+
+@media (max-width:320px) {
+    .topbtnwrap .topitem {
+        margin-left: 14rpx;
+    }
+
+    .topbtnwrap .topitem:first-child {
+        width: 362rpx;
+    }
+
+    .topbtnwrap .topitem:first-child image {
+        width: 362rpx;
+    }
+
+    .rightcompany {
+        width: 545rpx;
+    }
 }

@@ -1,6 +1,5 @@
 {
   "pages":[
-    
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -40,12 +39,13 @@
     
     
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#fff",
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#01AAED",
     "navigationBarTitleText": "云易装",
-    "navigationBarTextStyle":"black",
-    "backgroundColor":"#fff"
+    "navigationBarTextStyle": "#FFFFFF",
+    "backgroundColor": "#FFFFFF",
+    "enablePullDownRefresh": true
   },
 "tabBar": {
     "color":"#515151",    

@@ -14,7 +14,9 @@ Page({
         tagInfo:{},
         imgUrl:[],//图片地址
         imgname:[],//图片名称
-        issave: false//是不是提交了
+        issave: false,//是不是提交了
+        videosrc: '',//video
+        videoshow:'hide',//video是否显示
     },
     //跟踪输入的文字数字改变
     textareachange: function (e) {
@@ -29,13 +31,22 @@ Page({
         }
     },
     //上传视频
-    uploadvideo:function(){
-        wx.chooseVideo({
-            count:1,
-            maxDuration: 10, // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) { }
-        })
+    uploadvideo: function () {
+      var that = this;
+      wx.chooseVideo({
+        sourceType: ['album', 'camera'],
+        maxDuration: 6,
+        camera: 'back',
+        success: function (res) {
+          var tempFilePaths = res.tempFilePath;
+          var i = 0; //第几个
+          var length = 1; //总共个数
+          var successUp = 0; //成功个数
+          var failUp = 0; //失败个数
+          var uptype = "video";//类型
+          that.uploadImg(tempFilePaths, successUp, failUp, i, length, uptype);
+        }
+      })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -77,15 +88,17 @@ Page({
           var length = res.tempFilePaths.length; //总共个数
           var successUp = 0; //成功个数
           var failUp = 0; //失败个数
-          that.uploadImg(tempFilePaths, successUp, failUp, i, length);
+          var uptype="img";//类型
+          that.uploadImg(tempFilePaths, successUp, failUp, i, length, uptype);
         }
       })
     },
-    uploadImg: function (tempFilePaths, successUp, failUp, i, length) {
+    uploadImg: function (tempFilePaths, successUp, failUp, i, length, uptype) {
       var that = this;
+      var filepath = uptype == "img" ? tempFilePaths[i] : tempFilePaths;
       wx.uploadFile({
         url: Url.imgUpload, //仅为示例，非真实的接口地址
-        filePath: tempFilePaths[i],
+        filePath: filepath,
         name: 'file',
         header: {
           'content-type': 'multipart/form-data',
@@ -97,13 +110,22 @@ Page({
           if (data.status==1 )
           {
             var srcArr = that.data.imgUrl;
-                srcArr.push(data.data.src);
+            srcArr.push(data.data.src);
             var imgname = that.data.imgname;
-                imgname.push(data.data.name);
-                that.setData({
-                  imgUrl: srcArr,
-                  imgname: imgname
-                });
+            imgname.push(data.data.name);
+            if (uptype=="img")
+            {
+              that.setData({
+                imgUrl: srcArr,
+                imgname: imgname
+              });
+            } else if (uptype == "video"){
+              that.setData({
+                videosrc: srcArr[i],
+                videoshow:""
+              });
+            }
+           
           }
         }, complete: () => {
           i++;
