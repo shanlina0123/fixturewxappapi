@@ -47,7 +47,7 @@
 
 .submitbtn {
     display: block;
-    width: 60%;
+    width: 100%;
     margin: 50px auto 0 auto;
     font-size: 32rpx;
     background-color: #1e9fff;

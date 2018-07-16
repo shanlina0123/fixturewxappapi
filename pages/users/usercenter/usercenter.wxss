@@ -1,6 +1,8 @@
 /* pages/usercenter/usercenter.wxss */
 .wehead{
     line-height: 100rpx;
+    margin-top:20rpx;
+
 }
 .proitem{
     margin: 20rpx 0;
