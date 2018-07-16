@@ -44,8 +44,7 @@
     "navigationBarBackgroundColor": "#01AAED",
     "navigationBarTitleText": "云易装",
     "navigationBarTextStyle": "#FFFFFF",
-    "backgroundColor": "#FFFFFF",
-    "enablePullDownRefresh": true
+    "backgroundColor": "#FFFFFF"
   },
 "tabBar": {
     "color":"#515151",    

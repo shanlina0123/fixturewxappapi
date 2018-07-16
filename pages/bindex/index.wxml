@@ -49,7 +49,7 @@
         <view class='stateimgwrap clearfix'>
           <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
               <view class='videowrap fl'>
-                <video src="{{imgUrl+itemVodeo.ossurl}}" loop="true"></video>
+                <video src="{{imgUrl+itemVodeo.ossurl}}"></video>
               </view>
           </block>
           <view wx:if="{{item.images.length}}">

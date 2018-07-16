@@ -32,6 +32,7 @@ Page({
       var url ='/pages/index/index';
     }
     //是不是扫码过来的
+    //options.scene = 'u=1&c=1&t=2';
     if (options.scene) 
     {
       var scene = decodeURIComponent(options.scene);
