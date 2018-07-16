@@ -197,7 +197,17 @@ Page({
             obj.thumbsupnum = 0,
               obj.commentnum = 0;
           }
-          obj.images = v.dynamic_to_images;
+          obj.images = [];
+          obj.video = [];
+          v.dynamic_to_images.forEach(function (v) {
+            if (v.type == 0) {
+              obj.images.push(v);
+            }
+            if (v.type == 1) {
+              obj.video.push(v);
+            }
+          });
+          obj.imgnumber = obj.images.length;
           obj.follo = v.dynamic_to_follo;
           obj.title = v.title;
           obj.type = v.type;

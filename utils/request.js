@@ -1,5 +1,13 @@
 const app = getApp();
 
+function objToStrMap(obj) {
+  let strMap = new Map();
+  for (let k of Object.keys(obj)) {
+    strMap.set(k, obj[k]);
+  }
+  return strMap;
+}
+
 /**
  * 检测token
  */
@@ -9,11 +17,16 @@ function checkToken()
   var Page = pages[pages.length - 1];//当前页
   var url = Page.route; //当前页面url
   var options = Page.options;
+  var str = '';
+  for (let k in options) {
+    str += k+'='+options[k]+'&'
+  } 
+  str = str ? encodeURIComponent(str.substr(0, str.length - 1)) : '';
   var userinfo = wx.getStorageSync('userInfo');
   if (!userinfo)
   { 
     wx.reLaunch({
-      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' +JSON.stringify(options)
+      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' + str
     });
     return;
   }

@@ -45,14 +45,16 @@
                 <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='statecontent' hover-class="none" bindtap='hidComment'>
                     <text class='statetext'>{{item.content}}</text>
                     <view class='stateimgwrap clearfix'>
-                         <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                          <view wx:if="{{itemImg.type==1}}" class='videowrap clearfix'>
-                            <video src="{{imgUrl+itemImg.ossurl}}" autoplay="true" muted="true" bindplay="beginvoice" ></video>
-                          </view>
-                          <view wx:else class="fl">
-                            <image src='{{imgUrl+itemImg.ossurl}}' class="stateimg   {{imgnumber < 2 ? '' : 'stateimgmore'}}" mode="widthFix"></image>
-                         </view>
+                        <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
+                            <view class='videowrap fl'>
+                              <video src="{{imgUrl+itemVodeo.ossurl}}" loop="true"></video>
+                            </view>
                         </block>
+                        <view wx:if="{{item.images.length}}">
+                          <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
+                            <image src='{{imgUrl+itemImg.ossurl}}' class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" mode='widthFix'></image>
+                          </block>
+                        </view>
                     </view>
                 </navigator>
                 <!--评论-->

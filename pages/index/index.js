@@ -18,7 +18,7 @@ Page({
     companyData: {},//公司信息
     userType:0,//用户身份
     userinfo:{},//用户信息
-    imgnumber: 1,//图片数量
+    imgnumber: 1//图片数量
   },
   /**
    * 生命周期函数--监听页面加载
@@ -57,14 +57,26 @@ Page({
           obj.uuid = v.uuid;
           obj.content = v.content;
           obj.created_at = util.timeChangeover(v.created_at);
-          if (v.dynamic_to_statistics) {
+          if (v.dynamic_to_statistics) 
+          {
             obj.thumbsupnum = v.dynamic_to_statistics.thumbsupnum;
             obj.commentnum = v.dynamic_to_statistics.commentnum;
           } else {
             obj.thumbsupnum = 0,
               obj.commentnum = 0;
           }
-          obj.images = v.dynamic_to_images;
+          obj.images = [];
+          obj.video = [];
+          v.dynamic_to_images.forEach(function (v){
+            if ( v.type==0 )
+            {
+              obj.images.push(v);
+            }
+            if (v.type == 1) {
+              obj.video.push(v);
+            }
+          });
+          obj.imgnumber = obj.images.length;
           obj.follo = v.dynamic_to_follo;
           obj.title = v.title;
           obj.type = v.type;
@@ -76,7 +88,6 @@ Page({
         });
         that.setData({
           data: data.concat(arr),
-          imgnumber: arr.length
         });
         //不加载分页
         if (res.data.last_page <= page) {

@@ -75,15 +75,24 @@
                                     </view>
                                     <view class='statecontent'>
                                         <text class='detailstate'>{{item.content}}</text>
-                                         <view class='stateimgwrap clearfix'>
+                                        <view class='stateimgwrap clearfix'>
+                                          <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
+                                              <view class='videowrap fl'>
+                                                <video src="{{imgUrl+itemVodeo.ossurl}}" loop="true"></video>
+                                              </view>
+                                          </block>
+                                          <view wx:if="{{item.images.length}}">
                                             <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                                                <image src='{{imgUrl+itemImg.ossurl}}' 
-                                                       class='stateimg fl' 
-                                                       data-img="{{item.images}}" 
-                                                       data-src="{{imgUrl+itemImg.ossurl}}" 
-                                                       bindtap='getImg'></image>
+                                              <image src='{{imgUrl+itemImg.ossurl}}' 
+                                                     class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" 
+                                                     mode='widthFix'
+                                                     data-img="{{item.images}}" 
+                                                     data-src="{{imgUrl+itemImg.ossurl}}" 
+                                                     bindtap='getImg'>
+                                              </image>
                                             </block>
                                           </view>
+                                        </view>
                                     </view>
                                     <view class='times clearfix'>
                                         <text class='fl'>{{item.created_at}}</text>

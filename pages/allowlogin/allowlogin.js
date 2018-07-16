@@ -15,8 +15,15 @@ Page({
   },
   onLoad: function (options) {
     this.getAppid();
-    if (options.url != undefined){
-      var url = '/'+JSON.parse(options.url);
+    if (options.url != undefined)
+    {
+      if (options.options != undefined)
+      {
+        var url = '/' + JSON.parse(options.url) + '?' + decodeURIComponent(options.options);
+      }else
+      {
+        var url = '/' + JSON.parse(options.url);
+      }
       if (url == '/pages/allowlogin/allowlogin')
       {
         var url = '/pages/index/index';

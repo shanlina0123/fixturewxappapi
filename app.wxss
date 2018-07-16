@@ -111,9 +111,9 @@ view {
 /**微信头像**/
 
 .uhead {
-    width: 90rpx;
-    height: 90rpx;
-    border-radius: 90rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
 }
 
 /**消息列表公用**/
@@ -166,7 +166,7 @@ view {
 }
 
 .rightname {
-    width: 590rpx;
+    width: 609rpx;
     margin-left: 20rpx;
     margin-top: 12rpx;
 }
@@ -199,45 +199,29 @@ view {
     max-height: auto;
 }
 .videowrap{
-    width: 600rpx;
+    width: 608rpx;
     height: 450rpx;
     margin-top: 20rpx;
     margin-bottom: 20rpx;
     text-align: center;
+    z-index: 0
 } 
 .videowrap video{
-    width: 600rpx;
+    width: 608rpx;
     height: 450rpx;
-}
-
-.statewrap{
-    width: 350rpx;
-    margin-left: 9rpx;
-    margin-bottom: 9rpx;
 }
 .stateimg {
     width: 350rpx;
     max-height: 500rpx;
-}
-.stateimgmore{
-    width: 190rpx;
-    height: 95px!important;
-}
-.statewrapmore{
-    width: 190rpx;
-    height: 95px;
-    overflow: hidden;
-}
-.statewrap:nth-child(3n-1){
-    margin-left: 0;
-}
-
-.statenovideo{
     margin-left: 9rpx;
     margin-bottom: 9rpx;
 }
-.statenovideo:nth-child(3n-2){
-    margin-left: 0;
+.stateimg:nth-child(3n-2) {
+   margin-left: 0;
+}
+.stateimgmore{
+    width: 197rpx;
+    height: 95px!important;
 }
 .proname {
     font-weight: bold;
