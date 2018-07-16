@@ -1,5 +1,8 @@
 /* pages/Bproject/newproject/newproject.wxss */
-
+.newprowrap
+{
+  padding:30rpx 20rpx;
+}
 .itemname {
     display: inline-block;
     height: 80rpx;
@@ -9,6 +12,7 @@
 
 .forminput {
     min-width: 76%;
+    width: 544rpx;
     display: inline-block;
     height: 80rpx;
     line-height: 80rpx;
@@ -20,7 +24,7 @@
 
 .pickerselect {
     display: block;
-    width: 76%;
+    width: 544rpx;
     height: 80rpx;
     line-height: 80rpx;
     border: 1px solid #e2e2e2;
@@ -51,4 +55,9 @@
     font-size: 28rpx;
     background-color: #1e9fff;
     color: #fff;
+}
+@media(max-width:320px){
+    .pickerselect ,.pickerselect{
+        width: 550rpx;
+    }
 }

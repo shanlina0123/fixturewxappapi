@@ -50,7 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
+    var that = this;   
     var userLocation = that.data.userLocation;
     if (userLocation == true)
     {
@@ -60,8 +60,9 @@ Page({
           var latitude = res.latitude;
           var longitude = res.longitude;
           that.setData({
-            longitude: latitude,
-            latitude: longitude
+            longitude: longitude,
+            latitude: latitude,
+            userLocation: false
           });
           that.getMapAddress(latitude, longitude);
         }

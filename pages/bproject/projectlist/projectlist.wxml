@@ -30,7 +30,11 @@
                 </navigator>
                 <view class='probottom'>
                     <navigator url='/pages/bproject/projectrenew/projectrenew?uuid={{constructionItem.uuid}}' class='updatebtn' bindtap='upSite'>更新</navigator>
-                    <view class='updatebtn' bindtap='modalFlag'>分享</view>
+                    <view class='updatebtn' 
+                          bindtap='modalFlag' 
+                          data-src='{{imgUrl+constructionItem.explodedossurl}}'
+                          data-title='{{constructionItem.name}}' 
+                          data-id='{{constructionItem.id}}'>分享</view>
                     <view class='updatebtn' 
                           bindtap='showsetting' 
                           data-uuid="{{constructionItem.uuid}}" 

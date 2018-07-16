@@ -50,9 +50,10 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.isLoad) {
-      var page = this.data.pages;
+      var page = this.data.page;
+      console.log(page);
       this.setData({
-        pages: page + 1,
+        page: page + 1,
       })
       this.getClient();
     }

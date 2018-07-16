@@ -17,6 +17,7 @@ Page({
         imgUrl: Url.imgUrl,
         setshow: false,//设置弹窗
         modalFlag: false,//分享
+        modalFlagData: '', //分享数据
         siteData: '',//显示设置弹窗数据
         seachName:'',
         isserach:[false, false]//false代表正常加载 true为搜索
@@ -47,10 +48,15 @@ Page({
     /**
      * 分享按钮
      */
-    modalFlag:function(){
+    modalFlag:function(e){
+      var id = e.currentTarget.dataset.id;
+      var title = e.currentTarget.dataset.title;
+      var img = e.currentTarget.dataset.src;
+      var data = { id:id, title:title,img:img};
       this.setData({
         modalFlag: !this.data.modalFlag,
-        setshow:false
+        setshow:false,
+        modalFlagData: data
       })
     },
     /**
@@ -231,18 +237,15 @@ Page({
     },
     //分享给微信好友
     onShareAppMessage: function (res) {
+      var that = this;
+      var data = that.data.modalFlagData;
         if (res.from === 'button') {
             // 来自页面内转发按钮
         }
         return {
-            title: '当直播遇上装修，会发生什么？',
-            path: '/pages/index/index?pageid=111',
-            success: function (res) {
-                // 转发成功
-            },
-            fail: function (res) {
-                // 转发失败
-            }
+            title: data.title,
+            path: "/pages/projectdetail/projectdetail?id=" + data.id,
+            imageUrl: data.img
         }
     },
     //显示永久二维码

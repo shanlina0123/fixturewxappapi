@@ -28,7 +28,11 @@
     line-height:80rpx;
     font-size:36rpx;
     margin: 0 auto;
-    background-color:#5FB878;
+    background-color:#01AAED;
     color: #fff;
-    border-color: #5fb878
+    border-color: #01AAED
+}
+.newprowrap
+{
+  padding:30rpx 20rpx;
 }

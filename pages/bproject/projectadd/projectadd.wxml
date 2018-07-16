@@ -1,5 +1,5 @@
 <!--新建工地-->
-<view class='samepadding'>
+<view class='newprowrap'>
     <form bindsubmit='submitform'>
         <view class='formitem clearfix'>
             <text class='itemname fl'>选择门店</text>

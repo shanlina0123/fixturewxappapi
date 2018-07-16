@@ -1,5 +1,5 @@
 <!--pages/Bproject/promap/promap.wxml-->
-<view class='samepadding' wx:if="{{userLocation == false}}">
+<view class='newprowrap' wx:if="{{userLocation == false}}">
     <input class='forminput' type='text' placeholder='搜索地点' bindinput="seachAddress" bindfocus="bindfocus"></input>
     <map wx:if="{{map}}" id='promap' class='promap' longitude="{{longitude}}" latitude="{{latitude}}" show-location scale="15"></map>
     <view class='points' style="height:{{listheight}}rpx">

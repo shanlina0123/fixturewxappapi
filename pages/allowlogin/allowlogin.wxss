@@ -17,6 +17,6 @@
 .formbutton{
     font-size: 32rpx;
     color: #fff;
-    background-color: #5FB878;
-    border-color: #5fb878
+    background-color: #01AAED;
+    border-color: #01AAED;
 }
