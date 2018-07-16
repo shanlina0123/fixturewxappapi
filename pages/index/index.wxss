@@ -1,3 +1,12 @@
+/**index.wxss**/
+
+/*C端首页*/
+
+.wrap {
+    padding: 0;
+    height: auto;
+}
+
 .topbgwrap {
     width: 100%;
     padding: 0.1px;
@@ -43,58 +52,70 @@
 }
 
 .buttonwrap {
-    padding: 30rpx 0;
+    background-color: #fff;
+    padding: 15rpx 0;
+    margin-top: 20rpx;
 }
+
 .topbtnwrap {
     padding: 20rpx;
     background-color: #fff;
     margin-top: 20rpx;
 }
+
 .topbtnwrap .topitem {
     margin-left: 10rpx;
     width: 340rpx;
     height: 180rpx;
     position: relative;
 }
+
 .topbtnwrap .topitem image {
     width: 340rpx;
     height: 180rpx;
 }
+
 .topbtnwrap .topitem:first-child {
     width: 360rpx;
     height: 370rpx;
     margin-left: 0;
 }
+
 .topbtnwrap .topitem:first-child image {
     width: 360rpx;
     height: 370rpx;
 }
-.topbtnwrap .topitem:last-child{
+
+.topbtnwrap .topitem:last-child {
     margin-top: 10rpx;
 }
-.topbtnwrap .bigtext{
+
+.topbtnwrap .bigtext {
     position: absolute;
     top: 20rpx;
     left: 20rpx;
     font-size: 30rpx;
     line-height: 35rpx;
 }
-.topbtnwrap .smalltext{
+
+.topbtnwrap .smalltext {
     position: absolute;
     top: 40rpx;
     left: 20rpx;
     font-size: 26rpx;
-    color: #9F9B9A;
+    color: #9f9b9a;
     padding-top: 20rpx;
 }
-.topbtnwrap .firstimage{
-    width: 360rpx;
+
+.topbtnwrap .firstimage {
+    width: 350rpx;
     height: 370rpx;
     position: absolute;
     top: 0;
     left: 0;
 }
-.topbtnwrap .secondimage,.topbtnwrap .thirdimage{
+
+.topbtnwrap .secondimage, .topbtnwrap .thirdimage {
     width: 330rpx;
     height: 180rpx;
     position: absolute;
@@ -108,9 +129,10 @@
     margin-left: 3.5%;
     text-align: center;
 }
-.topicon{
+
+.topicon {
     display: block;
-    width:64rpx;
+    width: 64rpx;
     height: 64rpx;
     margin: 10rpx auto;
 }
@@ -124,8 +146,10 @@
     font-size: 32rpx;
     padding: 20rpx 20rpx 0 20rpx;
 }
+
 /*选择门店弹窗*/
-.changewrap{
+
+.changewrap {
     display: none;
     position: absolute;
     width: 100%;
@@ -134,21 +158,24 @@
     left: 0;
     z-index: 200;
 }
-.toptext{
+
+.toptext {
     display: block;
     font-size: 32rpx;
     text-align: center;
     padding-top: 20px;
     color: #fff;
 }
-.topsmall{
+
+.topsmall {
     display: block;
     font-size: 24rpx;
     text-align: center;
     color: #ddd;
     padding: 10px 0;
 }
-.storelink{
+
+.storelink {
     display: block;
     width: 90%;
     margin: 10px 5%;
@@ -157,18 +184,22 @@
     text-align: center;
     padding: 10px 0;
 }
+
 /*B端首页*/
-.userlevel{
+
+.userlevel {
     background-color: #fff;
     text-align: center;
 }
-.levelBtn{
+
+.levelBtn {
     display: inline-block;
     border: 1px solid #f0f0f0;
     padding: 8rpx 40rpx;
     border-radius: 10rpx;
 }
-.Bbuttonwrap .centerbtn{
+
+.Bbuttonwrap .centerbtn {
     width: 25%;
     margin: 0;
 }

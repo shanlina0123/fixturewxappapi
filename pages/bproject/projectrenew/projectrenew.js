@@ -34,8 +34,9 @@ Page({
     uploadvideo: function () {
       var that = this;
       wx.chooseVideo({
-        sourceType: ['album', 'camera'],
-        maxDuration: 6,
+        sizeType: ['compressed'],
+        sourceType: ['camera', 'album'],
+        maxDuration: 10,
         camera: 'back',
         success: function (res) {
           var tempFilePaths = res.tempFilePath;
@@ -105,28 +106,45 @@ Page({
           'Authorization': wx.getStorageSync('userInfo').Authorization
         },
         success: function (res) {
-          var data = res.data;
-              data = JSON.parse(data);
-          if (data.status==1 )
-          {
-            var srcArr = that.data.imgUrl;
-            srcArr.push(data.data.src);
-            var imgname = that.data.imgname;
-            imgname.push(data.data.name);
-            if (uptype=="img")
-            {
-              that.setData({
-                imgUrl: srcArr,
-                imgname: imgname
-              });
-            } else if (uptype == "video"){
-              that.setData({
-                videosrc: srcArr[i],
-                videoshow:""
-              });
+          try{
+            var data = res.data;
+            data = JSON.parse(data);
+            if (data.status == 1) {
+              var srcArr = that.data.imgUrl;
+              srcArr.push(data.data.src);
+              var imgname = that.data.imgname;
+              imgname.push(data.data.name);
+              if (uptype == "img") {
+                that.setData({
+                  imgUrl: srcArr,
+                  imgname: imgname
+                });
+              } else if (uptype == "video") {
+                that.setData({
+                  videosrc: srcArr[i],
+                  videoshow: ""
+                });
+              }
+            } else {
+              wx.showToast({
+                title: data.messages,
+                icon: 'none',
+                duration: 2000
+              })
             }
-           
+          }catch(err){
+            wx.showToast({
+              title: "上传文件超过最大限制",
+              icon: 'none',
+              duration: 2000
+            })
           }
+        }, fail: function (res) {
+          wx.showToast({
+            title: data.messages,
+            icon: 'none',
+            duration: 2000
+          })
         }, complete: () => {
           i++;
           if (i == length) {
