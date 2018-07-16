@@ -1,5 +1,5 @@
 var JMessage = require('utils/jmessage-wxapplet-sdk-1.4.0.min.js');
-var JIM = new JMessage({ debug: true });
+var JIM = new JMessage({ debug: false });
 var Url = require('utils/config.js');
 
 /**
