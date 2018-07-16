@@ -51,7 +51,6 @@ Page({
   onReachBottom: function () {
     if (this.data.isLoad) {
       var page = this.data.page;
-      console.log(page);
       this.setData({
         page: page + 1,
       })
