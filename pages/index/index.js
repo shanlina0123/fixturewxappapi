@@ -361,6 +361,7 @@ Page({
                 //跟新数据
                 var data = that.data.data;
                 data[pindex].follo.splice(index, 1)
+                data[pindex].commentnum = parseInt(data[pindex].commentnum) ? parseInt(data[pindex].commentnum) - 1 :0;
                 that.setData({
                   data: data
                 })

@@ -35,12 +35,12 @@
         <!--切换卡-->
         <view class='tabwrap'>
             <view class='tabbtns clearfix'>
-                <view class="tabbtn fl {{selected1?on :''}}" bindtap="tab1">
-                    <image src="../../../images/{{selected1?'proicon1On.png' :'proicon1.png'}}" class='tabimg'></image>
+                <view class="tabbtn fl {{selected1?on:''}}" bindtap="tab1">
+                    <image src="/images/{{selected1?'proicon1On.png':'proicon1.png'}}" class='tabimg'></image>
                     <text>进度</text>
                 </view>
-                <view class="tabbtn fl {{selected2 ? on : ''}}" bindtap="tab2">
-                    <image src="../../../images/{{selected2?'proicon2On.png' :'proicon2.png'}}" class='tabimg'></image>
+                <view class="tabbtn fl {{selected2?on: ''}}" bindtap="tab2">
+                    <image src="/images/{{selected2?'proicon2On.png':'proicon2.png'}}" class='tabimg'></image>
                     <text>评价</text>
                 </view>
                  <!-- <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
