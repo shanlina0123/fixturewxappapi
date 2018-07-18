@@ -105,7 +105,7 @@ view {
 
 .bannerimg {
     width: 100%;
-    height: 200px;
+    height: 400rpx;
 }
 
 /**微信头像**/
@@ -164,7 +164,11 @@ view {
     background-color: #fff;
     margin-top: 20rpx;
 }
-
+.itemli .statetext{
+    display: block;
+    margin-top: 10rpx;
+    margin-bottom: 16rpx;
+}
 .rightname {
     width: 609rpx;
     margin-left: 20rpx;
@@ -198,18 +202,6 @@ view {
 .showpart{
     max-height: auto;
 }
-.videowrap{
-    width: 608rpx;
-    height: 450rpx;
-    margin-top: 20rpx;
-    margin-bottom: 20rpx;
-    text-align: center;
-    z-index: 0
-} 
-.videowrap video{
-    width: 608rpx;
-    height: 450rpx;
-}
 .stateimg {
     width: 350rpx;
     max-height: 500rpx;
@@ -220,24 +212,23 @@ view {
    margin-left: 0;
 }
 .stateimgmore{
-    width: 197rpx;
-    height: 95px!important;
+   width: 197rpx;
+   height:197rpx;
 }
 .proname {
     font-weight: bold;
 }
 
 .times text {
-    display: inline-block;
-    line-height: 47rpx;
     margin-right: 15rpx;
+    line-height: 70rpx;
+    color: #666666
 }
 
 .handelwrap {
-    width: 54rpx;
-    height: 47rpx;
     position: relative;
     text-align: right;
+    height: 64rpx;
 }
 
 .handelimage {
@@ -248,24 +239,22 @@ view {
 
 .iconwrap {
     position: absolute;
-    width: 150rpx;
-    right: 60rpx;
-    top: -5rpx;
+    width: 170rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    right: 70rpx;
+    top: -6rpx;
     background-color: #000;
-    border-radius: 10rpx;
+    border-radius: 5rpx;
     opacity: 0.7;
 }
 
 .iconwrap .zan {
-    width: 60rpx;
-    height: 60rpx;
-    margin-left: 10rpx;
+    width: 55rpx;
+    height: 55rpx;
+    margin-left: 22rpx;
+    margin-top: 8rpx;
 }
-
-.activewrap {
-    margin: 10rpx;
-}
-
 .activetext {
     width: 80%;
 }
@@ -304,7 +293,7 @@ view {
 
 .discusstext {
     background-color: #eee;
-    padding: 5rpx 10rpx 0 10px;
+    padding: 5rpx 10rpx;
 }
 
 .textitem {

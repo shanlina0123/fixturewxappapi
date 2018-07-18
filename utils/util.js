@@ -22,6 +22,7 @@ function timeChangeover( time ) {
   var halfamonth = day * 15;
   var month = day * 30;
   var now = new Date().getTime();
+  time = time.replace(/-/g, '/');
   var dateTimeStamp = Date.parse(time);
   var diffValue = now - dateTimeStamp;
   if (diffValue < 0) {

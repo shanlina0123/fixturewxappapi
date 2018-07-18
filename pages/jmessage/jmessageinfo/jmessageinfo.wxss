@@ -46,10 +46,11 @@
 }
 .minemsg .minetext{
     position: relative;
-    background-color: #98E165;
+    background-color: #01AAED;
     padding: 12rpx;
     border-radius: 10rpx;
-    max-width: 72%
+    max-width: 72%;
+    color: #FFFFFF;
 }
 .minemsg .headimg{
     margin-left: 20rpx;
@@ -57,13 +58,13 @@
 }
 .minetragle{
     position: absolute;
-    right: -10rpx;
+    right: -9rpx;
     top: 20rpx;
     width:0;
     height:0;
     border-top:10rpx solid transparent;
     border-bottom:10rpx solid transparent;
-    border-left:10rpx solid #98E165;
+    border-left:10rpx solid #01AAED;
 }
 .timewrap{
     text-align: center;
@@ -132,7 +133,7 @@
 }
 .centerwrap{
     /* margin-left: 16rpx; */
-    width: 85%;
+    width: 80%;
 }
 .words{
     height: 62rpx;
@@ -156,10 +157,10 @@
 .sendbtn{
     height: 64rpx;
     line-height: 64rpx;
-    padding: 0 18rpx;
+    padding: 0 34rpx;
     color: #FFF;
     font-size: 24rpx;
-    background-color: #1AAC19;
+    background-color: #01AAED;
     border-radius: 8rpx;
     /* margin-top: 4rpx; */
 }

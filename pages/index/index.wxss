@@ -28,6 +28,7 @@
 .leftlogo image {
     display: block;
     width: 150rpx;
+    height: 150rpx;
 }
 
 .rightcompany {

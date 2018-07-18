@@ -3,7 +3,7 @@
   <view class='topbgwrap'>
     <view class='company clearfix'>
       <view class='leftlogo fl'>
-        <image src="{{imgUrl+companyData.logo}}" mode="widthFix"></image>
+        <image src="{{companyData.logo}}" mode="aspectFill"></image>
       </view>
       <view class='rightcompany fl'>
         <view class='companyname'>{{companyData.name}}</view>
@@ -12,21 +12,22 @@
       </view>
     </view>
     <view class='topbtnwrap clearfix' wx:if="{{userinfo.isinvitationed !=1 }}">
+      <navigator class='topitem fl' url="../bproject/projectlist/projectlist" hover-class="none">
+        <image src="../../images/tip4.png" class='thirdimage'></image>
+        <view class='bigtext'>项目管理</view>
+        <view class='smalltext'>相关项目统一管理</view>
+      </navigator>
       <navigator class='topitem fl' url="../client/client" hover-class="none">
-        <image src="../../images/tip1.png" class='firstimage'></image>
+        <image src="../../images/tip5.png" class='firstimage'></image>
         <view class='bigtext'>客户预约</view>
-        <view class='smalltext'>一位客户都不落</view>
+        <view class='smalltext'>预约客户一目了然</view>
       </navigator>
       <navigator class='topitem fl' url="../invite/participant/participant" hover-class="none">
-        <image src="../../images/tip2.png" class='secondimage'></image>
+        <image src="../../images/tip6.png" class='secondimage'></image>
         <view class='bigtext'>成员管理</view>
-        <view class='smalltext'>所有成员统一管理</view>
+        <view class='smalltext'>项目成员一键查看</view>
       </navigator>
-      <navigator class='topitem fl' url="../bproject/projectlist/projectlist" hover-class="none">
-        <image src="../../images/tip3.png" class='thirdimage'></image>
-        <view class='bigtext'>项目管理</view>
-        <view class='smalltext'>项目列表统一管理</view>
-      </navigator>
+      
     </view>
   </view>
   <!-- 动态 -->
@@ -35,28 +36,35 @@
     <view class='itemli clearfix'>
       <image src="{{item.faceimg?item.faceimg:'../../images/uhead.png'}}" class='uhead fl'></image>
       <view class='rightname fl'>
-        <view class='topname'>
-          <text class='uname'>{{item.nickname?item.nickname:'匿名'}}</text>
-          <text class='ustate left10' vx:if="{{item.uposition}}">{{item.uposition}}</text>
-        </view>
-        <view class='bottomname' wx:if="{{item.type==0}}">
-          <text class='proname'>{{item.title}}</text>
-          <text class='prostate color4'>{{item.sitestagename}}</text>
-        </view>
         <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='statecontent' hover-class="none" bindtap='hidComment'>
+          <view class='topname'>
+            <text class='uname'>{{item.nickname?item.nickname:'匿名'}}</text>
+            <text class='ustate left10' vx:if="{{item.uposition}}">{{item.uposition}}</text>
+          </view>
+          <view class='bottomname' wx:if="{{item.type==0}}">
+            <text class='proname'>{{item.title}}</text>
+            <text class='prostate color4'>{{item.sitestagename}}</text>
+          </view>
           <text class='statetext'>{{item.content}}</text>
         </navigator>
         <view class='stateimgwrap clearfix'>
-          <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
-              <view class='videowrap fl'>
-                <video src="{{imgUrl+itemVodeo.ossurl}}"></video>
-              </view>
-          </block>
-          <view wx:if="{{item.images.length}}">
-            <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-              <image src='{{imgUrl+itemImg.ossurl}}' class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" mode='widthFix'></image>
+            <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
+                <image src='../../images/play.png' 
+                        class="stateimg stateimgmore fl {{item.imgnumber < 2 ? '' : 'stateimgmore'}}" 
+                        mode="aspectFill"
+                        bindtap="videoInfo"
+                        data-item="{{item}}">
+                </image>
             </block>
-          </view>
+            <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
+              <image src='{{imgUrl+itemImg.ossurl}}' 
+                      class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" 
+                      data-img="{{item.images}}" 
+                      data-src="{{imgUrl+itemImg.ossurl}}" 
+                      bindtap='getImg'
+                      mode="aspectFill">
+              </image>
+            </block>
         </view>
         <!--评论-->
         <view class='times clearfix'>
@@ -67,7 +75,22 @@
             <image src='../../images/rightMsg.png' class='handelimage' data-id="{{idx}}" bindtap='showimage'></image>
             <!--评论按钮-->
             <view class="iconwrap clearfix {{isshow==idx ?'': 'hide' }}">
-              <image src="../../images/zan1.png" class='zan fl' data-item="{{item}}" data-index='{{idx}}' bindtap="fabulous"></image>
+              <image wx:if="{{item.give}}" 
+                     src="../../images/zan1On.png" 
+                     class='zan fl' 
+                     data-item="{{item}}" 
+                     data-fabuloustype="2"
+                     data-index='{{idx}}' 
+                     bindtap="fabulous">
+              </image>
+              <image wx:else 
+                     src="../../images/zan1.png" 
+                     class='zan fl' 
+                     data-item="{{item}}" 
+                     data-fabuloustype="1"
+                     data-index='{{idx}}' 
+                     bindtap="fabulous">
+              </image>
               <image src="../../images/zan2.png" class='zan fl' data-item="{{item}}" data-index='{{idx}}' bindtap='showinput'></image>
             </view>
           </view>
@@ -89,7 +112,17 @@
   </view>
   <!--回复框-->
   <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
-    <input class='zaninput fl' type='text' placeholder='评论' value="{{commentV}}" data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment'></input>
+    <input class='zaninput fl' 
+           type='text' 
+           placeholder='评论' 
+           value="{{commentV}}" 
+           focus="{{name_focus}}" 
+           data-content='{{commentData}}' 
+           cursor-spacing="8" 
+           bindinput="setContent" 
+           bindconfirm='addComment'
+           bindblur='commentBlur'>
+    </input>
     <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
   </view>
 </view>

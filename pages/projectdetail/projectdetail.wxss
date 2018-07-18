@@ -1,24 +1,24 @@
 /* pages/usercenter/project/projectdetail.wxss */
 .bannerwrap{
     position: relative;
-    background-color: #fff;
+    width: 100%;
 }
 .viewnum{
     position: absolute;
-    top: 10rpx;
-    right: 30rpx;
+    top: 20rpx;
+    right: 20rpx;
     padding:5rpx 10rpx;
     background-color:#fff;
     border-radius: 3px; 
 }
 .bottom{
     position: absolute;
-    width: 94%;
-    bottom: 22rpx;
-    left: 30rpx;
+    bottom: 26rpx;
 }
 .bottom .addr{
+    display: block;
     padding:5rpx 10rpx;
+    line-height: 36rpx;
     background-color:#fff;
 }
 .bottonbtns{
@@ -68,7 +68,7 @@
     text-align: center;
 }
 .tabbtn.check{
-  color: #eb7221
+  color: #01aaed
 }
 .tabimg{
     width: 50rpx;
@@ -147,14 +147,12 @@
     padding: 12rpx 0;
 }
 /**底部操作按钮**/
-/**底部操作按钮**/
 .bottombtns{
     position: fixed;
     width: 750rpx;
     bottom: 0;
     left: 0;
     background-color: #fff;
-    z-index: 9000000
 }
 .bottombtn{
     width: 50%;

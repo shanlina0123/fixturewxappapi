@@ -1,18 +1,18 @@
 <!--pages/usercenter/project/projectdetail.wxml-->
 <view class='wrap' wx:if="{{isview}}">
     <view class='detailcontent'>
-        <view class='bannerwrap samepadding'>
-            <image src="{{siteInfo.explodedossurl}}" class='bannerimg'></image>
+        <view class='bannerwrap'>
+            <image src='{{siteInfo.explodedossurl}}' class='bannerimg'  mode="aspectFill"></image>
             <view class='viewnum' wx:if="{{siteInfo.linkednum}}">浏览:{{siteInfo.linkednum}}</view>
-            <view class='bottom'>
+            <view class='bottom samepadding'>
                 <text class='addr'>{{siteInfo.addr}}</text>
-                <view class='bottonbtns'>
-                    <text wx:if="{{siteInfo.site_to_renovation_mode.name}}">{{siteInfo.site_to_renovation_mode.name}}</text>
-                    <text wx:if="{{siteInfo.budget != 0}}">{{siteInfo.budget}}万</text>
-                    <text wx:if="{{siteInfo.roomshap}}">{{siteInfo.roomshap}}</text>
-                    <text wx:if="{{siteInfo.acreage != 0.00 }}">{{siteInfo.acreage}}m</text>
-                    <text wx:if="{{siteInfo.site_to_room_style.name}}">{{siteInfo.site_to_room_style.name}}</text>
-                </view>
+                  <view class='bottonbtns'>
+                      <text wx:if="{{siteInfo.site_to_renovation_mode.name}}">{{siteInfo.site_to_renovation_mode.name}}</text>
+                      <text wx:if="{{siteInfo.budget != 0}}">{{siteInfo.budget}}万</text>
+                      <text wx:if="{{siteInfo.roomshap}}">{{siteInfo.roomshap}}</text>
+                      <text wx:if="{{siteInfo.acreage != 0.00 }}">{{siteInfo.acreage}}m</text>
+                      <text wx:if="{{siteInfo.site_to_room_style.name}}">{{siteInfo.site_to_room_style.name}}</text>
+                  </view>
             </view>
         </view>
         <view class='focuswrap clearfix'>
@@ -72,24 +72,22 @@
                                     <view class='statecontent'>
                                         <text class='detailstate'>{{item.content}}</text>
                                          <view class='stateimgwrap clearfix'>
-                                            <view class='stateimgwrap clearfix'>
-                                              <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
-                                                  <view class='videowrap fl'>
-                                                    <video src="{{imgUrl+itemVodeo.ossurl}}" ></video>
-                                                  </view>
+                                            <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
+                                                <image src='../../images/play.png' 
+                                                          class="stateimg stateimgmore fl {{item.imgnumber < 2 ? '' : 'stateimgmore'}}" 
+                                                          bindtap="videoInfo"
+                                                          data-item="{{item}}">
+                                                </image>
                                               </block>
-                                              <view wx:if="{{item.images.length}}">
-                                                <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                                                  <image src='{{imgUrl+itemImg.ossurl}}' 
-                                                        class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" 
-                                                        mode='widthFix'
-                                                        data-img="{{item.images}}" 
-                                                        data-src="{{imgUrl+itemImg.ossurl}}" 
-                                                        bindtap='getImg'>
-                                                  </image>
-                                                </block>
-                                              </view>
-                                            </view>
+                                              <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
+                                                <image src='{{imgUrl+itemImg.ossurl}}' 
+                                                      class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" 
+                                                      mode="aspectFill"
+                                                      data-img="{{item.images}}" 
+                                                      data-src="{{imgUrl+itemImg.ossurl}}" 
+                                                      bindtap='getImg'>
+                                                </image>
+                                              </block>
                                          </view>
                                     </view>
                                     <view class='times clearfix'>
@@ -97,24 +95,34 @@
                                         <text class='fl'>评论:{{item.commentnum}}</text>
                                         <text class='fl'>点赞:{{item.thumbsupnum}}</text>
                                         <view class='handelwrap fr'>
-                                            <image src='../../images/rightMsg.png' class='handelimage' data-id="{{idx}}" bindtap='showimage'></image>
+                                            <image src='../../images/rightMsg.png' 
+                                                   class='handelimage' 
+                                                   data-id="{{idx}}" 
+                                                   bindtap='showimage'>
+                                            </image>
                                             <view class="iconwrap clearfix {{isshow==idx ?'': 'hide' }}">
-                                                <image src="../../images/zan1.png" 
-                                                       class='zan fl' 
-                                                       data-id="{{item.id}}" 
-                                                       data-name="{{item.title}}" 
-                                                       data-sitetid="{{item.sitetid}}" 
-                                                       data-index='{{idx}}' 
-                                                       data-createuserid="{{item.createuserid}}" 
-                                                       bindtap="fabulous"></image>
+                                                <image wx:if="{{item.give}}" 
+                                                      src="../../images/zan1On.png" 
+                                                      class='zan fl' 
+                                                      data-item="{{item}}" 
+                                                      data-fabuloustype="2"
+                                                      data-index='{{idx}}' 
+                                                      bindtap="fabulous">
+                                                </image>
+                                                <image wx:else 
+                                                      src="../../images/zan1.png" 
+                                                      class='zan fl' 
+                                                      data-item="{{item}}" 
+                                                      data-fabuloustype="1"
+                                                      data-index='{{idx}}' 
+                                                      bindtap="fabulous">
+                                                </image>       
                                                 <image src="../../images/zan2.png" 
                                                        class='zan fl' 
-                                                       data-id="{{item.id}}" 
-                                                       data-name="{{item.title}}" 
-                                                       data-sitetid="{{item.sitetid}}" 
-                                                       data-index='{{idx}}' 
-                                                       data-createuserid="{{item.createuserid}}" 
-                                                       bindtap='showinput'></image>
+                                                       data-item="{{item}}" 
+                                                       data-index='{{idx}}'
+                                                       bindtap='showinput'>
+                                                </image>
                                             </view>
                                         </view>
                                     </view>
@@ -174,7 +182,17 @@
         </view>
         <!--评论输入框-->
         <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
-            <input class='zaninput fl' type='text' placeholder='评论' value="{{commentV}}" data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment'></input>
+            <input class='zaninput fl' 
+                   type='text' 
+                   placeholder='评论' 
+                   value="{{commentV}}" 
+                   data-content='{{commentData}}' 
+                   cursor-spacing="8" 
+                   bindinput="setContent" 
+                   bindconfirm='addComment'
+                   focus="{{name_focus}}" 
+                   bindblur='commentBlur'>
+            </input>
             <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
         </view>
     </view>

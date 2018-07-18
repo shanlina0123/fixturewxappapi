@@ -1,0 +1,26 @@
+.wrap{
+  height: 100%;
+}
+.videowrap{
+    width: 750rpx;
+}
+.videowrap video{
+    width: 750rpx;
+    height: 500rpx;
+}
+.videostatetext{
+    padding: 10rpx 0;
+}
+.userwrap{
+    padding: 20rpx;
+}
+.userinner{
+    background-color: #FFFFFF;
+    padding: 10rpx 20rpx;
+}
+.username,.useraddr{
+    line-height: 50rpx;
+}
+.videostatetext{
+    margin-top: 20rpx;
+}

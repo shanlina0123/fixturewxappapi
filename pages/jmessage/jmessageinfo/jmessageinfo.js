@@ -238,7 +238,7 @@ Page({
               wx.request({
                 url: Url.jmessageFriendTesting,
                 method: "POST",
-                data: obj,
+                data: post,
                 header: {
                   'content-type': 'application/json',
                   'Authorization': wx.getStorageSync('userInfo').Authorization

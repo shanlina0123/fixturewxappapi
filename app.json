@@ -35,7 +35,9 @@
     "pages/invite/inviteuser/inviteuser",
     "pages/jmessage/jmessagelist/jmessagelist",
     "pages/jmessage/jmessageinfo/jmessageinfo",
-    "pages/users/changestore/changestore"
+    "pages/users/changestore/changestore",
+    "pages/videos/videos"
+
     
     
   ],
@@ -48,7 +50,7 @@
   },
 "tabBar": {
     "color":"#515151",    
-    "selectedColor": "#eb7221",
+    "selectedColor": "#01AAED",
     "borderStyle": "black",
     "backgroundColor": "#FFFFFF",
     "list": [{

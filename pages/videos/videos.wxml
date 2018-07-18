@@ -1,0 +1,14 @@
+<!--pages/videos/videos.wxml-->
+<view class='wrap'>
+    <view class='videowrap'>
+        <video src="{{imgUrl+item.video[0].ossurl}}" ></video>
+    </view>
+    <view class='userwrap'>
+        <view class='userinner'>
+            <view class='useraddr'>{{item.title}}
+                <text class='prostate color4'>{{item.sitestagename}}</text>
+            </view>
+            <view class='videostatetext'>{{item.content}}</view>
+        </view>
+    </view>
+</view>

@@ -16,15 +16,15 @@
         <view class="content {{switchtype==0?'':'hide'}}">
             <view class='prolist' wx:for="{{construction}}" wx:key="constructionIndex"  wx:for-item="constructionItem">
                 <navigator url='../../projectdetail/projectdetail?id={{constructionItem.id}}' class='protop clearfix'>
-                    <image src='{{imgUrl+constructionItem.explodedossurl}}' class='proimage fl'></image>
+                    <image src='{{imgUrl+constructionItem.explodedossurl}}' class='proimage fl' mode="aspectFill"></image>
                     <view class='proright fl'>
                         <view>{{constructionItem.name}}
                             <text class='prostate color8' wx:if="constructionItem.site_to_commpany_tag">{{constructionItem.site_to_commpany_tag.name}}</text>
                         </view>
                         <view>{{constructionItem.addr}}</view>
                         <view>
-                            <text>浏览：{{constructionItem.linkednum?constructionItem.linkednum:0}}</text>
-                            <text>关注：{{constructionItem.follownum?constructionItem.follownum:0}}</text>
+                            <text>浏览：{{constructionItem.linkednum?constructionItem.linkednum:0}} </text>
+                            <text>关注：{{constructionItem.follownum?constructionItem.follownum:0}} </text>
                         </view>
                     </view>
                 </navigator>
@@ -50,7 +50,7 @@
         <view class="content {{switchtype==1 ? '':'hide'}}">
             <view class='prolist' wx:for="{{complete}}" wx:key="completeIndex"  wx:for-item="completeItem">
                 <navigator url='../../projectdetail/projectdetail?id={{completeItem.id}}' class='protop clearfix'>
-                    <image src='{{imgUrl+completeItem.explodedossurl}}' class='proimage fl'></image>
+                    <image src='{{imgUrl+completeItem.explodedossurl}}' class='proimage fl'  mode="aspectFill"></image>
                     <view class='proright fl'>
                         <view>{{completeItem.name}}
                            <text class='prostate color3' wx:if="completeItem.site_to_commpany_tag">{{completeItem.site_to_commpany_tag.name}}</text>

@@ -42,8 +42,6 @@ Page({
         })
     },
     onLoad: function (options) {
-      options.scene=11;
-      options.id=11;
         var _this = this;
         if (options.scene!=undefined) {
           var scene = decodeURIComponent(options.scene);

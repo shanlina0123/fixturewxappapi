@@ -1,9 +1,13 @@
 <!--pages/usercenter/usercenter.wxml-->
 <!--C端-->
 <view class='warp' wx:if="{{userType==1}}">
-    <view class='wehead samepadding'>
-        <image src='{{user.faceimg}}' class='uhead fl' binderror="error"></image>
-        <text class='left15'>{{user.nickname}}</text>
+    <view class='userwrap'>
+        <image wx:if="{{companyData.covermap}}" src="{{imgUrl+companyData.covermap}}" class='headbg'></image>
+        <image wx:else src="{{imgUrl}}default/wx/userbg.jpg" class='headbg'></image>
+        <view class='usermsgwrap'>
+             <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
+            <view>昵称：{{user.nickname}}</view>
+        </view>
     </view>
     <view class='proul samepadding'>
         <!-- <navigator url='../myproject/myproject'class='proitem' hover-class="none">
@@ -39,9 +43,13 @@
 </view>
 <!--B端-->
 <view class='warp' wx:if="{{userType==0}}">
-    <view class='wehead samepadding'>
-        <image src='{{user.faceimg}}' class='uhead fl' binderror="error"></image>
-        <text class='left15'>{{user.nickname}}</text>
+    <view class='userwrap'>
+        <image wx:if="{{companyData.covermap}}" src="{{imgUrl+companyData.covermap}}" class='headbg'></image>
+        <image wx:else src="{{imgUrl}}default/wx/userbg.jpg" class='headbg'></image>
+        <view class='usermsgwrap'>
+             <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
+            <view>昵称：{{user.nickname}}</view>
+        </view>
     </view>
     <view class='proul samepadding'>
         <navigator url='../../bproject/projectlist/projectlist' class='proitem' hover-class="none">

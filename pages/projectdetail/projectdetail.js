@@ -26,6 +26,8 @@ Page({
     userType: 0,//用户身份
     handelshow:false,//编辑显示状态
     deleteitem:{},//删除动态
+    item: '',//动态信息
+    name_focus: false//评论焦点
   },
   /**关注项目按钮 */
   changeName:function(e){
@@ -83,20 +85,7 @@ Page({
           })
       }
   },
-  /**点击评论显示评论输入框 */
-  showinput: function () {
-      var that = this;
-      if (!that.data.inputisshow) {
-          that.setData({
-              inputisshow: true,
-              isshow: false
-          })
-      } else {
-          that.setData({
-              inputisshow: false
-          })
-      }
-  },
+  
   /**关闭输入框 */
   closeinput: function () {
       this.setData({
@@ -207,7 +196,7 @@ Page({
               obj.video.push(v);
             }
           });
-          obj.imgnumber = obj.images.length;
+          obj.imgnumber = obj.images.length + obj.video.length;
           obj.follo = v.dynamic_to_follo;
           obj.title = v.title;
           obj.type = v.type;
@@ -215,6 +204,7 @@ Page({
           obj.id = v.id;
           obj.sitestagename = v.sitestagename;
           obj.createuserid = v.createuserid;
+          obj.give = v.dynamic_to_give;
           arr.push(obj);
         });
         that.setData({
@@ -247,29 +237,38 @@ Page({
    */
   showinput: function (e) {
     var that = this;
-    var dynamicid = parseInt(e.currentTarget.dataset.id);
-    var siteid = parseInt(e.currentTarget.dataset.sitetid);
+    //数据
+    var item = e.currentTarget.dataset.item;
+    //动态id
+    var dynamicid = parseInt(item.id);
+    //工地id
+    var siteid = parseInt(item.sitetid);
+    //当前index位置
     var index = parseInt(e.currentTarget.dataset.index);
-    var name = e.currentTarget.dataset.name;
-    var createuserid = parseInt(e.currentTarget.dataset.createuserid);
+    //工地名称
+    var name = item.title;
+    //工地创建者id
+    var createuserid = parseInt(item.createuserid);
     var replyuserid = 0;
-    var commentData = { 
-                        "dynamicid": dynamicid, 
-                        "siteid": siteid, 
-                        "replyuserid": replyuserid, 
-                        "index": index, 
-                        "name": name, 
-                        "createuserid": createuserid };
-    //console.log(commentData);
+    var commentData = {
+      "dynamicid": dynamicid,
+      "siteid": siteid,
+      "replyuserid": replyuserid,
+      "index": index,
+      "name": name,
+      "createuserid": createuserid
+    };
     if (!that.data.inputisshow) {
       that.setData({
         inputisshow: true,
         isshow: 'no',
-        commentData: commentData
+        commentData: commentData,
+        name_focus: true
       })
     } else {
       that.setData({
-        inputisshow: false
+        inputisshow: false,
+        name_focus: false
       })
     }
   },
@@ -311,6 +310,7 @@ Page({
           folloData.dynamic_comment_to_reply_user = commentData.replyuser;
         }
         data[index].follo.push(folloData);
+        data[index].commentnum = data[index].commentnum ? parseInt(data[index].commentnum) + 1 : 0;
         that.setData({
           data: data,
           commentData: {},
@@ -324,29 +324,37 @@ Page({
    */
   fabulous: function (e) {
     var that = this;
-    var dynamicid = parseInt(e.currentTarget.dataset.id);
-    var sitetid = parseInt(e.currentTarget.dataset.sitetid);
+    that.setData({ isshow: 'no' });
+    //数据
+    var item = e.currentTarget.dataset.item;
+    //动态id
+    var dynamicid = parseInt(item.id);
+    //工地id
+    var sitetid = parseInt(item.sitetid);
+    //当前index位置
     var index = parseInt(e.currentTarget.dataset.index);
-    var name = e.currentTarget.dataset.name;
-    var createuserid = parseInt(e.currentTarget.dataset.createuserid);
-    var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid };
+    //工地名称
+    var name = item.title;
+    //工地创建者id
+    var createuserid = parseInt(item.createuserid);
+    //类型
+    var fabuloustype = e.currentTarget.dataset.fabuloustype;
+    var obj = { "dynamicid": dynamicid, "siteid": sitetid, "name": name, "createuserid": createuserid, 'type': fabuloustype };
     Request.requestPost(Url.fabulous, obj, function (res) {
-      that.setData({ isshow: 'no' });
       if (res.status == 1) {
         wx.showToast({
           title: res.messages,
-          icon: 'success',
-          duration: 2000
-        })
+          icon: 'success'
+        });
         //跟新数据
         var data = that.data.data;
-        data[index].thumbsupnum = parseInt(data[index].thumbsupnum) + 1;
+        data[index].thumbsupnum = fabuloustype == 1 ? parseInt(data[index].thumbsupnum) + 1 : parseInt(data[index].thumbsupnum) ? parseInt(data[index].thumbsupnum) - 1 : 0;
+        data[index].give = fabuloustype == 1 ? 1 : 0;
         that.setData({
           data: data
         });
       }
     });
-   
   },
   //触摸开始时间
   touchStartTime: 0,
@@ -543,6 +551,26 @@ Page({
     var urlP = "username="+username+'&nickname='+nickname+'&faceimg='+youHead+'&createuserid='+user.id;
     wx.navigateTo({
       url: "/pages/jmessage/jmessageinfo/jmessageinfo?" + urlP
+    })
+  },
+  /**
+   * 视频详情
+   */
+  videoInfo: function (e) {
+    var item = e.currentTarget.dataset.item;
+    this.setData({
+      item: item
+    });
+    wx.navigateTo({
+      url: '/pages/videos/videos'
+    })
+  },
+  /**
+  * 评论失去焦点
+  */
+  commentBlur: function () {
+    this.setData({
+      inputisshow: false,
     })
   }
 })

@@ -59,8 +59,8 @@
 }
 
 .proimage {
-    width: 100px;
-    height: 100px;
+    width:200rpx;
+    height:200rpx;
 }
 
 .proright {
