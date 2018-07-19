@@ -6,7 +6,7 @@
         <image wx:else src="{{imgUrl}}default/wx/userbg.jpg" class='headbg'></image>
         <view class='usermsgwrap'>
              <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
-            <view>昵称：{{user.nickname}}</view>
+            <view>{{user.nickname}}</view>
         </view>
     </view>
     <view class='proul samepadding'>
@@ -48,7 +48,7 @@
         <image wx:else src="{{imgUrl}}default/wx/userbg.jpg" class='headbg'></image>
         <view class='usermsgwrap'>
              <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
-            <view>昵称：{{user.nickname}}</view>
+            <view>{{user.nickname}}</view>
         </view>
     </view>
     <view class='proul samepadding'>

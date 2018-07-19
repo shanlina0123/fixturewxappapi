@@ -70,7 +70,6 @@
     display: block;
     width: 128rpx;
     height: 128rpx;
-    margin: 10rpx auto;
 }
 .uploadedimg{
     width: 100%;

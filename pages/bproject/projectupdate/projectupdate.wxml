@@ -1,70 +1,67 @@
 <!--pages/Bproject/proprofect/proprofect.wxml-->
-<view class='samepadding'>
-    <form bindsubmit='submitform'>
-        <view class='formitem'>
-            <image  src="{{img.src?img.src:'../../../images/upload.png'}}" 
-                    class="uploadimg {{img.src?'uploadedimg':''}}" 
-                    bindtap='uploadimg' 
-                    mode="aspectFit"></image>
-            <view class='uploadnotice'>项目封面：建议上传效果图</view>
+<form bindsubmit='submitform'>
+  <view class='formitem'>
+    <image src="{{img.src?img.src:'../../../images/upload.png'}}" class="uploadimg {{img.src?'uploadedimg':''}}" bindtap='uploadimg' mode="aspectFill"></image>
+    <view class='uploadnotice'>项目封面：建议上传效果图</view>
+  </view>
+  <view class='samepadding'>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>项目名称</text>
+      <input class='forminput fl' type='text' name="name" placeholder='请输入项目名称' value='{{info.name}}'></input>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>当前阶段</text>
+      <navigator url='../projectrenewinfo/projectrenewinfo' class='pickerselect fl' hover-class='none'>{{tagInfo.name}}</navigator>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>项目地址</text>
+      <input class='forminput fl' type='text' placeholder='请输入项目名称' name="addr" value='{{address?address.address:info.addr}}' bindtap='setAddress'></input>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>门牌号码</text>
+      <input class='forminput fl' type='text' placeholder='请输入门牌号，例如8号楼808室' name="doornumber" value='{{info.doornumber}}'></input>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>项目户型</text>
+      <picker class='pickerselect fl' bindchange="changeRoomType" range="{{roomType}}">{{roomTypeInfo.name?roomTypeInfo.name:'请选择'}}</picker>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>房型</text>
+      <view class='roomwrap fl clearfix'>
+        <view class='inputwrap fl'>
+          <input class='forminput roominput fl' maxlength='2' type='number' name="room" value="{{roomshap?roomshap[0]:''}}"></input>
+          <text class='fl'>室</text>
         </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>项目名称</text>
-            <input class='forminput fl' type='text' name="name" placeholder='请输入项目名称' value='{{info.name}}'></input>
+        <view class='inputwrap fl'>
+          <input class='forminput roominput fl' maxlength='2' type='number' name="office" value="{{roomshap?roomshap[1]:''}}"></input>
+          <text class='fl'>厅</text>
         </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>当前阶段</text>
-            <navigator url='../projectrenewinfo/projectrenewinfo' class='pickerselect fl' hover-class='none'>{{tagInfo.name}}</navigator>
+        <view class='inputwrap fl'>
+          <input class='forminput roominput fl' maxlength='2' type='number' name="kitchen" value="{{roomshap?roomshap[2]:''}}"></input>
+          <text class='fl'>厨</text>
         </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>项目地址</text>
-            <input class='forminput fl' type='text' placeholder='请输入项目名称' name="addr" value='{{address?address.address:info.addr}}' bindtap='setAddress'></input>
+        <view class='inputwrap fl'>
+          <input class='forminput roominput fl' maxlength='2' type='number' name="wei" value="{{roomshap?roomshap[3]:''}}"></input>
+          <text class='fl'>卫</text>
         </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>门牌号码</text>
-            <input class='forminput fl' type='text' placeholder='请输入门牌号，例如8号楼808室' name="doornumber" value='{{info.doornumber}}'></input>
-        </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>项目户型</text>
-            <picker class='pickerselect fl' bindchange="changeRoomType" range="{{roomType}}">{{roomTypeInfo.name?roomTypeInfo.name:'请选择'}}</picker>
-        </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>房型</text>
-            <view class='roomwrap fl clearfix'>
-                <view class='inputwrap fl'>
-                    <input class='forminput roominput fl' maxlength='2' type='number' name="room" value="{{roomshap?roomshap[0]:''}}"></input>
-                    <text class='fl'>室</text>
-                </view>
-                <view class='inputwrap fl'>
-                    <input class='forminput roominput fl' maxlength='2' type='number' name="office" value="{{roomshap?roomshap[1]:''}}"></input>
-                    <text class='fl'>厅</text>
-                </view>
-                <view class='inputwrap fl'>
-                    <input class='forminput roominput fl' maxlength='2' type='number' name="kitchen" value="{{roomshap?roomshap[2]:''}}"></input>
-                    <text class='fl'>厨</text>
-                </view>
-                <view class='inputwrap fl'>
-                    <input class='forminput roominput fl' maxlength='2' type='number' name="wei" value="{{roomshap?roomshap[3]:''}}"></input>
-                    <text class='fl'>卫</text>
-                </view>
-            </view>
-        </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>面积(平)</text>
-            <input class='forminput fl' type='digit' bindinput="inputOnlyOnePoint" placeholder='请输入项目面积' name="acreage" value="{{acreage}}"></input>
-        </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>装修风格</text>
-            <picker class='pickerselect fl'  bindchange="changeRoomStyle" range="{{roomStyle}}">{{roomStyleInfo.name?roomStyleInfo.name:'请选择'}}</picker>
-        </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>装修方式</text>
-            <picker class='pickerselect fl' bindchange="changeRenovationMode" range="{{renovationMode}}">{{renovationModeInfo.name?renovationModeInfo.name:'请选择'}}</picker>
-        </view>
-        <view class='formitem clearfix'>
-            <text class='itemname fl'>预算(万)</text>
-            <input class='forminput fl' type='number' placeholder='请输入' name="budget" value='{{info.budget}}'></input>
-        </view>
-        <button class='submitbtn' form-type='submit'>提交</button>
-    </form>
-</view>
+      </view>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>面积(平)</text>
+      <input class='forminput fl' type='digit' bindinput="inputOnlyOnePoint" placeholder='请输入项目面积' name="acreage" value="{{acreage}}"></input>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>装修风格</text>
+      <picker class='pickerselect fl' bindchange="changeRoomStyle" range="{{roomStyle}}">{{roomStyleInfo.name?roomStyleInfo.name:'请选择'}}</picker>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>装修方式</text>
+      <picker class='pickerselect fl' bindchange="changeRenovationMode" range="{{renovationMode}}">{{renovationModeInfo.name?renovationModeInfo.name:'请选择'}}</picker>
+    </view>
+    <view class='formitem clearfix'>
+      <text class='itemname fl'>预算(万)</text>
+      <input class='forminput fl' type='number' placeholder='请输入' name="budget" value='{{info.budget}}'></input>
+    </view>
+    <button class='submitbtn' form-type='submit'>提交</button>
+  </view>
+</form>

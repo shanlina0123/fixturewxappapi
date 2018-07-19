@@ -113,7 +113,3 @@
     right: 0;
     top: 0;
 }
-
-.hadimgwrap:nth-child(3n-2) {
-    margin-left: 0;
-}

@@ -1,7 +1,4 @@
 /* pages/usercenter/project/project.wxss */
-.projectul{
-    margin-top: 10rpx;
-}
 .projectli{
     background-color: #fff;
     padding:0 20rpx;

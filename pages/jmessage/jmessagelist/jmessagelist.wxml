@@ -3,7 +3,8 @@
            class='noticeli clearfix' 
            bindtap='upReadStaus'
            data-index='{{index}}'
-           data-username='{{item.username}}'>
+           data-username='{{item.username}}'
+           hover-class='none'>
     <image src='{{item.faceimg}}' class='uhead fl'></image>
     <view class='rightnotice fl'>
         <view class='uname'>{{item.nickname}}<text wx:if="{{item.content.read}}" class='noread'></text></view>

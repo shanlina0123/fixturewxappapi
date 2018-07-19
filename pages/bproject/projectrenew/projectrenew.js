@@ -72,6 +72,7 @@ Page({
     imgupload: function () {
       var that = this;
       var count = 9 - parseInt((that.data.imgUrl).length);
+      console.log(count);
       if (count == false) {
         wx.showToast({
           title: '最多上传9张',
@@ -80,7 +81,7 @@ Page({
         return false;
       }
       wx.chooseImage({
-        count: 1,
+        count: count,
         sizeType: ['compressed'],
         sourceType: ['album', 'camera'],
         success: function (res) {
@@ -109,6 +110,7 @@ Page({
           try{
             var data = res.data;
             data = JSON.parse(data);
+            console.log(data);
             if (data.status == 1) {
               var srcArr = that.data.imgUrl;
               srcArr.push(data.data.src);
@@ -151,7 +153,7 @@ Page({
             return;
           } else {  //递归调用uploadDIY函数
             if (!that.data.isuploaderror) {
-              this.uploadImg(tempFilePaths, successUp, failUp, i, length);
+              this.uploadImg(tempFilePaths, successUp, failUp, i, length, uptype);
             }
           }
         }

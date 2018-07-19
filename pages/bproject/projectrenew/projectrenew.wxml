@@ -29,7 +29,7 @@
             <video  src="{{videosrc}}" class="videoplay fl {{videoshow}}"></video>
                 <block wx:for="{{imgUrl}}" wx:key="index">
                   <view class='hadimgwrap fl'>
-                      <image src="{{item}}" class='hadimage'></image>
+                      <image src="{{item}}" class='hadimage' mode="aspectFill"></image>
                       <image src="../../../images/close.png" class='closeimg' data-id="{{index}}" data-name="{{imgname[index]}}" bindtap='remImg'></image>
                   </view>
                 </block>

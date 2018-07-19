@@ -97,12 +97,23 @@ JIM.onSyncConversation(function (data) {
     var infoSt = wx.getStorageSync(k);
     var messages = v.msgs;
         messages.forEach(function (v) {
+          if ( username == wx.getStorageSync('userInfo').jguser )
+          {
+            var vclass = 'minemsg';
+            var misvclass = 'minetext';
+            var textclass = "minetragle";
+          }else
+          {
+            var vclass = 'othermsg';
+            var misvclass = 'othertext';
+            var textclass = "othertragle";
+          }
           var obj = {
-            'vclass': 'othermsg',
+            'vclass': vclass,
             'imgclass': 'fl',
-            'misvclass': 'othertext',
+            'misvclass': misvclass,
             'content': { 'text': v.content.msg_body.text, 'read':true},
-            'textclass': "othertragle",
+            'textclass': textclass, 
             'faceimg':v.content.msg_body.extras.faceimg,
           };
           if (infoSt) 
@@ -218,7 +229,6 @@ Page({
     {  
       //判断登陆
       var isLogin = JIM.isLogin();
-      console.log(obj);
       if ( isLogin ){
         JIM.sendSingleMsg({
           'target_username': obj.username,

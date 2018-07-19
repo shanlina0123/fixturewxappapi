@@ -155,8 +155,8 @@
     display: none;
 }
 .sendbtn{
-    height: 64rpx;
-    line-height: 64rpx;
+    height: 63rpx;
+    line-height: 63rpx;
     padding: 0 34rpx;
     color: #FFF;
     font-size: 24rpx;

@@ -1,12 +1,12 @@
 <!--pages/adduser/adduser.wxml-->
 <view class='samepadding'>
-    <navigator url='../makesure/makesure' class='invitebtn' hover-class='none'>添加成员</navigator>
-    <view class='userlist clearfix' wx:for="{{data}}" wx:key="index">
-        <!-- <image src='{{item.faceimg}}' class='uhead fl'></image> -->
-        <text class='uname fl'>{{item.name}}</text>
-        <text class='ustate left10 fl'>{{item.participant_to_position.name}}</text>
-        <image wx:if="{{item.isadd==2}}" src='../../../images/newuser.png' class="addimage fr" data-id='{{item.id}}' bindtap='adduser'></image>
-        <!--点击已添加之后的文字显示--> 
-        <text wx:if="{{item.isadd==1}}" class="fr hadadd">已添加</text> 
-    </view>
+  <navigator url='../makesure/makesure' class='invitebtn' hover-class='none'>添加成员</navigator>
+  <view class='userlist clearfix' wx:for="{{data}}" wx:key="index">
+    <!-- <image src='{{item.faceimg}}' class='uhead fl'></image> -->
+    <text class='uname fl'>{{item.name}}</text>
+    <text class='ustate left10 fl'>{{item.participant_to_position.name}}</text>
+    <image wx:if="{{item.isadd==2}}" src='../../../images/newuser.png' class="addimage fr" data-id='{{item.id}}' bindtap='adduser'></image>
+    <!--点击已添加之后的文字显示-->
+    <text wx:if="{{item.isadd==1}}" class="fr hadadd">已添加</text>
+  </view>
 </view>
