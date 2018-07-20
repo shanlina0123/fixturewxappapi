@@ -37,11 +37,11 @@
             <navigator url="../projectdetail/projectdetail?id={{item.sitetid}}" class='statecontent' hover-class="none" bindtap='hidComment'>
                 <view class='topname'>
                     <text class='uname'>{{item.nickname?item.nickname:'匿名'}}</text>
-                    <text class='ustate left10' vx:if="{{item.uposition}}">{{item.uposition}}</text>
+                    <text class='ustate left10' wx:if="{{item.uposition}}">{{item.uposition}}</text>
                 </view>
                 <view class='bottomname' wx:if="{{item.type==0}}">
                     <text class='proname'>{{item.title}}</text>
-                    <text class='prostate color4'>{{item.sitestagename}}</text>
+                    <text class='prostate color4' wx:if="{{item.sitestagename}}">{{item.sitestagename}}</text>
                 </view>
                 <text class='statetext'>{{item.content}}</text>
             </navigator>

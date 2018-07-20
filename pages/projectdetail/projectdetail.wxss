@@ -16,10 +16,10 @@
     bottom: 26rpx;
 }
 .bottom .addr{
-    display: block;
     padding:5rpx 10rpx;
     line-height: 36rpx;
     background-color:#fff;
+    border-radius:3px;
 }
 .bottonbtns{
     margin-top: 15rpx;

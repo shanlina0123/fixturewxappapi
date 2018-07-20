@@ -1,7 +1,7 @@
 <!--pages/videos/videos.wxml-->
 <view class='wrap'>
     <view class='videowrap'>
-        <video src="{{imgUrl+item.video[0].ossurl}}" ></video>
+        <video src="{{imgUrl+item.video[0].ossurl}}" id="projectvideo"></video>
     </view>
     <view class='userwrap'>
         <view class='userinner'>
