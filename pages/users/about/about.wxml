@@ -1,6 +1,6 @@
 <!--pages/usercenter/about.wxml-->
 <view class='ceontent aboutwrap samepadding'>
-    <image src="{{companyData.logo}}" class='logo' mode='aspectFill'></image>
+    <image src="{{companyData.logo}}" class='logo' mode='aspectFit'></image>
     <text class='comname'>{{companyData.name}}</text>
     <view class='companytext'>
        {{companyData.resume}}

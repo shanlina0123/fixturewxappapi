@@ -6,7 +6,7 @@
 .logo{
     display: block;
     width: 348rpx;
-    height: 128rpx;
+    height: 200rpx;
     margin: 10rpx auto
 }
 .comname{
