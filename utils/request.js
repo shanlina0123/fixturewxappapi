@@ -37,13 +37,7 @@ function checkToken()
 function requestPost( url, obj, cb ) {
   var userinfo = wx.getStorageSync('userInfo');
   if (!userinfo) {
-    var pages = getCurrentPages();
-    var Page = pages[pages.length - 1];//当前页
-    var url = Page.route; //当前页面url
-    var options = Page.options;
-    wx.reLaunch({
-      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' + JSON.stringify(options)
-    });
+    checkToken();
   }else
   {
     var that = this;
@@ -91,13 +85,7 @@ function requestPost( url, obj, cb ) {
 function requestGet(url, cb) {
   var userinfo = wx.getStorageSync('userInfo');
   if (!userinfo) {
-    var pages = getCurrentPages();
-    var Page = pages[pages.length - 1];//当前页
-    var url = Page.route; //当前页面url
-    var options = Page.options;
-    wx.reLaunch({
-      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' + JSON.stringify(options)
-    });
+    checkToken();
   } else 
   {
     var that = this;
@@ -135,13 +123,7 @@ function requestGet(url, cb) {
 function requestPut(url, obj, cb) {
   var userinfo = wx.getStorageSync('userInfo');
   if (!userinfo) {
-    var pages = getCurrentPages();
-    var Page = pages[pages.length - 1];//当前页
-    var url = Page.route; //当前页面url
-    var options = Page.options;
-    wx.reLaunch({
-      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' + JSON.stringify(options)
-    });
+    checkToken();
   } else {
     var that = this;
     wx.showLoading({ title: '加载中' });
@@ -187,13 +169,7 @@ function requestPut(url, obj, cb) {
 function requestDelete(url,obj, cb) {
   var userinfo = wx.getStorageSync('userInfo');
   if (!userinfo) {
-    var pages = getCurrentPages();
-    var Page = pages[pages.length - 1];//当前页
-    var url = Page.route; //当前页面url
-    var options = Page.options;
-    wx.reLaunch({
-      url: '/pages/allowlogin/allowlogin?url=' + JSON.stringify(url) + '&options=' + JSON.stringify(options)
-    });
+    checkToken();
   } else {
     var that = this;
     wx.showLoading({ title: '加载中' });

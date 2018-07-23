@@ -1,0 +1,64 @@
+/* pages/eval/eval.wxss */
+.wrap{
+    padding: .1px;
+}
+.evalformwrap{
+    padding: 20rpx;
+    background-color: #FFFFFF;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+.evalformitem{
+    margin-top: 30rpx;
+}
+.evalformitem:first-child{
+    margin-top:0;
+}
+.topname{
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 20rpx;
+}
+.lefttext{
+    width: 90rpx;
+}
+.proaddr{
+    font-size: 30rpx;
+    font-weight: bold;
+}
+.rightwrap{
+    width: 570rpx;
+}
+.centerwrap{
+    width: 570rpx;
+    padding-left: 80rpx;
+}
+.radiogroup label{
+    margin: 0 10rpx;
+    font-size: 28rpx;
+}
+.radiogroup radio{
+    margin: 10rpx 0;
+}
+.evalimgwrap image{
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 26rpx;
+}
+.evaltextarea{
+    width: 650rpx;
+    border: 1px solid #f0f0f0;
+    border-radius: 10rpx;
+    padding: 16rpx 10rpx;
+    background-color: #F8F8F8;
+    height: 260rpx;
+}
+.submitbtn{
+    background-color: #01AAED;
+    color: #FFFFFF;
+    margin-top: 30rpx;
+}
+.textnumber{
+    color: #999;
+    text-align: right;
+    padding-top: 10rpx;
+}

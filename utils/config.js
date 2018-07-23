@@ -70,6 +70,15 @@ var config = {
   //去抽奖
   luckyDraw:`${host}/lucky/draw`,
   luckyCient: `${host}/lucky/client`,
+  //业主评价页面
+  evaluateInfo: `${host}/site/site-evaluate-info`,
+  //业主评价
+  ownerEvaluate: `${host}/site/owner-evaluate`,
+  //评价删除
+  evaluateDestroy: `${host}/site/evaluate-destroy`,
+  //评级二维码
+  evaluateCode: `${host}/site/evaluate-code`,
+
   /**
    * B端
    */

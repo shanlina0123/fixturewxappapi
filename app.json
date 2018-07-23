@@ -1,5 +1,6 @@
 {
   "pages":[
+    
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -36,9 +37,8 @@
     "pages/jmessage/jmessagelist/jmessagelist",
     "pages/jmessage/jmessageinfo/jmessageinfo",
     "pages/users/changestore/changestore",
-    "pages/videos/videos"
-
-    
+    "pages/videos/videos",
+    "pages/eval/eval"
     
   ],
   "window": {

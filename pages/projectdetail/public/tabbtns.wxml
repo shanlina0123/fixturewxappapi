@@ -1,0 +1,14 @@
+<view class='tabbtns clearfix'>
+  <view class="tabbtn fl {{tab==1?on :''}}" bindtap="tab" data-tab='1'>
+    <image src="/images/{{tab==1?'proicon1On.png':'proicon1.png'}}" class='tabimg'></image>
+    <text>进度</text>
+  </view>
+  <view class="tabbtn fl {{tab==2? on : ''}}" bindtap="tab" data-tab='2'>
+    <image src="/images/{{tab==2?'proicon2On.png':'proicon2.png'}}" class='tabimg'></image>
+    <text>评价</text>
+  </view>
+  <view class="tabbtn fl {{tab==3? on : ''}}" bindtap="tab" data-tab='3'>
+    <image src="/images/{{tab==3?'proicon3On.png':'proicon3.png'}}" class='tabimg'></image>
+    <text>团队</text>
+  </view>
+</view>

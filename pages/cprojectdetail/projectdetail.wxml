@@ -1,37 +1,8 @@
 <!--pages/usercenter/project/projectdetail.wxml-->
 <view class='wrap' wx:if="{{isview}}">
     <view class='detailcontent'>
-        <view class='bannerwrap'>
-            <image src='{{siteInfo.explodedossurl}}' class='bannerimg'></image>
-            <view class='viewnum' wx:if="{{siteInfo.linkednum}}">浏览:{{siteInfo.linkednum}}</view>
-            <view class='bottom samepadding'>
-                <text class='addr'>{{siteInfo.addr}}</text>
-                  <view class='bottonbtns'>
-                      <text wx:if="{{siteInfo.site_to_renovation_mode.name}}">{{siteInfo.site_to_renovation_mode.name}}</text>
-                      <text wx:if="{{siteInfo.budget != 0}}">{{siteInfo.budget}}万</text>
-                      <text wx:if="{{siteInfo.roomshap}}">{{siteInfo.roomshap}}</text>
-                      <text wx:if="{{siteInfo.acreage != 0.00 }}">{{siteInfo.acreage}}m</text>
-                      <text wx:if="{{siteInfo.site_to_room_style.name}}">{{siteInfo.site_to_room_style.name}}</text>
-                  </view>
-            </view>
-        </view>
-        <view class='focuswrap clearfix'>
-            <view class='clearfix'>
-                <text class='rightnum fl' wx:if="{{siteInfo.follownum}}">{{siteInfo.follownum}}人关注</text>
-                <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus fr">已关注</text>
-                <text wx:else class="focus on fr" 
-                      bindtap="changeName" 
-                      data-storeid='{{siteInfo.storeid}}' 
-                      data-siteid='{{siteInfo.id}}' 
-                      data-cityid='{{siteInfo.cityid}}'>关注</text>
-            </view>
-            <view class='lefthead fl'>
-                <block wx:for="{{siteInfo.site_to_follo_wrecord}}" wx:key="key">
-                    <image wx:if="{{item.follow_to_user.faceimg}}" src="{{item.follow_to_user.faceimg}}" class='suhead'></image>
-                    <image wx:else src="../../../images/uhead.png" class='suhead'></image>
-                </block>
-            </view>
-        </view>
+        <!--项目详情-->
+        <include  src="../projectdetail/public/projectinfo.wxml"/>
         <!--切换卡-->
         <view class='tabwrap'>
             <view class='tabbtns clearfix'>
@@ -43,10 +14,10 @@
                     <image src="/images/{{selected2?'proicon2On.png':'proicon2.png'}}" class='tabimg'></image>
                     <text>评价</text>
                 </view>
-                 <!-- <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
+                <view class="tabbtn fl {{selected3 ? on : ''}}" bindtap="tab3">
                     <image src="../../../images/{{selected3?'proicon3On.png' :'proicon3.png'}}" class='tabimg'></image>
                     <text>团队</text>
-                </view>  -->
+                </view>  
             </view>
             <view class='tabcontent'>
                 <view class="tabitem {{selected1?'':hide}}">
@@ -151,12 +122,10 @@
                     </view>
                 </view>
                 <view class="tabitem {{selected2?'':hide}}">
-                    <!--有数据显示时用此段代码 <view class='itemul samepadding'>
-                        <view class='itemli statecontent'></view>
-                    </view> -->
-                    <text class='datanone'>暂无业主评价</text>
+                    <!--业主评价-->
+                    <include  src="../projectdetail/public/eval.wxml"/>
                 </view>
-                 <!-- <view class="tabitem {{selected3?'':hide}}">
+                <view class="tabitem {{selected3?'':hide}}">
                     <view class='itemul samepadding'>
                         <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
                             <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
@@ -168,12 +137,11 @@
                             </view>
                         </view>
                     </view> 
-                </view>  -->
+                </view>  
             </view>
         </view>
         <!--底预约参观按钮-->
         <view class='bottombtns clearfix'>
-          
             <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}&siteid={{siteInfo.id}}&storeid={{siteInfo.storeid}}' class='bottombtn fr' hover-class="none">预约参观</navigator>
             <button class='askbtn fr' size='mini' bindtap='message'>在线咨询</button>
         </view>

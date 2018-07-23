@@ -1,0 +1,32 @@
+<view class="tabitem {{tab==2?'':hide}}">
+  <view class='itemulwrap'>
+    <view class='itemul bitermul samepadding' wx:for="{{siteInfo.evaluate}}" wx:key="evaluateIndex">
+      <view class='itemli clearfix'>
+        <image src="{{item.faceimg}}" class='uhead fl'></image>
+        <view class='rightname fl'>
+          <view class='topname clearfix'>
+            <text class='uname fl'>{{item.nickname}}</text>
+            <text class='prostate color4 fr'>{{item.sitestagename}}</text>
+          </view>
+          <view class='bottomname clearfix'>
+            <view class='imagewrap fl'>
+            <block wx:for="{{[1,2,3,4,5]}}" wx:key='scoreIndex' wx:for-item="scoreItem">
+              <image src="{{item.score >= scoreItem?'../../../images/evalOn.png':'../../../images/eval.png'}}" class='evalimg'></image>
+            </block>
+            </view>
+          </view>
+          <view class='itemli statecontent'>
+            <text class='statetext'>{{item.content}}</text>
+          </view>
+          <view class='clearfix'>
+            <text class='protime fl'>{{item.created_at}}</text>
+            <view class='deleteitem evaldelete fr' bindtap='deleteEval'  data-index="{{index}}" data-siteid="{{item.siteid}}"  wx:if="{{userType==0}}">
+              <image src="../../../images/delete.png" class='deleteimage' ></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button wx:if="{{userType==0}}" class='linkbtn'  bindtap='inviteuser'>邀请业主</button>
+</view>

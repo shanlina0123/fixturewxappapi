@@ -18,7 +18,7 @@ Page({
     var siteid = this.data.siteid;
    var participant = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../inviteuser/inviteuser?siteid=' + siteid + '&participant='+participant,
+      url: '../inviteuser/inviteuser?siteid=' + siteid + '&participant=' + participant +'&type=2',
     })
   },
   /**

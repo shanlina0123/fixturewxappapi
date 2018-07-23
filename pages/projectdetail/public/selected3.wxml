@@ -1,0 +1,18 @@
+<view class="tabitem {{tab==3?'':hide}}">
+  <view class='itemul samepadding'>
+    <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
+      <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
+      <view class='rightname fl'>
+        <view class='topname'>
+          <text class='uname'>{{invitation.invitation_to_user.nickname}}</text> 
+          <text class='ustate left10' wx:if='{{invitation.invitation_to_user.isowner==1}}'>业主</text>
+          <text class='ustate left10' wx:else >{{invitation.invitation_to_user.user_to_position?invitation.invitation_to_user.user_to_position.name:''}}</text>
+        </view>
+        <view class='bluecolor fr workerdelete' bindtap='delInvitation' data-item='{{invitation}}' data-index='{{index}}'>
+          <image src="../../../images/delete.png" class='deleteimage workerdelete'></image>
+        </view>
+      </view>
+    </view>
+    <navigator url='/pages/invite/participant/participant?siteid={{siteInfo.id}}' class='linkbtn'>添加成员</navigator>
+  </view>
+</view>

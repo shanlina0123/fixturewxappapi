@@ -1,2 +1,34 @@
-<include wx:if="{{userType==0}}" src="../bprojectdetail/projectdetail.wxml"/>
-<include wx:if="{{userType==1}}" src="../cprojectdetail/projectdetail.wxml"/>
+<view class='wrap' wx:if="{{isview}}">
+  <view class='detailcontent'>
+    <!--项目详情-->
+    <include src="../projectdetail/public/projectinfo.wxml" />
+    <!--切换卡-->
+    <include src="../projectdetail/public/tabbtns.wxml" />
+    <!--动态页面-->  
+    <view class='tabcontent'>
+      <!--动态-->
+      <include src="../projectdetail/public/selected1.wxml" /> 
+      <!--业主评价-->
+      <include src="../projectdetail/public/selected2.wxml" />
+      <!--成员管理-->
+      <include src="../projectdetail/public/selected3.wxml" />
+    </view>
+    <!--底预约参观按钮-->
+    <view class='bottombtns clearfix'>
+      <navigator class='bottombtn fr' url="/pages/bproject/projectrenew/projectrenew?uuid={{siteInfo.uuid}}">更新</navigator>
+      <button class='askbtn fr' open-type='share' size='mini'>推广</button>
+    </view>
+    <!--评论输入框-->
+    <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
+      <input class='zaninput fl' type='text' placeholder='评论' value="{{commentV}}" data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment' focus="{{name_focus}}" bindblur='commentBlur'>
+      </input>
+      <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
+    </view>
+  </view>
+  <!--编辑动态选择-->
+  <view class="handelmsgwrap {{handelshow ? '' : 'hide'}}">
+    <navigator wx:if="{{deleteitem.dtype==0}}" url='/pages/bproject/projectrenewup/projectrenewup?id={{deleteitem.id}}' class='item' bindtap='colFoot'>修改</navigator>
+    <view class='item' bindtap='deleteDynamic'>删除</view>
+    <view class='item' bindtap='cancelmsg'>取消</view>
+  </view>
+</view>

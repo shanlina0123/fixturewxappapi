@@ -10,9 +10,7 @@ Page({
    */
   data: {
     focustext: "关注",
-    selected1: true,
-    selected2: false,
-    selected3: false,
+    tab:1,
     on: "check",
     hide: 'hide',
     siteInfo: {},
@@ -20,8 +18,6 @@ Page({
     data: [],
     inputisshow: false,
     commentData: {},
-    companyData: {},
-    company: {},
     isview: true, //页面内容显示
     userType: 0, //用户身份
     handelshow: false, //编辑显示状态
@@ -58,29 +54,14 @@ Page({
       }
     });
   },
-  /**切换效果 */
-  tab1: function(e) {
+  /**
+   * 切换效果
+   */
+  tab: function(e) {
     var that = this;
+    var tab = e.currentTarget.dataset.tab
     that.setData({
-      selected1: true,
-      selected2: false,
-      selected3: false,
-    })
-  },
-  tab2: function(e) {
-    var that = this;
-    that.setData({
-      selected1: false,
-      selected2: true,
-      selected3: false,
-    })
-  },
-  tab3: function(e) {
-    var that = this;
-    that.setData({
-      selected1: false,
-      selected2: false,
-      selected3: true,
+      tab: tab
     })
   },
   /**显示点赞和评论按钮 */
@@ -121,15 +102,31 @@ Page({
     } else {
       var id = options.id;
     }
+    //显示的模块
+    if (options.tab)
+    {
+      that.setData({
+        tab: options.tab,
+      });
+    }
     this.getSiteInfo(id);
     this.getDynamic(id);
-    //this.getCompanyInfo();
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
+  onShareAppMessage: function (res) {
+    var that = this;
+    if (res!=undefined)
+    {
+console.log(11);
+    }else
+    {
+      return {
+        title: '业主评价',
+        path: '/pages/eval/eval?id=' + that.data.siteInfo.id
+      }
+    }
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -141,13 +138,22 @@ Page({
   getSiteInfo: function(id) {
     var that = this;
     Request.requestGet(Url.siteInfo + '?id=' + id, function(res) {
-      if (res.status == 1) {
+      if (res.status == 1) 
+      {
         var data = res.data;
-        if (data.explodedossurl) {
-          data.explodedossurl = that.data.imgUrl + data.explodedossurl;
-        } else {
-          data.explodedossurl = that.data.imgUrl + 'default/wx/default.jpg';
-        }
+        var arr = [];
+        data.evaluate.forEach(function (v) {
+          var obj = {};
+          obj.sitestagename = v.sitestagename;
+          obj.content = v.content;
+          obj.faceimg = v.evaluate_to_user.faceimg;
+          obj.nickname = v.evaluate_to_user.nickname;
+          obj.created_at = util.timeChangeover(v.created_at);
+          obj.score = v.score;
+          obj.siteid = v.siteid;
+          arr.push(obj);
+        });
+        data.evaluate = arr;
         that.setData({
           siteInfo: data
         });
@@ -451,19 +457,6 @@ Page({
       })
     }
   },
-  getCompanyInfo: function() {
-    var that = this;
-    Request.requestGet(Url.companyInfo, function(res) {
-      if (res.status == 1) {
-        var data = res.data;
-        data.logo = that.data.imgUrl + data.logo;
-        that.setData({
-          companyData: data,
-          company: JSON.stringify(res.data)
-        })
-      }
-    });
-  },
   /**
    * 图片预览
    */
@@ -604,5 +597,59 @@ Page({
     this.setData({
       inputisshow: false,
     })
-  }
+  },
+  /**
+   * 删除评论
+   */
+  deleteEval:function(e)
+  {
+    var that = this;
+    var obj = { 'siteid': e.currentTarget.dataset.siteid};
+    var index = e.currentTarget.dataset.index;
+    wx.showModal({
+      title: '确认删除吗？',
+      success: function (res) {
+        if (res.confirm) 
+        {  
+          Request.requestDelete(Url.evaluateDestroy, obj, function (res) {
+            if ( res.status == 1 )
+            {
+              var siteInfo = that.data.siteInfo;
+                  siteInfo.evaluate.splice(index, 1);
+                  that.setData({
+                    siteInfo:siteInfo
+                  });
+              wx.showToast({
+                title: res.messages,
+                icon: 'success',
+                duration: 2000
+              })
+            }
+          });
+        }
+      }
+    });
+  },
+  /**
+   * 邀请业主评价 
+   */
+  inviteuser: function () {
+    var that = this;
+    wx.showActionSheet({
+      itemList: ['邀请业主评价', '生成邀请码'],
+      success: function (res) {
+        if (res.tapIndex == 0) {
+          /**
+           * 分享评价表单页面给微信好友 
+           */
+          
+         
+        } else {
+          wx.navigateTo({
+            url: '/pages/invite/inviteuser/inviteuser?siteid=' + that.data.siteInfo.id+'&type=1',
+          })
+        }
+      }
+    })
+  },
 })

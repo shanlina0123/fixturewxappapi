@@ -1,0 +1,42 @@
+<!--pages/eval/eval.wxml-->
+<view class='wrap'>
+  <view class='samepadding'>
+    <form class='evalformm' bindsubmit="formSubmit">
+      <view class='evalformwrap'>
+        <view class='evalformitem topname clearfix'>
+          <text class='lefttext fl'>项目:</text>
+          <view class='rightwrap fl'>
+            <text class='proaddr'>{{siteInfo.name}}</text>
+          </view>
+        </view>
+        <view class='evalformitem clearfix'>
+          <view class='centerwrap fl'>
+            <radio-group class="radiogroup"  name="radio">
+              <label wx:for="{{siteInfo.template}}" wx:key="index">
+                <radio  value='{{item.id}},{{item.name}}' checked="{{item.id==siteInfo.stageid?true:false}}" disabled="{{item.id>siteInfo.stageid?true:false}}">
+                </radio>{{item.name}}
+              </label>
+            </radio-group>
+          </view>
+        </view>
+        <view class='evalformitem clearfix'>
+          <view class='centerwrap fl'>
+            <view class='evalimgwrap'>
+              <block wx:for="{{bit}}" wx:key="bitindex">
+                <image src="{{choice>=item.value?'../../images/evalOn.png':'../../images/eval.png'}}" data-value='{{item.value}}' bindtap='choiceBit'>
+                </image>
+              </block>
+            </view>
+          </view>
+        </view>
+        <view class='evalformitem clearfix'>
+          <view class='textareawrap fl'>
+            <textarea name="content" class='evaltextarea' bindinput="bindinput" placeholder='您的评价很重要哦....' maxlength="{{contentText}}"></textarea>
+          </view>
+        </view>
+        <view class='textnumber'>{{num}}/{{contentText}}</view>
+      </view>
+      <button formType="submit" class='submitbtn'>立即提交</button>
+    </form>
+  </view>
+</view>

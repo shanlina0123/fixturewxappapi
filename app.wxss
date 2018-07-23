@@ -314,12 +314,13 @@ view {
 .bitermul {
     position: relative;
 }
-.deleteitem {
-    position: absolute;
-    right: 20rpx;
-    top: 25rpx;
-    color: #1e9fff;
-    z-index: 20;
+.deleteimage{
+    width: 40rpx;
+    height: 40rpx;
+}
+.deleteitem .editimage{
+    width: 40rpx;
+    height: 40rpx;
 }
 
 /**定义12种工地状况的颜色**/

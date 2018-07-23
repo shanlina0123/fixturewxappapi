@@ -1,205 +1,132 @@
-<!--pages/usercenter/project/projectdetail.wxml-->
 <view class='wrap' wx:if="{{isview}}">
-    <view class='detailcontent'>
-        <view class='bannerwrap'>
-            <image src='{{siteInfo.explodedossurl}}' class='bannerimg'  mode="aspectFill"></image>
-            <view class='viewnum' wx:if="{{siteInfo.linkednum}}">浏览:{{siteInfo.linkednum}}</view>
-            <view class='bottom samepadding'>
-                <text class='addr'>{{siteInfo.addr}}</text>
-                  <view class='bottonbtns'>
-                      <text wx:if="{{siteInfo.site_to_renovation_mode.name}}">{{siteInfo.site_to_renovation_mode.name}}</text>
-                      <text wx:if="{{siteInfo.budget != 0}}">{{siteInfo.budget}}万</text>
-                      <text wx:if="{{siteInfo.roomshap}}">{{siteInfo.roomshap}}</text>
-                      <text wx:if="{{siteInfo.acreage != 0.00 }}">{{siteInfo.acreage}}m</text>
-                      <text wx:if="{{siteInfo.site_to_room_style.name}}">{{siteInfo.site_to_room_style.name}}</text>
+  <view class='detailcontent'>
+    <!--项目详情-->
+    <include src="../projectdetail/public/projectinfo.wxml" />
+    <!--切换卡-->
+    <view class='tabbtns clearfix'>
+      <view class="tabbtn fl {{selected1?on :''}}" bindtap="tab1">
+        <image src="/images/{{selected1?'proicon1On.png':'proicon1.png'}}" class='tabimg'></image>
+        <text>进度</text>
+      </view>
+      <view class="tabbtn fl {{selected2? on : ''}}" bindtap="tab2">
+        <image src="/images/{{selected2?'proicon2On.png':'proicon2.png'}}" class='tabimg'></image>
+        <text>评价</text>
+      </view>
+      <view class="tabbtn fl {{selected3? on : ''}}" bindtap="tab3">
+        <image src="/images/{{selected3?'proicon3On.png':'proicon3.png'}}" class='tabimg'></image>
+        <text>团队</text>
+      </view>
+    </view>
+    <view class='tabcontent'>
+      <view class="tabitem {{selected1?'':hide}}">
+        <view class='flowitemwarp'>
+          <view class='flowwrap samepadding clearfix'>
+            <block wx:for="{{siteInfo.tag}}" wx:key="tagkey" wx:for-item="itemTag">
+              <view class="flow fl {{siteInfo.stageid >= itemTag.id?'on':''}} {{siteInfo.tag.length > 10?'flow12':''}}">
+                <text class='number'>{{index+1}}</text>
+                <text class='flowtext'>{{itemTag.name}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class='detailitemul'>
+          <view class='itemul bitermul samepadding' wx:for="{{data}}" wx:for-index="idx" wx:key="index">
+            <view class='itemli clearfix'>
+              <image src="{{item.faceimg?item.faceimg:'../../images/uhead.png'}}" class='uhead fl'></image>
+              <view class='rightname fl'>
+                <view class='topname'>
+                  <text class='uname'>{{item.nickname?item.nickname:'匿名'}}</text>
+                  <text class='ustate left10' wx:if="{{item.uposition}}">{{item.uposition}}</text>
+                </view>
+                <view class='bottomname' wx:if="{{item.type==0}}">
+                  <text class='proname'>{{item.title}}</text>
+                  <text class='prostate color4' wx:if="{{item.sitestagename}}">{{item.sitestagename}}</text>
+                </view>
+                <view class='statecontent'>
+                  <text class='detailstate'>{{item.content}}</text>
+                  <view class='stateimgwrap clearfix'>
+                    <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
+                      <image src='../../images/play.png' class="stateimg stateimgmore fl {{item.imgnumber < 2 ? '' : 'stateimgmore'}}" bindtap="videoInfo" data-item="{{item}}">
+                      </image>
+                    </block>
+                    <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
+                      <image src='{{imgUrl+itemImg.ossurl}}' class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" mode="aspectFill" data-img="{{item.images}}" data-src="{{imgUrl+itemImg.ossurl}}" bindtap='getImg'>
+                      </image>
+                    </block>
                   </view>
-            </view>
-        </view>
-        <view class='focuswrap clearfix'>
-            <view class='clearfix'>
-                <text class='rightnum fl' wx:if="{{siteInfo.follownum}}">{{siteInfo.follownum}}人关注</text>
-                <text wx:if="{{siteInfo.siteToFolloWrecord}}" class="focus fr">已关注</text>
-                <text wx:else class="focus on fr" bindtap="changeName" data-storeid='{{siteInfo.storeid}}' data-siteid='{{siteInfo.id}}' data-cityid='{{siteInfo.cityid}}'>关注</text>
-            </view>
-            <view class='lefthead fl'>
-                <block wx:for="{{siteInfo.site_to_follo_wrecord}}" wx:key="key">
-                    <image wx:if="{{item.follow_to_user.faceimg}}" src="{{item.follow_to_user.faceimg}}" class='suhead'></image>
-                    <image wx:else src="../../../images/uhead.png" class='suhead'></image>
-                </block>
-            </view>
-        </view>
-        <!--切换卡-->
-        <view class='tabwrap'>
-            <view class='tabbtns clearfix'>
-                <view class="tabbtn fl {{selected1?on :''}}" bindtap="tab1">
-                    <image src="/images/{{selected1?'proicon1On.png':'proicon1.png'}}" class='tabimg'></image>
-                    <text>进度</text>
                 </view>
-                <view class="tabbtn fl {{selected2? on : ''}}" bindtap="tab2">
-                    <image src="/images/{{selected2?'proicon2On.png':'proicon2.png'}}" class='tabimg'></image>
-                    <text>评价</text>
-                </view>
-                <view class="tabbtn fl {{selected3? on : ''}}" bindtap="tab3">
-                    <image src="/images/{{selected3?'proicon3On.png':'proicon3.png'}}" class='tabimg'></image>
-                    <text>团队</text>
-                </view>
-            </view>
-            <view class='tabcontent'>
-                <view class="tabitem {{selected1?'':hide}}">
-                    <view class='flowitemwarp'>
-                        <view class='flowwrap samepadding clearfix'>
-                            <block wx:for="{{siteInfo.tag}}" wx:key="tagkey" wx:for-item="itemTag">
-                                <view class="flow fl {{siteInfo.stageid >= itemTag.id?'on':''}} {{siteInfo.tag.length > 10?'flow12':''}}">
-                                    <text class='number'>{{index+1}}</text>
-                                    <text class='flowtext'>{{itemTag.name}}</text>
-                                </view>
-                            </block>
-                        </view>
+                <view class='times clearfix'>
+                  <text class='fl'>{{item.created_at}}</text>
+                  <text class='fl'>评论:{{item.commentnum}}</text>
+                  <text class='fl'>点赞:{{item.thumbsupnum}}</text>
+                  <view class='handelwrap fr'>
+                    <image src='../../images/rightMsg.png' class='handelimage' data-id="{{idx}}" bindtap='showimage'>
+                    </image>
+                    <view class="iconwrap clearfix {{isshow==idx ?'': 'hide' }}">
+                      <image wx:if="{{item.give}}" src="../../images/zan1On.png" class='zan fl' data-item="{{item}}" data-fabuloustype="2" data-index='{{idx}}' bindtap="fabulous">
+                      </image>
+                      <image wx:else src="../../images/zan1.png" class='zan fl' data-item="{{item}}" data-fabuloustype="1" data-index='{{idx}}' bindtap="fabulous">
+                      </image>
+                      <image src="../../images/zan2.png" class='zan fl' data-item="{{item}}" data-index='{{idx}}' bindtap='showinput'>
+                      </image>
                     </view>
-                    <view class='detailitemul'>
-                        <view class='itemul bitermul samepadding' wx:for="{{data}}" wx:for-index="idx" wx:key="index">
-                            <view class='itemli clearfix'>
-                                <image src="{{item.faceimg?item.faceimg:'../../images/uhead.png'}}" class='uhead fl'></image>
-                                <view class='rightname fl'>
-                                    <view class='topname'>
-                                        <text class='uname'>{{item.nickname?item.nickname:'匿名'}}</text>
-                                        <text class='ustate left10' wx:if="{{item.uposition}}">{{item.uposition}}</text>
-                                    </view>
-                                    <view class='bottomname' wx:if="{{item.type==0}}">
-                                        <text class='proname'>{{item.title}}</text>
-                                        <text class='prostate color4' wx:if="{{item.sitestagename}}">{{item.sitestagename}}</text>
-                                    </view>
-                                    <view class='statecontent'>
-                                        <text class='detailstate'>{{item.content}}</text>
-                                         <view class='stateimgwrap clearfix'>
-                                            <block wx:for="{{item.video}}" wx:for-item="itemVodeo" wx:key="video_index">
-                                                <image src='../../images/play.png' 
-                                                          class="stateimg stateimgmore fl {{item.imgnumber < 2 ? '' : 'stateimgmore'}}" 
-                                                          bindtap="videoInfo"
-                                                          data-item="{{item}}">
-                                                </image>
-                                              </block>
-                                              <block wx:for="{{item.images}}" wx:for-item="itemImg" wx:key="img_index">
-                                                <image src='{{imgUrl+itemImg.ossurl}}' 
-                                                      class="stateimg {{item.imgnumber < 2 ? '' : 'stateimgmore'}} fl}}" 
-                                                      mode="aspectFill"
-                                                      data-img="{{item.images}}" 
-                                                      data-src="{{imgUrl+itemImg.ossurl}}" 
-                                                      bindtap='getImg'>
-                                                </image>
-                                              </block>
-                                         </view>
-                                    </view>
-                                    <view class='times clearfix'>
-                                        <text class='fl'>{{item.created_at}}</text>
-                                        <text class='fl'>评论:{{item.commentnum}}</text>
-                                        <text class='fl'>点赞:{{item.thumbsupnum}}</text>
-                                        <view class='handelwrap fr'>
-                                            <image src='../../images/rightMsg.png' 
-                                                   class='handelimage' 
-                                                   data-id="{{idx}}" 
-                                                   bindtap='showimage'>
-                                            </image>
-                                            <view class="iconwrap clearfix {{isshow==idx ?'': 'hide' }}">
-                                                <image wx:if="{{item.give}}" 
-                                                      src="../../images/zan1On.png" 
-                                                      class='zan fl' 
-                                                      data-item="{{item}}" 
-                                                      data-fabuloustype="2"
-                                                      data-index='{{idx}}' 
-                                                      bindtap="fabulous">
-                                                </image>
-                                                <image wx:else 
-                                                      src="../../images/zan1.png" 
-                                                      class='zan fl' 
-                                                      data-item="{{item}}" 
-                                                      data-fabuloustype="1"
-                                                      data-index='{{idx}}' 
-                                                      bindtap="fabulous">
-                                                </image>       
-                                                <image src="../../images/zan2.png" 
-                                                       class='zan fl' 
-                                                       data-item="{{item}}" 
-                                                       data-index='{{idx}}'
-                                                       bindtap='showinput'>
-                                                </image>
-                                            </view>
-                                        </view>
-                                    </view>
-                                    <view class='discusstext' wx:if="{{item.follo.length}}">
-                                        <view class='textitem' wx:for="{{item.follo}}" wx:for-item="itemFollo" wx:key="fo">
-                                            <text class='textcontent' 
-                                                  catchtap='backtext'
-                                                  bindtouchstart='mytouchstart' 
-                                                  bindtouchend='mytouchend' 
-                                                  data-user="{{itemFollo.dynamic_comment_to_user}}" 
-                                                  data-pindex='{{idx}}' 
-                                                  data-index='{{index}}' 
-                                                  data-dynamicid='{{itemFollo.dynamicid}}' 
-                                                  data-id='{{itemFollo.id}}'
-                                                  data-name="{{item.title}}" 
-                                                  data-createuserid='{{itemFollo.createuserid}}'>
+                  </view>
+                </view>
+                <view class='discusstext' wx:if="{{item.follo.length}}">
+                  <view class='textitem' wx:for="{{item.follo}}" wx:for-item="itemFollo" wx:key="fo">
+                    <text class='textcontent' catchtap='backtext' bindtouchstart='mytouchstart' bindtouchend='mytouchend' data-user="{{itemFollo.dynamic_comment_to_user}}" data-pindex='{{idx}}' data-index='{{index}}' data-dynamicid='{{itemFollo.dynamicid}}' data-id='{{itemFollo.id}}'
+                      data-name="{{item.title}}" data-createuserid='{{itemFollo.createuserid}}'>
                             <text class='textname' wx:if="{{itemFollo.dynamic_comment_to_reply_user}}">{{itemFollo.dynamic_comment_to_user.nickname?itemFollo.dynamic_comment_to_user.nickname:'匿名'}}<text style='color:#333'>回复</text>{{itemFollo.dynamic_comment_to_reply_user.nickname?itemFollo.dynamic_comment_to_reply_user.nickname:'匿名'}}:</text>
 
-                                            <text class='textname' wx:else="{{itemFollo.dynamic_comment_to_user}}">{{itemFollo.dynamic_comment_to_user.nickname?itemFollo.dynamic_comment_to_user.nickname:'匿名'}}:</text>{{itemFollo.content}}
-                                            </text>
-                                        </view>
-                                    </view>
-                                </view>
-                            </view>
-                             <!--B端添加编辑按钮-->
-                             <view class='bluecolor deleteitem' bindtap='handelmsg' data-id='{{item.id}}' data-pindex='{{idx}}' data-dtype='{{item.type}}'>编辑</view>
-                        </view>
-                    </view>
+                    <text class='textname' wx:else="{{itemFollo.dynamic_comment_to_user}}">{{itemFollo.dynamic_comment_to_user.nickname?itemFollo.dynamic_comment_to_user.nickname:'匿名'}}:</text>{{itemFollo.content}}
+                    </text>
+                  </view>
                 </view>
-                <view class="tabitem {{selected2?'':hide}}">
-                    <!--有数据显示时用此段代码 <view class='itemul samepadding'>
-                        <view class='itemli statecontent'></view>
-                    </view> -->
-                    <text class='datanone'>暂无业主评价</text>
-                </view>
-                <view class="tabitem {{selected3?'':hide}}">
-                    <view class='itemul samepadding'>
-                        <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
-                            <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
-                            <view class='rightname fl'>
-                                <view class='topname'>
-                                    <text class='uname'>{{invitation.invitation_to_user.nickname}}</text>
-                                    <text class='ustate left10'>{{invitation.invitation_to_user.user_to_position?invitation.invitation_to_user.user_to_position.name:''}}</text>
-                                </view>
-                                <view class='bluecolor fr' bindtap='delInvitation' data-item='{{invitation}}' data-index='{{index}}'>删除</view>
-                            </view>
-                        </view>
-                         <navigator url='/pages/invite/participant/participant?siteid={{siteInfo.id}}' class='linkbtn'>添加成员</navigator>
-                    </view>
-                </view>
+              </view>
             </view>
+            <!--B端添加编辑按钮-->
+            <view class='bluecolor deleteitem' bindtap='handelmsg' data-id='{{item.id}}' data-pindex='{{idx}}' data-dtype='{{item.type}}'>编辑</view>
+          </view>
         </view>
-        <!--底预约参观按钮-->
-        <view class='bottombtns clearfix'>
-             <navigator class='bottombtn fr' url="/pages/bproject/projectrenew/projectrenew?uuid={{siteInfo.uuid}}">更新</navigator>
-            <button class='askbtn fr' open-type='share' size='mini'>推广</button>
+      </view>
+      <view class="tabitem {{selected2?'':hide}}">
+        <!--业主评价-->
+        <include src="../projectdetail/public/eval.wxml" />
+      </view>
+      <view class="tabitem {{selected3?'':hide}}">
+        <view class='itemul samepadding'>
+          <view class='itemli clearfix' wx:for="{{siteInfo.siteInvitation}}" wx:for-item="invitation" wx:key="siteInvitation">
+            <image src="{{invitation.invitation_to_user.faceimg}}" class='uhead fl'></image>
+            <view class='rightname fl'>
+              <view class='topname'>
+                <text class='uname'>{{invitation.invitation_to_user.nickname}}</text>
+                <text class='ustate left10'>{{invitation.invitation_to_user.user_to_position?invitation.invitation_to_user.user_to_position.name:''}}</text>
+              </view>
+              <view class='bluecolor fr workerdelete' bindtap='delInvitation' data-item='{{invitation}}' data-index='{{index}}'>  
+                <image src="../../../images/delete.png" class='deleteimage workerdelete'></image>
+              </view>
+            </view>
+          </view>
+          <navigator url='/pages/invite/participant/participant?siteid={{siteInfo.id}}' class='linkbtn'>添加成员</navigator>
         </view>
-        <!--评论输入框-->
-        <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
-            <input class='zaninput fl' 
-                   type='text' 
-                   placeholder='评论' 
-                   value="{{commentV}}" 
-                   data-content='{{commentData}}' 
-                   cursor-spacing="8" 
-                   bindinput="setContent" 
-                   bindconfirm='addComment'
-                   focus="{{name_focus}}" 
-                   bindblur='commentBlur'>
-            </input>
-            <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
-        </view>
+      </view>
     </view>
-    <!--编辑动态选择-->
-    <view class="handelmsgwrap {{handelshow ? '' : 'hide'}}">
-        <navigator wx:if="{{deleteitem.dtype==0}}" url='/pages/bproject/projectrenewup/projectrenewup?id={{deleteitem.id}}' class='item' bindtap='colFoot'>修改</navigator>
-        <view class='item' bindtap='deleteDynamic'>删除</view>
-        <view class='item' bindtap='cancelmsg'>取消</view>
+    <!--底预约参观按钮-->
+    <view class='bottombtns clearfix'>
+      <navigator class='bottombtn fr' url="/pages/bproject/projectrenew/projectrenew?uuid={{siteInfo.uuid}}">更新</navigator>
+      <button class='askbtn fr' open-type='share' size='mini'>推广</button>
     </view>
+    <!--评论输入框-->
+    <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
+      <input class='zaninput fl' type='text' placeholder='评论' value="{{commentV}}" data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment' focus="{{name_focus}}" bindblur='commentBlur'>
+      </input>
+      <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
+    </view>
+  </view>
+  <!--编辑动态选择-->
+  <view class="handelmsgwrap {{handelshow ? '' : 'hide'}}">
+    <navigator wx:if="{{deleteitem.dtype==0}}" url='/pages/bproject/projectrenewup/projectrenewup?id={{deleteitem.id}}' class='item' bindtap='colFoot'>修改</navigator>
+    <view class='item' bindtap='deleteDynamic'>删除</view>
+    <view class='item' bindtap='cancelmsg'>取消</view>
+  </view>
 </view>

@@ -71,8 +71,8 @@
   color: #01aaed
 }
 .tabimg{
-    width: 50rpx;
-    height: 50rpx;
+    width: 40rpx;
+    height: 40rpx;
     vertical-align: middle;
 }
 .tabbtn text{
@@ -210,4 +210,22 @@
     display: block;
     padding: 20rpx 0;
     border-top: 1px solid #ddd;
+}
+.itemulwrap{
+    padding: .1px;
+}
+.imagewrap image{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 16rpx;
+}
+.protime{
+    display: block;
+    color: #666;
+}
+.evaldelete{
+    position: unset;
+}
+.workerdelete{
+    margin-top: 26rpx;
 }

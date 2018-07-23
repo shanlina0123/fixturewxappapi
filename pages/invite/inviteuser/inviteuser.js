@@ -15,12 +15,21 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var participant = options.participant;
     var siteid = options.siteid;
-    var id = wx.getStorageSync('userInfo').id;
     var companyid = wx.getStorageSync('userInfo').companyid;
+    if (options.type==1)
+    {
+      //邀请业主
+      var url = Url.evaluateCode + '?siteid=' + siteid+"&companyid=" + companyid;
+    }else
+    {
+      var participant = options.participant;
+      var id = wx.getStorageSync('userInfo').id;
+    
+      var url = Url.positionCode + '?uid=' + id + '&participant=' + participant + '&siteid=' + siteid + "&companyid=" + companyid;
+    }
     that.setData({
-      src: Url.positionCode + '?uid=' + id + '&participant=' + participant + '&siteid=' + siteid + "&companyid=" + companyid
+      src: url 
     });
   }
 })
