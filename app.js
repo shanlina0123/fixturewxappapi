@@ -56,6 +56,5 @@ App({
     var that = this;
   },
   onHide: function () {
-  },
-  
+  }
 })

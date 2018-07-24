@@ -163,7 +163,7 @@ view {
     padding-top: 20rpx;
     padding-bottom: 20rpx;
     background-color: #fff;
-    margin-top: 20rpx;
+    margin-bottom: 20rpx;
 }
 .itemli .statetext{
     display: block;
@@ -385,4 +385,16 @@ view {
     word-break: break-all;
     -webkit-box-orient: vertical;
     -webkit-line-clamp:3;
+}
+/*返回首页按钮*/
+.backindex{
+    position: fixed;
+    top: 80%;
+    right: 20rpx;
+    z-index: 3000
+}
+.backindex image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
 }

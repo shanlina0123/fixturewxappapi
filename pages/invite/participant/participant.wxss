@@ -3,28 +3,23 @@
     display: block;
     text-align: center;
     padding: 20rpx 0;
-    border: 1px solid #e2e2e2;
     border-radius: 10rpx;
-    margin: 10px auto;
+    margin: 16px auto;
+    color: #FFFFFF;
+    background-color: #01AAed;
 }
 .userlist{
     display: block;
-    padding: 20rpx 0;
+    padding: 26rpx 0;
     border-bottom: 1px solid #eee
+}
+.userlist:first-child{
+    border-top: 1px solid #eee
 }
 .addimage{
     width: 32rpx;
     height: 32rpx;
-    margin-top: 34rpx;
-}
-.uname{
-    line-height: 100rpx;
-    margin-left: 10rpx;
-}
-.ustate{
-    margin-top:30rpx;
 }
 .hadadd{
     color: #1E9FFF;
-    line-height: 100rpx;
 }

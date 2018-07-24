@@ -78,6 +78,8 @@ var config = {
   evaluateDestroy: `${host}/site/evaluate-destroy`,
   //评级二维码
   evaluateCode: `${host}/site/evaluate-code`,
+  //工地筛选条件
+  siteScreeningConditions: `${host}/site/screening-conditions`,
 
   /**
    * B端

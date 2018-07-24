@@ -1,2 +1,26 @@
-<include wx:if="{{userType==1}}" src="../cindex/index.wxml"/>
-<include wx:if="{{userType==0}}" src="../bindex/index.wxml"/>
+<!--index.wxml-->
+<view class='wrap'>
+  <view class='topbgwrap'>
+    <!--头部-->
+    <include src="public/top.wxml"></include>
+    <!--快捷菜单-->
+    <include src="public/shortcut.wxml"></include>
+  </view>
+  <!-- 动态 -->
+  <include src="public/dynamic.wxml"></include>
+  <!--回复框-->
+  <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
+    <input class='zaninput fl' 
+           type='text' 
+           placeholder='评论' 
+           value="{{commentV}}" 
+           focus="{{name_focus}}" 
+           data-content='{{commentData}}' 
+           cursor-spacing="8" 
+           bindinput="setContent" 
+           bindconfirm='addComment'
+           bindblur='commentBlur'>
+    </input>
+    <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
+  </view>
+</view>

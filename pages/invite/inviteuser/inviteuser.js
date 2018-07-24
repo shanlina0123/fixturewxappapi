@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    src:''
+    src:'',
+    msg:'邀请成员二维码'
   },
   /**
    * 生命周期函数--监听页面加载
@@ -21,6 +22,9 @@ Page({
     {
       //邀请业主
       var url = Url.evaluateCode + '?siteid=' + siteid+"&companyid=" + companyid;
+      that.setData({
+        msg:'邀请业主评论'
+      });
     }else
     {
       var participant = options.participant;

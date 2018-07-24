@@ -1,0 +1,10 @@
+<view class='company clearfix'>
+  <view class='leftlogo fl'>
+    <image src="{{companyData.logo}}" mode="aspectFill"></image>
+  </view>
+  <view class='rightcompany fl'>
+    <view class='companyname'>{{companyData.name}}</view>
+    <view class='companyaddr'>{{companyData.fulladdr}}</view>
+    <view class='companyphone'>{{companyData.phone}}</view>
+  </view>
+</view>

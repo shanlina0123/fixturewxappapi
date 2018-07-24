@@ -1,4 +1,3 @@
-// pages/usercenter/project/projectdetail.js
 const app = getApp();
 const Url = require('../../utils/config.js');
 const Request = require('../../utils/request.js')
@@ -23,7 +22,9 @@ Page({
     handelshow: false, //编辑显示状态
     deleteitem: {}, //删除动态
     item: '', //动态信息
-    name_focus: false //评论焦点
+    name_focus: false, //评论焦点
+    inviteshow: false,//邀请业主
+    is_home:false,//返回首页按钮
   },
   /**
    * 关注项目按钮 
@@ -117,14 +118,12 @@ Page({
    */
   onShareAppMessage: function (res) {
     var that = this;
-    if (res!=undefined)
-    {
-console.log(11);
-    }else
+    if (res.from === 'button')
     {
       return {
         title: '业主评价',
-        path: '/pages/eval/eval?id=' + that.data.siteInfo.id
+        path: '/pages/eval/eval?id=' + that.data.siteInfo.id,
+        imageUrl: that.data.imgUrl + that.data.siteInfo.explodedossurl
       }
     }
   },
@@ -633,23 +632,44 @@ console.log(11);
   /**
    * 邀请业主评价 
    */
-  inviteuser: function () {
-    var that = this;
-    wx.showActionSheet({
-      itemList: ['邀请业主评价', '生成邀请码'],
-      success: function (res) {
-        if (res.tapIndex == 0) {
-          /**
-           * 分享评价表单页面给微信好友 
-           */
-          
-         
-        } else {
-          wx.navigateTo({
-            url: '/pages/invite/inviteuser/inviteuser?siteid=' + that.data.siteInfo.id+'&type=1',
-          })
-        }
-      }
+  invitepop: function () {
+    this.setData({
+      inviteshow: true
     })
   },
+  /**
+   * 关闭业主邀请弹窗
+   */
+  closepop: function () {
+    this.setData({
+      inviteshow: false
+    })
+  },
+  /**
+   * 邀请页面
+   */
+  inviteuser: function () {
+    var that = this;
+    wx.navigateTo({
+      url: '/pages/invite/inviteuser/inviteuser?siteid=' + that.data.siteInfo.id + '&type=1',
+    })
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var pages = getCurrentPages();
+    var pagesLength = pages.length;  
+    if ( pagesLength == 1 )
+    {
+        this.setData({
+          is_home:true
+        });
+    }
+  },
+  backIndex:function () {
+    wx.reLaunch({
+      url: '/pages/index/index'
+    })
+  }
 })

@@ -1,4 +1,3 @@
-<!--pages/appointment/appointment.wxml-->
 <view class='wrap'>
     <view class='listwrap'>
         <view class='listitem' wx:for="{{client}}" wx:key="index">

@@ -65,7 +65,7 @@
         </view>
       </view>
       <!--B端添加编辑按钮-->
-      <view class='bluecolor deleteitem' bindtap='handelmsg' data-id='{{item.id}}' data-pindex='{{idx}}' data-dtype='{{item.type}}'>编辑</view>
+      <view wx:if="{{userType==0}}" class='bluecolor deleteitem' bindtap='handelmsg' data-id='{{item.id}}' data-pindex='{{idx}}' data-dtype='{{item.type}}'><image src="../../images/edit.png" class='editimage'></image></view>
     </view>
   </view>
 </view>

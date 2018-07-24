@@ -29,16 +29,15 @@ Page({
         id: options.id
       });
     }
+    if (options.scene)
+    {
+      var id = decodeURIComponent(options.scene);
+      that.setData({
+        id: id,
+      });
+    }
     that.getEvaluateInfo(id);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -155,6 +154,11 @@ Page({
           isubmit: false
         });
       }
+    })
+  },
+  backIndex: function () {
+    wx.reLaunch({
+      url: '/pages/index/index'
     })
   }
 })

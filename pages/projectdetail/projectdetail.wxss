@@ -1,4 +1,7 @@
 /* pages/usercenter/project/projectdetail.wxss */
+.detailcontent{
+    padding-bottom: 80rpx;
+}
 .bannerwrap{
     position: relative;
     width: 100%;
@@ -194,7 +197,8 @@
 }
 .userli{
     padding: 15rpx 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+    border-bottom: 1px solid #e2e2e2
 }
 .handelmsgwrap{
     position: fixed;
@@ -212,6 +216,7 @@
     border-top: 1px solid #ddd;
 }
 .itemulwrap{
+    background-color: #f0f0f0;
     padding: .1px;
 }
 .imagewrap image{
@@ -228,4 +233,33 @@
 }
 .workerdelete{
     margin-top: 26rpx;
+}
+/**分享**/
+.popwrap{
+    position: fixed;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxNjQ3OGEwMC00Zjk4LWVmNDYtODU3MS05ZjVjMGNmYmFjYTEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM3NTdEQkRDMzE4MTFFNTlDMkFDMzIyQUE4RDYxNUQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM3NTdEQkNDMzE4MTFFNTlDMkFDMzIyQUE4RDYxNUQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Y2UyNTkyZjYtNDdlZS02YzQ1LTliZDctNjRlOWQ3YTU0YWM5IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6MGJiNjdkOTEtNzE4Mi0xMWU1LTg5ZTMtOTk3MzJmMmY3MTBiIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+vhPS3wAAAA9JREFUeNpiYGBgaAAIMAAAhQCB69VMmQAAAABJRU5ErkJggg==) left top;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20
+}
+.invitewrap{
+    position: fixed;
+    width: 94%;
+    bottom: 0;
+    left: 0;
+    padding: 20rpx 3%;
+    background-color: #F8F8F8;
+} 
+.inviteitem{
+    text-align: center;
+    margin-top: 20rpx;
+    padding: 10rpx 0;
+    font-size: 28rpx;
+    border-top: 1px solid #f0f0f0;
+}
+.inviteitem:first-child{
+    border-top: none;
+    margin-top: 0;
 }
