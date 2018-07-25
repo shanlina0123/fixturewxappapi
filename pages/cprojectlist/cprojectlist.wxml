@@ -1,0 +1,73 @@
+<view class='wrap'>
+  <!--筛选条件部分-->
+  <view class='topsort'>
+    <view class='sortwrap'>
+      <view class="sortitem {{parameter.cityid?'on':''}}" bindtap='showpop' data-contentnumber="1">
+        <text>{{cityname?cityname:SiteScreeningConditions.city[0].byname}}</text>
+        <text class='trangle'></text>
+      </view>
+      <view class="sortitem {{parameter.roomtypeid? 'on' : ''}}" bindtap='showpop' data-contentnumber="2">
+        <text>{{roomtypename?roomtypename:SiteScreeningConditions.roomtype[0].byname}}</text>
+        <text class='trangle'></text>
+      </view>
+      <view class="sortitem {{parameter.roomstyleid? 'on' : ''}}" bindtap='showpop' data-contentnumber="3">
+        <text>{{roomstylename?roomstylename:SiteScreeningConditions.roomstyle[0].byname}}</text>
+        <text class='trangle'></text>
+      </view>
+      <view class="sortitem {{parameter.budget? 'on' : ''}}" bindtap='showpop' data-contentnumber="4">
+        <text>{{budget?budget:SiteScreeningConditions.budget[0].byname}}</text>
+        <text class='trangle'></text>
+      </view>
+    </view>
+    <!--遮罩-->
+    <view class="contentwrap {{popshow ? '' : 'hide'}}" bindtap="closepop"></view>
+    <view class="sortcontentwrap {{popshow ? '' : 'hide'}}">
+      <!--所在城市筛选-->
+      <view class="sortcontent {{contentnumber == 1 ? '' :'hide'}}">
+        <block wx:for="{{SiteScreeningConditions.city}}" wx:key="city">
+          <text class="contenttext {{parameter.cityid==item.id?'on':''}}" bindtap='thistext' data-value="{{item.id}}" data-text="{{item.name}}">{{item.name}}</text>
+        </block>
+      </view>
+      <!--户型选择筛选-->
+      <view class="sortcontent {{contentnumber == 2 ? '' :'hide'}}">
+        <block wx:for="{{SiteScreeningConditions.roomtype}}" wx:key="roomtype">
+          <text class="contenttext {{parameter.roomtypeid==item.id?'on':''}}" bindtap='thistext' data-value="{{item.id}}" data-text="{{item.name}}">{{item.name}}</text>
+        </block>
+      </view>
+      <!--装修风格筛选-->
+      <view class="sortcontent {{contentnumber == 3 ? '' :'hide'}}">
+        <block wx:for="{{SiteScreeningConditions.roomstyle}}" wx:key="roomstyle">
+          <text class="contenttext {{parameter.roomstyleid==item.id?'on':''}}" bindtap='thistext' data-value="{{item.id}}" data-text="{{item.name}}">{{item.name}}</text>
+        </block>
+      </view>
+      <!--装修预算筛选-->
+      <view class="sortcontent {{contentnumber == 4 ? '' :'hide'}}">
+        <block wx:for="{{SiteScreeningConditions.budget}}" wx:key="budget">
+          <text class="contenttext {{parameter.budget==item.value?'on':''}}" bindtap='thistext' data-value="{{item.value}}" data-text="{{item.name}}">{{item.name}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!--列表展示部分-->
+  <view class='prolistwrap'>
+    <view class='prolist' wx:for="{{site}}" wx:key="index">
+      <navigator url="/pages/projectdetail/projectdetail?id={{item.id}}" class='protop clearfix'>
+        <image src='{{imgUrl+item.explodedossurl}}' class='proimage fl' mode="aspectFill"></image>
+        <view class='proright fl'>
+          <view class='pname'>
+            <text class='left10'>{{item.name}}</text>
+          </view>
+          <view class='psytle'>
+            <text class=''>{{item.site_to_city.name}}</text>
+            <text class='left10'>{{item.site_to_room_type.name}}</text>
+            <text class='left10'>{{item.site_to_room_style.name}}</text>
+            <text class='left10' wx:if="{{item.budget != 0.00}}">{{item.budget}}万</text>
+          </view>
+          <view class='paddr'>{{item.addr}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <!--项目列表为空时显示-->
+  <view wx:if="{{!isLoad}}" class='nonedata'>--已经到底了--</view>
+</view>

@@ -1,5 +1,5 @@
 <view class='bannerwrap'>
-  <image src='{{imgUrl+siteInfo.explodedossurl}}' class='bannerimg' mode="aspectFill"></image>
+  <image src="{{siteInfo.explodedossurl}}" class='bannerimg' mode="aspectFill"></image>
   <view class='viewnum' wx:if="{{siteInfo.linkednum}}">浏览:{{siteInfo.linkednum}}</view>
   <view class='bottom samepadding'>
     <text class='addr'>{{siteInfo.addr}}</text>

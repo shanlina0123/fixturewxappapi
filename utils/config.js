@@ -80,6 +80,8 @@ var config = {
   evaluateCode: `${host}/site/evaluate-code`,
   //工地筛选条件
   siteScreeningConditions: `${host}/site/screening-conditions`,
+  //工地筛选列表
+  siteScreening: `${host}/site/site-screening`,
 
   /**
    * B端

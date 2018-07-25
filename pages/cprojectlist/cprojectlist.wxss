@@ -1,0 +1,108 @@
+/* pages/cprojectlist/cprojectlist.wxss */
+
+/*筛选条件部分*/
+
+.sortwrap {
+    padding: 0 20rpx;
+    background-color: #fff;
+}
+
+.sortwrap .sortitem {
+    display: inline-block;
+    text-align: center;
+    width: 25%;
+    padding: 20rpx 0;
+}
+
+.sortwrap .sortitem text {
+    display: inline-block;
+}
+
+.sortitem .trangle {
+    margin-left: 10rpx;
+    width: 0;
+    height: 0;
+    border-left: 10rpx solid transparent;
+    border-right: 10rpx solid transparent;
+    border-top: 10rpx solid #444;
+}
+
+.sortwrap .sortitem.on {
+    color: #01aaed;
+}
+
+.sortwrap .sortitem.on .trangle {
+    border-top: 10rpx solid #01aaed;
+}
+
+.contentwrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 78rpx;
+    left: 0;
+    background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxNjQ3OGEwMC00Zjk4LWVmNDYtODU3MS05ZjVjMGNmYmFjYTEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjM3NTdEQkRDMzE4MTFFNTlDMkFDMzIyQUE4RDYxNUQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjM3NTdEQkNDMzE4MTFFNTlDMkFDMzIyQUE4RDYxNUQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Y2UyNTkyZjYtNDdlZS02YzQ1LTliZDctNjRlOWQ3YTU0YWM5IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6MGJiNjdkOTEtNzE4Mi0xMWU1LTg5ZTMtOTk3MzJmMmY3MTBiIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+vhPS3wAAAA9JREFUeNpiYGBgaAAIMAAAhQCB69VMmQAAAABJRU5ErkJggg==) left top;
+}
+
+.sortcontentwrap {
+    position: absolute;
+    width: 750rpx;
+    z-index: 30;
+}
+
+.sortcontent {
+    padding: 10rpx 30rpx;
+    background-color: #fff;
+}
+
+.contenttext {
+    display: block;
+    line-height: 60rpx;
+    padding: 10rpx 0 10rpx 20rpx;
+    border-top: 1px solid #ddd;
+}
+
+.contenttext.on {
+    color: #01aaed;
+}
+
+/*列表数据部分*/
+
+.prolist {
+    margin-top: 20rpx;
+    padding: 10px 20rpx;
+    background-color: #fff;
+}
+
+.proimage {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.proright {
+    margin-left: 15rpx;
+    width: 495rpx;
+}
+
+.proright .pname {
+    font-size: 30rpx;
+    font-weight: bold;
+    line-height: 60rpx;
+}
+
+.proright .pname .prostate {
+    font-size: 28rpx;
+    font-weight: normal;
+}
+
+.psytle {
+    color: #999;
+    font-size: 24rpx;
+    padding: 10rpx 0;
+    padding-left: 10rpx;
+}
+
+.paddr {
+    line-height: 40rpx;
+    padding-left: 10rpx;
+}

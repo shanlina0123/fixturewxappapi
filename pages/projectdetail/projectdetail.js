@@ -153,6 +153,7 @@ Page({
           arr.push(obj);
         });
         data.evaluate = arr;
+        data.explodedossurl = that.data.imgUrl + data.explodedossurl;
         that.setData({
           siteInfo: data
         });

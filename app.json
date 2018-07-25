@@ -1,6 +1,6 @@
 {
   "pages":[
-   
+    "pages/cprojectlist/cprojectlist",
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
