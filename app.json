@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/cprojectlist/cprojectlist",
+    
     "pages/index/index",
     "pages/allowlogin/allowlogin",
     "pages/message/message",
@@ -20,6 +20,7 @@
     "pages/activity/prize/prize",
     "pages/activity/pricetip/pricetip",
     "pages/activity/getmessage/getmessage",
+  
     
     "pages/bproject/projectlist/projectlist",
     "pages/bproject/projectupdate/projectupdate",
@@ -38,7 +39,10 @@
     "pages/jmessage/jmessageinfo/jmessageinfo",
     "pages/users/changestore/changestore",
     "pages/videos/videos",
-    "pages/eval/eval"
+    "pages/eval/eval",
+   
+    "pages/cprojectlist/cprojectlist",
+    "pages/activity/activelist/activelist"
     
   ],
   "window": {

@@ -1,5 +1,5 @@
 <!--pages/getmessage/getmessage.wxml-->
-<view class='samepadding'>
+<view class='padding'>
     <form bindsubmit="submitform">
         <view class='formitem clearfix'>
             <text class='itemname fl'>姓名</text>

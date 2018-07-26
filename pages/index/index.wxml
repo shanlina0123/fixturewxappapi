@@ -6,6 +6,9 @@
     <!--快捷菜单-->
     <include src="public/shortcut.wxml"></include>
   </view>
+  <!--抽奖活动-->
+  <include src="public/lucky.wxml"></include>
+  <!--回复框-->
   <!-- 动态 -->
   <include src="public/dynamic.wxml"></include>
   <!--回复框-->

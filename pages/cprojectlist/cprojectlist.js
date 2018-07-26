@@ -164,6 +164,7 @@ Page({
       this.setData({
         parameter: parameter
       });
+      this.getSiteList();
     }
   },
 

@@ -1,4 +1,7 @@
 /* pages/getmessage/getmessage.wxss */
+.padding{
+  padding: 20rpx;
+}
 .itemname {
     display: inline-block;
     height: 80rpx;

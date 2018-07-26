@@ -18,9 +18,9 @@ Page({
     companyData: {},//公司信息
     userType:0,//用户身份
     userinfo:{},//用户信息
-    imgnumber: 1,//图片数量
     item:'',//动态信息
-    name_focus:false//评论焦点
+    name_focus:false,//评论焦点
+    lucky:[]//抽奖列表
   },
   /**
    * 生命周期函数--监听页面加载
@@ -107,7 +107,11 @@ Page({
         })
       }
     });
+    //公司信息
     that.getCompanyInfo();
+    //抽奖信息
+    that.getluckyDrawList();
+    
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -120,7 +124,11 @@ Page({
       page: 1,
       commentData: {},
       isLoad: true,
-      commentV: ''
+      commentV: '',
+      companyData:{},
+      item:'',
+      name_focus: false,
+      lucky:[]
     });
     this.onLoad();
     wx.stopPullDownRefresh();
@@ -457,6 +465,30 @@ Page({
   {
     this.setData({
       inputisshow: false,
+    })
+  },
+  /**
+   * 抽奖列表
+   */
+  getluckyDrawList:function(){
+    var that = this;
+    Request.requestGet(Url.luckyDrawList, function (res) {
+      if (res.status == 1) 
+      {
+        that.setData({
+          lucky: res.data
+        })
+      }
+    });
+  },
+  /**
+   * 跳转抽奖
+   */
+  luckyDraw:function(e)
+  {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/activity/prize/prize?id='+id
     })
   }
 })

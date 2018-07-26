@@ -38,9 +38,9 @@ var config = {
   //我的装修
   invitation: `${host}/client/site-invitation`,
   //活动列表
-  active: `${host}/client/activity-inrecord`,
+  activeList: `${host}/client/activity-list`,
   //活动详情
-  activeInfo: `${host}/client/activity-info/`,
+  activeInfo: `${host}/client/activity-info`,
   //点赞
   fabulous: `${host}/client/dynamic-fabulous`,
   //评论
@@ -70,6 +70,9 @@ var config = {
   //去抽奖
   luckyDraw:`${host}/lucky/draw`,
   luckyCient: `${host}/lucky/client`,
+  //抽奖列表
+  luckyDrawList:`${host}/lucky/draw-list`,
+  
   //业主评价页面
   evaluateInfo: `${host}/site/site-evaluate-info`,
   //业主评价

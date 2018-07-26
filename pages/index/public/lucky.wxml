@@ -1,0 +1,6 @@
+<!--横幅活动-->
+<swiper wx:if="{{lucky.length}}" class="activeswiper" indicator-dots="true" indicator-color="rgba(255, 255, 255,1)" indicator-active-color="#01AAED" autoplay="true" interval="3000">
+  <swiper-item wx:for="{{lucky}}" wx:key="lucky">
+    <image src="{{imgUrl+item.advurl}}" class="slideimg" bindtap='luckyDraw' data-id='{{item.id}}'></image>
+  </swiper-item>
+</swiper>

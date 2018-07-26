@@ -52,7 +52,7 @@ Page({
           wx.showToast({
             title: res.messages,
             success: function () {
-              wx.reLaunch({
+              wx.navigateTo({
                 url: '/pages/activity/prize/prize?id=' + that.data.activityluckyid
               })
             }
