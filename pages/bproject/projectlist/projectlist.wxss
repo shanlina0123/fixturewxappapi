@@ -203,39 +203,3 @@
     height: 258rpx;
     margin: 0 auto
 }
-.bottominner{
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom:0;
-    background-color: #f2f2f2;
-    padding: 30rpx 0;
-}
-.title{
-    display: block;
-    text-align: center;
-    font-size: 30rpx;
-    padding: 15rpx 0;
-}
-.buttons{
-    margin-top: 10rpx;
-}
-.buttonwrap{
-    position: relative;
-    width: 25%;
-    text-align: center;
-}
-.publicimg{
-    display: block;
-    width: 40rpx;
-    height: 40rpx;
-    margin: 10rpx auto;
-}
-.sharebtn{
-    position: absolute;
-    top: 0;
-    left: 20rpx;
-    width: 150rpx;
-    height: 100rpx;
-    opacity: 0;
-}

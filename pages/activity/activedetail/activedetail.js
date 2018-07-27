@@ -1,18 +1,36 @@
-// pages/users/active/active.js
+var app = getApp();
+const Url = require('../../../utils/config.js');
+const Request = require('../../../utils/request.js');
+const util = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    info:'',
+    imgUrl: Url.imgUrl,//图片地址
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    var id = options.id;
+    Request.requestGet(Url.activeInfo +'?id='+id, function (res) {
+      if (res.status==1)
+      {
+        var data = res.data;
+            data.bgurl = that.data.imgUrl + data.bgurl;
+            data.startdate = util.formatToTime(data.startdate, 'M.D');
+            data.enddate = util.formatToTime(data.enddate, 'M.D');
+            data.mainurl = data.mainurl ? that.data.imgUrl + data.mainurl:'';
+          that.setData({
+            info:data
+          });  
+      }  
+    });
   },
 
   /**

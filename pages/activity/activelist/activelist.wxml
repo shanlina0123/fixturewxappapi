@@ -3,30 +3,18 @@
     <view class='indexactivewrap'>
         <view class='toptitle'>促销活动</view>
         <view class='activeul'>
-            <navigator url='activedetail' hover-class='none' class='activeli clearfix'>
-                <image class='activeleftimg fl' src="../../../images/state1.jpg" mode='aspectFill'></image>
+          <block wx:for="{{data}}" wx:key="index">
+            <navigator url='../activedetail/activedetail?id={{item.id}}' hover-class='none' class='activeli clearfix'>
+                <image class='activeleftimg fl' src="{{item.bgurl}}" mode='aspectFill'></image>
                 <view class='activeright fl'>
-                    <view class='activetitle'>用户年中特权活动</view>
-                    <view class='activedes'>装修要花多少钱？先量房再定价,四大专属服务，三项特权供您使用</view>
-                    <view class='activetime'>有效期：03.25-05.23</view>
+                    <view class='activetitle'>{{item.title}}</view>
+                    <view class='activedes'>{{item.resume}}</view>
+                    <view class='activetime'>有效期：{{item.startdate}}-{{item.enddate}}</view>
                 </view>
             </navigator>
-            <navigator url='activedetail' hover-class='none' class='activeli clearfix'>
-                <image class='activeleftimg fl' src="../../../images/state1.jpg" mode='aspectFill'></image>
-                <view class='activeright fl'>
-                    <view class='activetitle'>用户年中特权活动</view>
-                    <view class='activedes'>装修要花多少钱？先量房再定价,四大专属服务，三项特权供您使用</view>
-                    <view class='activetime'>有效期：03.25-05.23</view>
-                </view>
-            </navigator>
-            <navigator url='activedetail' hover-class='none' class='activeli clearfix'>
-                <image class='activeleftimg fl' src="../../../images/state1.jpg" mode='aspectFill'></image>
-                <view class='activeright fl'>
-                    <view class='activetitle'>用户年中特权活动</view>
-                    <view class='activedes'>装修要花多少钱？先量房再定价,四大专属服务，三项特权供您使用</view>
-                    <view class='activetime'>有效期：03.25-05.23</view>
-                </view>
-            </navigator>
+          </block>    
         </view>
     </view>
+    <!--项目列表为空时显示-->
+    <view wx:if="{{!isLoad}}" class='nonedata'>已经到底了</view>
 </view>

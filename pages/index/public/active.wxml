@@ -1,0 +1,6 @@
+<!--活动入口-->
+<navigator url='../activity/activelist/activelist' class='indexactivewrap clearfix'>
+  <image src="../../images/picon2.png" class='saleimg fl'></image>
+  <view class='activetitle fl'>促销活动火热进行中，不去看看？</view>
+  <image src="../../images/right.png" class='activeright fr'></image>
+</navigator>

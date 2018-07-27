@@ -1,0 +1,15 @@
+<!--pages/usercenter/active/activedetail.wxml-->
+<view class='wrap'>
+    <image src='{{info.bgurl}}' class='activetopimg' mode='widthFix'></image>
+    <view class='detailname'>{{item.title}}</view>
+    <view class='detailtime'>活动日期：{{info.startdate}}-{{info.enddate}}</view>
+    <view class='activecontent'>
+        {{info.content?info.content:''}}
+    </view>
+    <view class='bottomimg' wx:if="{{info.mainurl}}">
+        <image src='{{info.mainurl}}' class='activeimg' mode='widthFix'></image>
+    </view>
+    <view class='activebtnwrap'>
+        <navigator url='/pages/contact/signin/signin?id={{info.id}}' class='submitBtn'>我要报名</navigator>
+    </view>
+</view>

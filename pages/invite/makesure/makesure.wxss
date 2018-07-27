@@ -1,4 +1,7 @@
 /* pages/inviteuser/makesure.wxss */
+.padding{
+  padding: 20rpx;
+}
 .toptext{
     display: block;
     text-align: center;

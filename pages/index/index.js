@@ -490,5 +490,14 @@ Page({
     wx.navigateTo({
       url: '/pages/activity/prize/prize?id='+id
     })
-  }
+  },
+  /**
+   * 拨打电话
+   */
+   phonecall: function (e) {
+     var phone = e.currentTarget.dataset.phone;
+      wx.makePhoneCall({
+        phoneNumber: phone,
+      })
+  },
 })

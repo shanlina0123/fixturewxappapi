@@ -8,7 +8,8 @@
   </view>
   <!--抽奖活动-->
   <include src="public/lucky.wxml"></include>
-  <!--回复框-->
+  <!-- 活动入口 -->
+  <include src="public/active.wxml"></include>
   <!-- 动态 -->
   <include src="public/dynamic.wxml"></include>
   <!--回复框-->

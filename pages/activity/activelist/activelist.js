@@ -1,6 +1,7 @@
 var app = getApp();
 const Url = require('../../../utils/config.js');
 const Request = require('../../../utils/request.js');
+const util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -9,14 +10,15 @@ Page({
   data: {
      data:[],
      page:1,
-     isLoad:false
+     isLoad:false,
+     imgUrl: Url.imgUrl,//图片地址
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getActiveList();
   },
 
   /**
@@ -94,8 +96,15 @@ Page({
           });
         }else 
         {
+          var arr = [];
+          res.data.data.forEach(function(v){
+            v.startdate = util.formatToTime(v.startdate,'M.D');
+            v.enddate = util.formatToTime(v.enddate,'M.D');
+            v.bgurl = that.data.imgUrl + v.bgurl;
+            arr.push(v);
+          });
           that.setData({
-            data: that.data.data.concat(res.data.data),
+            data: that.data.data.concat(arr),
             isLoad: true
           })
           //没有更多了 

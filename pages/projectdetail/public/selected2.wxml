@@ -28,5 +28,6 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{!siteInfo.evaluate.length}}" class='nonedata'>还没有业主评价</view>
   <button wx:if="{{userType==0}}" class='linkbtn' bindtap='invitepop'>邀请业主评价</button>
 </view>

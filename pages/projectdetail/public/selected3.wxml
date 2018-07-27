@@ -14,5 +14,6 @@
         </view>
     </view>
   </view>
+  <view wx:if="{{!siteInfo.siteInvitation.length}}" class='nonedata'>还没有团队成员</view>
   <navigator wx:if="{{userType==0}}" url='/pages/invite/participant/participant?siteid={{siteInfo.id}}' class='linkbtn'>添加成员</navigator>
 </view>

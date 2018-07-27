@@ -192,27 +192,34 @@ Page({
       var that = this;
       var siteData = that.data.siteData;
       var obj = { id: siteData.id };
-      Request.requestPut(Url.siteIsFinish, obj, function (res) {
-        if (res.status == 1) {
-          wx.showToast({
-            title: res.messages,
-          });
-          //更新数据
-          if (that.data.switchtype == 1) {
-            //完工数据
-            var complete = that.data.complete;
-                complete.splice(siteData.index, 1);
-                that.setData({
-                  complete: complete
+      wx.showModal({
+        title: '提示',
+        content: '确认完工后项目无法继续进行更新编辑，您确认设置完工吗？',
+        success: function (res) {
+          if (res.confirm) {
+            Request.requestPut(Url.siteIsFinish, obj, function (res) {
+              if (res.status == 1) {
+                wx.showToast({
+                  title: res.messages,
                 });
-          } else 
-          {
-            //在建工地
-            var construction = that.data.construction;
-                construction.splice(siteData.index, 1);
-                that.setData({
-                  construction: construction
-                });
+                //更新数据
+                if (that.data.switchtype == 1) {
+                  //完工数据
+                  var complete = that.data.complete;
+                  complete.splice(siteData.index, 1);
+                  that.setData({
+                    complete: complete
+                  });
+                } else {
+                  //在建工地
+                  var construction = that.data.construction;
+                  construction.splice(siteData.index, 1);
+                  that.setData({
+                    construction: construction
+                  });
+                }
+              }
+            });
           }
         }
       });

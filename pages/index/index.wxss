@@ -231,3 +231,23 @@
     width: 100%;
     height: 200rpx;
 }
+/*首页活动入口*/
+.indexactivewrap{
+    padding: 20rpx;
+    margin-top: 20rpx;
+    background-color: #FFFFFF;
+}
+.saleimg{
+    width: 64rpx;
+    height: 64rpx;
+    margin-right: 10rpx;
+}
+.activetitle{
+    line-height: 64rpx;
+    padding-left: 18rpx;
+}
+.activeright{
+    width: 32rpx;
+    height: 32rpx;
+    margin-top: 16rpx;
+}

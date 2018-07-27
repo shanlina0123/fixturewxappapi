@@ -4,7 +4,7 @@
         <block wx:key="index" wx:for="{{prolists}}">
             <navigator wx:if="{{item.follow_to_site}}" url='/pages/projectdetail/projectdetail?id={{item.siteid}}' class='projectli clearfix' hover-class="none">
                 <view class='leftimgwrap fl'>
-                    <image src='{{imgUrl}}{{item.follow_to_site.explodedossurl}}' class='projectimg'></image>
+                    <image src='{{imgUrl}}{{item.follow_to_site.explodedossurl}}' class='projectimg' mode='aspectFill'></image>
                     <text class='projectstate color4'>{{item.follow_to_site.site_to_commpany_tag?item.follow_to_site.site_to_commpany_tag.name:''}}</text>
                 </view>
                 <view class='projectright left15 fl'>

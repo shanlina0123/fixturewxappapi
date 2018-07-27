@@ -1,39 +1,37 @@
 <view class='wrap' wx:if="{{isview}}">
-  <view class='detailcontent'>
-    <!--项目详情-->
-    <include src="../projectdetail/public/projectinfo.wxml" />
-    <!--切换卡-->
-    <include src="../projectdetail/public/tabbtns.wxml" />
-    <!--动态页面-->
-    <view class='tabcontent'>
-      <!--动态-->
-      <include src="../projectdetail/public/selected1.wxml" />
-      <!--业主评价-->
-      <include src="../projectdetail/public/selected2.wxml" />
-      <!--成员管理-->
-      <include src="../projectdetail/public/selected3.wxml" />
-    </view>
-    <!--底预约参观按钮B-->
-    <view class='bottombtns clearfix' wx:if="{{userType==0}}">
-      <navigator class='bottombtn fr' url="/pages/bproject/projectrenew/projectrenew?uuid={{siteInfo.uuid}}">更新</navigator>
-      <button class='askbtn fr' open-type='share' size='mini'>推广</button>
-    </view>
-    <!--底预约参观按钮C-->
-    <view class='bottombtns clearfix' wx:if="{{userType==1}}">
-      <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}&siteid={{siteInfo.id}}&storeid={{siteInfo.storeid}}' class='bottombtn fr' hover-class="none">预约参观</navigator>
-      <button class='askbtn fr' size='mini' bindtap='message'>在线咨询</button>
-    </view>
-    <!--评论输入框-->
-    <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
-      <input class='zaninput fl' type='text' placeholder='评论' value="{{commentV}}" data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment' focus="{{name_focus}}" bindblur='commentBlur'>
-      </input>
-      <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
-    </view>
+  <!--项目详情-->
+  <include src="../projectdetail/public/projectinfo.wxml" />
+  <!--切换卡-->
+  <include src="../projectdetail/public/tabbtns.wxml" />
+  <!--动态页面-->
+  <view class='tabcontent'>
+    <!--动态-->
+    <include src="../projectdetail/public/selected1.wxml" />
+    <!--业主评价-->
+    <include src="../projectdetail/public/selected2.wxml" />
+    <!--成员管理-->
+    <include src="../projectdetail/public/selected3.wxml" />
+  </view>
+  <!--底预约参观按钮B-->
+  <view class='bottombtns clearfix' wx:if="{{userType==0}}">
+    <navigator class='bottombtn fr' url="/pages/bproject/projectrenew/projectrenew?uuid={{siteInfo.uuid}}">更新</navigator>
+    <button class='askbtn fr' open-type='share' size='mini'>推广</button>
+  </view>
+  <!--底预约参观按钮C-->
+  <view class='bottombtns clearfix' wx:if="{{userType==1}}">
+    <navigator url='/pages/contact/visit/visit?name={{siteInfo.name}}&siteid={{siteInfo.id}}&storeid={{siteInfo.storeid}}' class='bottombtn fr' hover-class="none">预约参观</navigator>
+    <button class='askbtn fr' size='mini' bindtap='message'>在线咨询</button>
+  </view>
+  <!--评论输入框-->
+  <view class="inputwarp clearfix {{inputisshow ? '' :'hide'}}">
+    <input class='zaninput fl' type='text' placeholder='评论' value="{{commentV}}" data-content='{{commentData}}' cursor-spacing="8" bindinput="setContent" bindconfirm='addComment' focus="{{name_focus}}" bindblur='commentBlur'>
+    </input>
+    <text class='send left10 fl' data-content='{{commentData}}' bindtap='addComment'>发送</text>
   </view>
   <!--邀请业主弹窗-->
   <view class="popwrap {{inviteshow ? '' : 'hide'}}" bindtap='closepop'>
     <view class="invitewrap">
-      <button class='inviteitem'open-type='share'>邀请业主评价</button>
+      <button class='inviteitem' open-type='share'>邀请业主评价</button>
       <button class='inviteitem' bindtap='inviteuser'>生成邀请码</button>
     </view>
   </view>
@@ -45,5 +43,5 @@
   </view>
 </view>
 <view class='backindex' wx:if="{{is_home}}" bindtap='backIndex'>
-    <image src='../../images/backindex.png'></image>
+  <image src='../../images/backindex.png'></image>
 </view>

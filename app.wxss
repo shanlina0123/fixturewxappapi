@@ -129,7 +129,7 @@ view {
 }
 
 .rightnotice {
-    width: 83%;
+    width: 596rpx;
     padding-bottom: 18rpx;
     padding-left: 15rpx;
     border-bottom: 1px solid #e2e2e2;

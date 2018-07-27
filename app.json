@@ -42,7 +42,8 @@
     "pages/eval/eval",
    
     "pages/cprojectlist/cprojectlist",
-    "pages/activity/activelist/activelist"
+    "pages/activity/activelist/activelist",
+    "pages/activity/activedetail/activedetail"
     
   ],
   "window": {
