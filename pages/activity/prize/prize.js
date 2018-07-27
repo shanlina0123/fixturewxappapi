@@ -35,12 +35,6 @@ Page({
         lackData:{},//中将信息
         backimg: Url.imgUrl + 'default/wx/blackbg.png',//中将背景图片
     },
-    //事件处理函数  
-    bindViewTap: function () {
-        wx.navigateTo({
-            url: '../logs/logs'
-        })
-    },
     onLoad: function (options) {
         var _this = this;
         if (options.scene!=undefined) {
@@ -213,7 +207,7 @@ Page({
         var luck_num = this.data.luck_num;
         if (!luck_num || !luck_num.lucky_num_to_client || !luck_num.lucky_num_to_client.phone)
         {
-          wx.reLaunch({
+          wx.navigateTo({
             url: '/pages/activity/getmessage/getmessage?activityluckyid=' + that.data.info.id
           })
         }
@@ -284,13 +278,6 @@ Page({
                 });
             }
         }.bind(this), 1000);
-    },
-    //cell事件处理函数  
-    bindCellViewTap: function (e) {
-        var id = e.currentTarget.dataset.id;
-        wx.navigateTo({
-            url: '../babyDetail/babyDetail?id=' + id
-        });
     },
     //活动信息
     getActivity:function(id){
