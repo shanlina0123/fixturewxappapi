@@ -1,24 +1,21 @@
 /* pages/usercenter/active/active.wxss */
 .indexactivewrap{
-    padding: 0 20rpx;
-    background-color: #FFFFFF;
+    padding: 0 20rpx
 }
-.toptitle{
-    padding: 10rpx 0;
-    font-size: 32rpx;
-    margin-top: 20rpx;
+.activeul{
+    padding: .1px;
 }
 .activeli{
-    padding: 20rpx 0;
-    border-top: 1px solid #F0F0F0;
+    display: block;
+    margin-top: 20rpx;
+    background-color: #FFFFFF;
 }
 .activeul .activeleftimg{
-    width: 150rpx;
-    height: 150rpx;
+    width: 710rpx;
+    height: 300rpx;
 }
 .activeul .activeright{
-    width: 540rpx;
-    margin-left: 20rpx;
+    padding: 20rpx;
 }
 .activeright .activetitle{
     font-size: 30rpx;

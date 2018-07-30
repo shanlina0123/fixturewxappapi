@@ -32,7 +32,7 @@ Page({
       var url ='/pages/index/index';
     }
     //是不是扫码过来的
-    //options.scene = 'u=1&c=1&t=2';
+    //options.scene = 'u=1&p=12&s=12&t=1&c=xRXsAa';
     if (options.scene) 
     {
       var scene = decodeURIComponent(options.scene);
@@ -50,17 +50,8 @@ Page({
    */
   onGotUserInfo: function (e) {
     var that = this;
-    if (e.detail.userInfo != undefined)
-    {  
-      //用户登陆或者修改信息
-      if (wx.getStorageSync('userInfo') && that.data.scene == false) {
-        //修改用户信息
-        that.setUserInfo(e);
-      } else {
-        //登陆
-        that.getUserLogin(e.detail.userInfo);
-      }
-    }
+    //登陆
+    that.getUserLogin(e.detail.userInfo);
   },
   getAppid: function () {
     var that = this;
@@ -161,12 +152,9 @@ Page({
             success: function (res) {
               if (res.confirm) {
                 var user=wx.getStorageSync('userInfo');
-                if (user)
-                {
-                  wx.reLaunch({
-                    url: '/pages/index/index'
-                  })
-                }
+                wx.reLaunch({
+                  url: '/pages/index/index'
+                })
               }
             }
           });
@@ -179,29 +167,4 @@ Page({
       }
     })
   },
-  /**
-   * 修改用户头像
-   */
-  setUserInfo:function(e)
-  {
-    var that = this;
-    var obj = { "nickname": e.detail.userInfo.nickName, "faceimg": e.detail.userInfo.avatarUrl };
-    Request.requestPost(Url.setUserInfo, obj, function (res) {
-      if (res.status == 1) {
-        var user = wx.getStorageSync('userInfo');
-        user.faceimg = obj.faceimg;
-        user.nickname = obj.nickname;
-        wx.setStorageSync('userInfo', user);
-        wx.reLaunch({
-          url: that.data.url
-        })
-      } else {
-        wx.showToast({
-          title: res.messages,
-          icon: 'none',
-        })
-      }
-    });
-  },
- 
 })

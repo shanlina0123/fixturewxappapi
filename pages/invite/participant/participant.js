@@ -26,17 +26,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (options.siteid != undefined)
-    {
-      var siteid = options.siteid;
-      that.setData({
-        siteid: siteid
-      });
-    }else
-    {
-      var siteid = '';
-    }
-    Request.requestGet(Url.participantList+'?siteid='+siteid, function (res) {
+    Request.requestGet(Url.participantList, function (res) {
       if (res.status == 1) 
       {
         that.setData({ data: res.data});
@@ -55,5 +45,40 @@ Page({
    */
   onReachBottom: function () {
     
+  },
+  /**
+   * 删除工地成员
+   */
+  delInvitation: function (e) {
+    var that = this;
+    var item = e.currentTarget.dataset.item;
+    var index = e.currentTarget.dataset.index;
+    wx.showModal({
+      title: '确认删除吗？',
+      success: function (res) {
+        if (res.confirm) {
+          //用户点击确定
+          var obj = {
+            "siteid": item.siteid,
+            "joinuserid": item.joinuserid
+          };
+          Request.requestDelete(Url.participantDel, obj, function (res) {
+            if (res.status == 1) {
+              wx.showToast({
+                title: res.messages,
+                icon: 'success',
+                duration: 2000
+              })
+              //跟新数据
+              var data = that.data.data;
+                  data.splice(index, 1)
+                  that.setData({
+                    data: data
+                  })
+            }
+          });
+        }
+      }
+    });
   },
 })

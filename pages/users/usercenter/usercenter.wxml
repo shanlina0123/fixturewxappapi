@@ -5,8 +5,8 @@
         <image wx:if="{{companyData.covermap}}" src="{{imgUrl+companyData.covermap}}" class='headbg'></image>
         <image wx:else src="{{imgUrl}}default/wx/userbg.jpg" class='headbg'></image>
         <view class='usermsgwrap'>
-             <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
-            <view>{{user.nickname}}</view>
+            <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
+            <view>{{user.nickname}}<image src="../../../images/edit.png" class='editname' catchtap="showedit"></image></view>
         </view>
     </view>
     <view class='proul samepadding'>
@@ -43,8 +43,8 @@
         <image wx:if="{{companyData.covermap}}" src="{{imgUrl+companyData.covermap}}" class='headbg'></image>
         <image wx:else src="{{imgUrl}}default/wx/userbg.jpg" class='headbg'></image>
         <view class='usermsgwrap'>
-             <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
-            <view>{{user.nickname}}</view>
+            <image src='{{user.faceimg}}' class='uhead' binderror="error"></image>
+            <view>{{user.nickname}}<image src="../../../images/edit.png" class='editname' catchtap="showedit"></image></view>
         </view>
     </view>
     <view class='proul samepadding'>
@@ -71,4 +71,8 @@
         </view> 
     </view>
 </view>
-
+<modal hidden="{{editshow}}" title="{{user.nickname}}" bindcancel="closepop" bindconfirm="confirmbtn">
+    <view class="editwrap">
+        <input type='text' name="nickname" class='popinput' placeholder='请输入昵称' bindinput="bindinput"></input>
+    </view>
+</modal>

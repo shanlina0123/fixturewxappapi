@@ -1,4 +1,3 @@
-/* pages/usercenter/usercenter.wxss */
 .userwrap{
     position: relative;
     height: 190px;
@@ -13,7 +12,7 @@
     bottom: -50rpx;
     text-align: center;
 }
-.usermsgwrap image{
+.usermsgwrap >image{
     width: 128rpx;
     height: 128rpx;
     border-radius: 128rpx;
@@ -21,10 +20,17 @@
 }
 .usermsgwrap view{
     font-size: 30rpx;
+    line-height: 40rpx;
 }
 .proitem{
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAmklEQVRYR+3W0Q2AIAyEYViJDqRu5kSshOmbj/TuSKOBAfw/CyHUkrxqcr9swHcm0Fo7/bz03m/luZmegJl5+BhjXErENMD/egUiBFiBCAPUCAigRMAAFYICKBA0gEVIAAxCBkAR/wGgt6RkAmjct40GMHEawMYpgCIOA1RxCKCMhwHqeAiwIh4CpD9KlS/h97foi4iFbUD6BB7XB6gh1ZZt0gAAAABJRU5ErkJggg==) center right no-repeat;
     background-size:40rpx;
+}
+.editname{
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 10rpx;
+    margin-left: 16rpx;
 }
 .proul{
     padding: 0 30rpx;
@@ -45,4 +51,14 @@
 .lastview{
   padding:30rpx 0;
   border-top:1px solid #eee;
+}
+/*编辑用户姓名弹窗*/
+.editwrap{
+    padding: 20rpx;
+}
+.popinput{
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 10rpx;
+    border: 1px solid #e2e2e2;
 }

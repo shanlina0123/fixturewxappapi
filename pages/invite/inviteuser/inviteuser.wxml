@@ -1,7 +1,7 @@
 <view class='invitecontent'>
 <view class='invitewarp'>
         <view class='toptextnotice'>{{msg}}</view>
-        <view class='erweima'><image src="{{src}}" mode='scaleToFill'></image></view>
+        <view class='erweima' bindtap='codeImg' data-src='{{src}}'><image src="{{src}}" mode='scaleToFill'></image></view>
         <text class='erweimatext'>扫描上图二维码进行操作</text>
     </view>
 </view>
