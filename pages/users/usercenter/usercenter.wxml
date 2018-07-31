@@ -16,7 +16,7 @@
         </navigator>-->
         <navigator url='../project/project' class='proitem' hover-class="none">
             <image src='../../../images/icon3.png' class='itemicon'></image>
-            <text class='left10'>我关注的项目</text>
+            <text class='left10'>我关注的工地</text>
         </navigator>
         <navigator url='../prize/prize' class='proitem' hover-class="none">
             <image src='../../../images/icon4.png' class='itemicon'></image>
@@ -50,7 +50,7 @@
     <view class='proul samepadding'>
         <navigator url='../../bproject/projectlist/projectlist' class='proitem' hover-class="none">
             <image src='../../../images/icon3.png' class='itemicon'></image>
-            <text class='left10'>项目管理</text>
+            <text class='left10'>工地管理</text>
         </navigator>
         <navigator url='../../client/client' class='proitem' hover-class="none" wx:if="{{user.isinvitatione!=1}}">
             <image src='../../../images/icon8.png' class='itemicon'></image>

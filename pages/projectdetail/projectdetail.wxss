@@ -166,6 +166,7 @@
     bottom: 0;
     left: 0;
     background-color: #fff;
+    z-index: 30
 }
 .bottombtn{
     width: 50%;
@@ -257,7 +258,7 @@
 .invitewrap{
     position: fixed;
     width: 94%;
-    bottom: 0;
+    bottom: 80rpx;
     left: 0;
     padding: 20rpx 3%;
     background-color: #F8F8F8;
@@ -267,9 +268,8 @@
     margin-top: 20rpx;
     padding: 10rpx 0;
     font-size: 28rpx;
-    border-top: 1px solid #f0f0f0;
+    border: 1px solid #f0f0f0;
 }
 .inviteitem:first-child{
-    border-top: none;
     margin-top: 0;
 }

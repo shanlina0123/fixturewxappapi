@@ -1,45 +1,40 @@
 <!--C-->
 <block wx:if="{{userType==1}}">
-  <view class='topbtnwrap clearfix'>
-    <navigator class='topitem ctopitem fl' url="/pages/contact/quick/quick" hover-class="none">
-      <image src="../../images/tip1.png" class='firstimage'></image>
-      <view class='bigtext'>快速报价</view>
-      <view class='smalltext'>1分钟了解装修花多少钱</view>
+  <view class='topbtnwrap  clearfix'>
+    <navigator class='topitem fl' url="/pages/contact/quick/quick" hover-class="none">
+      <image src="{{imgUrl}}default/wx/c_ad_1.png" class='firstimage'></image>
+      <!-- <view class='bigtext'>快速报价</view>
+      <view class='smalltext'>1分钟了解装修花多少钱</view> -->
     </navigator>
-    <navigator class='topitem ctopitem fl' url="/pages/contact/free/free" hover-class="none">
-      <image src="../../images/tip2.png" class='secondimage'></image>
-      <view class='bigtext'>免费量房</view>
-      <view class='smalltext'>让您对房子精准了解</view>
+    <navigator class='topitem fl' url="/pages/contact/free/free" hover-class="none">
+      <image src="{{imgUrl}}default/wx/c_ad_2.png" class='secondimage'></image>
+      <!-- <view class='bigtext'>免费量房</view>
+      <view class='smalltext'>让您对房子精准了解</view> -->
     </navigator>
-    <navigator class='topitem ctopitem fl' url="/pages/cprojectlist/cprojectlist" hover-class="none">
-      <image src="../../images/tip7.png" class='firstimage'></image>
-      <view class='bigtext'>项目管理</view>
-      <view class='smalltext'>最新装修都在这里</view>
-    </navigator>
-    <navigator class='topitem ctopitem fl' url="/pages/users/project/project" hover-class="none">
-      <image src="../../images/tip3.png" class='thirdimage'></image>
-      <view class='bigtext'>关注项目</view>
-      <view class='smalltext'>喜欢的方案都在这里</view>
+    <navigator class='topitem fl' url="/pages/users/project/project" hover-class="none">
+      <image src="{{imgUrl}}default/wx/c_ad_3.png" class='thirdimage'></image>
+      <!-- <view class='bigtext'>关注工地</view>
+      <view class='smalltext'>喜欢的方案都在这里</view> -->
     </navigator>
   </view>
 </block>
 <!--B-->
 <block wx:if="{{userType==0}}">
   <view class='topbtnwrap clearfix' wx:if="{{userinfo.isinvitationed !=1 }}">
-    <navigator class='topitem ctopitem fl' url="../bproject/projectlist/projectlist" hover-class="none">
-      <image src="../../images/tip4.png" class='thirdimage'></image>
-      <view class='bigtext'>项目管理</view>
-      <view class='smalltext'>相关项目统一管理</view>
+    <navigator class='topitem fl' url="../bproject/projectlist/projectlist" hover-class="none">
+      <image src="{{imgUrl}}default/wx/b_ad_1.png" class='thirdimage'></image>
+      <!-- <view class='bigtext'>工地管理</view>
+      <view class='smalltext'>相关工地统一管理</view> -->
     </navigator>
-    <navigator class='topitem ctopitem fl' url="../client/client" hover-class="none">
-      <image src="../../images/tip5.png" class='firstimage'></image>
-      <view class='bigtext'>客户预约</view>
-      <view class='smalltext'>预约客户一目了然</view>
+    <navigator class='topitem fl' url="../client/client" hover-class="none">
+      <image src="{{imgUrl}}default/wx/b_ad_2.png" class='firstimage'></image>
+      <!-- <view class='bigtext'>客户预约</view>
+      <view class='smalltext'>预约客户一目了然</view> -->
     </navigator>
-    <navigator class='topitem ctopitem fl' url="../invite/participant/participant" hover-class="none">
-      <image src="../../images/tip6.png" class='secondimage'></image>
-      <view class='bigtext'>成员管理</view>
-      <view class='smalltext'>项目成员一键查看</view>
+    <navigator class='topitem fl' url="../invite/participant/participant" hover-class="none">
+      <image src="{{imgUrl}}default/wx/b_ad_3.png" class='secondimage'></image>
+      <!-- <view class='bigtext'>成员管理</view>
+      <view class='smalltext'>工地成员一键查看</view> -->
     </navigator>
   </view>
 </block>

@@ -8,7 +8,7 @@
     </view>
     <view class='tabbtnwrap'>
         <view class='samepadding'>
-            <text class="tabbtn {{switchtype==0 ? 'on':''}}" data-isfinish="0" bindtap='shownow'>在建项目</text>
+            <text class="tabbtn {{switchtype==0 ? 'on':''}}" data-isfinish="0" bindtap='shownow'>在建工地</text>
             <text class="tabbtn {{switchtype==1 ? 'on':''}}" data-isfinish="1" bindtap='shownow'>已完工</text>
         </view>
     </view>
@@ -44,7 +44,7 @@
                     >设置</view>
                 </view>
             </view>
-            <!--项目为空时显示-->
+            <!--工地为空时显示-->
             <view wx:if="{{lengthnone[0]}}" class='nonedata'>{{msg[0]}}</view>
         </view>
         <view class="content {{switchtype==1 ? '':'hide'}}">
@@ -66,7 +66,7 @@
                     <view class='updatebtn' bindtap='delcompleteItem'data-uuid="{{completeItem.uuid}}" data-index="{{index}}" >删除</view>
                 </view>
             </view>
-             <!--项目为空时显示-->
+             <!--工地为空时显示-->
              <view wx:if="{{lengthnone[1]}}" class='nonedata'>{{msg[1]}}</view>
         </view>
     </view>
@@ -87,7 +87,7 @@
     </view>
 </view>
 
-<!--右侧浮动的新增项目按钮-->
+<!--右侧浮动的新增工地按钮-->
 <navigator url='../projectadd/projectadd' class='addrightbtn' hover-class='none'>
     <image src="../../../images/proadd.jpg" class='addbtnimg'></image>
 </navigator>

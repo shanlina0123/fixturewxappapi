@@ -1,28 +1,27 @@
 /* pages/Bproject/proupdate.wxss */
-
-.itemname {
-    display: inline-block;
-    height: 80rpx;
-    line-height: 80rpx;
-    margin-right: 10rpx;
-}
-
 .formitem {
-    border-bottom: 1px solid #e2e2e2;
+    height: 90rpx;
     margin-bottom: 10rpx;
+    border-bottom: 1px solid #e2e2e2;
 }
-
+.itemname {
+    height: 90rpx;
+    line-height: 90rpx;
+}
 .pickerselect {
     display: block;
-    width: 76%;
-    height: 80rpx;
-    line-height: 80rpx;
+    height: 90rpx;
+    line-height: 90rpx;
     padding: 0 10px;
     text-align: right;
 }
-
 .textareawrap {
     position: relative;
+}
+.rightimg{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 25rpx;
 }
 
 .number {

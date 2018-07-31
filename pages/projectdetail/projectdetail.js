@@ -27,7 +27,7 @@ Page({
     is_home:false,//返回首页按钮
   },
   /**
-   * 关注项目按钮 
+   * 关注工地按钮
    */
   changeName: function(e) {
     var that = this;
@@ -117,15 +117,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    var that = this;
-    if (res.from === 'button')
-    {
-      return {
-        title: '业主评价',
-        path: '/pages/eval/eval?id=' + that.data.siteInfo.id,
-        imageUrl: that.data.imgUrl + that.data.siteInfo.explodedossurl
+      var that = this;
+      var stype = res.target.dataset.type;
+      if (res.from === 'button' && stype!=1)
+      {
+          return {
+              title: '业主评价',
+              path: '/pages/eval/eval?id=' + that.data.siteInfo.id,
+              imageUrl: that.data.imgUrl + that.data.siteInfo.explodedossurl
+          }
       }
-    }
   },
   /**
    * 页面上拉触底事件的处理函数
@@ -474,7 +475,7 @@ Page({
     })
   },
   /**
-   * 编辑动态项目显示
+   * 编辑动态工地显示
    */
   handelmsg: function(e) {
     var id = e.currentTarget.dataset.id
@@ -490,7 +491,7 @@ Page({
     })
   },
   /**
-   * 编辑动态项目显示取消
+   * 编辑动态工地显示取消
    */
   cancelmsg: function() {
     this.setData({

@@ -65,6 +65,12 @@
             "text": "首页"
         },
         {
+          "iconPath": "images/sit.png",
+          "selectedIconPath": "images/sitOn.png",
+          "pagePath": "pages/cprojectlist/cprojectlist",
+          "text": "工地"
+        },
+        {
             "iconPath": "images/message.png",
             "selectedIconPath": "images/messageOn.png",
             "pagePath": "pages/message/message",

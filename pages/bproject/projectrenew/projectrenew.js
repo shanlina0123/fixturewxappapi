@@ -60,8 +60,8 @@ Page({
         if (res.status == 1)
         {
           that.setData({ 
-            tag: res.data,
-            tagInfo: { 'id': res.data[0].id, 'name': res.data[0].name}
+            tag: res.data.tage,
+            tagInfo: { 'id': res.data.siteToCommpanyTag.id, 'name': res.data.siteToCommpanyTag.name}
             });
         }
       });

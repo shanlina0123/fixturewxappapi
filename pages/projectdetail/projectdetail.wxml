@@ -1,5 +1,5 @@
 <view class='wrap' wx:if="{{isview}}">
-  <!--项目详情-->
+  <!--工地详情-->
   <include src="../projectdetail/public/projectinfo.wxml" />
   <!--切换卡-->
   <include src="../projectdetail/public/tabbtns.wxml" />
@@ -15,7 +15,7 @@
   <!--底预约参观按钮B-->
   <view class='bottombtns clearfix' wx:if="{{userType==0}}">
     <navigator class='bottombtn fr' url="/pages/bproject/projectrenew/projectrenew?uuid={{siteInfo.uuid}}">更新</navigator>
-    <button class='askbtn fr' open-type='share' size='mini'>推广</button>
+    <button class='askbtn fr' open-type='share' size='mini' data-type='1'>推广</button>
   </view>
   <!--底预约参观按钮C-->
   <view class='bottombtns clearfix' wx:if="{{userType==1}}">

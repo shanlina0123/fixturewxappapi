@@ -31,6 +31,14 @@
     padding: 0 10px;
     border-radius: 10rpx;
 }
+.pickaddr{
+  display: block;
+  width: 554rpx;
+  height: auto;
+  min-height: 40rpx;
+  line-height: 40rpx;
+  padding: 20rpx 16rpx 20rpx 24rpx;
+}
 
 .wx-switch-input {
     width: 45px !important;

@@ -177,7 +177,7 @@ Page({
         })
       } else if (name == '') {
         wx.showToast({
-          title: '请填写项目名称',
+          title: '请填写工地名称',
           icon: "none"
         })
       } else if (tagInfo == '') {

@@ -14,7 +14,7 @@
             <view class='td'>{{item.prizename}}</view>
             <view class='td'>{{item.created_at}}</view>
         </view>
-        <!--项目列表为空时显示-->
+        <!--工地列表为空时显示-->
         <view wx:if="{{isShow}}" class='nonedata'>{{msg}}</view>
     </view>
 </view>

@@ -8,12 +8,12 @@
             </picker>
         </view>
         <view class='formitem clearfix'>
-            <text class='itemname fl'>项目地址</text>
-            <navigator url='../projectmap/projectmap' class='pickerselect fl' hover-class='none'>{{address?address.address:'请选择'}}</navigator>
+            <text class='itemname fl'>工地地址</text>
+            <navigator url='../projectmap/projectmap' class='pickerselect pickaddr fl' hover-class='none'>{{address?address.address:'请选择'}}</navigator>
         </view>
         <view class='formitem clearfix'>
-            <text class='itemname fl'>项目名称</text>
-            <input class='forminput fl' type='text' name="name" placeholder='请输入项目名称'></input>
+            <text class='itemname fl'>工地名称</text>
+            <input class='forminput fl' type='text' name="name" placeholder='请输入工地名称'></input>
         </view>
         <view class='formitem clearfix'>
             <text class='itemname fl'>门牌号码</text>

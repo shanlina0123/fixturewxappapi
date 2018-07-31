@@ -17,7 +17,7 @@
                 </view>
             </navigator>
         </block>
-        <!--项目列表为空时显示-->
+        <!--工地列表为空时显示-->
         <view wx:if="{{lengthnone}}" class='nonedata'>{{msg}}</view>
     </view>
 </view>

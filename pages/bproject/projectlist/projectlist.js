@@ -143,7 +143,7 @@ Page({
       });
     },
     /**
-     * 是否公开项目
+     * 是否公开工地
      */
     switch1Change: function (e)
     {
@@ -194,7 +194,7 @@ Page({
       var obj = { id: siteData.id };
       wx.showModal({
         title: '提示',
-        content: '确认完工后项目无法继续进行更新编辑，您确认设置完工吗？',
+        content: '确认完工后工地无法继续进行更新编辑，您确认设置完工吗？',
         success: function (res) {
           if (res.confirm) {
             Request.requestPut(Url.siteIsFinish, obj, function (res) {

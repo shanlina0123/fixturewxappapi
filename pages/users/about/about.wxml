@@ -1,16 +1,20 @@
 <!--pages/usercenter/about.wxml-->
-<view class='ceontent aboutwrap samepadding'>
+<view class='wrap'>
+  <view class='toplogo'>
     <image src="{{companyData.logo}}" class='logo' mode='aspectFit'></image>
-    <text class='comname'>{{companyData.name}}</text>
-    <view class='companytext'>
-       {{companyData.resume}}
+    <text class='companyname'>{{companyData.name}}</text>
+  </view>
+  <view class='companywrap'>
+    <view class='companyaddr clearfix'>
+      <text class='fl'>公司地址</text>
+      <text class='fr'>{{companyData.fulladdr}}</text>
     </view>
-    <view class='comaddr'>
-        <view class='companyaddr'>公司地址</view>
-        <view>{{companyData.fulladdr}}</view>
+    <view class='companyphone clearfix'>
+      <text class='fl'>联系方式</text>
+      <text class='fr'>{{companyData.phone}}</text>
     </view>
-    <view class='comphone'>
-        <view  class='companyaddr'>联系电话</view>
-        {{companyData.phone}}
-    </view>
+  </view>
+  <view class='companydes'>
+      {{companyData.resume}}
+  </view>
 </view>

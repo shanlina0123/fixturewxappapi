@@ -2,13 +2,11 @@
  * 小程序配置文件
  */
 var host = "https://fixture.yygsoft.com/api"
-//var host = "http://z.com/api"
 var config = {
   /**
    * 公用
    */
   //图片地址
-  //imgUrl: `http://z.com/uploads/`,
   imgUrl: `https://fixture.yygsoft.com/uploads/`,
   //用code换取openId
   openIdUrl: `${host}/user/openid`,
@@ -33,7 +31,7 @@ var config = {
    */
   //免费量房、快速报价
   free: `${host}/client/appointment`,
-  //项目列表
+  //工地列表
   project: `${host}/client/follow-record`,
   //我的装修
   invitation: `${host}/client/site-invitation`,
@@ -53,9 +51,9 @@ var config = {
   companyInfo: `${host}/client/company-info`, 
   //中将记录
   luckyRecord: `${host}/client/lucky-record`, 
-  //项目详情
+  //工地详情
   siteInfo: `${host}/site/info`, 
-  //项目详情动态
+  //工地详情动态
   siteDynamic: `${host}/site/dynamic`, 
   //消息
   logNotice:`${host}/log/notice`,

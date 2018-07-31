@@ -121,7 +121,7 @@ Page({
       var dataset = e.currentTarget.dataset;
       var Index = dataset.id;
       var name = dataset.name;
-      //通过`index`识别要删除第几条数据，第二个数据为要删除的项目数量，通常为1
+      //通过`index`识别要删除第几条数据，第二个数据为要删除的工地数量，通常为1
       that.data.imgUrl.splice(Index, 1);
       that.data.imgname.splice(Index, 1);
       //渲染数据

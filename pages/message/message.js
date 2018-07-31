@@ -82,6 +82,7 @@ Page({
             obj.isread = v.isread;
             obj.id = v.id;
             obj.siteid = v.siteid;
+            obj.typename = v.typename;
             data.push(obj);
           });
           that.setData({
@@ -134,5 +135,12 @@ Page({
     wx.navigateTo({
       url: '/pages/jmessage/jmessagelist/jmessagelist'
     });
+  },
+  tipMessages:function(e){
+    var messages = e.currentTarget.dataset.typename;
+    wx.showToast({
+      title:'感谢您的'+messages+'服务',
+      icon:'none'
+    })
   }
 })

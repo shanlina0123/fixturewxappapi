@@ -4,7 +4,7 @@
     <form class='evalformm' bindsubmit="formSubmit">
       <view class='evalformwrap'>
         <view class='evalformitem topname clearfix'>
-          <text class='lefttext fl'>项目:</text>
+          <text class='lefttext fl'>工地:</text>
           <view class='rightwrap fl'>
             <text class='proaddr'>{{siteInfo.name}}</text>
           </view>

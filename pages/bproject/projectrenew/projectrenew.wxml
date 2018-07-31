@@ -2,9 +2,12 @@
 <view class='samepadding'>
     <form bindsubmit='submitform'>
         <view class='formitem clearfix'>
-            <text class='itemname fl'>选择阶段</text>
-            <navigator url='../projectrenewinfo/projectrenewinfo' class='pickerselect fl' hover-class='none'>{{tagInfo.name}}</navigator>
+            <text class='itemname fl'>请选择阶段</text>
+            <image src="../../../images/right.png" class='rightimg fr'></image>
+            <navigator url='../projectrenewinfo/projectrenewinfo' class='pickerselect fr' hover-class='none'>{{tagInfo.name}}</navigator>
+            
         </view>
+        
         <view class='textareawrap'>
             <textarea name='content' bindinput='textareachange' maxlength='{{maxlength}}' class='formtextarea' placeholder='说点什么吧...'></textarea>
             <view class='number'>{{nowlength}}/{{maxlength}}</view>
